@@ -5,16 +5,7 @@ let activeMoneyWindow = null;
 
 // DEFAULT DATA
 const defaultData = {
-    goals: [{
-            id: "card1",
-            name: "Travel to Prague",
-            subtitle: "Trip . Prague, Czech Republic",
-            startDate: "2025-09-01",
-            endDate: "2026-06-30",
-            currentAmount: 1250.25,
-            targetAmount: 2000.55,
-            image: "./assets/images/prague.jpg"
-        }],
+    goals: [],
 
     transactions: [],
     darkMode: false
