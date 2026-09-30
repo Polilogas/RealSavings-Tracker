@@ -378,7 +378,9 @@ p.quotesForLeftSidebar {
 /* BANNER */
 
 .banner {
+    position: relative;
     width: 100%;
+    height: 180px;
     overflow: hidden;
     border-radius: 18px;
 }
@@ -386,9 +388,48 @@ p.quotesForLeftSidebar {
 .banner img {
     display: block;
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
     border-radius: 18px;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.bannerText {
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    transform: translateY(-50%);
+    z-index: 1;
+    color: black;
+    max-width: 520px;
+}
+
+.bannerText span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    opacity: 0.9;
+}
+
+.bannerText h1 {
+    margin: 0 0 8px;
+    font-size: 27px;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.bannerText p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
 
@@ -1793,8 +1834,8 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
 
 @media (max-width: 1475px) {
     .banner img {
-    object-fit: contain;
-}    
+    object-fit: cover;
+    }    
 }
 
 @media (max-width: 1100px) {
@@ -1843,8 +1884,21 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
         padding: 15px 20px;
     }
 
-    .banner img {
-        height: 140px;
+    .banner {
+        height: 150px;
+    }
+
+    .bannerText {
+        left: 24px;
+        max-width: 430px;
+    }
+
+    .bannerText h1 {
+        font-size: 23px;
+    }
+
+    .bannerText p {
+        font-size: 12px;
     }
 
     .searchForm.active {
@@ -1854,8 +1908,30 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
 
 @media (max-width: 500px) {
     .banner {
-        width: 590px;
+        height: 140px;
     }
+
+    .bannerText {
+        left: 18px;
+        right: 18px;
+    }
+
+    .bannerText span {
+        margin-bottom: 4px;
+        font-size: 9px;
+        letter-spacing: 1.2px;
+    }
+
+    .bannerText h1 {
+        margin-bottom: 5px;
+        font-size: 19px;
+    }
+
+    .bannerText p {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
     .action {
         align-items: flex-start;
         flex-direction: column;
@@ -1918,10 +1994,4 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
         gap: 5px;
     }
 
-}
-
-@media (max-width: 160px) {
-    .banner {
-        width: 420px;
-    }
 }
