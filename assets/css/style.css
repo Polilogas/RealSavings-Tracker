@@ -1919,3 +1919,9 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
     }
 
 }
+
+@media (max-width: 160px) {
+    .banner {
+        width: 420px;
+    }
+}
