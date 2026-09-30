@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer circle -->
+  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle>
+
+  <!-- Middle circle -->
+  <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"></circle>
+
+  <!-- Center dot -->
+  <circle cx="12" cy="12" r="2.2" fill="currentColor"></circle>
+
+  <!-- Very thin white outline -->
+  <path d="M19.5 7.5L12.8 11.6" stroke="white" stroke-width="2"></path>
+
+  <!-- Stick -->
+  <path d="M19.5 7.5L12.8 11.6" stroke="currentColor" stroke-width="1.5"></path>
+</svg>

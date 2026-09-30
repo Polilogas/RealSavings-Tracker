@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Far / smaller mountain on the right -->
+  <path d="M9.5 18.5
+       L15.2 9
+       Q15.7 8.1 16.3 9
+       L21.5 18.5
+       Z" fill="#6FA8DC" stroke="#174A7A" stroke-width="1.4"></path>
+
+  <!-- Far mountain snow -->
+  <path d="M15.2 9
+       Q15.7 8.1 16.3 9
+       L19.2 14.2
+       L18 13.4
+       L17 14.2
+       L16 12.7
+       L14.8 13.5
+       Z" fill="white" stroke="#174A7A" stroke-width="1.1"></path>
+
+  <!-- Big mountain on the left -->
+  <path d="M2.5 18.5
+       L8.5 6.5
+       Q9.1 5.2 9.9 6.5
+       L15.5 18.5
+       Z" fill="#3F8FC9" stroke="#174A7A" stroke-width="1.5"></path>
+
+  <!-- Big mountain snow -->
+  <path d="M8.5 6.5
+       Q9.1 5.2 9.9 6.5
+       L12.9 12.9
+       L11.5 12
+       L10.5 13
+       L9.3 11.1
+       L8.1 12.2
+       L6.9 11.1
+       Z" fill="white" stroke="#174A7A" stroke-width="1.1"></path>
+</svg>
