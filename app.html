@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>SaveSmart</title>
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+
+        <link href="./assets/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- LEFT SIDEBAR -->
+        <div class="leftSidebar">
+            <a href="./index.html" class="pageInfo">
+                <div class="pageIcon">
+                    <img src="./assets/images/PiggyBank_Icon.svg"
+                        alt="A black line drawing of a piggy bank with a coin on top."
+                        draggable="false">
+                </div>
+
+                <div class="pageText">
+                    <h1>SaveSmart</h1>
+                    <h2>Small steps, Big dreams.</h2>
+                </div>
+            </a>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <div class="button active" data-page="home">
+                    <img src="./assets/images/home.svg"
+                        alt="home icon"
+                        draggable="false">
+                    <p>Home</p>
+                </div>
+
+                <div class="button" data-page="savings">
+                    <img src="./assets/images/savingsGoal.svg"
+                        alt="savings goal icon"
+                        draggable="false">
+                    <p>Savings Goals</p>
+                </div>
+
+                <div class="button" data-page="transactions">
+                    <img
+                        src="./assets/images/transactions.svg"
+                        alt="transactions icon"
+                        draggable="false">
+                    <p>Transactions</p>
+                </div>
+
+                <div class="button" data-page="reports">
+                    <img src="./assets/images/reports.svg"
+                        alt="reports icon"
+                        draggable="false">
+                    <p>Reports</p>
+                </div>
+
+                <div class="button" data-page="settings">
+                    <img src="./assets/images/settings.svg"
+                        alt="settings icon"
+                        draggable="false">
+                    <p>Settings</p>
+                </div>
+            </div>
+
+            <!-- Sidebar quote -->
+            <div class="quotes">
+                <div>
+                    <img src="./assets/images/mountains.svg"
+                        alt="blue mountains with snow on top"
+                        draggable="false">
+                    <p class="quotesForLeftSidebar"><span>Better savings</span>today, more freedom<span>tomorrow</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIG CONTAINER -->
+        <div class="bigContainer">
+            <!-- ACCOUNT ACTIONS -->
+            <div class="accountActionsContainer">
+                <!-- Search -->
+                <form id="searchForm" class="searchForm">
+                    <input type="text" id="goalSearchInput" autocomplete="off" aria-label="Search savings goals">
+                    <button type="button" id="searchButton" class="searchButton" aria-label="Search"></button>
+                </form>
+
+                <!-- Notifications -->
+                <!-- <img src="./assets/images/notifications.svg"
+                    alt="notifications"
+                    class="accountIcon"
+                    draggable="false"> -->
+
+                <!-- Profile -->
+                <!-- <img src="./assets/images/profile-picture.svg"
+                    alt="profile picture"
+                    class="profilePicture"
+                    draggable="false"> -->
+            </div>
+
+            <!-- MAIN CONTAINER -->
+            <div class="mainContainer">
+                <!-- MAIN CONTENT -->
+                <div class="mainContentContainer">
+                    <!-- HOME PAGE -->
+                    <div class="pageSection homePage" id="homePage">
+                        <div class="banner">
+                            <img src="./assets/images/banner-1.jpg"
+                                alt=""
+                                draggable="false">
+
+                            <div class="bannerText">
+                                <span>YOUR SAVINGS JOURNEY</span>
+
+                                <h1>Turn your goals into reality</h1>
+
+                                <p>
+                                    Save for what matters. Track your progress.<br>
+                                    Build the future you want.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- MOBILE ADVERTISEMENT -->
+                        <div class="mobileAdContainer">
+                            <span>Advertisement</span>
+                        </div>
+
+                        <!-- other -->
+                        <div class="action">
+                            <p>Your Savings Goals</p>
+                            <button class="addNewGoal" type="button" onclick="showAddNewGoalWindow();"><span>+</span>Add New Goal</button>
+                        </div>
+
+                        <!-- Goals generated by JavaScript -->
+                        <div class="goals"></div>
+                    </div>
+
+                    <!-- TRANSACTIONS PAGE -->
+
+                    <div class="pageSection transactionsPage hidden" id="transactionsPage">
+                        <div class="pageHeading">
+                            <div>
+                                <h2>Transactions</h2>
+                                <p> A history of money added and removed from your savings goals.</p>
+                            </div>
+                        </div>
+
+                        <div id="transactionsList" class="transactionsList"></div>
+                    </div>
+
+                    <!-- REPORTS PAGE -->
+
+                    <div class="pageSection reportsPage hidden" id="reportsPage">
+                        <div class="pageHeading">
+                            <div>
+                                <h2>Reports</h2>
+                                <p> Savings reports and statistics will appear here.</p>
+                            </div>
+                        </div>
+
+                        <div class="emptyPage">
+                            <p>Reports coming soon.</p>
+                        </div>
+                    </div>
+
+                    <!-- SETTINGS PAGE -->
+
+                    <div class="pageSection settingsPage hidden" id="settingsPage">
+                        <div class="pageHeading">
+                            <div>
+                                <h2>Settings</h2>
+                                <p> Customize how SaveSmart works.</p>
+                            </div>
+                        </div>
+
+                        <div class="settingsContent">
+                            <!-- Dark Mode -->
+                            <div class="settingOption">
+                                <div class="settingInfo">
+                                    <strong>Dark Mode</strong>
+                                    <p>Change the appearance of SaveSmart.</p>
+                                </div>
+
+                                <button type="button"
+                                    id="darkModeToggle"
+                                    class="themeSwitch"
+                                    aria-label="Toggle dark mode"
+                                    aria-pressed="false">
+                                    <span class="handle"></span>
+                                </button>
+                            </div>
+
+                            <!-- Backup Data -->
+                            <div class="settingsSection">
+                                <h2>Data</h2>
+
+                                <p>Backup your savings goals and transactions or restore them later.</p>
+
+                                <div class="settingsButtons">
+                                    <button type="button" id="exportDataButton">Export Data</button>
+
+                                    <button type="button" id="importDataButton">Import Data</button>
+
+                                    <input type="file" id="importDataInput" accept=".json" hidden>
+                                </div>
+                            </div>
+
+                            <!-- Delete everything -->
+                            <div class="settingOption dangerSetting">
+                                <div class="settingInfo">
+                                    <strong>Delete All Data</strong>
+                                    <p> Delete all goals and transactions permanently.</p>
+                                </div>
+
+                                <div class="settingsLinks">
+                                    <a href="./privacy.html?from=app">Privacy Policy</a>
+                                    <a href="./terms.html?from=app">Terms of Use</a>
+                                </div>
+
+                                <button type="button" onclick="deleteAllData();">Delete All Data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDEBAR -->
+                <div class="rightSidebar">
+                    <div class="totalSavingsContainer" id="card0">
+                        <div class="infoContainer">
+                            <div class="leftSide">
+                                <img
+                                    src="./assets/images/piggy-bank-icon-design-png-image_1012404.png"
+                                    alt="piggy bank icon"
+                                    draggable="false" >
+                            </div>
+
+                            <div class="mainSide">
+                                <p class="title">Total Savings</p>
+                                <p class="currentSavings">€0</p>
+                                <p class="totalGoalSavings">of € 0(<span class="percentage">0%</span>)</p>
+                            </div>
+                        </div>
+
+                        <div class="progressBarContainer">
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <!-- ADVERTISEMENT -->
+                    <div class="adContainer">
+                        <span>Advertisement</span>
+                    </div>
+
+                    <!-- QUOTE -->
+                    <div class="sidebarQuote">
+                        <span class="quoteSymbol">“</span>
+                        <p id="sidebarQuoteText"></p>
+                        <p id="sidebarQuoteAuthor"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MONEY FEEDBACK -->
+        <div id="moneyFeedback"></div>
+
+        <!-- DARK OVERLAY -->
+        <div id="darkOverlay"></div>
+
+        <!-- ADD NEW GOAL WINDOW -->
+        <div class="newGoalForm popupWindow hidden">
+            <div class="windowHeader">
+                <h2>New Savings Goal</h2>
+                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
+            </div>
+
+            <form>
+                <!-- Image preview -->
+                <div class="imagePreviewContainer">
+                    <img
+                        id="newGoalImagePreview"
+                        src="./assets/images/piggy-bank-icon-design-png-image_1012404.png"
+                        alt="Goal image preview"
+                        draggable="false">
+                </div>
+
+                <label for="selectAnImageBtn">Image:</label>
+                <input type="file" id="selectAnImageBtn" class="focusable" accept="image/*">
+
+                <label for="goalNameInput">Goal Name:</label>
+                <input type="text" id="goalNameInput" class="focusable" name="goalName" required>
+
+                <label for="subtitleInput">Subtitle:</label>
+                <input type="text" id="subtitleInput" class="focusable" name="subtitle">
+
+                <label for="startDateInput">Start Date:</label>
+                <input type="date" id="startDateInput" class="focusable" name="startDate" required>
+
+                <label for="endDateInput">End Date:</label>
+                <input type="date" id="endDateInput" class="focusable" name="endDate">
+
+                <label for="currentAmountInput">Current Amount:</label>
+                <input type="number" id="currentAmountInput" class="focusable" step="0.01" min="0" value="0">
+
+                <label for="targetAmountInput">Target Amount:</label>
+                <input type="number" id="targetAmountInput" class="focusable" step="0.01" min="0" required>
+
+                <input type="button" value="Submit" class="focusable" onclick="addANewGoal();">
+            </form>
+        </div>
+
+        <!-- EDIT GOAL WINDOW -->
+        <div id="editGoalWindow" class="popupWindow hidden">
+            <div class="windowHeader">
+                <h2>Edit Goal</h2>
+                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
+            </div>
+
+            <form>
+                <p class="editingGoalName"></p>
+
+                <label for="editGoalName">Goal Name:</label>
+                <input type="text" id="editGoalName" class="focusable" required>
+
+                <label for="editSubtitle">Subtitle:</label>
+                <input type="text" id="editSubtitle" class="focusable">
+
+                <label for="editStartDate">Start Date:</label>
+                <input type="date" id="editStartDate" class="focusable" required>
+
+                <label for="editEndDate">End Date:</label>
+                <input type="date" id="editEndDate" class="focusable">
+
+                <label for="editCurrentAmount">Current Amount:</label>
+                <input type="number" id="editCurrentAmount" class="focusable" step="0.01" min="0">
+
+                <label for="editTargetAmount">Target Amount:</label>
+                <input type="number" id="editTargetAmount" class="focusable" step="0.01" min="0" required>
+
+                <label for="editGoalImage">Change Image:</label>
+                <input type="file" id="editGoalImage" class="focusable" accept="image/*">
+
+                <input type="button" value="Save Changes" class="focusable" onclick="saveEditedGoal();">
+            </form>
+        </div>
+
+        <!-- ADD MONEY WINDOW -->
+        <div id="addMoneyWindow" class="popupWindow hidden">
+            <div class="windowHeader">
+                <h2>Add Money</h2>
+                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
+            </div>
+
+            <form>
+                <p class="goalTitle"></p>
+
+                <label for="addMoney">Add Money:</label>
+                <input type="number" id="addMoney" class="focusable" step="0.01" min="0">
+
+                <p class="displayAddMoney"></p>
+
+                <label for="addTotalMoney">Update Total Money:</label>
+                <input type="number" id="addTotalMoney" class="focusable" step="0.01" min="0">
+
+                <p class="displayTotalMoney"></p>
+
+                <input type="button" value="Submit" class="focusable" onclick="submitChanges();">
+            </form>
+        </div>
+
+        <!-- REMOVE MONEY WINDOW -->
+        <div id="removeMoneyWindow" class="popupWindow hidden">
+            <div class="windowHeader">
+                <h2>Remove Money</h2>
+                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
+            </div>
+
+            <form>
+                <p class="goalTitle"></p>
+                
+                <label for="removeMoney">Remove Money:</label>
+                <input type="number" id="removeMoney" class="focusable" step="0.01" min="0">
+
+                <p class="displayAddMoney"></p>
+
+                <label for="updateTotalMoney">Update Total Money:</label>
+                <input type="number" id="updateTotalMoney" class="focusable" step="0.01" min="0">
+
+                <p class="displayTotalMoney"></p>
+
+                <input type="button" value="Submit" class="focusable" onclick="submitChanges();">
+            </form>
+        </div>
+
+        <script src="./assets/script/index.js" charset="utf-8"></script>
+    </body>
+</html>

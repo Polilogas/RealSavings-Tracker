@@ -16,7 +16,7 @@ body {
     display: flex;
     background-color: #f6f8fb;
     color: #1f2937;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
@@ -52,6 +52,9 @@ button, input {
     display: flex;
     align-items: center;
     gap: 13px;
+    text-decoration: none;
+    color: inherit; 
+    
 }
 
 .leftSidebar .pageInfo .pageIcon {
@@ -471,7 +474,7 @@ p.quotesForLeftSidebar {
 }
 
 .addNewGoal:hover {
-    background-color: #1875f2;
+    background-color: #176fe8;
     transform: translateY(-1px);
     box-shadow: 0 7px 18px rgba(43, 131, 254, 0.25);
 }

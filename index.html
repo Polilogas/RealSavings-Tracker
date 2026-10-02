@@ -7,397 +7,241 @@
 
         <title>SaveSmart</title>
         <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
-
-        <link href="./assets/css/style.css" rel="stylesheet">
+        <link href="./assets/css/landing.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <!-- LEFT SIDEBAR -->
-        <div class="leftSidebar">
-            <div class="pageInfo">
-                <div class="pageIcon">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <div class="logoIcon">
                     <img src="./assets/images/PiggyBank_Icon.svg"
-                        alt="A black line drawing of a piggy bank with a coin on top."
-                        draggable="false">
+                        alt="SaveSmart">
                 </div>
-
-                <div class="pageText">
-                    <h1>SaveSmart</h1>
-                    <h2>Small steps, Big dreams.</h2>
-                </div>
+                <span>SaveSmart</span>
             </div>
 
-            <!-- Navigation -->
-            <div class="navigation">
-                <div class="button active" data-page="home">
-                    <img src="./assets/images/home.svg"
-                        alt="home icon"
-                        draggable="false">
-                    <p>Home</p>
+            <nav>
+                <a href="#howItWorks">How It Works</a>
+                <a href="#savingsCalculator">Calculator</a>
+                <a href="#goalExamples">Savings Goals</a>
+            </nav>
+
+            <a href="./app.html" class="startSavingButton">Start Saving</a>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <!-- HERO -->
+            <section class="hero">
+                <div class="heroContent">
+                    <span class="heroLabel">SAVE SMARTER</span>
+                    <h1>Turn your savings goals into reality.</h1>
+                    <p>Create goals, track your progress, and watch your savings grow.</p>
+                    <a href="./app.html" class="heroButton">Start Saving</a>
                 </div>
 
-                <div class="button" data-page="savings">
-                    <img src="./assets/images/savingsGoal.svg"
-                        alt="savings goal icon"
-                        draggable="false">
-                    <p>Savings Goals</p>
-                </div>
-
-                <div class="button" data-page="transactions">
-                    <img
-                        src="./assets/images/transactions.svg"
-                        alt="transactions icon"
-                        draggable="false">
-                    <p>Transactions</p>
-                </div>
-
-                <div class="button" data-page="reports">
-                    <img src="./assets/images/reports.svg"
-                        alt="reports icon"
-                        draggable="false">
-                    <p>Reports</p>
-                </div>
-
-                <div class="button" data-page="settings">
-                    <img src="./assets/images/settings.svg"
-                        alt="settings icon"
-                        draggable="false">
-                    <p>Settings</p>
-                </div>
-            </div>
-
-            <!-- Sidebar quote -->
-            <div class="quotes">
-                <div>
-                    <img src="./assets/images/mountains.svg"
-                        alt="blue mountains with snow on top"
-                        draggable="false">
-                    <p class="quotesForLeftSidebar"><span>Better savings</span>today, more freedom<span>tomorrow</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- BIG CONTAINER -->
-        <div class="bigContainer">
-            <!-- ACCOUNT ACTIONS -->
-            <div class="accountActionsContainer">
-                <!-- Search -->
-                <form id="searchForm" class="searchForm">
-                    <input type="text" id="goalSearchInput" autocomplete="off" aria-label="Search savings goals">
-                    <button type="button" id="searchButton" class="searchButton" aria-label="Search"></button>
-                </form>
-
-                <!-- Notifications -->
-                <!-- <img src="./assets/images/notifications.svg"
-                    alt="notifications"
-                    class="accountIcon"
-                    draggable="false"> -->
-
-                <!-- Profile -->
-                <!-- <img src="./assets/images/profile-picture.svg"
-                    alt="profile picture"
-                    class="profilePicture"
-                    draggable="false"> -->
-            </div>
-
-            <!-- MAIN CONTAINER -->
-            <div class="mainContainer">
-                <!-- MAIN CONTENT -->
-                <div class="mainContentContainer">
-                    <!-- HOME PAGE -->
-                    <div class="pageSection homePage" id="homePage">
-                        <div class="banner">
-                            <img src="./assets/images/banner-1.jpg"
-                                alt=""
-                                draggable="false">
-
-                            <div class="bannerText">
-                                <span>YOUR SAVINGS JOURNEY</span>
-
-                                <h1>Turn your goals into reality</h1>
-
-                                <p>
-                                    Save for what matters. Track your progress.<br>
-                                    Build the future you want.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- MOBILE ADVERTISEMENT -->
-                        <div class="mobileAdContainer">
-                            <span>Advertisement</span>
-                        </div>
-
-                        <!-- other -->
-                        <div class="action">
-                            <p>Your Savings Goals</p>
-                            <button class="addNewGoal" type="button" onclick="showAddNewGoalWindow();"><span>+</span>Add New Goal</button>
-                        </div>
-
-                        <!-- Goals generated by JavaScript -->
-                        <div class="goals"></div>
-                    </div>
-
-                    <!-- TRANSACTIONS PAGE -->
-
-                    <div class="pageSection transactionsPage hidden" id="transactionsPage">
-                        <div class="pageHeading">
-                            <div>
-                                <h2>Transactions</h2>
-                                <p> A history of money added and removed from your savings goals.</p>
-                            </div>
-                        </div>
-
-                        <div id="transactionsList" class="transactionsList"></div>
-                    </div>
-
-                    <!-- REPORTS PAGE -->
-
-                    <div class="pageSection reportsPage hidden" id="reportsPage">
-                        <div class="pageHeading">
-                            <div>
-                                <h2>Reports</h2>
-                                <p> Savings reports and statistics will appear here.</p>
-                            </div>
-                        </div>
-
-                        <div class="emptyPage">
-                            <p>Reports coming soon.</p>
-                        </div>
-                    </div>
-
-                    <!-- SETTINGS PAGE -->
-
-                    <div class="pageSection settingsPage hidden" id="settingsPage">
-                        <div class="pageHeading">
-                            <div>
-                                <h2>Settings</h2>
-                                <p> Customize how SaveSmart works.</p>
-                            </div>
-                        </div>
-
-                        <div class="settingsContent">
-                            <!-- Dark Mode -->
-                            <div class="settingOption">
-                                <div class="settingInfo">
-                                    <strong>Dark Mode</strong>
-                                    <p>Change the appearance of SaveSmart.</p>
-                                </div>
-
-                                <button type="button"
-                                    id="darkModeToggle"
-                                    class="themeSwitch"
-                                    aria-label="Toggle dark mode"
-                                    aria-pressed="false">
-                                    <span class="handle"></span>
-                                </button>
+                <div class="heroVisual">
+                    <div class="heroGoalCard">
+                        <div class="heroGoalInfo">
+                            <div class="heroGoalPicture">
+                                <img src="./assets/images/travel.jpeg" alt="Travel savings goal">
                             </div>
 
-                            <!-- Backup Data -->
-                            <div class="settingsSection">
-                                <h2>Data</h2>
+                            <div class="heroGoalDetails">
+                                <p class="heroGoalTitle">Travel to Japan</p>
+                                <p class="heroGoalSubtitle">Vacation</p>
 
-                                <p>Backup your savings goals and transactions or restore them later.</p>
-
-                                <div class="settingsButtons">
-                                    <button type="button" id="exportDataButton">Export Data</button>
-
-                                    <button type="button" id="importDataButton">Import Data</button>
-
-                                    <input type="file" id="importDataInput" accept=".json" hidden>
+                                <div class="heroGoalDates">
+                                    <span>Start: 01/09/2026</span>
+                                    <span>Finish: 30/06/2027</span>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Delete everything -->
-                            <div class="settingOption dangerSetting">
-                                <div class="settingInfo">
-                                    <strong>Delete All Data</strong>
-                                    <p> Delete all goals and transactions permanently.</p>
-                                </div>
+                        <div class="heroGoalProgressInfo">
+                            <p><strong>€1,240</strong> / €2,000</p>
+                            <span>62%</span>
+                        </div>
 
-                                <div class="settingsLinks">
-                                    <a href="./privacy.html">Privacy Policy</a>
-                                    <a href="./terms.html">Terms of Use</a>
-                                </div>
-
-                                <button type="button" onclick="deleteAllData();">Delete All Data</button>
-                            </div>
+                        <div class="heroGoalProgressBar">
+                            <div></div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- RIGHT SIDEBAR -->
-                <div class="rightSidebar">
-                    <div class="totalSavingsContainer" id="card0">
-                        <div class="infoContainer">
-                            <div class="leftSide">
-                                <img
-                                    src="./assets/images/piggy-bank-icon-design-png-image_1012404.png"
-                                    alt="piggy bank icon"
-                                    draggable="false" >
-                            </div>
+            <!-- HOW IT WORKS -->
+            <section class="howItWorks" id="howItWorks">
+                <div class="sectionHeading">
+                    <span>HOW IT WORKS</span>
+                    <h2>Saving doesn't have to be complicated.</h2>
+                    <p>SaveSmart helps you turn a goal into a simple plan.</p>
+                </div>
 
-                            <div class="mainSide">
-                                <p class="title">Total Savings</p>
-                                <p class="currentSavings">€0</p>
-                                <p class="totalGoalSavings">of € 0(<span class="percentage">0%</span>)</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="stepNumber">1</div>
+                        <h3>Create a goal</h3>
+                        <p>Choose what you're saving for and set your target amount.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="stepNumber">2</div>
+                        <h3>Add your savings</h3>
+                        <p>Record the money you put toward your goal.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="stepNumber">3</div>
+                        <h3>Track your progress</h3>
+                        <p>Watch your progress grow until you reach your target.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAVINGS CALCULATOR -->
+            <section class="savingsCalculator" id="savingsCalculator">
+                <div class="sectionHeading">
+                    <span>SAVINGS CALCULATOR</span>
+                    <h2>See how long your goal could take.</h2>
+                    <p>Enter your target and monthly savings to estimate your timeline.</p>
+                </div>
+
+                <div class="calculatorCard">
+                    <div class="calculatorInputs">
+                        <div class="calculatorInput">
+                            <label for="calculatorTarget">Savings goal</label>
+                            <div class="inputWrapper">
+                                <span>€</span>
+                                <input type="number" id="calculatorTarget" placeholder="2000">
                             </div>
                         </div>
 
-                        <div class="progressBarContainer">
-                            <div class="progressBar"></div>
+                        <div class="calculatorInput">
+                            <label for="calculatorMonthly">Monthly savings</label>
+                            <div class="inputWrapper">
+                                <span>€</span>
+                                <input type="number" id="calculatorMonthly" placeholder="200">
+                            </div>
+                        </div>
+
+                        <button type="button" id="calculateSavingsButton">Calculate</button>
+                        <p id="calculatorError"></p>
+                    </div>
+
+                    <div class="calculatorResult">
+                        <span>Estimated time</span>
+                        <strong id="calculatorResultValue"></strong>
+                        <p>Enter your goal and monthly savings to see your estimated timeline.</p>
+                        <p id="calculatorResultDate"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAVINGS GOAL EXAMPLES -->
+            <section class="goalExamples" id="goalExamples">
+                <div class="sectionHeading">
+                    <span>SAVINGS GOALS</span>
+                    <h2>Save for whatever matters to you.</h2>
+                    <p>Big plans become easier when you turn them into clear savings goals.</p>
+                </div>
+
+                <div class="exampleGoals">
+                    <div class="exampleGoal">
+                        <div class="exampleGoalImage">
+                            <img src="./assets/images/travelExample.jpg" alt="Travel savings goal">
+                        </div>
+
+                        <div class="exampleGoalInfo">
+                            <h3>Travel</h3>
+                            <p>Save for your next adventure.</p>
                         </div>
                     </div>
 
-                    <!-- ADVERTISEMENT -->
-                    <div class="adContainer">
-                        <span>Advertisement</span>
+                    <div class="exampleGoal">
+                        <div class="exampleGoalImage">
+                            <img src="./assets/images/technologyExample.jpg" alt="Technology savings goal">
+                        </div>
+
+                        <div class="exampleGoalInfo">
+                            <h3>Technology</h3>
+                            <p>Save for your next device.</p>
+                        </div>
                     </div>
 
-                    <!-- QUOTE -->
-                    <div class="sidebarQuote">
-                        <span class="quoteSymbol">“</span>
-                        <p id="sidebarQuoteText"></p>
-                        <p id="sidebarQuoteAuthor"></p>
+                    <div class="exampleGoal">
+                        <div class="exampleGoalImage">
+                            <img src="./assets/images/homeExample.jpg" alt="Home savings goal">
+                        </div>
+
+                        <div class="exampleGoalInfo">
+                            <h3>Home</h3>
+                            <p>Save for something special.</p>
+                        </div>
+                    </div>
+
+                    <div class="exampleGoal">
+                        <div class="exampleGoalImage">
+                            <img src="./assets/images/EmergencyFundExample.jpg" alt="Emergency fund savings goal">
+                        </div>
+
+                        <div class="exampleGoalInfo">
+                            <h3>Emergency Fund</h3>
+                            <p>Build a financial safety net.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FINAL CTA -->
+            <section class="finalCta">
+                <div class="finalCtaContent">
+                    <span>START TODAY</span>
+                    <h2>Give your goals a plan.</h2>
+                    <p>Create your first savings goal and start tracking your progress.</p>
+                    <a href="./app.html" class="finalCtaButton">Start Saving</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footerMain">
+                <div class="footerBrand">
+                    <div class="footerLogo">
+                        <img src="./assets/images/PiggyBank_Icon.svg" alt="SaveSmart">
+                        <span>SaveSmart</span>
+                    </div>
+
+                    <p>A simple way to plan, track, and reach your savings goals.</p>
+
+                </div>
+
+                <div class="footerLinks">
+                    <div class="footerColumn">
+                        <h3>SaveSmart</h3>
+                        <a href="#howItWorks">How It Works</a>
+                        <a href="#savingsCalculator">Calculator</a>
+                        <a href="#goalExamples">Savings Goals</a>
+                        <a href="./app.html">Start Saving</a>
+                    </div>
+
+                    <div class="footerColumn">
+                        <h3>Legal</h3>
+                        <a href="./privacy.html">Privacy Policy</a>
+                        <a href="./terms.html">Terms of Use</a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- MONEY FEEDBACK -->
-        <div id="moneyFeedback"></div>
-
-        <!-- DARK OVERLAY -->
-        <div id="darkOverlay"></div>
-
-        <!-- DARK OVERLAY -->
-        <div id="darkOverlay"></div>
-
-        <!-- ADD NEW GOAL WINDOW -->
-        <div class="newGoalForm popupWindow hidden">
-            <div class="windowHeader">
-                <h2>New Savings Goal</h2>
-                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
+            <div class="footerBottom">
+                <span>© 2026 SaveSmart. All rights reserved.</span>
             </div>
+        </footer>
 
-            <form>
-                <!-- Image preview -->
-                <div class="imagePreviewContainer">
-                    <img
-                        id="newGoalImagePreview"
-                        src="./assets/images/piggy-bank-icon-design-png-image_1012404.png"
-                        alt="Goal image preview"
-                        draggable="false">
-                </div>
-
-                <label for="selectAnImageBtn">Image:</label>
-                <input type="file" id="selectAnImageBtn" class="focusable" accept="image/*">
-
-                <label for="goalNameInput">Goal Name:</label>
-                <input type="text" id="goalNameInput" class="focusable" name="goalName" required>
-
-                <label for="subtitleInput">Subtitle:</label>
-                <input type="text" id="subtitleInput" class="focusable" name="subtitle">
-
-                <label for="startDateInput">Start Date:</label>
-                <input type="date" id="startDateInput" class="focusable" name="startDate" required>
-
-                <label for="endDateInput">End Date:</label>
-                <input type="date" id="endDateInput" class="focusable" name="endDate">
-
-                <label for="currentAmountInput">Current Amount:</label>
-                <input type="number" id="currentAmountInput" class="focusable" step="0.01" min="0" value="0">
-
-                <label for="targetAmountInput">Target Amount:</label>
-                <input type="number" id="targetAmountInput" class="focusable" step="0.01" min="0" required>
-
-                <input type="button" value="Submit" class="focusable" onclick="addANewGoal();">
-            </form>
-        </div>
-
-        <!-- EDIT GOAL WINDOW -->
-        <div id="editGoalWindow" class="popupWindow hidden">
-            <div class="windowHeader">
-                <h2>Edit Goal</h2>
-                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
-            </div>
-
-            <form>
-                <p class="editingGoalName"></p>
-
-                <label for="editGoalName">Goal Name:</label>
-                <input type="text" id="editGoalName" class="focusable" required>
-
-                <label for="editSubtitle">Subtitle:</label>
-                <input type="text" id="editSubtitle" class="focusable">
-
-                <label for="editStartDate">Start Date:</label>
-                <input type="date" id="editStartDate" class="focusable" required>
-
-                <label for="editEndDate">End Date:</label>
-                <input type="date" id="editEndDate" class="focusable">
-
-                <label for="editCurrentAmount">Current Amount:</label>
-                <input type="number" id="editCurrentAmount" class="focusable" step="0.01" min="0">
-
-                <label for="editTargetAmount">Target Amount:</label>
-                <input type="number" id="editTargetAmount" class="focusable" step="0.01" min="0" required>
-
-                <label for="editGoalImage">Change Image:</label>
-                <input type="file" id="editGoalImage" class="focusable" accept="image/*">
-
-                <input type="button" value="Save Changes" class="focusable" onclick="saveEditedGoal();">
-            </form>
-        </div>
-
-        <!-- ADD MONEY WINDOW -->
-        <div id="addMoneyWindow" class="popupWindow hidden">
-            <div class="windowHeader">
-                <h2>Add Money</h2>
-                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
-            </div>
-
-            <form>
-                <p class="goalTitle"></p>
-
-                <label for="addMoney">Add Money:</label>
-                <input type="number" id="addMoney" class="focusable" step="0.01" min="0">
-
-                <p class="displayAddMoney"></p>
-
-                <label for="addTotalMoney">Update Total Money:</label>
-                <input type="number" id="addTotalMoney" class="focusable" step="0.01" min="0">
-
-                <p class="displayTotalMoney"></p>
-
-                <input type="button" value="Submit" class="focusable" onclick="submitChanges();">
-            </form>
-        </div>
-
-        <!-- REMOVE MONEY WINDOW -->
-        <div id="removeMoneyWindow" class="popupWindow hidden">
-            <div class="windowHeader">
-                <h2>Remove Money</h2>
-                <button type="button" class="closeWindow" onclick="closeAllWindows();">×</button>
-            </div>
-
-            <form>
-                <p class="goalTitle"></p>
-                
-                <label for="removeMoney">Remove Money:</label>
-                <input type="number" id="removeMoney" class="focusable" step="0.01" min="0">
-
-                <p class="displayAddMoney"></p>
-
-                <label for="updateTotalMoney">Update Total Money:</label>
-                <input type="number" id="updateTotalMoney" class="focusable" step="0.01" min="0">
-
-                <p class="displayTotalMoney"></p>
-
-                <input type="button" value="Submit" class="focusable" onclick="submitChanges();">
-            </form>
-        </div>
-
-        <script src="./assets/script/index.js" charset="utf-8"></script>
+        <script src="./assets/script/landing.js"></script>
     </body>
 </html>

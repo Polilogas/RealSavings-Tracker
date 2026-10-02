@@ -789,11 +789,8 @@ function showAddNewGoalWindow() {
     setCurrentDateDefaults();
 
     document.querySelector("#darkOverlay").classList.add("darkOverlay");
-
     document.querySelector(".newGoalForm").classList.remove("hidden");
-
     document.querySelector("#newGoalImagePreview").src = "./assets/images/piggy-bank-icon-design-png-image_1012404.png";
-
     document.querySelector("#goalNameInput").focus();
 }
 
