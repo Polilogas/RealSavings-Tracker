@@ -26,6 +26,11 @@ button, input {
     font-family: inherit;
 }
 
+
+.mobileMenuButton {
+    display: none;
+}
+
 /* LEFT SIDEBAR */
 
 .leftSidebar {
@@ -1542,8 +1547,8 @@ body.darkMode .bigContainer, body.darkMode .mainContainer {
 /* DARK MODE — SIDEBAR */
 
 body.darkMode .leftSidebar {
-    background-color: #171f2d;
-    border-color: #293447;
+    background-color: #202d42;
+    border-color: #344258;
 }
 
 body.darkMode .leftSidebar .pageInfo .pageIcon {
@@ -1880,31 +1885,98 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
 }
 
 @media (max-width: 750px) {
-    .leftSidebar {
-        width: 75px;
-        min-width: 75px;
-        padding: 25px 12px;
+
+    .mobileMenuButton {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        left: 12px;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e9edf3;
+        border-radius: 14px;
+        background-color: #ffffff;
+        color: #172033;
+        box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 200;
     }
 
-    .leftSidebar .pageText, .navigation .button p, .leftSidebar .quotes {
+    .mobileMenuButton.mobileMenuOpen {
+        border: 1px solid #ffffff;
+        box-shadow: none;
+    }
+
+    .leftSidebar {
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 12px;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        width: calc(100vw - 24px);
+        max-width: 320px;
+        padding: 18px;
+        border-radius: 18px;
+        background-color: #ffffff;
+        border: 1px solid #e9edf3;
+        box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+        z-index: 150;
+    }
+
+    .leftSidebar .quotes {
         display: none;
     }
 
     .leftSidebar .pageInfo {
         justify-content: center;
+        margin-bottom: 18px;
+    }
+
+    .leftSidebar .pageInfo .pageIcon {
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+    }
+
+    .leftSidebar .pageInfo .pageIcon img {
+        width: 31px;
+    }
+
+    .leftSidebar.mobileMenuOpen {
+    display: flex;
+    animation: mobileMenuOpen 0.2s ease forwards;
+}
+
+    @keyframes mobileMenuOpen {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .navigation {
+        gap: 8px;
     }
 
     .navigation .button {
-        justify-content: center;
-        padding: 0;
+        justify-content: flex-start;
+        padding: 0 12px;
     }
 
     .navigation .button img {
-        margin-right: 0;
+        margin-right: 10px;
     }
 
     .mainContainer {
-        padding: 5px 20px 30px;
+        padding: 75px 20px 30px;
     }
 
     .accountActionsContainer {
@@ -1996,19 +2068,19 @@ body.darkMode #removeMoneyWindow .displayTotalMoney {
 
 @media (max-width: 380px) {
     .leftSidebar {
-        width: 60px;
-        min-width: 60px;
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .mainContainer {
+        width: 68px;
+        min-width: 68px;
         padding-left: 12px;
         padding-right: 12px;
     }
 
+    .mainContainer {
+        padding-left: 88px;
+        padding-right: 12px;
+    }
+
     .accountActionsContainer {
-        padding-left: 12px;
+        padding-left: 88px;
         padding-right: 12px;
         gap: 12px;
     }
