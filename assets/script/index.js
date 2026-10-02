@@ -1516,3 +1516,14 @@ document.addEventListener("click", function(event) {
         mobileMenuButton.textContent = "☰";
     }
 });
+
+// CLOSE MOBILE MENU AFTER NAVIGATION
+let navigationButtons = document.querySelectorAll(".navigation .button");
+
+navigationButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        leftSidebar.classList.remove("mobileMenuOpen");
+        mobileMenuButton.classList.remove("mobileMenuOpen");
+        mobileMenuButton.textContent = "☰";
+    });
+});
