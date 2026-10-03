@@ -86,3 +86,29 @@ function checkCalculatorInputs() {
 }
 
 checkCalculatorInputs();
+
+// HERO GOAL DATES
+
+function updateHeroGoalDates() {
+
+    let today = new Date();
+
+    let finishDate = new Date(today);
+    finishDate.setDate(finishDate.getDate() + 302);
+
+    let startDay = String(today.getDate()).padStart(2, "0");
+    let startMonth = String(today.getMonth() + 1).padStart(2, "0");
+    let startYear = today.getFullYear();
+
+    let finishDay = String(finishDate.getDate()).padStart(2, "0");
+    let finishMonth = String(finishDate.getMonth() + 1).padStart(2, "0");
+    let finishYear = finishDate.getFullYear();
+
+    document.querySelector("#heroGoalStartDate").textContent =
+        "Start: " + startDay + "/" + startMonth + "/" + startYear;
+
+    document.querySelector("#heroGoalFinishDate").textContent =
+        "Finish: " + finishDay + "/" + finishMonth + "/" + finishYear;
+}
+
+updateHeroGoalDates();

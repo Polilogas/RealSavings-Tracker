@@ -1943,7 +1943,13 @@ button:disabled, input[type="button"]:disabled {
     }
 
     .goals {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+    }
+
+    .card {
+        min-width: 0;
+        box-sizing: border-box;
     }
 
     .popupWindow {
@@ -2014,13 +2020,6 @@ button:disabled, input[type="button"]:disabled {
 }
 
 @media (max-width: 380px) {
-    .leftSidebar {
-        width: 68px;
-        min-width: 68px;
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
     .mainContainer {
         padding-right: 12px;
     }
@@ -2042,6 +2041,23 @@ button:disabled, input[type="button"]:disabled {
     .dates {
         flex-direction: column;
         gap: 5px;
+    }
+
+    .leftSidebar {
+        width: 68px;
+        min-width: 68px;
+        padding-left: 12px;
+        padding-right: 12px;
+        box-sizing: border-box;
+    }
+
+    .leftSidebar.mobileMenuOpen {
+        width: 85vw;
+        max-width: 320px;
+    }
+
+    .leftSidebar * {
+        box-sizing: border-box;
     }
 
 }
