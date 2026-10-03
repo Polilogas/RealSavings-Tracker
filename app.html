@@ -147,8 +147,30 @@
                         <div class="pageHeading">
                             <div>
                                 <h2>Transactions</h2>
-                                <p> A history of money added and removed from your savings goals.</p>
+                                <p>A history of money added and removed from your savings goals.</p>
                             </div>
+                        </div>
+
+                        <div class="transactionFilters">
+
+                            <div class="transactionTypeFilters">
+                                <button type="button" class="transactionFilter active" data-filter="all">
+                                    All
+                                </button>
+
+                                <button type="button" class="transactionFilter" data-filter="added">
+                                    Added
+                                </button>
+
+                                <button type="button" class="transactionFilter" data-filter="removed">
+                                    Removed
+                                </button>
+                            </div>
+
+                            <select id="transactionGoalFilter" class="transactionGoalFilter">
+                                <option value="all">All Goals</option>
+                            </select>
+
                         </div>
 
                         <div id="transactionsList" class="transactionsList"></div>
@@ -157,16 +179,104 @@
                     <!-- REPORTS PAGE -->
 
                     <div class="pageSection reportsPage hidden" id="reportsPage">
+
                         <div class="pageHeading">
                             <div>
                                 <h2>Reports</h2>
-                                <p> Savings reports and statistics will appear here.</p>
+                                <p>A summary of your savings activity and progress.</p>
                             </div>
                         </div>
 
-                        <div class="emptyPage">
-                            <p>Reports coming soon.</p>
+                        <div class="reportSummary">
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Total Saved</span>
+                                    <strong id="reportTotalSaved">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Total Added</span>
+                                    <strong id="reportTotalAdded">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Total Removed</span>
+                                    <strong id="reportTotalRemoved">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Completed Goals</span>
+                                    <strong id="reportCompletedGoals">0</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Most Active Goal</span>
+                                    <strong id="reportMostActiveGoal">—</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Average Amount Added</span>
+                                    <strong id="reportAverageAdded">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Current Month Savings</span>
+                                    <strong id="reportMonthlySavings">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Average Monthly Savings</span>
+                                    <strong id="reportAverageMonthlySavings">€0.00</strong>
+                                </div>
+                            </div>
+
+                            <div class="reportCard">
+                                <div class="reportCardInfo">
+                                    <span>Best Saving Month</span>
+                                    <strong id="reportBestSavingMonth">—</strong>
+                                    <small id="reportBestSavingAmount">€0.00</small>
+                                </div>
+                            </div>
+
                         </div>
+
+                        <div class="reportSection">
+
+                        <div class="reportSectionHeader">
+                            <h3>Goal Progress</h3>
+                            <p>See how close you are to reaching each savings goal.</p>
+                        </div>
+
+                            <div id="reportGoalProgress" class="reportGoalProgress"></div>
+
+                        </div>
+
+                        <div class="reportSection">
+
+                            <div class="reportSectionHeader">
+                                <h3>Money Over Time</h3>
+                                <p>See how your total savings have changed over time.</p>
+                            </div>
+
+                            <div id="reportMoneyOverTime" class="reportMoneyOverTime"></div>
+
+                        </div>
+
                     </div>
 
                     <!-- SETTINGS PAGE -->
@@ -180,21 +290,6 @@
                         </div>
 
                         <div class="settingsContent">
-                            <!-- Dark Mode -->
-                            <div class="settingOption">
-                                <div class="settingInfo">
-                                    <strong>Dark Mode</strong>
-                                    <p>Change the appearance of SaveSmart.</p>
-                                </div>
-
-                                <button type="button"
-                                    id="darkModeToggle"
-                                    class="themeSwitch"
-                                    aria-label="Toggle dark mode"
-                                    aria-pressed="false">
-                                    <span class="handle"></span>
-                                </button>
-                            </div>
 
                             <!-- Backup Data -->
                             <div class="settingsSection">
@@ -299,19 +394,37 @@
                 <label for="subtitleInput">Subtitle:</label>
                 <input type="text" id="subtitleInput" class="focusable" name="subtitle">
 
-                <label for="startDateInput">Start Date:</label>
-                <input type="date" id="startDateInput" class="focusable" name="startDate" required>
+                <div class="formRow">
+                    <div class="formField">
+                        <label for="startDateInput">Start Date:</label>
+                        <input type="date" id="startDateInput" class="focusable" name="startDate" required>
+                    </div>
 
-                <label for="endDateInput">End Date:</label>
-                <input type="date" id="endDateInput" class="focusable" name="endDate">
+                    <div class="formField">
+                        <label for="endDateInput">End Date:</label>
+                        <input type="date" id="endDateInput" class="focusable" name="endDate">
+                    </div>
+                </div>
 
-                <label for="currentAmountInput">Current Amount:</label>
-                <input type="number" id="currentAmountInput" class="focusable" step="0.01" min="0" value="0">
+                <p id="newGoalDateError" class="formError hidden">End date cannot be earlier than the start date.</p>
+                
+                <div class="formRow">
+                    <div class="formField">
+                        <label for="currentAmountInput">Current Amount:</label>
+                        <input type="number" id="currentAmountInput" class="focusable" step="0.01" min="0" value="0">
+                    </div>
 
-                <label for="targetAmountInput">Target Amount:</label>
-                <input type="number" id="targetAmountInput" class="focusable" step="0.01" min="0" required>
+                    <div class="formField">
+                        <label for="targetAmountInput">Target Amount:</label>
+                        <input type="number" id="targetAmountInput" class="focusable" step="0.01" min="0" required>
+                    </div>
+                </div>
 
-                <input type="button" value="Submit" class="focusable" onclick="addANewGoal();">
+                <p id="newGoalAmountError" class="formError hidden">Current amount cannot be greater than the target amount.</p>
+                <p id="newGoalTargetError" class="formError hidden">Target amount must be greater than €0.</p>
+                <p id="newGoalAmountNegativeError" class="formError hidden">Current amount cannot be negative.</p>
+
+                <input type="button" value="Create Goal" class="focusable" onclick="addANewGoal();">
             </form>
         </div>
 
@@ -340,8 +453,13 @@
                 <label for="editCurrentAmount">Current Amount:</label>
                 <input type="number" id="editCurrentAmount" class="focusable" step="0.01" min="0">
 
+                <p id="editGoalAmountNegativeError" class="formError hidden">Current amount cannot be negative.</p>
+
                 <label for="editTargetAmount">Target Amount:</label>
                 <input type="number" id="editTargetAmount" class="focusable" step="0.01" min="0" required>
+
+                <p id="editGoalTargetError" class="formError hidden">Target amount must be greater than €0.</p>
+                <p id="editGoalAmountError" class="formError hidden">Current amount cannot be greater than the target amount.</p>
 
                 <label for="editGoalImage">Change Image:</label>
                 <input type="file" id="editGoalImage" class="focusable" accept="image/*">

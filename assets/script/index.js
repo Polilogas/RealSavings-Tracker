@@ -2,13 +2,14 @@
 const STORAGE_KEY = "saveSmartData";
 let selectedCardId = null;
 let activeMoneyWindow = null;
+let activeTransactionType = "all";
+let activeTransactionGoal = "all";
 
 // DEFAULT DATA
 const defaultData = {
     goals: [],
 
     transactions: [],
-    darkMode: false
 };
 
 // QUOTES
@@ -70,7 +71,6 @@ let saveSmartData = loadData();
 setCurrentDateDefaults();
 setupEventListeners();
 setupMoneyInputs();
-applySavedSettings();
 renderGoals();
 updateScreenWithLatestData();
 updateRandomQuote();
@@ -131,6 +131,23 @@ function saveData() {
 
 // EVENT LISTENERS
 function setupEventListeners() {
+    document.querySelector("#transactionGoalFilter").addEventListener("change", function() {
+        activeTransactionGoal = this.value;
+        renderTransactions();
+    });
+
+    document.querySelectorAll(".transactionFilter").forEach(function(button) {
+        button.addEventListener("click", function() {
+            activeTransactionType = this.dataset.filter;
+            document.querySelectorAll(".transactionFilter").forEach(function(filterButton) {
+                filterButton.classList.remove("active");
+            });
+            this.classList.add("active");
+            renderTransactions();
+        });
+
+    });
+
     // GOAL OPTIONS MENU
     document.addEventListener("click",
         function(event) {
@@ -219,7 +236,6 @@ function setupEventListeners() {
         }
     );
 
-
     // NAVIGATION
     let navigationButtons = document.querySelectorAll(".navigation .button");
 
@@ -259,14 +275,6 @@ function setupEventListeners() {
             event.preventDefault();
         }
     );
-
-    // DARK MODE
-    document.querySelector("#darkModeToggle").addEventListener("click" ,function() {
-                saveSmartData.darkMode = !saveSmartData.darkMode;
-                saveData();
-                applySavedSettings();
-            }
-        );
 
     // EXPORT DATA
     document.querySelector("#exportDataButton").addEventListener("click", function() {
@@ -359,7 +367,6 @@ function setupEventListeners() {
             }
         );
 
-
     // EDIT VALIDATION
     document.querySelector("#editGoalName").addEventListener("input", function() {
                 if (this.value.trim() !== "") {
@@ -376,17 +383,48 @@ function setupEventListeners() {
 
 
     document.querySelector("#editTargetAmount").addEventListener("input", function() {
-                if (Number(this.value) > 0) {
-                    this.classList.remove("invalid");
-                }
-            }
-        );
+        let targetAmount = Number(this.value);
+        let currentAmount = Number(document.querySelector("#editCurrentAmount").value);
 
+        // TARGET AMOUNT ERROR
+        if (targetAmount > 0) {
+            this.classList.remove("invalid");
+            document.querySelector("#editGoalTargetError").classList.add("hidden");
+        } else {
+            document.querySelector("#editGoalTargetError").classList.remove("hidden");
+            this.classList.add("invalid");
+        }
+
+        // CURRENT AMOUNT > TARGET AMOUNT ERROR
+        if (currentAmount <= targetAmount) {
+            document.querySelector("#editGoalAmountError").classList.add("hidden");
+            document.querySelector("#editCurrentAmount").classList.remove("invalid");
+        }
+
+    });
+
+    document.querySelector("#editCurrentAmount").addEventListener("input", function() {
+        let currentAmount = Number(this.value);
+        let targetAmount = Number(document.querySelector("#editTargetAmount").value);
+
+        if (currentAmount <= targetAmount) {
+            document.querySelector("#editGoalAmountError").classList.add("hidden");
+            document.querySelector("#editCurrentAmount").classList.remove("invalid");
+            document.querySelector("#editTargetAmount").classList.remove("invalid");
+        }
+
+        if (currentAmount >= 0) {
+            document.querySelector("#editGoalAmountNegativeError").classList.add("hidden");
+            this.classList.remove("invalid");
+        }
+    });
 
     document.querySelector("#editEndDate").addEventListener("change",function() {
                 this.classList.remove("invalid");
             }
         );
+
+    
 }
 
 // EXPORT DATA
@@ -609,6 +647,7 @@ function updateScreenWithLatestData() {
     updatePercentageBars();
     updateTotalSavings();
     updateTotalTargetSavings();
+    updateReports();
 }
 
 // RENDER GOALS
@@ -786,6 +825,7 @@ function showAddNewGoalWindow() {
 
     closeAllWindows();
     closeAllGoalMenus();
+    clearNewGoalForm();
     setCurrentDateDefaults();
 
     document.querySelector("#darkOverlay").classList.add("darkOverlay");
@@ -804,6 +844,34 @@ async function addANewGoal() {
     let currentAmount = Number(document.querySelector("#currentAmountInput").value.replace(",", "."));
     let targetAmount = Number(document.querySelector("#targetAmountInput").value.replace(",", "."));
     let valid = true;
+
+    if (currentAmount > targetAmount) {
+        document.querySelector("#newGoalAmountError").classList.remove("hidden");
+        valid = false;
+    } else {
+        document.querySelector("#newGoalAmountError").classList.add("hidden");
+    }
+
+    if (endDate !== "" && endDate < startDate) {
+        document.querySelector("#newGoalDateError").classList.remove("hidden");
+        valid = false;
+    } else {
+        document.querySelector("#newGoalDateError").classList.add("hidden");
+    }
+    
+    if (targetAmount <= 0 || document.querySelector("#targetAmountInput").value === "") {
+        document.querySelector("#newGoalTargetError").classList.remove("hidden");
+        valid = false;
+    } else {
+        document.querySelector("#newGoalTargetError").classList.add("hidden");
+    }
+
+    if (currentAmount < 0) {
+        document.querySelector("#newGoalAmountNegativeError").classList.remove("hidden");
+        valid = false;
+    } else {
+        document.querySelector("#newGoalAmountNegativeError").classList.add("hidden");
+    }
 
     // REQUIRED FIELDS
     if (goalName === "") {
@@ -890,6 +958,15 @@ function editGoal(cardId) {
 
     closeAllGoalMenus();
 
+    document.querySelector("#editGoalAmountError").classList.add("hidden");
+    document.querySelector("#editGoalAmountNegativeError").classList.add("hidden");
+
+    let editInputs = document.querySelectorAll("#editGoalWindow .invalid");
+
+    for (let i = 0; i < editInputs.length; i++) {
+        editInputs[i].classList.remove("invalid");
+    }
+
     let goal = findGoal(cardId);
 
     if (!goal) {
@@ -945,7 +1022,27 @@ async function saveEditedGoal() {
         document.querySelector("#editTargetAmount").value === ""
     ) {
         document.querySelector("#editTargetAmount").classList.add("invalid");
+        document.querySelector("#editGoalTargetError").classList.remove("hidden");
         valid = false;
+    } else {
+        document.querySelector("#editGoalTargetError").classList.add("hidden");
+    }
+
+    if (newCurrentAmount > newTargetAmount) {
+    document.querySelector("#editCurrentAmount").classList.add("invalid");
+    document.querySelector("#editTargetAmount").classList.add("invalid");
+    document.querySelector("#editGoalAmountError").classList.remove("hidden");
+    valid = false;
+    } else {
+        document.querySelector("#editGoalAmountError").classList.add("hidden");
+    }
+
+    if (newCurrentAmount < 0) {
+        document.querySelector("#editCurrentAmount").classList.add("invalid");
+        document.querySelector("#editGoalAmountNegativeError").classList.remove("hidden");
+        valid = false;
+    } else {
+        document.querySelector("#editGoalAmountNegativeError").classList.add("hidden");
     }
 
     if (newEndDate !== "" && newEndDate < newStartDate) {
@@ -1290,8 +1387,32 @@ function showMoneyFeedback(type) {
     }, 1400);
 }
 
+function updateTransactionGoalFilter() {
+    let select = document.querySelector("#transactionGoalFilter");
+
+    select.innerHTML = `
+        <option value="all">All Goals</option>
+    `;
+
+    for (let i = 0; i < saveSmartData.goals.length; i++) {
+        let goal = saveSmartData.goals[i];
+        select.insertAdjacentHTML(
+            "beforeend",
+            `
+                <option value="${goal.id}">
+                    ${escapeHTML(goal.name)}
+                </option>
+            `
+        );
+    }
+
+    select.value = activeTransactionGoal;
+}
+
 // TRANSACTIONS
 function renderTransactions() {
+
+    updateTransactionGoalFilter();
 
     let container = document.querySelector("#transactionsList");
     container.innerHTML = "";
@@ -1312,6 +1433,28 @@ function renderTransactions() {
     for (let i = 0; i < saveSmartData.transactions.length; i++) {
 
         let transaction = saveSmartData.transactions[i];
+
+        if (
+            activeTransactionType === "added" &&
+            transaction.amount < 0
+        ) {
+            continue;
+        }
+
+        if (
+            activeTransactionType === "removed" &&
+            transaction.amount >= 0
+        ) {
+            continue;
+        }
+
+        if (
+            activeTransactionGoal !== "all" &&
+            transaction.goalId !== activeTransactionGoal
+        ) {
+            continue;
+        }
+
         let sign = transaction.amount >= 0 ? "+" : "";
         let amountClass = transaction.amount >= 0 ? "add" : "remove";
 
@@ -1346,23 +1489,478 @@ function formatTransactionDate(date) {
     });
 }
 
-// SETTINGS
-function applySavedSettings() {
+// REPORTS
+function updateReports() {
 
-    let toggle = document.querySelector("#darkModeToggle");
+    let totalSaved = 0;
+    let totalAdded = 0;
+    let totalRemoved = 0;
+    let completedGoals = 0;
 
-    if (saveSmartData.darkMode) {
+    let mostActiveGoal = "—";
+    let mostActiveGoalTransactions = 0;
+    let totalAddedTransactions = 0;
+    let addedTransactionCount = 0;
+    let monthlyAdded = 0;
+    let monthlyRemoved = 0;
 
-        document.body.classList.add("darkMode");
-        toggle.classList.add("active");
-        toggle.setAttribute("aria-pressed", "true");
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
 
-    } else {
+    for (let i = 0; i < saveSmartData.goals.length; i++) {
 
-        document.body.classList.remove("darkMode");
-        toggle.classList.remove("active");
-        toggle.setAttribute("aria-pressed", "false");
+        let goal = saveSmartData.goals[i];
+
+        totalSaved += Number(goal.currentAmount);
+
+        if (Number(goal.currentAmount) >= Number(goal.targetAmount)) {
+            completedGoals++;
+        }
     }
+
+    for (let i = 0; i < saveSmartData.goals.length; i++) {
+        let goal = saveSmartData.goals[i];
+        let transactionCount = 0;
+        for (let j = 0; j < saveSmartData.transactions.length; j++) {
+            if (saveSmartData.transactions[j].goalId === goal.id) {
+                transactionCount++;
+            }
+        }
+
+        if (transactionCount > mostActiveGoalTransactions) {
+            mostActiveGoalTransactions = transactionCount;
+            mostActiveGoal = goal.name;
+        }
+    }
+
+    for (let i = 0; i < saveSmartData.transactions.length; i++) {
+
+        let transaction = saveSmartData.transactions[i];
+
+        let transactionDate = new Date(transaction.date);
+
+        if (
+            transactionDate.getMonth() === currentMonth &&
+            transactionDate.getFullYear() === currentYear
+        ) {
+
+            if (transaction.amount >= 0) {
+                monthlyAdded += Number(transaction.amount);
+            } else {
+                monthlyRemoved += Math.abs(Number(transaction.amount));
+            }
+        }
+
+        if (transaction.amount >= 0) {
+            totalAdded += Number(transaction.amount);
+            totalAddedTransactions += Number(transaction.amount);
+            addedTransactionCount++;
+        } else {
+            totalRemoved += Math.abs(Number(transaction.amount));
+        }
+    }
+
+    let averageAdded = addedTransactionCount > 0
+    ? totalAddedTransactions / addedTransactionCount
+    : 0;
+
+    let monthlySavings = monthlyAdded - monthlyRemoved;
+
+    let monthlyTotals = {};
+
+    for (let i = 0; i < saveSmartData.transactions.length; i++) {
+
+        let transaction = saveSmartData.transactions[i];
+        let transactionDate = new Date(transaction.date);
+
+        let monthKey =
+            transactionDate.getFullYear() +
+            "-" +
+            String(transactionDate.getMonth() + 1).padStart(2, "0");
+
+        if (!monthlyTotals[monthKey]) {
+            monthlyTotals[monthKey] = 0;
+        }
+
+        monthlyTotals[monthKey] += Number(transaction.amount);
+    }
+
+    let monthlySavingsTotal = 0;
+    let monthlySavingsCount = 0;
+
+    for (let month in monthlyTotals) {
+        monthlySavingsTotal += monthlyTotals[month];
+        monthlySavingsCount++;
+    }
+
+    let averageMonthlySavings = monthlySavingsCount > 0
+        ? monthlySavingsTotal / monthlySavingsCount
+        : 0;
+
+    let bestSavingMonth = "—";
+    let bestSavingAmount = 0;
+
+    for (let month in monthlyTotals) {
+
+        if (monthlyTotals[month] > bestSavingAmount) {
+
+            bestSavingAmount = monthlyTotals[month];
+            let parts = month.split("-");
+
+            let monthDate = new Date(
+                Number(parts[0]),
+                Number(parts[1]) - 1,
+                1
+            );
+
+            bestSavingMonth = monthDate.toLocaleDateString(
+                undefined,
+                {
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+        }
+    }
+
+    document.querySelector("#reportTotalSaved").textContent =
+        converNumberToCurrency(totalSaved) + " €";
+
+    document.querySelector("#reportTotalAdded").textContent =
+        converNumberToCurrency(totalAdded) + " €";
+
+    document.querySelector("#reportTotalRemoved").textContent =
+        converNumberToCurrency(totalRemoved) + " €";
+
+    document.querySelector("#reportCompletedGoals").textContent = completedGoals;
+
+    document.querySelector("#reportMostActiveGoal").textContent = mostActiveGoal;
+
+    document.querySelector("#reportAverageAdded").textContent =
+        converNumberToCurrency(averageAdded) + " €";
+
+    document.querySelector("#reportMonthlySavings").textContent =
+    converNumberToCurrency(monthlySavings) + " €";
+
+    document.querySelector("#reportAverageMonthlySavings").textContent =
+    converNumberToCurrency(averageMonthlySavings) + " €";
+
+    document.querySelector("#reportBestSavingMonth").textContent =
+    bestSavingMonth;
+
+    document.querySelector("#reportBestSavingAmount").textContent =
+    converNumberToCurrency(bestSavingAmount) + " €";
+
+    renderReportGoalProgress();
+    renderReportMoneyOverTime();
+}
+
+function renderReportGoalProgress() {
+
+    let container = document.querySelector("#reportGoalProgress");
+    container.innerHTML = "";
+
+    if (saveSmartData.goals.length === 0) {
+        container.innerHTML = `
+            <div class="noTransactions">
+                <p>
+                    No savings goals yet.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    for (let i = 0; i < saveSmartData.goals.length; i++) {
+
+        let goal = saveSmartData.goals[i];
+
+        let currentAmount = Number(goal.currentAmount);
+        let targetAmount = Number(goal.targetAmount);
+
+        let percentage = targetAmount > 0
+            ? (currentAmount / targetAmount) * 100
+            : 0;
+
+        percentage = Math.min(percentage, 100);
+
+        let goalHTML = `
+            <div class="reportGoal">
+
+                <div class="reportGoalHeader">
+
+                    <span class="reportGoalName">
+                        ${escapeHTML(goal.name)}
+                    </span>
+
+                    <span class="reportGoalPercentage">
+                        ${percentage.toFixed(0)}%
+                    </span>
+
+                </div>
+
+                <div class="reportGoalAmounts">
+                    <span>
+                        ${converNumberToCurrency(currentAmount)} €
+                    </span>
+
+                    <span>
+                        ${converNumberToCurrency(targetAmount)} €
+                    </span>
+                </div>
+
+                <div class="reportGoalBar">
+                    <div
+                        class="reportGoalBarFill"
+                        style="width: ${percentage}%;">
+                    </div>
+                </div>
+
+            </div>
+        `;
+
+        container.insertAdjacentHTML("beforeend", goalHTML);
+    }
+}
+
+function renderReportMoneyOverTime() {
+
+    let container = document.querySelector("#reportMoneyOverTime");
+    container.innerHTML = "";
+
+    if (saveSmartData.transactions.length === 0) {
+        container.innerHTML = `
+            <div class="noTransactions">
+                <p>
+                    No transactions yet.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    let transactions = [...saveSmartData.transactions];
+
+    transactions.sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date);
+    });
+
+    let runningTotal = 0;
+    let chartData = [];
+
+    for (let i = 0; i < transactions.length; i++) {
+
+        runningTotal += Number(transactions[i].amount);
+
+        let transactionDate = new Date(transactions[i].date);
+
+        let currentDate =
+            transactionDate.getFullYear() +
+            "-" +
+            String(transactionDate.getMonth() + 1).padStart(2, "0") +
+            "-" +
+            String(transactionDate.getDate()).padStart(2, "0");
+
+        if (
+            chartData.length > 0 &&
+            chartData[chartData.length - 1].date === currentDate
+        ) {
+            chartData[chartData.length - 1].amount =
+                roundMoney(runningTotal);
+        } else {
+            chartData.push({
+                date: currentDate,
+                amount: roundMoney(runningTotal)
+            });
+        }
+    }
+
+    let chartWidth = 800;
+    let chartHeight = 280;
+    let chartPadding = 55;
+
+    let maxAmount = 0;
+
+    for (let i = 0; i < chartData.length; i++) {
+        if (chartData[i].amount > maxAmount) {
+            maxAmount = chartData[i].amount;
+        }
+    }
+
+    if (maxAmount === 0) {
+        maxAmount = 1;
+    }
+
+    let points = "";
+
+    for (let i = 0; i < chartData.length; i++) {
+
+        let x;
+
+        if (chartData.length === 1) {
+            x = chartWidth / 2;
+        } else {
+            x =
+                chartPadding +
+                (i / (chartData.length - 1)) *
+                (chartWidth - chartPadding * 2);
+        }
+
+        let y =
+            chartHeight -
+            chartPadding -
+            (chartData[i].amount / maxAmount) *
+            (chartHeight - chartPadding * 2);
+
+        points += `${x},${y} `;
+    }
+
+    let chartHTML = `
+        <svg
+            viewBox="0 0 ${chartWidth} ${chartHeight}"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="none"
+        >
+        
+        <text
+            x="0"
+            y="${chartHeight - chartPadding + 5}"
+            class="reportChartLabel">
+            €0
+        </text>
+
+        <text
+            x="0"
+            y="${chartHeight / 2 + 5}"
+            class="reportChartLabel">
+            ${converNumberToCurrency(maxAmount / 2)} €
+        </text>
+
+        <text
+            x="0"
+            y="${chartPadding + 5}"
+            class="reportChartLabel">
+            ${converNumberToCurrency(maxAmount)} €
+        </text>
+                
+            <line
+                x1="${chartPadding}"
+                y1="${chartHeight - chartPadding}"
+                x2="${chartWidth - chartPadding}"
+                y2="${chartHeight - chartPadding}"
+                class="reportChartGrid">
+            </line>
+
+            <line
+                x1="${chartPadding}"
+                y1="${chartPadding}"
+                x2="${chartWidth - chartPadding}"
+                y2="${chartPadding}"
+                class="reportChartGrid">
+            </line>
+
+            <line
+                x1="${chartPadding}"
+                y1="${chartHeight / 2}"
+                x2="${chartWidth - chartPadding}"
+                y2="${chartHeight / 2}"
+                class="reportChartGrid">
+            </line>
+
+            <polyline
+                points="${points}"
+                class="reportChartLine">
+            </polyline>
+
+            ${chartData.map(function(item, index) {
+
+                let x;
+
+                if (chartData.length === 1) {
+                    x = chartWidth / 2;
+                } else {
+                    x =
+                        chartPadding +
+                        (index / (chartData.length - 1)) *
+                        (chartWidth - chartPadding * 2);
+                }
+
+                let y =
+                    chartHeight -
+                    chartPadding -
+                    (item.amount / maxAmount) *
+                    (chartHeight - chartPadding * 2);
+
+                return `
+                    <circle
+                        cx="${x}"
+                        cy="${y}"
+                        r="5"
+                        class="reportChartPoint">
+
+                        <title>
+                            ${new Date(item.date + "T00:00:00").toLocaleDateString(
+                                undefined,
+                                {
+                                    day: "numeric",
+                                    month: "short",
+                                    year: "numeric"
+                                }
+                            )} — ${converNumberToCurrency(item.amount)} €
+                        </title>
+
+                    </circle>
+                `;
+
+            }).join("")}
+            ${chartData.map(function(item, index) {
+
+            let x;
+
+            if (chartData.length === 1) {
+                x = chartWidth / 2;
+            } else {
+                x =
+                    chartPadding +
+                    (index / (chartData.length - 1)) *
+                    (chartWidth - chartPadding * 2);
+            }
+
+            if (
+                chartData.length > 6 &&
+                index !== 0 &&
+                index !== chartData.length - 1 &&
+                index % Math.ceil(chartData.length / 5) !== 0
+            ) {
+                return "";
+            }
+
+            return `
+                <text
+                    x="${x}"
+                    y="${chartHeight - 10}"
+                    text-anchor="middle"
+                    class="reportChartDate">
+                    ${new Date(item.date + "T00:00:00").toLocaleDateString(
+                        undefined,
+                        {
+                            day: "numeric",
+                            month: "short"
+                        }
+                    )}
+                </text>
+            `;
+
+        }).join("")}
+        </svg>
+    `;
+
+    container.innerHTML = chartHTML;
+
+    container.innerHTML = chartHTML;
 }
 
 // DELETE ALL DATA
@@ -1432,6 +2030,11 @@ function clearNewGoalForm() {
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].classList.remove("invalid");
     }
+
+    document.querySelector("#newGoalAmountError").classList.add("hidden");
+    document.querySelector("#newGoalDateError").classList.add("hidden");
+    document.querySelector("#newGoalTargetError").classList.add("hidden");
+    document.querySelector("#newGoalAmountNegativeError").classList.add("hidden");
 }
 
 // CLEAR MONEY INPUTS
