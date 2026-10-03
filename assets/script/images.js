@@ -4,6 +4,7 @@ function previewImage(file, previewElement) {
     reader.onload = function() {
         previewElement.src = reader.result;
     };
+
     reader.readAsDataURL(file);
 }
 
@@ -11,12 +12,15 @@ function previewImage(file, previewElement) {
 function convertImageToDataURL(file) {
     return new Promise(function(resolve, reject) {
         let reader = new FileReader();
+
         reader.onload = function() {
             resolve(reader.result);
         };
+
         reader.onerror = function() {
             reject(reader.error);
         };
+        
         reader.readAsDataURL(file);
     });
 }

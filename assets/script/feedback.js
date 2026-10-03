@@ -13,6 +13,7 @@ function showMoneyFeedback(type) {
     } else {
         emojis = removeEmojis;
     }
+
     for (let i = 0; i < 10; i++) {
         let particle = document.createElement("span");
         particle.classList.add("moneyParticle");
@@ -26,6 +27,7 @@ function showMoneyFeedback(type) {
         particle.style.animationDelay = (Math.random() * 0.15) + "s";
         feedbackContainer.appendChild(particle);
     }
+    
     setTimeout(function() {
         feedbackContainer.innerHTML = "";
     }, 1400);

@@ -1,7 +1,5 @@
 // WINDOWS
-
 function closeAllWindows() {
-
     let windows = document.querySelectorAll(".popupWindow");
 
     for (let i = 0; i < windows.length; i++) {

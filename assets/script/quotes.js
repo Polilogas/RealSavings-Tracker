@@ -14,6 +14,7 @@ const quotes = [
     { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" }
 ];
 
+
 // RANDOM QUOTE
 function updateRandomQuote() {
     let quoteElement = document.querySelector("#sidebarQuoteText");

@@ -7,6 +7,7 @@ const defaultData = {
     transactions: [],
 };
 
+
 // LOAD DATA
 function loadData() {
     const savedData = localStorage.getItem(STORAGE_KEY);
@@ -34,10 +35,12 @@ function loadData() {
     }
 }
 
+
 // SAVE DATA
 function saveData() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(saveSmartData));
 }
+
 
 // EXPORT DATA
 function exportData() {
@@ -52,6 +55,7 @@ function exportData() {
 
     URL.revokeObjectURL(url);
 }
+
 
 // IMPORT DATA
 function importData(file) {

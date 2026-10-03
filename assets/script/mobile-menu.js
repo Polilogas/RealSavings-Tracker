@@ -21,6 +21,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
+
 // CLOSE MOBILE MENU AFTER NAVIGATION
 let navigationButtons = document.querySelectorAll(".navigation .button");
 

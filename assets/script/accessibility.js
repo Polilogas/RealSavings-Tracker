@@ -1,7 +1,5 @@
 // FOCUSABLE ELEMENTS
-
 function getFocusableElements(window) {
-
     return Array.from(
         window.querySelectorAll(
             "button, input, select, textarea, a[href], [tabindex]:not([tabindex='-1'])"

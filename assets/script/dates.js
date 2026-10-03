@@ -1,5 +1,4 @@
 // CURRENT DATE
-
 function getCurrentDate() {
     let today = new Date();
     let year = today.getFullYear();
@@ -9,15 +8,15 @@ function getCurrentDate() {
     return `${year}-${month}-${day}`;
 }
 
+
 function setCurrentDateDefaults() {
     let today = getCurrentDate();
-
     document.querySelector("#startDateInput").value = today;
     document.querySelector("#endDateInput").min = today;
 }
 
-// UPDATE END DATE MINIMUM
 
+// UPDATE END DATE MINIMUM
 function updateEndDateMinimum() {
     let startDate = document.querySelector("#startDateInput").value;
 

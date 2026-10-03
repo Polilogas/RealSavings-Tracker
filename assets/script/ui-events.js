@@ -291,6 +291,11 @@ function setupGoalMenuEvents() {
                     deleteGoal(cardId);
                 }
 
+                if (button.dataset.action === "transactions") {
+                    activeTransactionGoal = cardId;
+                    handleNavigation("transactions");
+                }
+
                 return;
             }
 

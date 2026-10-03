@@ -1,5 +1,4 @@
 // SETTINGS
-
 // DELETE ALL DATA
 function deleteAllData() {
     let confirmation = confirm(
@@ -10,13 +9,12 @@ function deleteAllData() {
         return;
     }
 
-    saveSmartData = {
-        goals: [],
-        transactions: []
+    saveSmartData = { 
+        goals: [], 
+        transactions: [] 
     };
 
     saveData();
-
     renderGoals();
     renderTransactions();
 }

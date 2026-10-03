@@ -12,6 +12,7 @@ calculateSavingsButton.addEventListener("click", function() {
     calculateSavings();
 });
 
+
 // CALCULATE SAVINGS
 function calculateSavings() {
     let target = Number(calculatorTarget.value);
@@ -52,6 +53,7 @@ function calculateSavings() {
     calculatorResultDate.textContent = "Estimated completion: " + completionDateText;
 }
 
+
 // CHECK CALCULATOR INPUTS
 calculatorTarget.addEventListener("input", checkCalculatorInputs);
 calculatorMonthly.addEventListener("input", checkCalculatorInputs);
@@ -61,6 +63,7 @@ function resetCalculatorResult() {
     calculatorResultText.textContent = "Enter your goal and monthly savings to see your estimated timeline.";
     calculatorResultDate.textContent = "";
 }
+
 
 function checkCalculatorInputs() {
     let target = Number(calculatorTarget.value);
@@ -85,21 +88,19 @@ function checkCalculatorInputs() {
     calculateSavingsButton.disabled = false;
 }
 
+
 checkCalculatorInputs();
 
 // HERO GOAL DATES
-
 function updateHeroGoalDates() {
 
     let today = new Date();
-
     let finishDate = new Date(today);
     finishDate.setDate(finishDate.getDate() + 302);
 
     let startDay = String(today.getDate()).padStart(2, "0");
     let startMonth = String(today.getMonth() + 1).padStart(2, "0");
     let startYear = today.getFullYear();
-
     let finishDay = String(finishDate.getDate()).padStart(2, "0");
     let finishMonth = String(finishDate.getMonth() + 1).padStart(2, "0");
     let finishYear = finishDate.getFullYear();

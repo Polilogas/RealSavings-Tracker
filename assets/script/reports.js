@@ -1,5 +1,4 @@
 // REPORTS
-
 // UPDATE REPORTS
 function updateReports() {
     let totalSaved = 0;
@@ -65,22 +64,14 @@ function updateReports() {
         }
     }
 
-    let averageAdded = addedTransactionCount > 0
-        ? totalAddedTransactions / addedTransactionCount
-        : 0;
-
+    let averageAdded = addedTransactionCount > 0 ? totalAddedTransactions / addedTransactionCount : 0;
     let monthlySavings = monthlyAdded - monthlyRemoved;
-
     let monthlyTotals = {};
 
     for (let i = 0; i < saveSmartData.transactions.length; i++) {
         let transaction = saveSmartData.transactions[i];
         let transactionDate = new Date(transaction.date);
-
-        let monthKey =
-            transactionDate.getFullYear() +
-            "-" +
-            String(transactionDate.getMonth() + 1).padStart(2, "0");
+        let monthKey = transactionDate.getFullYear() + "-" + String(transactionDate.getMonth() + 1).padStart(2, "0");
 
         if (!monthlyTotals[monthKey]) {
             monthlyTotals[monthKey] = 0;
@@ -97,9 +88,7 @@ function updateReports() {
         monthlySavingsCount++;
     }
 
-    let averageMonthlySavings = monthlySavingsCount > 0
-        ? monthlySavingsTotal / monthlySavingsCount
-        : 0;
+    let averageMonthlySavings = monthlySavingsCount > 0 ? monthlySavingsTotal / monthlySavingsCount : 0;
 
     let bestSavingMonth = "—";
     let bestSavingAmount = 0;
@@ -109,54 +98,36 @@ function updateReports() {
             bestSavingAmount = monthlyTotals[month];
 
             let parts = month.split("-");
+            let monthDate = new Date( Number(parts[0]), Number(parts[1]) - 1, 1);
 
-            let monthDate = new Date(
-                Number(parts[0]),
-                Number(parts[1]) - 1,
-                1
-            );
-
-            bestSavingMonth = monthDate.toLocaleDateString(
-                undefined,
-                {
-                    month: "long",
-                    year: "numeric"
-                }
-            );
+            bestSavingMonth = monthDate.toLocaleDateString(undefined, {month: "long", year: "numeric"});
         }
     }
 
-    document.querySelector("#reportTotalSaved").textContent =
-        converNumberToCurrency(totalSaved) + " €";
+    document.querySelector("#reportTotalSaved").textContent = converNumberToCurrency(totalSaved) + " €";
 
-    document.querySelector("#reportTotalAdded").textContent =
-        converNumberToCurrency(totalAdded) + " €";
+    document.querySelector("#reportTotalAdded").textContent = converNumberToCurrency(totalAdded) + " €";
 
-    document.querySelector("#reportTotalRemoved").textContent =
-        converNumberToCurrency(totalRemoved) + " €";
+    document.querySelector("#reportTotalRemoved").textContent = converNumberToCurrency(totalRemoved) + " €";
 
     document.querySelector("#reportCompletedGoals").textContent = completedGoals;
 
     document.querySelector("#reportMostActiveGoal").textContent = mostActiveGoal;
 
-    document.querySelector("#reportAverageAdded").textContent =
-        converNumberToCurrency(averageAdded) + " €";
+    document.querySelector("#reportAverageAdded").textContent = converNumberToCurrency(averageAdded) + " €";
 
-    document.querySelector("#reportMonthlySavings").textContent =
-        converNumberToCurrency(monthlySavings) + " €";
+    document.querySelector("#reportMonthlySavings").textContent = converNumberToCurrency(monthlySavings) + " €";
 
-    document.querySelector("#reportAverageMonthlySavings").textContent =
-        converNumberToCurrency(averageMonthlySavings) + " €";
+    document.querySelector("#reportAverageMonthlySavings").textContent = converNumberToCurrency(averageMonthlySavings) + " €";
 
-    document.querySelector("#reportBestSavingMonth").textContent =
-        bestSavingMonth;
+    document.querySelector("#reportBestSavingMonth").textContent = bestSavingMonth;
 
-    document.querySelector("#reportBestSavingAmount").textContent =
-        converNumberToCurrency(bestSavingAmount) + " €";
+    document.querySelector("#reportBestSavingAmount").textContent = converNumberToCurrency(bestSavingAmount) + " €";
 
     renderReportGoalProgress();
     renderReportMoneyOverTime();
 }
+
 
 // REPORT GOAL PROGRESS
 function renderReportGoalProgress() {
@@ -178,13 +149,9 @@ function renderReportGoalProgress() {
 
     for (let i = 0; i < saveSmartData.goals.length; i++) {
         let goal = saveSmartData.goals[i];
-
         let currentAmount = Number(goal.currentAmount);
         let targetAmount = Number(goal.targetAmount);
-
-        let percentage = targetAmount > 0
-            ? (currentAmount / targetAmount) * 100
-            : 0;
+        let percentage = targetAmount > 0 ? (currentAmount / targetAmount) * 100 : 0;
 
         percentage = Math.min(percentage, 100);
 
@@ -223,6 +190,7 @@ function renderReportGoalProgress() {
     }
 }
 
+
 // REPORT MONEY OVER TIME
 function renderReportMoneyOverTime() {
     let container = document.querySelector("#reportMoneyOverTime");
@@ -254,7 +222,6 @@ function renderReportMoneyOverTime() {
         runningTotal += Number(transactions[i].amount);
 
         let transactionDate = new Date(transactions[i].date);
-
         let currentDate =
             transactionDate.getFullYear() +
             "-" +
@@ -279,7 +246,6 @@ function renderReportMoneyOverTime() {
     let chartWidth = 800;
     let chartHeight = 280;
     let chartPadding = 55;
-
     let maxAmount = 0;
 
     for (let i = 0; i < chartData.length; i++) {
@@ -306,11 +272,7 @@ function renderReportMoneyOverTime() {
                 (chartWidth - chartPadding * 2);
         }
 
-        let y =
-            chartHeight -
-            chartPadding -
-            (chartData[i].amount / maxAmount) *
-            (chartHeight - chartPadding * 2);
+        let y = chartHeight - chartPadding - (chartData[i].amount / maxAmount) * (chartHeight - chartPadding * 2);
 
         points += `${x},${y} `;
     }

@@ -9,9 +9,11 @@ function clearNewGoalForm() {
     document.querySelector("#currentAmountInput").value = "0";
     document.querySelector("#targetAmountInput").value = "";
     let inputs = document.querySelectorAll(".newGoalForm .invalid");
+
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].classList.remove("invalid");
     }
+    
     document.querySelector("#newGoalAmountError").classList.add("hidden");
     document.querySelector("#newGoalDateError").classList.add("hidden");
     document.querySelector("#newGoalTargetError").classList.add("hidden");

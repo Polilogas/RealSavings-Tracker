@@ -1,5 +1,4 @@
 // TRANSACTIONS
-
 // TRANSACTION GOAL FILTER
 function updateTransactionGoalFilter() {
     let select = document.querySelector("#transactionGoalFilter");
@@ -23,6 +22,7 @@ function updateTransactionGoalFilter() {
 
     select.value = activeTransactionGoal;
 }
+
 
 // RENDER TRANSACTIONS
 function renderTransactions() {
@@ -70,7 +70,6 @@ function renderTransactions() {
 
         let sign = transaction.amount >= 0 ? "+" : "";
         let amountClass = transaction.amount >= 0 ? "add" : "remove";
-
         let transactionHTML = `
             <div class="transaction">
                 <div class="transactionInfo">
@@ -91,6 +90,7 @@ function renderTransactions() {
         container.insertAdjacentHTML("beforeend", transactionHTML);
     }
 }
+
 
 // TRANSACTION DATE
 function formatTransactionDate(date) {

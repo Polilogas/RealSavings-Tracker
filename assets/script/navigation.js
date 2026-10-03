@@ -1,5 +1,4 @@
 // NAVIGATION
-
 function handleNavigation(page) {
     closeAllWindows();
     closeAllGoalMenus();
