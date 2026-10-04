@@ -473,18 +473,19 @@ p.quotesForLeftSidebar {
     font-size: 20px;
 }
 
-
 /* GOALS GRID */
+
 .goals {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
 
 /* NO GOALS */
+
 .noGoals {
     grid-column: 1 / -1;
     padding: 50px 20px;
@@ -496,7 +497,8 @@ p.quotesForLeftSidebar {
 }
 
 
-/* GOAL CARDS */
+/* GOAL CARD */
+
 .card {
     width: 100%;
     min-height: 235px;
@@ -511,7 +513,8 @@ p.quotesForLeftSidebar {
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        opacity 0.3s ease;
 }
 
 .card:hover {
@@ -519,28 +522,69 @@ p.quotesForLeftSidebar {
     box-shadow: 0 5px 14px rgba(31, 41, 55, 0.05);
 }
 
-.goals .goalCard {
-    padding: 20px;
-    border-radius: 16px;
+/* COMPLETION ANIMATION */
+
+.card.goalCompleting {
+    overflow: hidden;
+    pointer-events: none;
+    animation: completeGoalCard 0.8s ease forwards;
+}
+
+.card.goalCompleting .progressInfo,
+.card.goalCompleting .progressBarContainer,
+.card.goalCompleting .buttons {
+    animation: hideCompletedGoalInfo 0.4s ease forwards;
+}
+
+@keyframes completeGoalCard {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        max-height: 500px;
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(0.98);
+        max-height: 500px;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        margin: 0;
+    }
+}
+
+@keyframes hideCompletedGoalInfo {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        transform: translateY(10px);
+    }
 }
 
 
-/* GOAL CARD HEADER */
-.goalCardHeader {
+/* GOAL HEADER */
+
+.goalInfo {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px;
+    gap: 14px;
 }
 
-.goalCardIdentity {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    min-width: 0;
-}
-
-.goalCardImage {
+.goalPicture {
     width: 62px;
     height: 62px;
     flex-shrink: 0;
@@ -549,18 +593,27 @@ p.quotesForLeftSidebar {
     background-color: #f5f6f8;
 }
 
-.goalCardImage img {
+.goalPicture img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
 }
 
-.goalCardTitle {
+.goalDetails {
+    flex: 1;
     min-width: 0;
 }
 
-.goalCardTitle .goalTitle {
+.titleAndSubtitleAndIcon {
+    min-width: 0;
+}
+
+.titleAndSubtitle {
+    min-width: 0;
+}
+
+.goalTitle {
     margin: 0;
     overflow: hidden;
     color: #1f2937;
@@ -571,7 +624,7 @@ p.quotesForLeftSidebar {
     text-overflow: ellipsis;
 }
 
-.goalCardTitle .goalSubtitle {
+.goalSubtitle {
     margin: 4px 0 0;
     overflow: hidden;
     color: #8a94a6;
@@ -583,12 +636,13 @@ p.quotesForLeftSidebar {
 
 
 /* GOAL OPTIONS */
-.goalCard .goal-options {
+
+.goal-options {
     position: relative;
     flex-shrink: 0;
 }
 
-.goalCard .goal-options > p {
+.goal-options > p {
     width: 32px;
     height: 32px;
     margin: 0;
@@ -607,12 +661,12 @@ p.quotesForLeftSidebar {
         color 0.15s ease;
 }
 
-.goalCard .goal-options > p:hover {
+.goal-options > p:hover {
     background-color: #f6f7f9;
     color: #4b5563;
 }
 
-.goalCard .goal-options-menu {
+.goal-options-menu {
     position: absolute;
     top: 38px;
     right: 0;
@@ -625,7 +679,7 @@ p.quotesForLeftSidebar {
     box-shadow: 0 8px 20px rgba(31, 41, 55, 0.08);
 }
 
-.goalCard .goal-options-menu button {
+.goal-options-menu button {
     width: 100%;
     padding: 8px 10px;
     border: none;
@@ -638,38 +692,92 @@ p.quotesForLeftSidebar {
     transition: background-color 0.15s ease;
 }
 
-.goalCard .goal-options-menu button:hover {
+.goal-options-menu button:hover {
     background-color: #f6f7f9;
 }
 
-.goalCard .goal-options-menu button[data-action="delete"] {
+.goal-options-menu button[data-action="delete"] {
     color: #b85c63;
 }
 
 
-/* GOAL PROGRESS */
-.goalCardProgressHeader {
+/* GOAL DATES */
+
+.dates {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 22px;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
 }
 
-.goalCardProgressHeader span {
+.startDate,
+.endDate {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.startDate img,
+.endDate img {
+    width: 13px;
+    height: 13px;
+    opacity: 0.55;
+}
+
+.startDate p,
+.endDate p {
+    margin: 0;
+    overflow: hidden;
+    color: #a0a8b5;
+    font-size: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* GOAL PROGRESS INFORMATION */
+
+.progressInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.progressInfo p {
+    margin: 0;
+    color: #8a94a6;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.progressInfo .currentSavings {
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.progressInfo .percentage {
     color: #4b82e8;
     font-size: 11px;
     font-weight: 700;
 }
 
-.goalCardProgressBar {
+
+/* PROGRESS BAR */
+
+.progressBarContainer {
     width: 100%;
     height: 7px;
+    margin-top: 8px;
     overflow: hidden;
     background-color: #edf0f4;
     border-radius: 999px;
 }
 
-.goalCardProgressFill {
+.progressBar {
     height: 100%;
     background-color: #4b82e8;
     border-radius: inherit;
@@ -677,94 +785,15 @@ p.quotesForLeftSidebar {
 }
 
 
-/* GOAL AMOUNTS */
-.goalCardAmounts {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 15px;
-}
+/* GOAL BUTTONS */
 
-.goalCardAmounts div:last-child {
-    text-align: right;
-}
-
-.goalCardAmounts span,
-.goalCardStat span {
-    display: block;
-    margin-bottom: 4px;
-    color: #a0a8b5;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-}
-
-.goalCardAmounts strong {
-    color: #1f2937;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-
-/* GOAL STATS */
-.goalCardStats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 19px;
-    padding: 14px 0;
-    border-top: 1px solid #edf0f3;
-    border-bottom: 1px solid #edf0f3;
-}
-
-.goalCardStat {
-    min-width: 0;
-    padding: 0 12px;
-}
-
-.goalCardStat:first-child {
-    padding-left: 0;
-}
-
-.goalCardStat:last-child {
-    padding-right: 0;
-}
-
-.goalCardStat + .goalCardStat {
-    border-left: 1px solid #edf0f3;
-}
-
-.goalCardStat strong {
-    display: block;
-    overflow: hidden;
-    color: #4b5563;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.35;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-/* GOAL DATES */
-.goalCardDates {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 13px;
-    color: #a0a8b5;
-    font-size: 10px;
-}
-
-
-/* GOAL ACTIONS */
-.goalCardActions {
+.buttons {
     display: flex;
     gap: 10px;
     margin-top: 17px;
 }
 
-.goalCardActions button {
+.buttons button {
     flex: 1;
     height: 40px;
     display: flex;
@@ -784,13 +813,13 @@ p.quotesForLeftSidebar {
         color 0.15s ease;
 }
 
-.goalCardActions button:hover {
+.buttons button:hover {
     background-color: #f8fafc;
     border-color: #cfd6df;
     color: #344054;
 }
 
-.goalCardActions button span {
+.buttons button span {
     font-size: 16px;
     font-weight: 500;
     line-height: 1;
@@ -798,13 +827,14 @@ p.quotesForLeftSidebar {
 
 
 /* ADD MONEY */
-.goalCardActions .addMoney {
+
+.buttons .addMoney {
     background-color: #ebf8f0;
     border-color: #cfd9e5;
     color: #3f6fae;
 }
 
-.goalCardActions .addMoney:hover {
+.buttons .addMoney:hover {
     background-color: #c0ffd8;
     border-color: #b9c8da;
     color: #315e96;
@@ -812,82 +842,136 @@ p.quotesForLeftSidebar {
 
 
 /* REMOVE MONEY */
-.goalCardActions .removeMoney {
+
+.buttons .removeMoney {
     background-color: #fff8f8;
     border-color: #dfe4ea;
     color: #6f7784;
 }
 
-.goalCardActions .removeMoney:hover {
+.buttons .removeMoney:hover {
     background-color: #ffe6e6;
     border-color: #d1d6dc;
     color: #4b5563;
 }
 
 
-/* COMPLETED GOAL */
-.goalCard.goalCompleted {
-    border-color: #d8e7dc;
+/* COMPLETED GOALS */
+
+.completedGoalsSection {
+    margin-top: 35px;
 }
 
-.goalCard.goalCompleted .goalCardProgressHeader span {
-    color: #5c9874;
+.completedGoalsHeader {
+    margin-bottom: 15px;
 }
 
-.goalCard.goalCompleted .goalCardProgressFill {
-    background-color: #72ad88;
+.completedGoalsHeader h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.completedGoals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
 }
 
 
-/* GOAL CARDS MOBILE */
+/* COMPLETED GOAL CARD */
+
+.completedGoal {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e1e9e3;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+}
+
+.completedGoalInfo {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.completedGoal .goalPicture {
+    width: 55px;
+    height: 55px;
+}
+
+.completedGoalDetails {
+    flex: 1;
+    min-width: 0;
+}
+
+.completedGoalDetails .goalTitle {
+    font-size: 15px;
+}
+
+.completedGoalDetails .goalSubtitle {
+    margin-top: 3px;
+}
+
+.completedGoalTarget {
+    margin: 9px 0 0;
+    color: #4d8a67;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.completedGoalDates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 14px;
+    margin-top: 6px;
+}
+
+.completedGoalDates p {
+    margin: 0;
+    color: #8a94a6;
+    font-size: 10px;
+}
+
+
+/* MOBILE GOALS */
+
 @media (max-width: 600px) {
 
-    .goals .goalCard {
-        padding: 18px;
-    }
-
-    .goalCardImage {
+    .goalPicture {
         width: 60px;
         height: 60px;
     }
 
-    .goalCardTitle .goalTitle {
+    .goalTitle {
         font-size: 16px;
     }
 
-    .goalCardStats {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .goalCardStat {
-        padding: 10px 0;
-    }
-
-    .goalCardStat:first-child {
-        padding-top: 0;
-    }
-
-    .goalCardStat:last-child {
-        padding-bottom: 0;
-    }
-
-    .goalCardStat + .goalCardStat {
-        padding-top: 10px;
-        border-left: none;
-        border-top: 1px solid #edf0f3;
-    }
-
-    .goalCardDates {
+    .dates {
         flex-direction: column;
+        align-items: flex-start;
         gap: 5px;
     }
 
-    .goalCardActions {
+    .buttons {
         flex-direction: column;
     }
-}
 
+    .completedGoals {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .completedGoalInfo {
+        align-items: flex-start;
+    }
+
+    .completedGoalDates {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
 
 /* RIGHT SIDEBAR */
 .rightSidebar {
@@ -949,20 +1033,21 @@ p.quotesForLeftSidebar {
 
 /* TRANSACTIONS */
 .transactionsList {
-    padding: 0 5px;
-    background-color: #ffffff;
-    border: 1px solid #e9edf3;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(31, 41, 55, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
 }
 
 .transaction {
-    padding: 16px 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    border-bottom: 1px solid #e5e7eb;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 18px;
+    background-color: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 12px;
 }
 
 .transaction:last-child {
@@ -970,23 +1055,24 @@ p.quotesForLeftSidebar {
 }
 
 .transactionInfo {
-    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-width: 0;
 }
 
 .transactionInfo strong {
     overflow: hidden;
-    color: #263142;
-    font-size: 1rem;
-    white-space: nowrap;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 600;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .transactionInfo small {
-    color: #7b8494;
-    font-size: 0.8rem;
+    color: #8a94a6;
+    font-size: 11px;
 }
 
 .transactionAmount {
@@ -995,11 +1081,11 @@ p.quotesForLeftSidebar {
 }
 
 .transactionAmount.add {
-    color: #46aa82;
+    color: #3f6fae;
 }
 
 .transactionAmount.remove {
-    color: #f6787d;
+    color: #b85c63;
 }
 
 .noTransactions {
@@ -1059,6 +1145,39 @@ p.quotesForLeftSidebar {
     cursor: pointer;
 }
 
+/* TRANSACTION SUMMARY */
+
+.transactionSummary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.transactionSummaryCard {
+    padding: 18px 20px;
+    background-color: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+}
+
+.transactionSummaryCard span {
+    display: block;
+    margin-bottom: 7px;
+    color: #8a94a6;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.transactionSummaryCard strong {
+    display: block;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 700;
+}
 
 /* REPORTS */
 .reportSummary {
@@ -1254,59 +1373,343 @@ p.quotesForLeftSidebar {
     font-weight: 600;
 }
 
+/* REPORT SUMMARY */
 
-/* SETTINGS */
-.settingsContent {
-    background-color: #ffffff;
-    padding: 0 20px;
-    border: 1px solid #e9edf3;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(31, 41, 55, 0.04);
-}
-
-.settingOption {
-    min-height: 82px;
-    padding: 18px 0;
+.reportSummary {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid #e5e7eb;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 22px;
 }
 
-.settingOption:last-child {
-    border-bottom: none;
+.reportGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.settingInfo {
+.reportGroupHeader h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.reportGroupCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.reportCard {
     min-width: 0;
+    padding: 18px 20px;
+    background-color: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
 }
 
-.settingOption strong {
-    font-size: 1rem;
-    color: #263142;
+.reportCardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.settingOption p {
-    margin-top: 5px;
-    color: #7b8494;
-    font-size: 0.85rem;
+.reportCardInfo span {
+    color: #8a94a6;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.dangerSetting button {
-    padding: 9px 14px;
+.reportCardInfo strong {
+    overflow: hidden;
+    color: #1f2937;
+    font-size: 19px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reportCardInfo small {
+    margin-top: -2px;
+    color: #8a94a6;
+    font-size: 11px;
+}
+
+
+/* REPORT GOAL PROGRESS */
+
+.reportGoalProgress {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reportGoal {
+    padding: 10px 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #d6d9dc;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+}
+
+.reportGoalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.reportGoalName {
+    overflow: hidden;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reportGoalPercentage {
     flex-shrink: 0;
-    background-color: #fdf2f3;
-    color: #dc3545;
-    border: none;
-    border-radius: 7px;
+    color: #3f6fae;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.reportGoalAmounts {
+    margin-top: 6px;
+    color: #8a94a6;
+    font-size: 11px;
+}
+
+.reportGoalBar {
+    width: 100%;
+    height: 7px;
+    margin-top: 10px;
+    overflow: hidden;
+    background-color: #edf1f5;
+    border-radius: 999px;
+}
+
+.reportGoalBarFill {
+    height: 100%;
+    background-color: #4b82e8;
+    border-radius: 999px;
+}
+
+.reportGoalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 5px;
+    color: #8a94a6;
+    font-size: 11px;
+}
+
+.reportGoalCompleted {
+    border-color: #dcebe2;
+}
+
+.reportGoalCompleted .reportGoalPercentage {
+    color: #4d8a67;
+}
+
+.reportGoalCompleted .reportGoalBarFill {
+    background-color: #6fae86;
+}
+
+/* COMPLETED GOAL ENTRANCE */
+
+.completedGoal {
+    animation: completedGoalEnter 0.5s ease forwards;
+}
+
+@keyframes completedGoalEnter {
+
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* MONEY OVER TIME */
+
+.reportMoneyOverTime {
+    width: 100%;
+    min-height: 380px;
+    padding: 18px 20px;
+    background-color: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+    overflow: hidden;
+}
+
+.reportMoneyOverTime svg {
+    display: block;
+    width: 100%;
+    height: 380px;
+}
+
+.reportChartGrid {
+    stroke: #edf1f5;
+    stroke-width: 1;
+}
+
+.reportChartLine {
+    fill: none;
+    stroke: #4b82e8;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.reportChartPoint {
+    fill: #ffffff;
+    stroke: #4b82e8;
+    stroke-width: 2;
+}
+
+.reportChartLabel {
+    fill: #8a94a6;
+    font-size: 11px;
+}
+
+.reportChartDate {
+    fill: #8a94a6;
+    font-size: 10px;
+}
+
+/* ============================================================
+SETTINGS
+============================================================ */
+
+.settingsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.settingsSection {
+    width: 100%;
+    padding: 22px;
+    background-color: #ffffff;
+    border: 1px solid #e7ebf0;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+}
+
+.settingsSectionHeader {
+    margin-bottom: 18px;
+}
+
+.settingsSectionHeader h2 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.settingsSectionHeader p {
+    margin: 5px 0 0;
+    color: #8a94a6;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* DATA BUTTONS */
+
+.settingsButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.settingsButtons button {
+    height: 40px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    border: 1px solid #cfd9e5;
+    border-radius: 9px;
+    color: #3f6fae;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
 
-.dangerSetting button:hover {
-    background-color: #fde0e2;
+.settingsButtons button:hover {
+    background-color: #f7faff;
+    border-color: #b9c8da;
+    color: #315e96;
+}
+
+
+/* DANGER ZONE */
+
+.dangerSection {
+    border-color: #eadfe1;
+}
+
+.dangerSection .settingsSectionHeader {
+    margin-bottom: 16px;
+}
+
+.deleteAllDataButton {
+    height: 40px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    border: 1px solid #e1c9cc;
+    border-radius: 9px;
+    color: #b85c63;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.deleteAllDataButton:hover {
+    background-color: #fff8f8;
+    border-color: #d7b5b9;
+    color: #a84f57;
+}
+
+
+/* LEGAL LINKS */
+
+.settingsLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.settingsLinks a {
+    color: #4b82e8;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.settingsLinks a:hover {
+    color: #315e96;
+    text-decoration: underline;
 }
 
 
@@ -1869,6 +2272,14 @@ button:disabled, input[type="button"]:disabled {
     }
 }
 
+@media (max-width: 800px) {
+
+    .reportGroupCards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 @media (max-width: 750px) {
 
     .mobileMenuButton {
@@ -1996,6 +2407,54 @@ button:disabled, input[type="button"]:disabled {
     }
 }
 
+@media (max-width: 700px) {
+
+    .transactionSummary {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .transactionSummaryCard {
+        padding: 16px 18px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .settingsSection {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .settingsButtons {
+        flex-direction: column;
+    }
+
+    .settingsButtons button {
+        width: 100%;
+    }
+
+    .deleteAllDataButton {
+        width: 100%;
+    }
+
+    .settingsLinks {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .reportMoneyOverTime {
+        padding: 14px;
+    }
+
+    .reportMoneyOverTime svg {
+        height: 300px;
+    }
+
+}
+
+
 @media (max-width: 500px) {
 
     .banner {
@@ -2107,6 +2566,19 @@ button:disabled, input[type="button"]:disabled {
 
     .reportSection {
         padding: 18px;
+    }
+
+    .transaction {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .transactionInfo strong {
+        max-width: 180px;
+    }
+
+    .transactionAmount {
+        font-size: 12px;
     }
 }
 

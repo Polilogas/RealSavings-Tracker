@@ -1,252 +1,223 @@
 // GOALS
 // RENDER GOALS
 function renderGoals() {
-    let goalsContainer = document.querySelector(".mainContainer .goals");
+    let goalsContainer = document.querySelector("#activeGoals");
+    let completedGoalsContainer = document.querySelector("#completedGoals");
+    let completedGoalsSection = document.querySelector("#completedGoalsSection");
+
     goalsContainer.innerHTML = "";
+    completedGoalsContainer.innerHTML = "";
+
     let searchInput = document.querySelector("#goalSearchInput");
     let searchText = searchInput.value.trim().toLowerCase();
-    let goalsToDisplay = saveSmartData.goals.filter(function(goal) {
-        return goal.name.toLowerCase().includes(searchText);
-    });
 
-    if (goalsToDisplay.length === 0) {
-        if (saveSmartData.goals.length === 0) {
-            goalsContainer.innerHTML = `<div class="noGoals"><p>You don't have any savings goals yet.</p></div>`;
-        } else {
-            goalsContainer.innerHTML = `<div class="noGoals"><p>No savings goals found.</p></div>`;
+    let activeGoals = [];
+    let completedGoals = [];
+
+    for (let i = 0; i < saveSmartData.goals.length; i++) {
+        let goal = saveSmartData.goals[i];
+
+        if (!goal.name.toLowerCase().includes(searchText)) {
+            continue;
         }
-        updateScreenWithLatestData();
-        return;
+
+        if (goal.completedDate) {
+            completedGoals.push(goal);
+        } else {
+            activeGoals.push(goal);
+        }
     }
-    for (let i = 0; i < goalsToDisplay.length; i++) {
-        let goal = goalsToDisplay[i];
-        let currentAmount = Number(goal.currentAmount);
-        let targetAmount = Number(goal.targetAmount);
-        let percentage = 0;
 
-        if (targetAmount > 0) {
-            percentage = (currentAmount / targetAmount) * 100;
-        }
-        percentage = Math.min(percentage, 100);
-        let remainingAmount = Math.max(
-            targetAmount - currentAmount,
-            0
-        );
-        let isCompleted = percentage >= 100;
+    // ACTIVE GOALS
+    if (activeGoals.length === 0) {
 
-        // DAYS REMAINING
-        let daysRemaining = null;
-
-        if (goal.endDate) {
-            let today = new Date();
-            let todayDate = new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                today.getDate()
-            );
-            let endParts = goal.endDate.split("-");
-            let endDate = new Date(
-                Number(endParts[0]),
-                Number(endParts[1]) - 1,
-                Number(endParts[2])
-            );
-            daysRemaining = Math.ceil(
-                (endDate - todayDate) / (1000 * 60 * 60 * 24)
-            );
-            daysRemaining = Math.max(daysRemaining, 0);
-        }
-
-        // MONTHLY SAVING NEEDED
-        let monthlySaving = 0;
-
-        if (
-            !isCompleted &&
-            daysRemaining !== null &&
-            daysRemaining > 0 &&
-            remainingAmount > 0
-        ) {
-            let monthsRemaining = daysRemaining / 30.44;
-            monthlySaving =
-                remainingAmount / monthsRemaining;
-        }
-
-        // DATE FORMATTING
-        let startDateText = goal.startDate
-            ? new Date(goal.startDate + "T00:00:00").toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            })
-            : "";
-        let endDateText = goal.endDate
-            ? new Date(goal.endDate + "T00:00:00").toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            })
-            : "";
-        let remainingText = isCompleted
-            ? "Goal completed"
-            : `€${converNumberToCurrency(remainingAmount)} remaining`;
-        let deadlineHTML = "";
-
-        if (isCompleted) {
-            deadlineHTML = `
-                <div class="goalCardStat">
-                    <span>STATUS</span>
-                    <strong>Completed</strong>
-                </div>
-            `;
-        } else if (daysRemaining !== null) {
-            deadlineHTML = `
-                <div class="goalCardStat">
-                    <span>TIME LEFT</span>
-                    <strong>${daysRemaining} days</strong>
+        if (saveSmartData.goals.length === 0) {
+            goalsContainer.innerHTML = `
+                <div class="noGoals">
+                    <p>You don't have any savings goals yet.</p>
                 </div>
             `;
         } else {
-            deadlineHTML = `
-                <div class="goalCardStat">
-                    <span>DEADLINE</span>
-                    <strong>No deadline</strong>
+            goalsContainer.innerHTML = `
+                <div class="noGoals">
+                    <p>No savings goals found.</p>
                 </div>
             `;
         }
-        let monthlySavingHTML = "";
 
-        if (!isCompleted && daysRemaining !== null && daysRemaining > 0) {
-            monthlySavingHTML = `
-                <div class="goalCardStat">
-                    <span>NEEDED / MONTH</span>
-                    <strong>€${converNumberToCurrency(monthlySaving)}</strong>
-                </div>
-            `;
-        } else if (!isCompleted) {
-            monthlySavingHTML = `
-                <div class="goalCardStat">
-                    <span>SAVING PLAN</span>
-                    <strong>Set a deadline</strong>
-                </div>
-            `;
-        } else {
-            monthlySavingHTML = `
-                <div class="goalCardStat">
-                    <span>REMAINING</span>
-                    <strong>€0.00</strong>
-                </div>
-            `;
-        }
-        let newGoal = `
-            <div
-                id="${escapeHTML(goal.id)}"
-                class="card goalCard ${isCompleted ? "goalCompleted" : ""}">
-                <div class="goalCardHeader">
-                    <div class="goalCardIdentity">
-                        <div class="goalCardImage">
-                            <img
-                                src="${goal.image}"
-                                alt="Image for ${escapeHTML(goal.name)}"
-                                draggable="false">
+    } else {
+
+        for (let i = 0; i < activeGoals.length; i++) {
+
+            let goal = activeGoals[i];
+            let percentage = 0;
+
+            if (goal.targetAmount > 0) {
+                percentage = (goal.currentAmount / goal.targetAmount) * 100;
+            }
+
+            percentage = Math.min(percentage, 100);
+
+            let newGoal = `
+                <div
+                    id="${escapeHTML(goal.id)}"
+                    class="card">
+
+                    <div class="goalInfo">
+                        <div class="goalPicture">
+                            <img src="${goal.image}" alt="Savings Image for this goal" draggable="false">
                         </div>
-                        <div class="goalCardTitle">
+
+                        <div class="goalDetails">
+                            <div class="titleAndSubtitleAndIcon">
+                                <div class="titleAndSubtitle">
+                                    <p class="goalTitle">${escapeHTML(goal.name)}</p>
+                                    <p class="goalSubtitle">${escapeHTML(goal.subtitle)}</p>
+                                </div>
+                            </div>
+
+                            <div class="dates">
+                                <div class="startDate">
+                                    <img src="./assets/images/calendar.svg" alt="calendar icon" draggable="false">
+                                    <p>Start:${goal.startDate || ""}</p>
+                                </div>
+
+                                <div class="endDate">
+                                    <img src="./assets/images/calendar.svg" alt="calendar icon" draggable="false">
+                                    <p>Finish:${goal.endDate || ""}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="goal-options">
+                            <p>...</p>
+                            <div class="goal-options-menu hidden">
+                                <button type="button" data-action="edit">Edit</button>
+                                <button type="button" data-action="delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progressInfo">
+                        <p><span class="currentSavings">€${converNumberToCurrency(goal.currentAmount)}</span> / €${converNumberToCurrency(goal.targetAmount)}</p>
+                        <p><span class="percentage">${percentage.toFixed(2)}%</span></p>
+                    </div>
+
+                    <div class="progressBarContainer">
+                        <div class="progressBar" style="width: ${percentage}%"></div>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="addMoney" type="button" onclick="addMoney('${goal.id}')"><span>+</span>Add Money</button>
+                        <button class="removeMoney" type="button" onclick="removeMoney('${goal.id}')"><span class="minus">-</span>Remove Money</button>
+                    </div>
+                </div>
+            `;
+
+            goalsContainer.insertAdjacentHTML("beforeend", newGoal);
+        }
+    }
+
+    // COMPLETED GOALS
+    if (completedGoals.length === 0) {
+
+        completedGoalsSection.classList.add("hidden");
+
+    } else {
+
+        completedGoalsSection.classList.remove("hidden");
+
+        for (let i = 0; i < completedGoals.length; i++) {
+
+            let goal = completedGoals[i];
+
+            let duration = getGoalDuration(
+                goal.startDate,
+                goal.completedDate
+            );
+
+            let completedGoal = `
+                <div
+                    id="completed-${escapeHTML(goal.id)}"
+                    class="completedGoal">
+
+                    <div class="completedGoalInfo">
+
+                        <div class="goalPicture">
+                            <img src="${goal.image}" alt="Savings Image for this goal" draggable="false">
+                        </div>
+
+                        <div class="completedGoalDetails">
+
                             <p class="goalTitle">
                                 ${escapeHTML(goal.name)}
                             </p>
+
                             <p class="goalSubtitle">
                                 ${escapeHTML(goal.subtitle)}
                             </p>
+
+                            <p class="completedGoalTarget">
+                                Target: €${converNumberToCurrency(goal.targetAmount)}
+                            </p>
+
+                            <div class="completedGoalDates">
+
+                                <p>
+                                    Started: ${goal.startDate || ""}
+                                </p>
+
+                                <p>
+                                    Finished: ${goal.completedDate || ""}
+                                </p>
+
+                                <p>
+                                    Duration: ${duration}
+                                </p>
+
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="goal-options">
-                        <p aria-label="More options">...</p>
-                        <div class="goal-options-menu hidden">
-                            <button
-                                type="button"
-                                data-action="edit">
-                                Edit
-                            </button>
-                            <button
-                                type="button"
-                                data-action="transactions">
-                                View Transactions
-                            </button>
-                            <button
-                                type="button"
-                                data-action="delete">
-                                Delete
-                            </button>
+
+                        <div class="goal-options">
+                            <p>...</p>
+
+                            <div class="goal-options-menu hidden">
+                                <button type="button" data-action="edit">Edit</button>
+                                <button type="button" data-action="delete">Delete</button>
+                            </div>
                         </div>
+
                     </div>
+
                 </div>
-                <div class="goalCardProgressHeader">
-                    <span>
-                        ${isCompleted ? "GOAL COMPLETED" : `${percentage.toFixed(0)}% complete`}
-                    </span>
-                </div>
-                <div class="goalCardProgressBar">
-                    <div
-                        class="goalCardProgressFill"
-                        style="width: ${percentage}%">
-                    </div>
-                </div>
-                <div class="goalCardAmounts">
-                    <div>
-                        <span>SAVED</span>
-                        <strong>
-                            €${converNumberToCurrency(currentAmount)}
-                        </strong>
-                    </div>
-                    <div>
-                        <span>TARGET</span>
-                        <strong>
-                            €${converNumberToCurrency(targetAmount)}
-                        </strong>
-                    </div>
-                </div>
-                <div class="goalCardStats">
-                    <div class="goalCardStat">
-                        <span>REMAINING</span>
-                        <strong>
-                            ${remainingText}
-                        </strong>
-                    </div>
-                    ${deadlineHTML}
-                    ${monthlySavingHTML}
-                </div>
-                <div class="goalCardDates">
-                    <span>
-                        Started ${startDateText}
-                    </span>
-                    ${
-                        endDateText
-                            ? `<span>Target ${endDateText}</span>`
-                            : ""
-                    }
-                </div>
-                <div class="goalCardActions">
-                    <button
-                        class="addMoney"
-                        type="button"
-                        onclick="addMoney('${goal.id}')">
-                        <span>+</span>
-                        Add Money
-                    </button>
-                    <button
-                        class="removeMoney"
-                        type="button"
-                        onclick="removeMoney('${goal.id}')">
-                        <span class="minus">-</span>
-                        Remove Money
-                    </button>
-                </div>
-            </div>
-        `;
-        goalsContainer.insertAdjacentHTML(
-            "beforeend",
-            newGoal
-        );
+            `;
+
+            completedGoalsContainer.insertAdjacentHTML(
+                "beforeend",
+                completedGoal
+            );
+        }
     }
+
     updateScreenWithLatestData();
+}
+
+// COMPLETE GOAL ANIMATION
+function animateGoalCompletion(goalId) {
+
+    let goalCard = document.getElementById(goalId);
+
+    if (!goalCard) {
+        renderGoals();
+        return;
+    }
+
+    goalCard.classList.add("goalCompleting");
+
+    setTimeout(function() {
+        renderGoals();
+    }, 800);
 }
 
 // PROGRESS BARS
@@ -741,7 +712,14 @@ function submitChanges() {
     }
     newAmount = roundMoney(newAmount);
     goal.currentAmount = newAmount;
-    let difference = roundMoney(newAmount - oldAmount);
+    if (
+        goal.currentAmount >= goal.targetAmount &&
+        !goal.completedDate
+    ) {
+        goal.currentAmount = goal.targetAmount;
+        goal.completedDate = getCurrentDate();
+    }
+    let difference = roundMoney(goal.currentAmount - oldAmount);
 
     if (difference !== 0) {
         saveSmartData.transactions.unshift({
@@ -752,9 +730,19 @@ function submitChanges() {
             date: new Date().toISOString()
         });
     }
+
+    let goalCompleted = goal.completedDate !== undefined;
+
     saveData();
-    renderGoals();
+
+    if (goalCompleted) {
+        animateGoalCompletion(goal.id);
+    } else {
+        renderGoals();
+    }
+
     clearMoneyInputs();
+
     let feedbackType = activeMoneyWindow;
     closeAllWindows();
 

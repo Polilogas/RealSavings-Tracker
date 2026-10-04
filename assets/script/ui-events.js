@@ -275,13 +275,17 @@ function setupGoalMenuEvents() {
                     return;
                 }
 
-                let card = goalOptions.closest(".card");
+                let card = goalOptions.closest(".card, .completedGoal");
 
                 if (!card) {
                     return;
                 }
 
                 let cardId = card.id;
+
+                if (card.classList.contains("completedGoal")) {
+                    cardId = cardId.replace("completed-", "");
+                }
 
                 if (button.dataset.action === "edit") {
                     editGoal(cardId);

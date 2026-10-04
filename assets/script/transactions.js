@@ -1,4 +1,27 @@
 // TRANSACTIONS
+// TRANSACTION SUMMARY
+function updateTransactionSummary() {
+    let totalAdded = 0;
+    let totalRemoved = 0;
+
+    for (let i = 0; i < saveSmartData.transactions.length; i++) {
+
+        let transaction = saveSmartData.transactions[i];
+
+        if (transaction.amount >= 0) {
+            totalAdded += transaction.amount;
+        } else {
+            totalRemoved += Math.abs(transaction.amount);
+        }
+    }
+
+    let netChange = totalAdded - totalRemoved;
+
+    document.querySelector("#transactionTotalAdded").textContent = `€${converNumberToCurrency(totalAdded)}`;
+    document.querySelector("#transactionTotalRemoved").textContent = `€${converNumberToCurrency(totalRemoved)}`;
+    document.querySelector("#transactionNetChange").textContent = `€${converNumberToCurrency(netChange)}`;
+}
+
 // TRANSACTION GOAL FILTER
 function updateTransactionGoalFilter() {
     let select = document.querySelector("#transactionGoalFilter");
@@ -26,6 +49,7 @@ function updateTransactionGoalFilter() {
 
 // RENDER TRANSACTIONS
 function renderTransactions() {
+    updateTransactionSummary();
     updateTransactionGoalFilter();
 
     let container = document.querySelector("#transactionsList");
