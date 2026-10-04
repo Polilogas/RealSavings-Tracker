@@ -466,6 +466,7 @@ async function saveEditedGoal() {
     if (!goal) {
         return;
     }
+
     let newName = document.querySelector("#editGoalName").value.trim();
     let newSubtitle = document.querySelector("#editSubtitle").value.trim();
     let newStartDate = document.querySelector("#editStartDate").value;
@@ -520,19 +521,51 @@ async function saveEditedGoal() {
     if (!valid) {
         return;
     }
+
+    let oldAmount = goal.currentAmount;
+
     goal.name = newName;
     goal.subtitle = newSubtitle;
     goal.startDate = newStartDate;
     goal.endDate = newEndDate;
     goal.currentAmount = roundMoney(newCurrentAmount);
     goal.targetAmount = roundMoney(newTargetAmount);
+
+    // CHECK GOAL COMPLETION
+    if (goal.currentAmount >= goal.targetAmount) {
+
+        if (!goal.completedDate) {
+            goal.completedDate = getCurrentDate();
+        }
+
+    } else {
+
+        delete goal.completedDate;
+
+    }
+
+    // RECORD CURRENT AMOUNT CHANGE
+    let difference = roundMoney(goal.currentAmount - oldAmount);
+
+    if (difference !== 0) {
+        saveSmartData.transactions.unshift({
+            id: Date.now(),
+            goalId: goal.id,
+            goalName: goal.name,
+            amount: difference,
+            date: new Date().toISOString()
+        });
+    }
+
     let selectedImage = document.querySelector("#editGoalImage").files[0];
 
     if (selectedImage) {
         goal.image = await convertImageToDataURL(selectedImage);
     }
+
     saveData();
     renderGoals();
+
     document.querySelector("#editGoalImage").value = "";
     closeAllWindows();
 
