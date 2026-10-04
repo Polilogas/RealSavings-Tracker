@@ -1,4 +1,5 @@
 /* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,21 +17,20 @@ body {
     background-color: #f6f8fb;
     color: #1f2937;
     font-family: "Plus Jakarta Sans", Arial, sans-serif;
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
 }
 
-button, input {
+button,
+input {
     font-family: inherit;
 }
-
 
 .mobileMenuButton {
     display: none;
 }
 
+
 /* LEFT SIDEBAR */
+
 .leftSidebar {
     width: 250px;
     min-width: 250px;
@@ -43,20 +43,17 @@ button, input {
     top: 0;
     background-color: #ffffff;
     border-right: 1px solid #e6eaf0;
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
 }
 
 
 /* PAGE INFO */
+
 .leftSidebar .pageInfo {
     display: flex;
     align-items: center;
     gap: 13px;
-    text-decoration: none;
     color: inherit;
-    
+    text-decoration: none;
 }
 
 .leftSidebar .pageInfo .pageIcon {
@@ -74,19 +71,21 @@ button, input {
 }
 
 .leftSidebar .pageInfo .pageText h1 {
+    color: #172033;
     font-size: 2rem;
     font-weight: 700;
-    color: #172033;
 }
 
 .leftSidebar .pageInfo .pageText h2 {
     margin-top: 3px;
+    color: #8a94a6;
     font-size: 0.85rem;
     font-weight: 400;
-    color: #8a94a6;
 }
 
+
 /* NAVIGATION */
+
 .navigation {
     flex: 1;
     display: flex;
@@ -114,8 +113,7 @@ button, input {
     height: 21px;
     margin-right: 13px;
     opacity: 0.65;
-    transition:
-        opacity 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .navigation .button:hover {
@@ -138,6 +136,7 @@ button, input {
 
 
 /* SIDEBAR QUOTE */
+
 .leftSidebar .quotes {
     width: 100%;
     min-height: 170px;
@@ -155,20 +154,21 @@ button, input {
 }
 
 .leftSidebar .quotes span {
-    font-weight: 700;
     color: #2b83fe;
+    font-weight: 700;
 }
 
 p.quotesForLeftSidebar {
     display: flex;
     flex-direction: column;
+    color: #566174;
     font-size: 1.2rem;
     line-height: 1.5;
-    color: #566174;
 }
 
 
 /* MAIN AREA */
+
 .bigContainer {
     flex: 1;
     min-width: 0;
@@ -176,7 +176,9 @@ p.quotesForLeftSidebar {
     flex-direction: column;
 }
 
+
 /* ACCOUNT ACTIONS */
+
 .accountActionsContainer {
     min-height: 82px;
     padding: 20px 40px;
@@ -187,20 +189,20 @@ p.quotesForLeftSidebar {
 }
 
 
-/* EXPANDING SEARCH */
+/* SEARCH */
+
 .searchForm {
     position: relative;
     width: 42px;
     height: 42px;
-    transition:
-        width 0.4s ease;
+    transition: width 0.4s ease;
 }
 
 .searchForm input {
     width: 42px;
     height: 42px;
     padding: 0;
-    background: transparent;
+    background-color: transparent;
     border: 2px solid transparent;
     border-radius: 50%;
     outline: none;
@@ -212,6 +214,10 @@ p.quotesForLeftSidebar {
         border-radius 0.4s ease,
         padding 0.2s ease,
         background-color 0.2s ease;
+}
+
+.searchForm input::placeholder {
+    color: #9aa4b2;
 }
 
 .searchForm.active {
@@ -227,10 +233,6 @@ p.quotesForLeftSidebar {
     box-shadow: 0 4px 14px rgba(43, 131, 254, 0.12);
 }
 
-.searchForm input::placeholder {
-    color: #9aa4b2;
-}
-
 .searchButton {
     position: absolute;
     top: 0;
@@ -238,15 +240,13 @@ p.quotesForLeftSidebar {
     width: 42px;
     height: 42px;
     padding: 0;
-    background: transparent;
+    background-color: transparent;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     z-index: 2;
 }
 
-
-/* Magnifying glass */
 .searchButton::before {
     content: "";
     position: absolute;
@@ -277,8 +277,6 @@ p.quotesForLeftSidebar {
         background-color 0.2s ease;
 }
 
-
-/* Turn search icon into X */
 .searchForm.active .searchButton::before {
     width: 23px;
     height: 3px;
@@ -301,13 +299,13 @@ p.quotesForLeftSidebar {
 
 
 /* ACCOUNT ICONS */
+
 .accountActionsContainer .accountIcon {
     width: 23px;
     height: 23px;
     opacity: 0.7;
     cursor: pointer;
-    transition:
-        opacity 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .accountActionsContainer .accountIcon:hover {
@@ -323,6 +321,7 @@ p.quotesForLeftSidebar {
 
 
 /* MAIN CONTAINER */
+
 .mainContainer {
     padding: 5px 40px 40px;
     display: flex;
@@ -339,6 +338,7 @@ p.quotesForLeftSidebar {
 
 
 /* PAGE SECTIONS */
+
 .pageSection {
     width: 100%;
 }
@@ -350,8 +350,8 @@ p.quotesForLeftSidebar {
 }
 
 .pageHeading h2 {
-    font-size: 2rem;
     color: #172033;
+    font-size: 2rem;
 }
 
 .pageHeading p {
@@ -371,6 +371,7 @@ p.quotesForLeftSidebar {
 
 
 /* BANNER */
+
 .banner {
     position: relative;
     width: 100%;
@@ -380,11 +381,10 @@ p.quotesForLeftSidebar {
 }
 
 .banner img {
-    display: block;
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
-    border-radius: 18px;
 }
 
 .banner::after {
@@ -397,10 +397,10 @@ p.quotesForLeftSidebar {
     position: absolute;
     top: 50%;
     left: 32px;
+    max-width: 520px;
     transform: translateY(-50%);
     z-index: 1;
-    color: black;
-    max-width: 520px;
+    color: #000000;
 }
 
 .bannerText span {
@@ -428,6 +428,7 @@ p.quotesForLeftSidebar {
 
 
 /* SECTION HEADER */
+
 .action {
     width: 100%;
     margin: 30px 0 20px;
@@ -437,9 +438,9 @@ p.quotesForLeftSidebar {
 }
 
 .action p {
+    color: #172033;
     font-size: 2rem;
     font-weight: 700;
-    color: #172033;
 }
 
 .addNewGoal {
@@ -450,9 +451,9 @@ p.quotesForLeftSidebar {
     justify-content: center;
     gap: 8px;
     background-color: #2b83fe;
-    color: #ffffff;
     border: none;
     border-radius: 10px;
+    color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -472,6 +473,7 @@ p.quotesForLeftSidebar {
 .addNewGoal span {
     font-size: 20px;
 }
+
 
 /* GOALS GRID */
 
@@ -501,6 +503,7 @@ p.quotesForLeftSidebar {
 
 .card {
     width: 100%;
+    min-width: 0;
     min-height: 235px;
     padding: 18px;
     display: flex;
@@ -521,6 +524,7 @@ p.quotesForLeftSidebar {
     transform: translateY(-1px);
     box-shadow: 0 5px 14px rgba(31, 41, 55, 0.05);
 }
+
 
 /* COMPLETION ANIMATION */
 
@@ -605,10 +609,7 @@ p.quotesForLeftSidebar {
     min-width: 0;
 }
 
-.titleAndSubtitleAndIcon {
-    min-width: 0;
-}
-
+.titleAndSubtitleAndIcon,
 .titleAndSubtitle {
     min-width: 0;
 }
@@ -736,7 +737,7 @@ p.quotesForLeftSidebar {
 }
 
 
-/* GOAL PROGRESS INFORMATION */
+/* GOAL PROGRESS */
 
 .progressInfo {
     display: flex;
@@ -825,9 +826,6 @@ p.quotesForLeftSidebar {
     line-height: 1;
 }
 
-
-/* ADD MONEY */
-
 .buttons .addMoney {
     background-color: #ebf8f0;
     border-color: #cfd9e5;
@@ -839,9 +837,6 @@ p.quotesForLeftSidebar {
     border-color: #b9c8da;
     color: #315e96;
 }
-
-
-/* REMOVE MONEY */
 
 .buttons .removeMoney {
     background-color: #fff8f8;
@@ -879,9 +874,6 @@ p.quotesForLeftSidebar {
     gap: 15px;
 }
 
-
-/* COMPLETED GOAL CARD */
-
 .completedGoal {
     width: 100%;
     padding: 15px;
@@ -889,6 +881,7 @@ p.quotesForLeftSidebar {
     border: 1px solid #e1e9e3;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
+    animation: completedGoalEnter 0.5s ease forwards;
 }
 
 .completedGoalInfo {
@@ -935,45 +928,22 @@ p.quotesForLeftSidebar {
     font-size: 10px;
 }
 
+@keyframes completedGoalEnter {
 
-/* MOBILE GOALS */
-
-@media (max-width: 600px) {
-
-    .goalPicture {
-        width: 60px;
-        height: 60px;
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
     }
 
-    .goalTitle {
-        font-size: 16px;
-    }
-
-    .dates {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
-    .buttons {
-        flex-direction: column;
-    }
-
-    .completedGoals {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .completedGoalInfo {
-        align-items: flex-start;
-    }
-
-    .completedGoalDates {
-        flex-direction: column;
-        gap: 4px;
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
+
 /* RIGHT SIDEBAR */
+
 .rightSidebar {
     width: 290px;
     min-width: 290px;
@@ -988,6 +958,9 @@ p.quotesForLeftSidebar {
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(31, 41, 55, 0.04);
 }
+
+
+/* TOTAL SAVINGS */
 
 .totalSavingsContainer {
     padding: 20px;
@@ -1009,21 +982,21 @@ p.quotesForLeftSidebar {
 }
 
 .mainSide .title {
-    font-size: 1.1rem;
     color: #8a94a6;
+    font-size: 1.1rem;
 }
 
 .mainSide .currentSavings {
     margin-top: 2px;
+    color: #172033;
     font-size: 2.6rem;
     font-weight: 700;
-    color: #172033;
 }
 
 .mainSide .totalGoalSavings {
     margin-top: 3px;
-    font-size: 1rem;
     color: #8a94a6;
+    font-size: 1rem;
 }
 
 .totalSavingsContainer .progressBarContainer {
@@ -1032,6 +1005,7 @@ p.quotesForLeftSidebar {
 
 
 /* TRANSACTIONS */
+
 .transactionsList {
     display: flex;
     flex-direction: column;
@@ -1055,10 +1029,10 @@ p.quotesForLeftSidebar {
 }
 
 .transactionInfo {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 4px;
-    min-width: 0;
 }
 
 .transactionInfo strong {
@@ -1094,6 +1068,9 @@ p.quotesForLeftSidebar {
     color: #8a94a6;
 }
 
+
+/* TRANSACTION FILTERS */
+
 .transactionFilters {
     display: flex;
     align-items: center;
@@ -1111,8 +1088,8 @@ p.quotesForLeftSidebar {
 }
 
 .transactionFilter {
-    border: none;
     padding: 9px 16px;
+    border: none;
     border-radius: 7px;
     background-color: transparent;
     color: #667085;
@@ -1144,6 +1121,7 @@ p.quotesForLeftSidebar {
     font-weight: 600;
     cursor: pointer;
 }
+
 
 /* TRANSACTION SUMMARY */
 
@@ -1179,201 +1157,8 @@ p.quotesForLeftSidebar {
     font-weight: 700;
 }
 
+
 /* REPORTS */
-.reportSummary {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.reportCard {
-    padding: 22px;
-    border: 1px solid #e9edf3;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.05);
-}
-
-.reportCard:nth-child(-n+4) {
-    padding: 24px;
-    background-color: #f7faff;
-}
-
-.reportCard:nth-child(-n+4) .reportCardInfo {
-    gap: 10px;
-}
-
-.reportCard:nth-child(-n+4) .reportCardInfo span {
-    font-size: 0.85rem;
-}
-
-.reportCard:nth-child(-n+4) .reportCardInfo strong {
-    font-size: 1.65rem;
-}
-
-.reportCard:nth-child(n+5) {
-    padding: 20px;
-    background-color: #f8f9fb;
-}
-
-.reportCard:nth-child(n+5) .reportCardInfo {
-    gap: 6px;
-}
-
-.reportCard:nth-child(n+5) .reportCardInfo span {
-    font-size: 0.8rem;
-}
-
-.reportCard:nth-child(n+5) .reportCardInfo strong {
-    font-size: 1.2rem;
-}
-
-.reportCardInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.reportCardInfo span {
-    color: #667085;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.reportCardInfo strong {
-    color: #172033;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.reportCardInfo small {
-    color: #667085;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.reportSection {
-    margin-bottom: 24px;
-    padding: 24px;
-    background-color: #ffffff;
-    border: 1px solid #e9edf3;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.05);
-}
-
-.reportSectionHeader {
-    margin-bottom: 22px;
-}
-
-.reportSectionHeader h3 {
-    margin: 0 0 5px;
-    color: #172033;
-    font-size: 1.1rem;
-}
-
-.reportSectionHeader p {
-    margin: 0;
-    color: #667085;
-    font-size: 0.85rem;
-}
-
-.reportGoalProgress {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.reportGoal {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.reportGoalHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.reportGoalName {
-    color: #172033;
-    font-size: 0.95rem;
-    font-weight: 700;
-}
-
-.reportGoalPercentage {
-    color: #667085;
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
-.reportGoalAmounts {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    color: #667085;
-    font-size: 0.8rem;
-}
-
-.reportGoalBar {
-    width: 100%;
-    height: 9px;
-    overflow: hidden;
-    border-radius: 999px;
-    background-color: #edf1f5;
-}
-
-.reportGoalBarFill {
-    height: 100%;
-    border-radius: 999px;
-    background-color: #2b83fe;
-}
-
-.reportMoneyOverTime {
-    width: 100%;
-    min-height: 280px;
-}
-
-.reportChartLine {
-    fill: none;
-    stroke: #2b83fe;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.reportChartPoint {
-    fill: #ffffff;
-    stroke: #2b83fe;
-    stroke-width: 2;
-    transition: transform 0.15s ease;
-    transform-box: fill-box;
-    transform-origin: center;
-}
-
-.reportChartPoint:hover {
-    transform: scale(1.5);
-}
-
-.reportChartGrid {
-    stroke: #e9edf3;
-    stroke-width: 1;
-}
-
-.reportChartLabel {
-    fill: #667085;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.reportChartDate {
-    fill: #667085;
-    font-size: 10px;
-    font-weight: 600;
-}
-
-/* REPORT SUMMARY */
 
 .reportSummary {
     display: flex;
@@ -1397,7 +1182,7 @@ p.quotesForLeftSidebar {
 
 .reportGroupCards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -1437,6 +1222,31 @@ p.quotesForLeftSidebar {
     margin-top: -2px;
     color: #8a94a6;
     font-size: 11px;
+}
+
+.reportSection {
+    margin-bottom: 24px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e9edf3;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.05);
+}
+
+.reportSectionHeader {
+    margin-bottom: 22px;
+}
+
+.reportSectionHeader h3 {
+    margin: 0 0 5px;
+    color: #172033;
+    font-size: 1.1rem;
+}
+
+.reportSectionHeader p {
+    margin: 0;
+    color: #667085;
+    font-size: 0.85rem;
 }
 
 
@@ -1522,25 +1332,6 @@ p.quotesForLeftSidebar {
     background-color: #6fae86;
 }
 
-/* COMPLETED GOAL ENTRANCE */
-
-.completedGoal {
-    animation: completedGoalEnter 0.5s ease forwards;
-}
-
-@keyframes completedGoalEnter {
-
-    0% {
-        opacity: 0;
-        transform: translateY(15px) scale(0.97);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
 
 /* MONEY OVER TIME */
 
@@ -1548,17 +1339,17 @@ p.quotesForLeftSidebar {
     width: 100%;
     min-height: 380px;
     padding: 18px 20px;
+    overflow: hidden;
     background-color: #ffffff;
     border: 1px solid #e5eaf0;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
-    overflow: hidden;
 }
 
 .reportMoneyOverTime svg {
-    display: block;
     width: 100%;
     height: 380px;
+    display: block;
 }
 
 .reportChartGrid {
@@ -1578,21 +1369,30 @@ p.quotesForLeftSidebar {
     fill: #ffffff;
     stroke: #4b82e8;
     stroke-width: 2;
+    transition: transform 0.15s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.reportChartPoint:hover {
+    transform: scale(1.5);
+}
+
+.reportChartLabel,
+.reportChartDate {
+    fill: #8a94a6;
 }
 
 .reportChartLabel {
-    fill: #8a94a6;
     font-size: 11px;
 }
 
 .reportChartDate {
-    fill: #8a94a6;
     font-size: 10px;
 }
 
-/* ============================================================
-SETTINGS
-============================================================ */
+
+/* SETTINGS */
 
 .settingsContent {
     display: flex;
@@ -1603,10 +1403,10 @@ SETTINGS
 
 .settingsSection {
     width: 100%;
-    padding: 22px;
+    padding: 24px;
     background-color: #ffffff;
-    border: 1px solid #e7ebf0;
-    border-radius: 16px;
+    border: 1px solid #e5eaf0;
+    border-radius: 14px;
     box-shadow: 0 2px 8px rgba(31, 41, 55, 0.025);
 }
 
@@ -1614,34 +1414,40 @@ SETTINGS
     margin-bottom: 18px;
 }
 
-.settingsSectionHeader h2 {
+.settingsSectionHeader h2,
+.settingsSection h2 {
     margin: 0;
     color: #1f2937;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
 }
 
-.settingsSectionHeader p {
-    margin: 5px 0 0;
-    color: #8a94a6;
+.settingsSectionHeader p,
+.settingsSection > p {
+    margin-top: 5px;
+    color: #6b7280;
     font-size: 12px;
     line-height: 1.5;
 }
 
+.settingsSection > p {
+    margin-bottom: 20px;
+}
 
-/* DATA BUTTONS */
+
+/* SETTINGS BUTTONS */
 
 .settingsButtons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .settingsButtons button {
     height: 40px;
-    padding: 0 16px;
-    background-color: #ffffff;
+    padding: 0 18px;
     border: 1px solid #cfd9e5;
     border-radius: 9px;
+    background-color: #ffffff;
     color: #3f6fae;
     font-size: 12px;
     font-weight: 600;
@@ -1649,13 +1455,15 @@ SETTINGS
     transition:
         background-color 0.15s ease,
         border-color 0.15s ease,
-        color 0.15s ease;
+        color 0.15s ease,
+        transform 0.15s ease;
 }
 
 .settingsButtons button:hover {
     background-color: #f7faff;
     border-color: #b9c8da;
     color: #315e96;
+    transform: translateY(-1px);
 }
 
 
@@ -1696,15 +1504,15 @@ SETTINGS
 
 .settingsLinks {
     display: flex;
-    gap: 24px;
+    gap: 16px;
+    margin-top: 20px;
 }
 
 .settingsLinks a {
-    color: #4b82e8;
-    font-size: 12px;
+    color: #2563eb;
+    font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.15s ease;
 }
 
 .settingsLinks a:hover {
@@ -1713,7 +1521,83 @@ SETTINGS
 }
 
 
+/* SIDEBAR QUOTE */
+
+.sidebarQuote {
+    position: relative;
+    padding: 32px 24px 22px;
+    overflow: hidden;
+    background-color: #eef6fe;
+    border-radius: 14px;
+}
+
+.quoteSymbol {
+    position: absolute;
+    top: -8px;
+    left: 14px;
+    padding-top: 15px;
+    color: #c8dff5;
+    font-family: Georgia, serif;
+    font-size: 50px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+#sidebarQuoteText {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+#sidebarQuoteAuthor {
+    position: relative;
+    z-index: 1;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ADVERTISEMENT */
+
+.adContainer,
+.mobileAdContainer {
+    width: 100%;
+    min-height: 100px;
+    aspect-ratio: 4 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+.adContainer {
+    max-height: 280px;
+    margin: 20px 0;
+}
+
+.mobileAdContainer {
+    display: none;
+    margin: 20px 0;
+}
+
+.adContainer span,
+.mobileAdContainer span {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+
 /* POPUP OVERLAY */
+
 #darkOverlay {
     display: none;
     position: fixed;
@@ -1729,6 +1613,7 @@ SETTINGS
 
 
 /* POPUP */
+
 .popupWindow {
     position: fixed;
     top: 50%;
@@ -1742,17 +1627,17 @@ SETTINGS
     border-radius: 18px;
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
     z-index: 1001;
-    animation:
-        popupAppear
-        0.15s
-        ease-out;
+    animation: popupAppear 0.15s ease-out;
 }
 
 @keyframes popupAppear {
+
     from {
         opacity: 0;
         transform: translate(-50%, -48%);
-    } to {
+    }
+
+    to {
         opacity: 1;
         transform: translate(-50%, -50%);
     }
@@ -1760,6 +1645,7 @@ SETTINGS
 
 
 /* MONEY FEEDBACK */
+
 #moneyFeedback {
     position: fixed;
     inset: 0;
@@ -1784,8 +1670,8 @@ SETTINGS
 
 .moneyParticle {
     position: absolute;
-    left: 50%;
     top: 55%;
+    left: 50%;
     font-size: 30px;
     line-height: 1;
     user-select: none;
@@ -1793,16 +1679,22 @@ SETTINGS
 }
 
 @keyframes moneyFeedbackBackground {
+
     0% {
         opacity: 0;
-    } 20% {
+    }
+
+    20% {
         opacity: 1;
-    } 100% {
+    }
+
+    100% {
         opacity: 0;
     }
 }
 
 @keyframes moneyParticleFly {
+
     0% {
         opacity: 0;
         transform:
@@ -1829,6 +1721,7 @@ SETTINGS
 
 
 /* POPUP HEADER */
+
 .windowHeader {
     margin-bottom: 20px;
     display: flex;
@@ -1838,8 +1731,8 @@ SETTINGS
 }
 
 .windowHeader h2 {
-    font-size: 1.7rem;
     color: #172033;
+    font-size: 1.7rem;
 }
 
 .closeWindow {
@@ -1868,6 +1761,7 @@ SETTINGS
 
 
 /* POPUP FORMS */
+
 .popupWindow form {
     display: flex;
     flex-direction: column;
@@ -1876,9 +1770,9 @@ SETTINGS
 
 .popupWindow label {
     margin-top: 8px;
+    color: #566174;
     font-size: 0.88rem;
     font-weight: 600;
-    color: #566174;
 }
 
 .formRow {
@@ -1897,9 +1791,9 @@ SETTINGS
 
 .formError {
     margin: 2px 0 0;
+    color: #d94b55;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #d94b55;
 }
 
 .formError.hidden {
@@ -1908,18 +1802,19 @@ SETTINGS
 
 
 /* IMAGE PREVIEW */
+
 .imagePreviewContainer {
     width: 100%;
     height: 170px;
+    margin-bottom: 16px;
+    padding: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
-    padding: 14px;
+    overflow: hidden;
+    background-color: #f5f8fc;
     border: 1px solid #e9edf3;
     border-radius: 14px;
-    background-color: #f5f8fc;
-    overflow: hidden;
 }
 
 #newGoalImagePreview {
@@ -1932,9 +1827,9 @@ SETTINGS
 #selectAnImageBtn {
     width: 100%;
     padding: 10px 12px;
+    background-color: #f8fafc;
     border: 1px dashed #cbd5e1;
     border-radius: 10px;
-    background-color: #f8fafc;
     color: #566174;
     font-family: inherit;
     font-size: 0.9rem;
@@ -1945,13 +1840,17 @@ SETTINGS
 }
 
 #selectAnImageBtn:hover {
-    border-color: #2b83fe;
     background-color: #f3f7fd;
+    border-color: #2b83fe;
 }
 
 
 /* POPUP INPUTS */
-.popupWindow input[type="text"], .popupWindow input[type="date"], .popupWindow input[type="file"], .popupWindow input[type="number"] {
+
+.popupWindow input[type="text"],
+.popupWindow input[type="date"],
+.popupWindow input[type="file"],
+.popupWindow input[type="number"] {
     width: 100%;
     min-height: 42px;
     padding: 10px 12px;
@@ -1975,58 +1874,13 @@ SETTINGS
 
 .popupWindow input[type="button"] {
     width: 100%;
-    min-height: 44px;
-    margin-top: 12px;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 10px;
-    background-color: #2b83fe;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.15s ease, transform 0.15s ease;
-}
-
-.popupWindow input[type="button"]:hover {
-    background-color: #176fe8;
-}
-
-.popupWindow input[type="button"]:active {
-    transform: translateY(1px);
-}
-
-
-/* EDITING GOAL NAME */
-.editingGoalName {
-    margin-bottom: 5px;
-    padding: 10px 12px;
-    background-color: #eef5ff;
-    border-radius: 8px;
-    color: #2b83fe;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-
-/* VALIDATION */
-.popupWindow input.invalid {
-    border-color: #f6787d !important;
-    background-color: #fff8f8 !important;
-    box-shadow: 0 0 0 3px rgba(246, 120, 125, 0.10) !important;
-}
-
-
-/* POPUP BUTTON */
-.popupWindow input[type="button"] {
-    width: 100%;
     min-height: 42px;
     margin-top: 18px;
+    padding: 10px 16px;
     background-color: #2b83fe;
-    color: #ffffff;
     border: none;
     border-radius: 9px;
+    color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -2040,29 +1894,61 @@ SETTINGS
     transform: translateY(-1px);
 }
 
+.popupWindow input[type="button"]:active {
+    transform: translateY(1px);
+}
+
+
+/* EDITING GOAL NAME */
+
+.editingGoalName {
+    margin-bottom: 5px;
+    padding: 10px 12px;
+    background-color: #eef5ff;
+    border-radius: 8px;
+    color: #2b83fe;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* VALIDATION */
+
+.popupWindow input.invalid {
+    background-color: #fff8f8 !important;
+    border-color: #f6787d !important;
+    box-shadow: 0 0 0 3px rgba(246, 120, 125, 0.10) !important;
+}
+
 
 /* MONEY WINDOWS */
-#addMoneyWindow, #removeMoneyWindow {
+
+#addMoneyWindow,
+#removeMoneyWindow {
     width: min(380px, calc(100vw - 30px));
     padding: 28px;
     border-radius: 18px;
 }
 
-#addMoneyWindow .goalTitle, #removeMoneyWindow .goalTitle {
+#addMoneyWindow .goalTitle,
+#removeMoneyWindow .goalTitle {
     margin-bottom: 12px;
     overflow: hidden;
+    color: #172033;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #172033;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-#addMoneyWindow .displayAddMoney, #addMoneyWindow .displayTotalMoney, #removeMoneyWindow .displayAddMoney, #removeMoneyWindow .displayTotalMoney {
+#addMoneyWindow .displayAddMoney,
+#addMoneyWindow .displayTotalMoney,
+#removeMoneyWindow .displayAddMoney,
+#removeMoneyWindow .displayTotalMoney {
     min-height: 18px;
     margin-top: -2px;
-    font-size: 0.85rem;
     color: #8a94a6;
+    font-size: 0.85rem;
 }
 
 #addMoneyWindow input[type="text"]:focus {
@@ -2092,150 +1978,10 @@ SETTINGS
 }
 
 
-/* DATA BACKUP */
-.settingsSection {
-    padding: 24px;
-    background-color: #ffffff;
-    border: 1px solid #e5eaf0;
-    border-radius: 14px;
-}
-
-.settingsSection h2 {
-    margin-bottom: 6px;
-    font-size: 18px;
-}
-
-.settingsSection > p {
-    margin-bottom: 20px;
-    color: #6b7280;
-}
-
-.settingsButtons {
-    display: flex;
-    gap: 12px;
-}
-
-.settingsButtons button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    background-color: #3b82f6;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color .2s ease, transform .2s ease;
-}
-
-.settingsButtons button:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
-}
-
-
-/* SIDEBAR QUOTE */
-.sidebarQuote {
-    position: relative;
-    padding: 32px 24px 22px;
-    background-color: #eef6fe;
-    border-radius: 14px;
-    overflow: hidden;
-}
-
-.quoteSymbol {
-    position: absolute;
-    top: -8px;
-    left: 14px;
-    font-size: 50px;
-    line-height: 1;
-    font-family: Georgia, serif;
-    color: #c8dff5;
-    pointer-events: none;
-    padding: 15px 0px 0px 0px;
-}
-
-#sidebarQuoteText {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 14px;
-    margin-top: 10px;
-    color: #334155;
-    font-size: 15px;
-    line-height: 1.6;
-    font-style: italic;
-}
-
-#sidebarQuoteAuthor {
-    position: relative;
-    z-index: 1;
-    color: #64748b;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-
-/* ADVERTISEMENT */
-.adContainer {
-    width: 100%;
-    min-height: 100px;
-    max-height: 280px;
-    aspect-ratio: 4 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    border: 1px dashed #cbd5e1;
-    border-radius: 12px;
-    background-color: #f8fafc;
-    overflow: hidden;
-}
-
-.adContainer span {
-    color: #94a3b8;
-    font-size: 11px;
-}
-
-
-/* MOBILE ADVERTISEMENT */
-.mobileAdContainer {
-    display: none;
-    width: 100%;
-    min-height: 100px;
-    aspect-ratio: 4 / 1;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    border: 1px dashed #cbd5e1;
-    border-radius: 12px;
-    background-color: #f8fafc;
-    overflow: hidden;
-}
-
-.mobileAdContainer span {
-    color: #94a3b8;
-    font-size: 11px;
-}
-
-
-/* Legal Section */
-.settingsLinks {
-    display: flex;
-    gap: 16px;
-    margin-top: 20px;
-}
-
-.settingsLinks a {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.settingsLinks a:hover {
-    text-decoration: underline;
-}
-
-
 /* DISABLED */
-button:disabled, input[type="button"]:disabled {
+
+button:disabled,
+input[type="button"]:disabled {
     background-color: #9ca3af !important;
     color: #e5e7eb !important;
     cursor: not-allowed;
@@ -2245,20 +1991,15 @@ button:disabled, input[type="button"]:disabled {
 
 
 /* HIDDEN */
+
 .hidden {
     display: none !important;
 }
 
 
 /* RESPONSIVE */
-@media (max-width: 1475px) {
-    .banner img {
-        object-fit: cover;
-    }    
-}
-
+/* TABLET / SMALL DESKTOP */
 @media (max-width: 1100px) {
-
     .rightSidebar {
         display: none;
     }
@@ -2272,23 +2013,16 @@ button:disabled, input[type="button"]:disabled {
     }
 }
 
-@media (max-width: 800px) {
-
-    .reportGroupCards {
-        grid-template-columns: 1fr;
-    }
-
-}
-
+/* MOBILE */
 @media (max-width: 750px) {
-
+    /* MOBILE NAVIGATION */
     .mobileMenuButton {
-        display: flex;
         position: fixed;
         top: 22px;
         left: 14px;
         width: 44px;
         height: 44px;
+        display: flex;
         align-items: center;
         justify-content: center;
         border: 1px solid #e9edf3;
@@ -2302,26 +2036,34 @@ button:disabled, input[type="button"]:disabled {
     }
 
     .mobileMenuButton.mobileMenuOpen {
-        border: 1px solid #ffffff;
+        border-color: #ffffff;
         box-shadow: none;
     }
 
     .leftSidebar {
+        width: calc(100vw - 24px);
+        max-width: 320px;
+        height: auto;
+        min-width: 0;
+        max-height: calc(100vh - 40px);
+        padding: 18px;
         display: none;
         position: fixed;
         top: 20px;
         left: 12px;
         transform: translateY(-10px);
         opacity: 0;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        width: calc(100vw - 24px);
-        max-width: 320px;
-        padding: 18px;
+        overflow-y: auto;
+        border: 1px solid #e9edf3;
         border-radius: 18px;
         background-color: #ffffff;
-        border: 1px solid #e9edf3;
         box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
         z-index: 150;
+    }
+
+    .leftSidebar.mobileMenuOpen {
+        display: flex;
+        animation: mobileMenuOpen 0.2s ease forwards;
     }
 
     .leftSidebar .quotes {
@@ -2343,24 +2085,32 @@ button:disabled, input[type="button"]:disabled {
         width: 31px;
     }
 
-    .leftSidebar.mobileMenuOpen {
-        display: flex;
-        animation: mobileMenuOpen 0.2s ease forwards;
-    }
-
     @keyframes mobileMenuOpen {
         from {
             opacity: 0;
             transform: translateY(-10px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
 
+
+    /* MAIN LAYOUT */
+    .mainContainer {
+        padding: 75px 20px 30px;
+    }
+
+    .accountActionsContainer {
+        padding: 15px 20px;
+    }
+
+    /* NAVIGATION */
     .navigation {
         gap: 8px;
+        margin-top: 0;
     }
 
     .navigation .button {
@@ -2372,14 +2122,7 @@ button:disabled, input[type="button"]:disabled {
         margin-right: 10px;
     }
 
-    .mainContainer {
-        padding: 75px 20px 30px;
-    }
-
-    .accountActionsContainer {
-        padding: 15px 20px;
-    }
-
+    /* BANNER */
     .banner {
         height: 150px;
     }
@@ -2397,134 +2140,58 @@ button:disabled, input[type="button"]:disabled {
         font-size: 12px;
     }
 
+    /* SEARCH */
     .searchForm.active {
         width: 230px;
     }
 
-    .reportSummary {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+    /* GOALS */
+    .goals {
+        grid-template-columns: minmax(0, 1fr);
     }
-}
 
-@media (max-width: 700px) {
+    .goalPicture {
+        width: 60px;
+        height: 60px;
+    }
 
+    .goalTitle {
+        font-size: 16px;
+    }
+
+    .dates {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .buttons button {
+        flex: none;
+        width: 100%;
+    }
+
+    /* COMPLETED GOALS */
+    .completedGoals {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .completedGoalInfo {
+        align-items: flex-start;
+    }
+
+    .completedGoalDates {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    /* TRANSACTIONS */
     .transactionSummary {
         grid-template-columns: 1fr;
         gap: 10px;
-    }
-
-    .transactionSummaryCard {
-        padding: 16px 18px;
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .settingsSection {
-        padding: 18px;
-        border-radius: 14px;
-    }
-
-    .settingsButtons {
-        flex-direction: column;
-    }
-
-    .settingsButtons button {
-        width: 100%;
-    }
-
-    .deleteAllDataButton {
-        width: 100%;
-    }
-
-    .settingsLinks {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .reportMoneyOverTime {
-        padding: 14px;
-    }
-
-    .reportMoneyOverTime svg {
-        height: 300px;
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    .banner {
-        height: 140px;
-    }
-
-    .bannerText {
-        left: 18px;
-        right: 18px;
-    }
-
-    .bannerText span {
-        margin-bottom: 4px;
-        font-size: 9px;
-        letter-spacing: 1.2px;
-    }
-
-    .bannerText h1 {
-        margin-bottom: 5px;
-        font-size: 19px;
-    }
-
-    .bannerText p {
-        font-size: 10px;
-        line-height: 1.4;
-    }
-
-    .action {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .addNewGoal {
-        width: 100%;
-    }
-
-    .goals {
-        grid-template-columns: minmax(0, 1fr);
-        width: 100%;
-    }
-
-    .card {
-        min-width: 0;
-        box-sizing: border-box;
-    }
-
-    .popupWindow {
-        width: calc(100vw - 30px);
-        padding: 22px;
-    }
-
-    .formRow {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .settingOption {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .searchForm.active {
-        width: 200px;
-    }
-
-    .settingsLinks {
-        flex-direction: column;
-        gap: 8px;
     }
 
     .transactionFilters {
@@ -2547,27 +2214,6 @@ button:disabled, input[type="button"]:disabled {
         min-width: 0;
     }
 
-    .reportSummary {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .reportCard {
-        padding: 16px;
-    }
-
-    .reportCardInfo span {
-        font-size: 0.75rem;
-    }
-
-    .reportCardInfo strong {
-        font-size: 1.15rem;
-    }
-
-    .reportSection {
-        padding: 18px;
-    }
-
     .transaction {
         padding: 14px;
         gap: 12px;
@@ -2580,47 +2226,161 @@ button:disabled, input[type="button"]:disabled {
     .transactionAmount {
         font-size: 12px;
     }
+
+    /* REPORTS */
+    .reportGroupCards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reportMoneyOverTime {
+        padding: 14px;
+    }
+
+    .reportMoneyOverTime svg {
+        height: 320px;
+    }
+
+    /* SETTINGS */
+    .settingsSection {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .settingsButtons {
+        flex-direction: column;
+    }
+
+    .settingsButtons button,
+    .deleteAllDataButton {
+        width: 100%;
+    }
+
+    .settingsLinks {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* FORMS */
+    .formRow {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .popupWindow {
+        width: calc(100vw - 30px);
+        padding: 22px;
+    }
+
+    /* ACTIONS */
+    .action {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .addNewGoal {
+        width: 100%;
+    }
+
+    /* ADVERTISEMENTS */
+    .adContainer,
+    .mobileAdContainer {
+        aspect-ratio: 3 / 1;
+    }
+
 }
 
-@media (max-width: 380px) {
 
+/* SMALL MOBILE */
+@media (max-width: 500px) {
     .mainContainer {
-        padding-right: 12px;
+        padding: 75px 12px 25px;
     }
 
     .accountActionsContainer {
-        padding-left: 88px;
+        padding-left: 70px;
         padding-right: 12px;
         gap: 12px;
     }
 
-    .buttons {
-        flex-direction: column;
+    /* SEARCH */
+    .searchForm.active {
+        width: 200px;
     }
 
-    .buttons button {
-        flex: none;
+    /* GOALS */
+    .goalInfo {
+        gap: 10px;
     }
 
-    .dates {
-        flex-direction: column;
-        gap: 5px;
+    .goalPicture {
+        width: 54px;
+        height: 54px;
     }
 
-    .leftSidebar {
-        width: 68px;
-        min-width: 68px;
-        padding-left: 12px;
-        padding-right: 12px;
-        box-sizing: border-box;
+    .completedGoal .goalPicture {
+        width: 50px;
+        height: 50px;
     }
 
-    .leftSidebar.mobileMenuOpen {
-        width: 85vw;
-        max-width: 320px;
+    .goalTitle {
+        font-size: 15px;
     }
 
-    .leftSidebar * {
-        box-sizing: border-box;
+    .goalSubtitle {
+        font-size: 11px;
     }
+
+    .completedGoal {
+        padding: 12px;
+    }
+
+    .completedGoalInfo {
+        gap: 10px;
+    }
+
+    .completedGoalTarget {
+        font-size: 11px;
+    }
+
+    /* REPORTS */
+    .reportGroupCards {
+        grid-template-columns: 1fr;
+    }
+
+    .reportCard {
+        padding: 16px;
+    }
+
+    .reportCardInfo strong {
+        font-size: 1.05rem;
+    }
+
+    .reportSection {
+        padding: 18px;
+    }
+
+    .reportMoneyOverTime {
+        padding: 14px;
+    }
+
+    .reportMoneyOverTime svg {
+        height: 300px;
+    }
+
+    /* TRANSACTIONS */
+    .transaction {
+        padding: 12px;
+    }
+
+    .transactionInfo strong {
+        max-width: 140px;
+    }
+
+    /* POPUPS */
+    .popupWindow {
+        width: calc(100vw - 20px);
+        padding: 18px;
+    }
+
 }
