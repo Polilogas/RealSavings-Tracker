@@ -241,38 +241,50 @@ function updatePercentageBars() {
 
 // TOTAL SAVINGS
 function updateTotalSavings() {
-
     let totalAmount = 0;
+
     for (let i = 0; i < saveSmartData.goals.length; i++) {
-        totalAmount += Number(saveSmartData.goals[i].currentAmount);
+        let goal = saveSmartData.goals[i];
+        if (goal.completedDate) {
+            continue;
+        }
+
+        totalAmount += Number(goal.currentAmount);
     }
+
     let totalSavingsElement = document.querySelector(".rightSidebar .totalSavingsContainer .currentSavings");
     totalSavingsElement.textContent = "€" + converNumberToCurrency(totalAmount);
-
 }
 
 // TOTAL TARGET SAVINGS
 function updateTotalTargetSavings() {
-
     let totalAmount = 0;
     let totalCurrentAmount = 0;
+
     for (let i = 0; i < saveSmartData.goals.length; i++) {
-        totalAmount += Number(saveSmartData.goals[i].targetAmount);
-        totalCurrentAmount += Number(saveSmartData.goals[i].currentAmount);
+        let goal = saveSmartData.goals[i];
+        if (goal.completedDate) {
+            continue;
+        }
+
+        totalAmount += Number(goal.targetAmount);
+        totalCurrentAmount += Number(goal.currentAmount);
     }
+
     let percentage = 0;
 
     if (totalAmount > 0) {
         percentage = (totalCurrentAmount / totalAmount) * 100;
     }
+
     percentage = Math.min(percentage, 100);
     let totalSavingsElement = document.querySelector(".rightSidebar .totalSavingsContainer .totalGoalSavings");
     totalSavingsElement.innerHTML = `
         of €${converNumberToCurrency(totalAmount)}
         (<span class="percentage">${percentage.toFixed(0)}%</span>)
     `;
-    updatePercentageBars();
 
+    updatePercentageBars();
 }
 
 // CURRENCY
