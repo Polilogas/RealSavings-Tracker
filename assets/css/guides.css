@@ -1,0 +1,986 @@
+/* GUIDES HERO */
+
+.guidesHero {
+    padding: 90px 24px 70px;
+    background-color: #f4f8fc;
+    text-align: center;
+}
+
+.guidesHero .sectionLabel {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #2b83fe;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.guidesHero h1 {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #202938;
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.guidesHero p {
+    max-width: 650px;
+    margin: 20px auto 0;
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* GUIDES */
+
+.guidesSection {
+    padding: 80px 24px 100px;
+    background-color: #ffffff;
+}
+
+.guidesGrid {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.guideCard {
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(31, 41, 55, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.guideCard::before {
+    content: "";
+    display: block;
+    height: 7px;
+    background-color: #2b83fe;
+}
+
+.guideCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(31, 41, 55, 0.10);
+}
+
+.guideCardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.guideCategory {
+    display: block;
+    margin-bottom: 14px;
+    color: #2b83fe;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.guideCard h2 {
+    margin: 0 0 16px;
+    color: #202938;
+    font-size: 23px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.guideCard p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.guideCard a {
+    width: fit-content;
+    margin-top: auto;
+    padding-top: 25px;
+    color: #2b83fe;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.guideCard a:hover {
+    color: #176fe8;
+    transform: translateX(3px);
+}
+
+
+/* GUIDES CTA */
+
+.guidesCta {
+    padding: 90px 24px;
+    background-color: #eef5ff;
+    text-align: center;
+}
+
+.guidesCta > div {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.guidesCta > div > span {
+    display: block;
+    margin-bottom: 12px;
+    color: #2b83fe;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.guidesCta h2 {
+    margin: 0 0 14px;
+    color: #202938;
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.guidesCta p {
+    margin: 0 auto 28px;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.guidesCta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 9px;
+    background-color: #2b83fe;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.guidesCta a:hover {
+    background-color: #176fe8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(43, 131, 254, 0.20);
+}
+
+
+/* ARTICLE */
+
+.guideArticle {
+    width: min(900px, 90%);
+    margin: 70px auto 100px;
+}
+
+
+/* ARTICLE HERO */
+
+.articleHero {
+    margin-bottom: 70px;
+}
+
+.articleHeader {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 40px;
+}
+
+.articleHeader .sectionLabel {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #1769e0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.articleHeader h1 {
+    margin: 0;
+    color: #171b21;
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.articleHeader > p {
+    max-width: 680px;
+    margin: 24px auto 0;
+    color: #69717c;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.articleHeroImage {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e9edf2;
+}
+
+.articleHeroImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ARTICLE SECTIONS */
+
+.articleSection {
+    margin-bottom: 70px;
+}
+
+.articleSection > p,
+.articleSection > ul {
+    color: #4f5761;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.articleSection > p {
+    margin: 0 0 22px;
+}
+
+.articleSection > ul {
+    margin: 0 0 25px;
+    padding-left: 25px;
+}
+
+.articleSection > ul li {
+    margin-bottom: 10px;
+}
+
+.articleSection h2 {
+    margin: 0 0 24px;
+    color: #171b21;
+    font-family: "Manrope", sans-serif;
+    font-size: 30px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.articleSectionHeading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.articleSectionHeading .articleIcon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f2ff;
+    border-radius: 15px;
+}
+
+.articleSectionHeading .articleIcon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.articleSectionHeading span {
+    display: block;
+    margin-bottom: 5px;
+    color: #1769e0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.articleSectionHeading h2 {
+    margin: 0;
+}
+
+
+/* REMEMBER BOX */
+
+.rememberBox {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin: 30px 0;
+    padding: 22px 24px;
+    background: #eef6ff;
+    border: 1px solid #d9eaff;
+    border-radius: 15px;
+}
+
+.rememberBox img {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.rememberBox strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1769e0;
+    font-size: 14px;
+}
+
+.rememberBox p {
+    margin: 0;
+    color: #4f5761;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.rememberBox.warning {
+    background: #fff8e8;
+    border-color: #f5e2ad;
+}
+
+.rememberBox.warning strong {
+    color: #a46a00;
+}
+
+
+/* GOAL EXAMPLES */
+
+.goalExamples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.goalExample {
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e6e9ed;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.goalExample span {
+    color: #343a42;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* REAL LIFE EXAMPLE */
+
+.realLifeExample {
+    margin: 35px 0;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e5e9ee;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(30, 40, 55, 0.04);
+}
+
+.realLifeExample > span {
+    display: block;
+    margin-bottom: 10px;
+    color: #1769e0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.realLifeExample h3 {
+    margin: 0 0 14px;
+    color: #20242a;
+    font-family: "Manrope", sans-serif;
+    font-size: 22px;
+}
+
+.realLifeExample p {
+    margin: 0 0 20px;
+    color: #59616b;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* EXAMPLE NUMBERS */
+
+.exampleNumbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.exampleNumbers > div {
+    padding: 17px;
+    background: #f6f8fa;
+    border-radius: 11px;
+}
+
+.exampleNumbers span {
+    display: block;
+    margin-bottom: 5px;
+    color: #7a818a;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.exampleNumbers strong {
+    color: #20242a;
+    font-size: 19px;
+}
+
+
+/* FORMULA */
+
+.formulaCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 25px 0;
+    padding: 22px 25px;
+    background: #ffffff;
+    border: 1px solid #e4e8ed;
+    border-radius: 14px;
+}
+
+.formulaCard span {
+    color: #7b838d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.formulaCard strong {
+    color: #1769e0;
+    font-size: 18px;
+}
+
+
+/* QUESTION BOX */
+
+.questionBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0;
+    padding: 25px 28px;
+    background: #f1f7ff;
+    border-radius: 15px;
+}
+
+.questionBox strong {
+    color: #252a30;
+    font-family: "Manrope", sans-serif;
+    font-size: 20px;
+}
+
+.questionBox span {
+    color: #1769e0;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+/* PROGRESS EXAMPLE */
+
+.progressExample {
+    margin: 35px 0;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e4e8ed;
+    border-radius: 16px;
+}
+
+.progressExampleHeader {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 14px;
+}
+
+.progressExampleHeader div span {
+    display: block;
+    margin-bottom: 5px;
+    color: #7a818a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.progressExampleHeader div strong {
+    color: #20242a;
+    font-size: 20px;
+}
+
+.progressExampleHeader > span {
+    color: #1769e0;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.progressExampleBar {
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    background: #e9edf1;
+    border-radius: 20px;
+}
+
+.progressExampleBar div {
+    width: 78%;
+    height: 100%;
+    background: #1769e0;
+    border-radius: inherit;
+}
+
+.progressExampleBar div.quarter {
+    width: 25%;
+}
+
+.progressExample p {
+    margin: 12px 0 0;
+    color: #7a818a;
+    font-size: 12px;
+}
+
+
+/* GOAL COMPARISON */
+
+.goalComparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.goalComparisonCard {
+    padding: 22px;
+    background: #f6f8fa;
+    border-radius: 13px;
+}
+
+.goalComparisonCard span {
+    display: block;
+    margin-bottom: 10px;
+    color: #737b85;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.goalComparisonCard strong {
+    display: block;
+    color: #20242a;
+    font-size: 25px;
+}
+
+.goalComparisonCard small {
+    color: #8a9199;
+    font-size: 12px;
+}
+
+
+/* TRANSFER EXAMPLE */
+
+.goalTransferExample {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.transferGoal {
+    width: 180px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e4e8ed;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.transferGoal span {
+    display: block;
+    margin-bottom: 10px;
+    color: #737b85;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.transferGoal strong {
+    display: block;
+    color: #20242a;
+    font-size: 24px;
+}
+
+.transferGoal small {
+    color: #9299a1;
+    font-size: 11px;
+}
+
+.transferArrow {
+    color: #1769e0;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+/* TAKEAWAYS */
+
+.takeaways {
+    margin: 90px 0;
+    padding: 40px;
+    background: #ffffff;
+    border: 1px solid #e3e7eb;
+    border-radius: 20px;
+}
+
+.takeawaysHeader {
+    margin-bottom: 30px;
+}
+
+.takeawaysHeader > span {
+    display: block;
+    margin-bottom: 10px;
+    color: #1769e0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.takeawaysHeader h2 {
+    margin: 0;
+    color: #20242a;
+    font-family: "Manrope", sans-serif;
+    font-size: 29px;
+}
+
+.takeawaysList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.takeawaysList > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 17px 0;
+    border-top: 1px solid #edf0f3;
+}
+
+.takeawaysList span {
+    color: #1769e0;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.takeawaysList p {
+    margin: 0;
+    color: #555d66;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ARTICLE CTA */
+
+.articleCta {
+    padding: 55px 40px;
+    background: #1769e0;
+    border-radius: 22px;
+    text-align: center;
+}
+
+.articleCta > span {
+    display: block;
+    margin-bottom: 12px;
+    color: #cfe2ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.articleCta h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: "Manrope", sans-serif;
+    font-size: 32px;
+}
+
+.articleCta p {
+    max-width: 550px;
+    margin: 16px auto 28px;
+    color: #dceaff;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.articleCta a {
+    display: inline-block;
+    padding: 13px 24px;
+    background: #ffffff;
+    color: #1769e0;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .guidesHero {
+        padding: 80px 24px 60px;
+    }
+
+    .guidesHero h1 {
+        font-size: 44px;
+    }
+
+    .guidesGrid {
+        max-width: 800px;
+        grid-template-columns: 1fr;
+    }
+
+    .guideCard {
+        min-height: 0;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .articleHeroImage {
+        height: 300px;
+    }
+
+    .goalExamples {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .takeawaysList {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .guidesHero {
+        padding: 65px 24px 50px;
+    }
+
+    .guidesHero h1 {
+        font-size: 38px;
+    }
+
+    .guidesHero p {
+        font-size: 15px;
+    }
+
+    .guidesSection {
+        padding: 60px 24px 75px;
+    }
+
+    .guideCardContent {
+        padding: 26px;
+    }
+
+    .guideCard h2 {
+        font-size: 21px;
+    }
+
+    .guidesCta {
+        padding: 70px 24px;
+    }
+
+    .guidesCta h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .guideArticle {
+        width: 90%;
+        margin-top: 45px;
+    }
+
+    .articleHeader h1 {
+        font-size: 35px;
+        letter-spacing: -0.8px;
+    }
+
+    .articleHeader > p {
+        font-size: 15px;
+    }
+
+    .articleHero {
+        margin-bottom: 50px;
+    }
+
+    .articleHeroImage {
+        height: 230px;
+        border-radius: 15px;
+    }
+
+    .articleSection {
+        margin-bottom: 55px;
+    }
+
+    .articleSectionHeading {
+        align-items: flex-start;
+    }
+
+    .articleSection h2 {
+        font-size: 25px;
+    }
+
+    .articleSection > p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .goalExamples {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .exampleNumbers {
+        grid-template-columns: 1fr;
+    }
+
+    .formulaCard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .goalComparison {
+        grid-template-columns: 1fr;
+    }
+
+    .goalTransferExample {
+        flex-direction: column;
+    }
+
+    .transferArrow {
+        transform: rotate(90deg);
+    }
+
+    .takeaways {
+        padding: 28px 22px;
+        margin: 65px 0;
+    }
+
+    .takeawaysHeader h2 {
+        font-size: 25px;
+    }
+
+    .articleCta {
+        padding: 40px 25px;
+        border-radius: 17px;
+    }
+
+    .articleCta h2 {
+        font-size: 27px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .guidesHero {
+        padding: 55px 18px 45px;
+    }
+
+    .guidesHero h1 {
+        font-size: 32px;
+    }
+
+    .guidesHero p {
+        font-size: 14px;
+    }
+
+    .guidesSection {
+        padding: 50px 18px 65px;
+    }
+
+    .guideCardContent {
+        padding: 24px;
+    }
+
+    .guideCard h2 {
+        font-size: 20px;
+    }
+
+    .guideCard p {
+        font-size: 13px;
+    }
+
+    .guidesCta {
+        padding: 60px 18px;
+    }
+
+    .guidesCta h2 {
+        font-size: 29px;
+    }
+
+    .guidesCta p {
+        font-size: 14px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .articleHeader h1 {
+        font-size: 31px;
+    }
+
+    .articleSectionHeading .articleIcon {
+        width: 46px;
+        height: 46px;
+    }
+
+    .articleSectionHeading .articleIcon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .goalExamples {
+        grid-template-columns: 1fr;
+    }
+
+}

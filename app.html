@@ -157,165 +157,187 @@
 
                     <!-- TRANSACTIONS PAGE -->
                     <div class="pageSection transactionsPage hidden" id="transactionsPage">
-                        <div class="pageHeading">
-                            <div>
-                                <h2>Transactions</h2>
-                                <p>A history of money added and removed from your savings goals.</p>
+                        <div class="pageWithAdSidebar">
+                            <div class="pageMainContent">
+                                <div class="pageHeading">
+                                    <div>
+                                        <h2>Transactions</h2>
+                                        <p>A history of money added and removed from your savings goals.</p>
+                                    </div>
+                                </div>
+
+                                <!-- TRANSACTION SUMMARY -->
+                                <div class="transactionSummary">
+                                    <div class="transactionSummaryCard">
+                                        <span>Total Added</span>
+                                        <strong id="transactionTotalAdded">€0.00</strong>
+                                    </div>
+
+                                    <div class="transactionSummaryCard">
+                                        <span>Total Removed</span>
+                                        <strong id="transactionTotalRemoved">€0.00</strong>
+                                    </div>
+
+                                    <div class="transactionSummaryCard">
+                                        <span>Net Change</span>
+                                        <strong id="transactionNetChange">€0.00</strong>
+                                    </div>
+                                </div>
+
+                                <!-- TRANSACTION FILTERS -->
+                                <div class="transactionFilters">
+                                    <div class="transactionTypeFilters">
+                                        <button type="button" class="transactionFilter active" data-filter="all">All</button>
+                                        <button type="button" class="transactionFilter" data-filter="added">Added</button>
+                                        <button type="button" class="transactionFilter" data-filter="removed">Removed</button>
+                                    </div>
+
+                                    <select id="transactionGoalFilter" class="transactionGoalFilter">
+                                        <option value="all">All Goals</option>
+                                    </select>
+                                </div>
+
+                                <div id="transactionsList" class="transactionsList"></div>
                             </div>
+
+                            <!-- TRANSACTIONS AD SIDEBAR -->
+                            <aside class="pageAdSidebar">
+                                <div class="pageAdContainer">
+                                    <span>Advertisement</span>
+                                </div>
+                            </aside>
                         </div>
-
-                        <!-- TRANSACTION SUMMARY -->
-                        <div class="transactionSummary">
-                            <div class="transactionSummaryCard">
-                                <span>Total Added</span>
-                                <strong id="transactionTotalAdded">€0.00</strong>
-                            </div>
-
-                            <div class="transactionSummaryCard">
-                                <span>Total Removed</span>
-                                <strong id="transactionTotalRemoved">€0.00</strong>
-                            </div>
-
-                            <div class="transactionSummaryCard">
-                                <span>Net Change</span>
-                                <strong id="transactionNetChange">€0.00</strong>
-                            </div>
-                        </div>
-
-                        <!-- TRANSACTION FILTERS -->
-                        <div class="transactionFilters">
-                            <div class="transactionTypeFilters">
-                                <button type="button" class="transactionFilter active" data-filter="all">All</button>
-                                <button type="button" class="transactionFilter" data-filter="added">Added</button>
-                                <button type="button" class="transactionFilter" data-filter="removed">Removed</button>
-                            </div>
-
-                            <select id="transactionGoalFilter" class="transactionGoalFilter">
-                                <option value="all">All Goals</option>
-                            </select>
-                        </div>
-
-                        <div id="transactionsList" class="transactionsList"></div>
                     </div>
 
                     <!-- REPORTS PAGE -->
                     <div class="pageSection reportsPage hidden" id="reportsPage">
-                        <div class="pageHeading">
-                            <div>
-                                <h2>Reports</h2>
-                                <p>A summary of your savings activity and progress.</p>
-                            </div>
-                        </div>
-
-                        <div class="reportSummary">
-                            <!-- SAVINGS OVERVIEW -->
-                            <div class="reportGroup">
-                                <div class="reportGroupHeader">
-                                    <h3>Savings Overview</h3>
-                                </div>
-
-                                <div class="reportGroupCards">
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Total Saved</span>
-                                            <strong id="reportTotalSaved">€0.00</strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Total Added</span>
-                                            <strong id="reportTotalAdded">€0.00</strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Total Removed</span>
-                                            <strong id="reportTotalRemoved">€0.00</strong>
-                                        </div>
+                        <div class="pageWithAdSidebar">
+                            <div class="pageMainContent">
+                                <div class="pageHeading">
+                                    <div>
+                                        <h2>Reports</h2>
+                                        <p>A summary of your savings activity and progress.</p>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- ACTIVITY -->
-                            <div class="reportGroup">
-                                <div class="reportGroupHeader">
-                                    <h3>Activity</h3>
+                                <div class="reportSummary">
+                                    <!-- SAVINGS OVERVIEW -->
+                                    <div class="reportGroup">
+                                        <div class="reportGroupHeader">
+                                            <h3>Savings Overview</h3>
+                                        </div>
+
+                                        <div class="reportGroupCards">
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Total Saved</span>
+                                                    <strong id="reportTotalSaved">€0.00</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Total Added</span>
+                                                    <strong id="reportTotalAdded">€0.00</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Total Removed</span>
+                                                    <strong id="reportTotalRemoved">€0.00</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ACTIVITY -->
+                                    <div class="reportGroup">
+                                        <div class="reportGroupHeader">
+                                            <h3>Activity</h3>
+                                        </div>
+
+                                        <div class="reportGroupCards">
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Completed Goals</span>
+                                                    <strong id="reportCompletedGoals">0</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Most Active Goal</span>
+                                                    <strong id="reportMostActiveGoal">—</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Average Amount Added</span>
+                                                    <strong id="reportAverageAdded">€0.00</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- MONTHLY SAVINGS -->
+                                    <div class="reportGroup">
+                                        <div class="reportGroupHeader">
+                                            <h3>Monthly Savings</h3>
+                                        </div>
+
+                                        <div class="reportGroupCards">
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Current Month Savings</span>
+                                                    <strong id="reportMonthlySavings">€0.00</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Average Monthly Savings</span>
+                                                    <strong id="reportAverageMonthlySavings">€0.00</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard">
+                                                <div class="reportCardInfo">
+                                                    <span>Best Saving Month</span>
+                                                    <strong id="reportBestSavingMonth">—</strong>
+                                                    <small id="reportBestSavingAmount">€0.00</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="reportGroupCards">
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Completed Goals</span>
-                                            <strong id="reportCompletedGoals">0</strong>
-                                        </div>
+                                <div class="reportSection">
+                                    <div class="reportSectionHeader">
+                                        <h3>Goal Progress</h3>
+                                        <p>See how close you are to reaching each savings goal.</p>
                                     </div>
 
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Most Active Goal</span>
-                                            <strong id="reportMostActiveGoal">—</strong>
-                                        </div>
+                                    <div id="reportGoalProgress" class="reportGoalProgress"></div>
+                                </div>
+
+                                <div class="reportSection">
+                                    <div class="reportSectionHeader">
+                                        <h3>Money Over Time</h3>
+                                        <p>See how your total savings have changed over time.</p>
                                     </div>
 
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Average Amount Added</span>
-                                            <strong id="reportAverageAdded">€0.00</strong>
-                                        </div>
-                                    </div>
+                                    <div id="reportMoneyOverTime" class="reportMoneyOverTime"></div>
                                 </div>
                             </div>
 
-                            <!-- MONTHLY SAVINGS -->
-                            <div class="reportGroup">
-                                <div class="reportGroupHeader">
-                                    <h3>Monthly Savings</h3>
+                            <!-- REPORTS AD SIDEBAR -->
+                            <aside class="pageAdSidebar">
+                                <div class="pageAdContainer">
+                                    <span>Advertisement</span>
                                 </div>
-
-                                <div class="reportGroupCards">
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Current Month Savings</span>
-                                            <strong id="reportMonthlySavings">€0.00</strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Average Monthly Savings</span>
-                                            <strong id="reportAverageMonthlySavings">€0.00</strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="reportCard">
-                                        <div class="reportCardInfo">
-                                            <span>Best Saving Month</span>
-                                            <strong id="reportBestSavingMonth">—</strong>
-                                            <small id="reportBestSavingAmount">€0.00</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="reportSection">
-                            <div class="reportSectionHeader">
-                                <h3>Goal Progress</h3>
-                                <p>See how close you are to reaching each savings goal.</p>
-                            </div>
-
-                            <div id="reportGoalProgress" class="reportGoalProgress"></div>
-                        </div>
-
-                        <div class="reportSection">
-                            <div class="reportSectionHeader">
-                                <h3>Money Over Time</h3>
-                                <p>See how your total savings have changed over time.</p>
-                            </div>
-
-                            <div id="reportMoneyOverTime" class="reportMoneyOverTime"></div>
+                            </aside>
                         </div>
                     </div>
 

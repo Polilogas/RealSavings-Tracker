@@ -1,0 +1,78 @@
+RealSavings Tracker
+Third-Party Assets
+
+This project uses third-party SVG icons under their respective licenses.
+
+MIT
+- transfer-article
+  Made by Google Cloud
+  https://cloud.google.com/icons
+
+- lightbulb-article
+  Made by Microsoft
+  https://github.com/microsoft/vscode-codicons
+
+- target-article
+  Made by Radix UI
+  https://github.com/radix-ui/icons
+
+- refresh-article
+  Made by Elusive Icons
+  https://elusiveicons.com
+
+- checklist-article
+  Made by Microsoft
+  https://github.com/microsoft/vscode-codicons
+
+- question-article
+  Made by GitLab
+  https://gitlab.com/gitlab-org/gitlab-svgs
+
+- savings-article
+  Made by VMware
+  https://github.com/vmware/clarity-assets
+
+
+Apache License
+- chart-article
+  Made by Vaadin
+  https://github.com/vaadin/vaadin-icons
+
+- people-article
+  Made by ByteDance
+  https://github.com/bytedance/IconPark
+
+- repeat-article
+  Made by Iconscout
+  https://github.com/Iconscout/unicons
+
+
+CC BY
+- settings-article
+  Made by Tetrisly
+  https://tetrisly.gumroad.com/l/freeicons
+
+- two-people-having-a-conversation-article
+  Made by Soco-St
+  https://soco-st.com/
+
+- adjust-article
+  Made by Jo Szczepanska
+  https://joszczepanska.com/
+
+
+OFL
+- money-article
+  Made by GovIcons
+  https://github.com/540co/govicons
+
+
+CC0 / Public Domain
+- progress-article
+- travel-article
+- calendar-article
+- warning-article
+- calculator-article
+- coins-article
+- emergency-article
+- hand-holding-money-bills-article

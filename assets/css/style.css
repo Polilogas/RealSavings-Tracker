@@ -57,7 +57,7 @@ input {
 }
 
 .leftSidebar .pageInfo .pageIcon {
-    width: 48px;
+    width: 70px;
     height: 48px;
     display: flex;
     align-items: center;
@@ -2011,6 +2011,14 @@ input[type="button"]:disabled {
     .mobileAdContainer {
         display: flex;
     }
+
+    .pageWithAdSidebar {
+        display: block;
+    }
+
+    .pageAdSidebar {
+        display: none;
+    }
 }
 
 /* MOBILE */
@@ -2383,4 +2391,31 @@ input[type="button"]:disabled {
         padding: 18px;
     }
 
+}
+
+.pageWithAdSidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.pageMainContent {
+    min-width: 0;
+}
+
+.pageAdSidebar {
+    width: 300px;
+}
+
+.pageAdContainer {
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6f8;
+    border-radius: 12px;
+    color: #9a9da3;
+    font-size: 12px;
 }

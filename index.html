@@ -5,32 +5,35 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>RealSavings Tracker</title>
+        <title>RealSavings Tracker – Free Savings Goal Tracker</title>
+
+        <meta name="description" content="RealSavings Tracker is a free savings goal tracker that helps you set goals, track your savings, and see your progress toward your targets.">
+
+        <link rel="canonical" href="https://realsavingstracker.com/">
+
+        <!-- OPEN GRAPH -->
+        <meta property="og:title" content="RealSavings Tracker – Free Savings Goal Tracker">
+        <meta property="og:description" content="Set savings goals, track your progress, and see how long it could take to reach your target with RealSavings Tracker.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://realsavingstracker.com/">
+        <meta property="og:image" content="https://realsavingstracker.com/assets/images/PiggyBank_Icon.svg">
+
+        <!-- TWITTER / X -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="RealSavings Tracker – Free Savings Goal Tracker">
+        <meta name="twitter:description" content="Set savings goals, track your progress, and see how long it could take to reach your target.">
+        <meta name="twitter:image" content="https://realsavingstracker.com/assets/images/PiggyBank_Icon.svg">
+
         <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
-        <link href="./assets/css/landing.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="./assets/css/landing.css" rel="stylesheet">
+        <link href="./assets/css/components.css" rel="stylesheet">
     </head>
 
     <body>
 
         <!-- HEADER -->
-        <header>
-            <div class="logo">
-                <div class="logoIcon">
-                    <img src="./assets/images/PiggyBank_Icon.svg"
-                        alt="RealSavings Tracker logo">
-                </div>
-                <span>RealSavings Tracker</span>
-            </div>
-
-            <nav>
-                <a href="#howItWorks">How It Works</a>
-                <a href="#savingsCalculator">Calculator</a>
-                <a href="#goalExamples">Savings Goals</a>
-            </nav>
-
-            <a href="./app.html" class="startSavingButton">Start Saving</a>
-        </header>
+        <div id="header"></div>
 
         <!-- MAIN CONTENT -->
         <main>
@@ -38,8 +41,8 @@
             <section class="hero">
                 <div class="heroContent">
                     <span class="heroLabel">SAVE SMARTER</span>
-                    <h1>Turn your savings goals into reality.</h1>
-                    <p>Create goals, track your progress, and watch your savings grow.</p>
+                    <h1>Track your savings goals and reach your targets.</h1>
+                    <p>Set savings goals, track your progress, and see how long it could take to reach your target.</p>
                     <a href="./app.html" class="heroButton">Start Saving</a>
                 </div>
 
@@ -47,7 +50,7 @@
                     <div class="heroGoalCard">
                         <div class="heroGoalInfo">
                             <div class="heroGoalPicture">
-                                <img src="./assets/images/travel.jpeg" alt="An image of an airplane flies over Mount Fuji with a red sun behind it. The airplane has a Japanese flag on its tail.">
+                                <img draggable="false" src="./assets/images/travel.jpeg" alt="Airplane flying over Mount Fuji with the Japanese flag on its tail">
                             </div>
 
                             <div class="heroGoalDetails">
@@ -78,7 +81,7 @@
                 <div class="sectionHeading">
                     <span>HOW IT WORKS</span>
                     <h2>Saving doesn't have to be complicated.</h2>
-                    <p>RealSavings Tracker helps you turn a goal into a simple plan.</p>
+                    <p>RealSavings Tracker helps you set savings goals, track your progress, and turn your plans into achievable targets.</p>
                 </div>
 
                 <div class="steps">
@@ -152,7 +155,7 @@
                 <div class="exampleGoals">
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img src="./assets/images/travelExample.jpg" alt="An image of a dark gray suitcase, a passport, and a navy toiletry bag are placed on a wooden deck with a tropical beach and ocean in the background. Palm trees frame the scene, suggesting a vacation destination.">
+                            <img draggable="false" src="./assets/images/travelExample.jpg" alt="Suitcase and passport beside a tropical beach.">
                         </div>
 
                         <div class="exampleGoalInfo">
@@ -163,7 +166,7 @@
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img src="./assets/images/technologyExample.jpg" alt="An image of a smartphone and a pair of headphones are placed on a wooden table near a window. A small potted plant is visible in the background.">
+                            <img draggable="false" src="./assets/images/technologyExample.jpg" alt="Smartphone and headphones on a table.">
                         </div>
 
                         <div class="exampleGoalInfo">
@@ -174,7 +177,7 @@
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img src="./assets/images/homeExample.jpg" alt="An image of a bright and airy living room features a comfortable sofa with decorative pillows and a throw. A small wooden coffee table holds a book and a mug, set on a jute rug in front of a large window.">
+                            <img draggable="false" src="./assets/images/homeExample.jpg" alt="Bright living room with a sofa and coffee table.">
                         </div>
 
                         <div class="exampleGoalInfo">
@@ -185,7 +188,7 @@
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img src="./assets/images/EmergencyFundExample.jpg" alt="An image of a glass jar filled with coins and a few dollar bills sits on a wooden table. Several loose coins are scattered on the table in front of the jar, with a small potted plant and keys in the background.">
+                            <img draggable="false" src="./assets/images/EmergencyFundExample.jpg" alt="Savings jar filled with coins and cash.">
                         </div>
 
                         <div class="exampleGoalInfo">
@@ -208,40 +211,9 @@
         </main>
 
         <!-- FOOTER -->
-        <footer>
-            <div class="footerMain">
-                <div class="footerBrand">
-                    <div class="footerLogo">
-                        <img src="./assets/images/PiggyBank_Icon.svg" alt="RealSavings Tracker logo">
-                        <span>RealSavings Tracker</span>
-                    </div>
+        <div id="footer"></div>
 
-                    <p>A simple way to plan, track, and reach your savings goals.</p>
-
-                </div>
-
-                <div class="footerLinks">
-                    <div class="footerColumn">
-                        <h3>RealSavings Tracker</h3>
-                        <a href="#howItWorks">How It Works</a>
-                        <a href="#savingsCalculator">Calculator</a>
-                        <a href="#goalExamples">Savings Goals</a>
-                        <a href="./app.html">Start Saving</a>
-                    </div>
-
-                    <div class="footerColumn">
-                        <h3>Legal</h3>
-                        <a href="./privacy.html">Privacy Policy</a>
-                        <a href="./terms.html">Terms of Use</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footerBottom">
-                <span>© 2026 RealSavings Tracker. All rights reserved.</span>
-            </div>
-        </footer>
-
+        <script src="./assets/script/components.js"></script>
         <script src="./assets/script/landing.js"></script>
     </body>
 </html>
