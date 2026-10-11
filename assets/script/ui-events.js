@@ -96,11 +96,41 @@ function setupUIEvents() {
 
     // IMPORT DATA
     document.querySelector("#importDataButton").addEventListener("click", function() {
-        document.querySelector("#importDataInput").click();
+        closeAllWindows();
+        closeAllGoalMenus();
+
+        document.querySelector("#darkOverlay").classList.add("darkOverlay");
+        document.querySelector("#importConfirmWindow").classList.remove("hidden");
+        document.querySelector("#confirmImportButton").focus();
+    });
+
+    document.querySelector("#confirmImportButton").addEventListener("click", function() {
+        closeAllWindows();
+
+        let fileInput = document.querySelector("#importDataInput");
+
+        // Reset so the same file can be selected again.
+        fileInput.value = "";
+        fileInput.click();
+    });
+
+    document.querySelector("#cancelImportButton").addEventListener("click", function() {
+        closeAllWindows();
     });
 
     document.querySelector("#importDataInput").addEventListener("change", function() {
-        importData(this.files[0]);
+        let file = this.files[0];
+
+        if (file) {
+            importData(file);
+        }
+
+        // Allow the same file to be selected on the next attempt.
+        this.value = "";
+    });
+
+    document.querySelector("#cancelImportButtonSecondary").addEventListener("click", function() {
+        closeAllWindows();
     });
 
     // ADD MONEY

@@ -1,4 +1,37 @@
 // GOALS
+// MONTHLY SAVINGS NEEDED
+function getMonthlySavingsNeeded(goal) {
+    if (!goal.endDate) {
+        return null;
+    }
+
+    let remainingAmount = roundMoney(
+        Number(goal.targetAmount) - Number(goal.currentAmount)
+    );
+
+    if (remainingAmount <= 0) {
+        return null;
+    }
+
+    let today = getCurrentDate();
+
+    if (goal.endDate < today) {
+        return "overdue";
+    }
+
+    let todayParts = today.split("-").map(Number);
+    let endDateParts = goal.endDate.split("-").map(Number);
+
+    let monthsRemaining =
+        (endDateParts[0] - todayParts[0]) * 12 +
+        (endDateParts[1] - todayParts[1]);
+
+    // If the deadline is this month, there is one month left to save.
+    monthsRemaining = Math.max(1, monthsRemaining);
+
+    return remainingAmount / monthsRemaining;
+}
+
 // RENDER GOALS
 function renderGoals() {
     let goalsContainer = document.querySelector("#activeGoals");
@@ -86,6 +119,32 @@ function renderGoals() {
                                     <img src="./assets/images/calendar.svg" alt="calendar icon" draggable="false">
                                     <p>Finish:${goal.endDate || ""}</p>
                                 </div>
+
+                                ${(() => {
+                                    let monthlySavings = getMonthlySavingsNeeded(goal);
+
+                                    if (monthlySavings === null) {
+                                        return `
+                                            <p class="monthlySavingsNeeded placeholder" aria-hidden="true">
+                                                &nbsp;
+                                            </p>
+                                        `;
+                                    }
+
+                                    if (monthlySavings === "overdue") {
+                                        return `
+                                            <p class="monthlySavingsNeeded overdue">
+                                                Deadline passed — update your finish date.
+                                            </p>
+                                        `;
+                                    }
+
+                                    return `
+                                        <p class="monthlySavingsNeeded">
+                                            Save €${converNumberToCurrency(monthlySavings)} / month
+                                        </p>
+                                    `;
+                                })()}
                             </div>
                         </div>
 
@@ -97,6 +156,7 @@ function renderGoals() {
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="progressInfo">
                         <p><span class="currentSavings">€${converNumberToCurrency(goal.currentAmount)}</span> / €${converNumberToCurrency(goal.targetAmount)}</p>

@@ -32,3 +32,27 @@ function showMoneyFeedback(type) {
         feedbackContainer.innerHTML = "";
     }, 1400);
 }
+
+// IMPORT FEEDBACK
+function showImportFeedback(type, message) {
+    let feedbackContainer = document.querySelector("#importFeedback");
+
+    if (!feedbackContainer) {
+        return;
+    }
+
+    feedbackContainer.textContent = message;
+    feedbackContainer.className = "";
+    feedbackContainer.classList.add("importFeedback", type);
+    feedbackContainer.classList.remove("hidden");
+
+    // Clear any previous dismissal timer by replacing the element's content.
+    if (feedbackContainer.dismissTimer) {
+        clearTimeout(feedbackContainer.dismissTimer);
+    }
+
+    feedbackContainer.dismissTimer = setTimeout(function() {
+        feedbackContainer.textContent = "";
+        feedbackContainer.className = "";
+    }, 5000);
+}

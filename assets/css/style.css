@@ -705,9 +705,11 @@ p.quotesForLeftSidebar {
 
 .dates {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     margin-top: 12px;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .startDate,
@@ -2425,4 +2427,110 @@ input[type="button"]:disabled {
     border-radius: 12px;
     color: #9a9da3;
     font-size: 12px;
+}
+
+/* MONTHLY SAVINGS NEEDED */
+
+.monthlySavingsNeeded {/* min-height: 44px; */margin: 12px 0 0;padding: 9px 12px;border: 1px solid #dceaff;border-radius: 8px;background-color: #f6faff;color: #4b82e8;font-size: 1rem;font-weight: 600;line-height: 1.5;/* width: 100%; *//* min-height: 44px; *//* flex-shrink: 0; */}
+
+.monthlySavingsNeeded.overdue {
+border-color: #f5d6d8;
+background-color: #fff5f5;
+color: #b4232f;
+}
+
+.monthlySavingsNeeded.placeholder {
+visibility: hidden;
+}
+
+
+
+/* IMPORT CONFIRMATION */
+
+.importConfirmContent {
+    padding: 20px;
+}
+
+.importConfirmContent > p {
+    margin: 0 0 22px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.importConfirmButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.importConfirmButtons button {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid #dbe3ed;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #475569;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.importConfirmButtons #confirmImportButton {
+    border-color: #2563eb;
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.importConfirmButtons button:hover {
+    filter: brightness(0.96);
+}
+
+
+/* IMPORT FEEDBACK */
+
+#importFeedback:empty {
+    display: none;
+}
+
+.importFeedback {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    width: min(380px, calc(100vw - 40px));
+    padding: 14px 18px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 28px rgba(31, 41, 55, 0.12);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.importFeedback.success {
+    border-color: #b7e4c7;
+    color: #187443;
+}
+
+.importFeedback.error {
+    border-color: #f1bfc3;
+    color: #b4232f;
+}
+
+@media (max-width: 500px) {
+    .importFeedback {
+        top: 12px;
+        right: 12px;
+        width: calc(100vw - 24px);
+    }
+
+    .importConfirmButtons {
+        flex-direction: column-reverse;
+    }
+
+    .importConfirmButtons button {
+        width: 100%;
+    }
 }

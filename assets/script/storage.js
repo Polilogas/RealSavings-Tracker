@@ -59,18 +59,61 @@ function exportData() {
 
 // IMPORT DATA
 function importData(file) {
+    if (!file) {
+        return;
+    }
+
     const reader = new FileReader();
 
     reader.onload = function(event) {
+        let previousData = saveSmartData;
+
         try {
             const importedData = JSON.parse(event.target.result);
 
-            if (!importedData.goals || !Array.isArray(importedData.goals)) {
-                importedData.goals = [];
+            // Validate the backup before changing existing data.
+            if (
+                !importedData ||
+                typeof importedData !== "object" ||
+                Array.isArray(importedData) ||
+                !Array.isArray(importedData.goals) ||
+                !Array.isArray(importedData.transactions)
+            ) {
+                throw new Error("This file is not a valid RealSavings Tracker backup.");
             }
 
-            if (!importedData.transactions || !Array.isArray(importedData.transactions)) {
-                importedData.transactions = [];
+            // Validate goal records.
+            const validGoals = importedData.goals.every(function(goal) {
+                return (
+                    goal &&
+                    typeof goal === "object" &&
+                    typeof goal.id === "string" &&
+                    typeof goal.name === "string" &&
+                    Number.isFinite(Number(goal.currentAmount)) &&
+                    Number(goal.currentAmount) >= 0 &&
+                    Number.isFinite(Number(goal.targetAmount)) &&
+                    Number(goal.targetAmount) > 0
+                );
+            });
+
+            if (!validGoals) {
+                throw new Error("The backup contains invalid savings goals.");
+            }
+
+            // Validate transaction records.
+            const validTransactions = importedData.transactions.every(
+                function(transaction) {
+                    return (
+                        transaction &&
+                        typeof transaction === "object" &&
+                        transaction.goalId !== undefined &&
+                        Number.isFinite(Number(transaction.amount))
+                    );
+                }
+            );
+
+            if (!validTransactions) {
+                throw new Error("The backup contains invalid transactions.");
             }
 
             if (typeof importedData.darkMode !== "boolean") {
@@ -81,11 +124,32 @@ function importData(file) {
             saveData();
 
             renderGoals();
+            renderTransactions();
             updateScreenWithLatestData();
 
+            showImportFeedback(
+                "success",
+                "Your data was imported successfully."
+            );
+
         } catch (error) {
-            console.error("Could not import SaveSmart data:", error);
+            // Restore the in-memory data if anything fails.
+            saveSmartData = previousData;
+
+            console.error("Could not import RealSavings Tracker data:", error);
+
+            showImportFeedback(
+                "error",
+                error.message || "Import failed. Please try another backup file."
+            );
         }
+    };
+
+    reader.onerror = function() {
+        showImportFeedback(
+            "error",
+            "The selected file could not be read. Please try again."
+        );
     };
 
     reader.readAsText(file);

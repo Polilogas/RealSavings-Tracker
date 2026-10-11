@@ -468,8 +468,40 @@
         <!-- MONEY FEEDBACK -->
         <div id="moneyFeedback"></div>
 
+        <!-- IMPORT FEEDBACK -->
+        <div id="importFeedback" role="status" aria-live="polite"></div>
+
         <!-- DARK OVERLAY -->
         <div id="darkOverlay"></div>
+
+        <!-- IMPORT CONFIRMATION WINDOW -->
+        <div id="importConfirmWindow" class="popupWindow hidden" role="dialog"
+            aria-modal="true" aria-labelledby="importConfirmTitle">
+
+            <div class="windowHeader">
+                <h2 id="importConfirmTitle">Import Data</h2>
+                <button type="button" class="closeWindow" id="cancelImportButton"
+                    aria-label="Cancel import">×</button>
+            </div>
+
+            <div class="importConfirmContent">
+                <p>
+                    Importing a backup will replace your current savings goals
+                    and transactions. Make sure you've exported a backup of your
+                    current data if you want to keep it.
+                </p>
+
+                <div class="importConfirmButtons">
+                    <button type="button" id="cancelImportButtonSecondary">
+                        Cancel
+                    </button>
+
+                    <button type="button" id="confirmImportButton">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- ADD NEW GOAL WINDOW -->
         <div class="newGoalForm popupWindow hidden">
