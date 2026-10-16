@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact RealSavings Tracker</title>
+    <meta name="description" content="Contact RealSavings Tracker with questions, feedback, or reports about the website.">
+    <link rel="canonical" href="https://realsavingstracker.com/contact.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact RealSavings Tracker">
+    <meta property="og:description" content="Questions or feedback? Get in touch with RealSavings Tracker.">
+    <meta property="og:url" content="https://realsavingstracker.com/contact.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Contact RealSavings Tracker">
+    <meta name="twitter:description" content="Get in touch with RealSavings Tracker.">
+
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link href="./assets/css/components.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --contact-blue: #2563eb;
+            --contact-blue-dark: #1d4ed8;
+            --contact-blue-light: #eff6ff;
+            --contact-blue-border: #dbeafe;
+            --contact-text: #202938;
+            --contact-muted: #64748b;
+            --contact-border: #e8edf4;
+        }
+
+        .contactPage,
+        .contactPage * {
+            box-sizing: border-box;
+        }
+
+        .contactPage {
+            min-height: 62vh;
+            padding: 66px 20px 82px;
+            background:
+                radial-gradient(ellipse at 50% 0%, #eaf2ff 0, transparent 42%),
+                #ffffff;
+            color: var(--contact-text);
+            font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        .contactContainer {
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .contactEyebrow {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--contact-blue);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .contactPage h1 {
+            margin: 0 0 14px;
+            font-size: clamp(34px, 6vw, 44px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .contactIntro {
+            max-width: 470px;
+            margin: 0 auto 30px;
+            color: var(--contact-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .contactCard {
+            padding: 30px;
+            border: 1px solid var(--contact-border);
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 12px 36px rgba(30, 64, 175, 0.06);
+        }
+
+        .contactCard h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .contactCard > p {
+            margin: 0 0 20px;
+            color: var(--contact-muted);
+            font-size: 14px;
+        }
+
+        .contactEmail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 15px 16px;
+            border: 1px solid var(--contact-blue-border);
+            border-radius: 12px;
+            background: var(--contact-blue-light);
+        }
+
+        .contactEmailAddress {
+            min-width: 0;
+            color: var(--contact-blue-dark);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+            text-decoration: none;
+        }
+
+        .contactEmailAddress:hover {
+            text-decoration: underline;
+        }
+
+        .contactEmailButton {
+            display: inline-flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 0 15px;
+            border-radius: 9px;
+            background: var(--contact-blue);
+            color: #ffffff;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .contactEmailButton:hover {
+            background: var(--contact-blue-dark);
+        }
+
+        .contactEmailButton:focus-visible,
+        .contactEmailAddress:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .contactReasons {
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid #edf1f6;
+        }
+
+        .contactReasons h2 {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .contactReasons ul {
+            display: grid;
+            gap: 9px;
+            margin: 0;
+            padding-left: 20px;
+            color: var(--contact-muted);
+            font-size: 14px;
+        }
+
+        .contactPrivacy {
+            margin: 18px 2px 0;
+            color: var(--contact-muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .contactPrivacy strong {
+            color: #475569;
+        }
+
+        @media (max-width: 480px) {
+            .contactPage {
+                padding: 48px 16px 60px;
+            }
+
+            .contactCard {
+                padding: 22px 18px;
+                border-radius: 16px;
+            }
+
+            .contactEmail {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .contactEmailButton {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contactEmailButton {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <main class="contactPage">
+        <div class="contactContainer">
+            <span class="contactEyebrow">CONTACT</span>
+            <h1>Get in touch.</h1>
+            <p class="contactIntro">
+                Have a question, noticed something that could be improved,
+                or want to share feedback? You can reach out by email.
+            </p>
+
+            <section class="contactCard" aria-labelledby="contactEmailHeading">
+                <h2 id="contactEmailHeading">Send an email</h2>
+                <p>
+                    Email is the best way to get in touch about RealSavings Tracker.
+                </p>
+
+                <div class="contactEmail">
+                    <a class="contactEmailAddress"
+                       href="mailto:hexplorer.meridianapps@gmail.com">
+                        hexplorer.meridianapps@gmail.com
+                    </a>
+
+                    <a class="contactEmailButton"
+                       href="mailto:hexplorer.meridianapps@gmail.com">
+                        Email me
+                    </a>
+                </div>
+
+                <div class="contactReasons">
+                    <h2>You can contact me about</h2>
+                    <ul>
+                        <li>Questions about using the tracker</li>
+                        <li>Feedback or suggestions for improvement</li>
+                        <li>Technical problems or broken features</li>
+                        <li>Website content or corrections</li>
+                    </ul>
+                </div>
+            </section>
+
+            <p class="contactPrivacy">
+                <strong>A small privacy reminder:</strong> Please do not
+                include passwords, payment details, or other sensitive
+                personal information in your email.
+            </p>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="./assets/script/components.js"></script>
+</body>
+</html>

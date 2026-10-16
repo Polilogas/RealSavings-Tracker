@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About RealSavings Tracker</title>
+    <meta name="description" content="Learn about RealSavings Tracker, an independent project designed to make setting savings goals and tracking progress simpler.">
+    <link rel="canonical" href="https://realsavingstracker.com/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About RealSavings Tracker">
+    <meta property="og:description" content="A simple, approachable way to plan your savings and keep track of your goals.">
+    <meta property="og:url" content="https://realsavingstracker.com/about.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About RealSavings Tracker">
+    <meta name="twitter:description" content="Discover the idea behind RealSavings Tracker.">
+
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link href="./assets/css/components.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --about-blue: #2563eb;
+            --about-blue-dark: #1d4ed8;
+            --about-blue-light: #eff6ff;
+            --about-blue-border: #dbeafe;
+            --about-text: #202938;
+            --about-muted: #64748b;
+            --about-background: #f8fafc;
+            --about-white: #ffffff;
+            --about-border: #e8edf4;
+        }
+
+        .aboutPage,
+        .aboutPage * {
+            box-sizing: border-box;
+        }
+
+        .aboutPage {
+            font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+            color: var(--about-text);
+            background: var(--about-white);
+            line-height: 1.7;
+        }
+
+        .aboutContainer {
+            width: min(100% - 40px, 900px);
+            margin: 0 auto;
+        }
+
+        .aboutIntro {
+            padding: 76px 0 66px;
+            background:
+                radial-gradient(ellipse at 85% 10%, #dbeafe 0, transparent 35%),
+                linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);
+        }
+
+        .aboutEyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 7px 12px;
+            border: 1px solid var(--about-blue-border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--about-blue-dark);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .aboutEyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--about-blue);
+        }
+
+        .aboutIntro h1 {
+            max-width: 720px;
+            margin: 0 0 20px;
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.15;
+            letter-spacing: -1.6px;
+            font-weight: 800;
+        }
+
+        .aboutIntro h1 span {
+            color: var(--about-blue);
+        }
+
+        .aboutLead {
+            max-width: 660px;
+            margin: 0;
+            color: var(--about-muted);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .aboutSection {
+            padding: 62px 0;
+        }
+
+        .aboutSection + .aboutSection {
+            border-top: 1px solid #f0f3f8;
+        }
+
+        .aboutSection h2 {
+            margin: 0 0 18px;
+            font-size: clamp(25px, 3vw, 32px);
+            line-height: 1.3;
+            letter-spacing: -0.6px;
+        }
+
+        .aboutSection p {
+            margin: 0 0 16px;
+            color: var(--about-muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .aboutSection p:last-child {
+            margin-bottom: 0;
+        }
+
+        .aboutStory {
+            max-width: 760px;
+        }
+
+        .aboutCallout {
+            margin-top: 28px;
+            padding: 22px 24px;
+            border: 1px solid var(--about-blue-border);
+            border-radius: 16px;
+            background: var(--about-blue-light);
+        }
+
+        .aboutCallout p {
+            color: #334155;
+        }
+
+        .aboutCallout strong {
+            color: var(--about-blue-dark);
+        }
+
+        .aboutSteps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .aboutStep {
+            padding: 23px 20px;
+            border: 1px solid var(--about-border);
+            border-radius: 16px;
+            background: var(--about-white);
+        }
+
+        .aboutStepNumber {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 17px;
+            border-radius: 11px;
+            background: var(--about-blue-light);
+            color: var(--about-blue);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .aboutStep h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .aboutStep p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+        .aboutIndie {
+            padding: 26px;
+            border: 1px solid var(--about-border);
+            border-radius: 18px;
+            background: var(--about-background);
+        }
+
+        .aboutIndie h2 {
+            font-size: 24px;
+        }
+
+        .aboutIndie p {
+            margin-bottom: 0;
+        }
+
+        .aboutClosing {
+            padding: 0 0 76px;
+        }
+
+        .aboutClosingCard {
+            padding: 34px;
+            border: 1px solid var(--about-blue-border);
+            border-radius: 22px;
+            background: var(--about-blue-light);
+            text-align: center;
+        }
+
+        .aboutClosingCard h2 {
+            margin: 0 0 10px;
+            font-size: clamp(24px, 4vw, 32px);
+            line-height: 1.3;
+        }
+
+        .aboutClosingCard p {
+            max-width: 530px;
+            margin: 0 auto 23px;
+            color: var(--about-muted);
+            font-size: 15px;
+        }
+
+        .aboutButton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 45px;
+            padding: 0 22px;
+            border: 1px solid var(--about-blue);
+            border-radius: 10px;
+            background: var(--about-blue);
+            color: #ffffff;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .aboutButton:hover {
+            background: var(--about-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .aboutButton:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 700px) {
+            .aboutIntro {
+                padding: 56px 0 48px;
+            }
+
+            .aboutLead {
+                font-size: 16px;
+            }
+
+            .aboutSection {
+                padding: 46px 0;
+            }
+
+            .aboutSteps {
+                grid-template-columns: 1fr;
+            }
+
+            .aboutStep {
+                padding: 21px;
+            }
+
+            .aboutClosing {
+                padding-bottom: 55px;
+            }
+
+            .aboutClosingCard {
+                padding: 28px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .aboutButton {
+                transition: none;
+            }
+
+            .aboutButton:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <main class="aboutPage">
+        <section class="aboutIntro">
+            <div class="aboutContainer">
+                <span class="aboutEyebrow">A LITTLE ABOUT US</span>
+                <h1>Saving money should feel <span>more manageable.</span></h1>
+                <p class="aboutLead">
+                    RealSavings Tracker is an independent project built around
+                    a simple idea: when you have a clear goal and can see your
+                    progress, planning your savings can feel less overwhelming.
+                </p>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer aboutStory">
+                <h2>Why RealSavings Tracker exists</h2>
+                <p>
+                    Saving for something important can be difficult when your
+                    plans are scattered across notes, calculations, and
+                    different accounts. It can also be hard to tell how far
+                    you have come or how much you still need.
+                </p>
+                <p>
+                    RealSavings Tracker brings the process into one simple
+                    place. You can give a savings goal a name, set a target,
+                    record the money you add or remove, and follow your
+                    progress over time.
+                </p>
+
+                <div class="aboutCallout">
+                    <p>
+                        <strong>The idea is simple:</strong> make your goals
+                        easier to understand, your progress easier to follow,
+                        and your next step easier to plan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer">
+                <h2>A straightforward way to plan your savings</h2>
+                <p>
+                    Whether you are planning a holiday, saving for a new
+                    device, preparing for an expense, or working toward
+                    another personal goal, the process starts with a few
+                    simple steps.
+                </p>
+
+                <div class="aboutSteps">
+                    <article class="aboutStep">
+                        <div class="aboutStepNumber">01</div>
+                        <h3>Choose your goal</h3>
+                        <p>
+                            Give your goal a name and decide how much you
+                            want to save.
+                        </p>
+                    </article>
+
+                    <article class="aboutStep">
+                        <div class="aboutStepNumber">02</div>
+                        <h3>Record your progress</h3>
+                        <p>
+                            Keep track of money added to or removed from
+                            your savings goal.
+                        </p>
+                    </article>
+
+                    <article class="aboutStep">
+                        <div class="aboutStepNumber">03</div>
+                        <h3>See where you stand</h3>
+                        <p>
+                            Review your current amount, target, and progress
+                            as you work toward your goal.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer">
+                <div class="aboutIndie">
+                    <h2>Built independently, with a practical purpose</h2>
+                    <p>
+                        RealSavings Tracker is developed independently with
+                        an emphasis on clarity and ease of use. The aim is
+                        to make a useful everyday tool, keep the experience
+                        straightforward, and continue improving it over time.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="aboutClosing">
+            <div class="aboutContainer">
+                <div class="aboutClosingCard">
+                    <h2>Have a goal in mind?</h2>
+                    <p>
+                        Start by giving it a target. You can build a plan
+                        one step at a time.
+                    </p>
+                    <a class="aboutButton" href="./app.html">
+                        Explore the tracker
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="./assets/script/components.js"></script>
+</body>
+</html>

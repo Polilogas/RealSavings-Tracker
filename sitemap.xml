@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- Homepage -->
     <url>
         <loc>https://realsavingstracker.com/</loc>
     </url>
 
+    <!-- Main pages -->
     <url>
-        <loc>https://realsavingstracker.com/guides/</loc>
+        <loc>https://realsavingstracker.com/about.html</loc>
     </url>
 
+    <url>
+        <loc>https://realsavingstracker.com/contact.html</loc>
+    </url>
+
+    <url>
+        <loc>https://realsavingstracker.com/privacy.html</loc>
+    </url>
+
+    <url>
+        <loc>https://realsavingstracker.com/terms.html</loc>
+    </url>
+
+    <!-- Savings guides index -->
+    <url>
+        <loc>https://realsavingstracker.com/guides/</loc>
+        <lastmod>2026-10-16</lastmod>
+    </url>
+
+    <!-- Existing guides -->
     <url>
         <loc>https://realsavingstracker.com/guides/how-to-set-a-savings-goal.html</loc>
     </url>
@@ -22,12 +42,15 @@
         <loc>https://realsavingstracker.com/guides/how-to-build-an-emergency-fund.html</loc>
     </url>
 
+    <!-- New guides -->
     <url>
-        <loc>https://realsavingstracker.com/privacy.html</loc>
+        <loc>https://realsavingstracker.com/guides/how-to-save-money-on-a-low-income.html</loc>
+        <lastmod>2026-10-16</lastmod>
     </url>
 
     <url>
-        <loc>https://realsavingstracker.com/terms.html</loc>
+        <loc>https://realsavingstracker.com/guides/what-are-sinking-funds.html</loc>
+        <lastmod>2026-10-16</lastmod>
     </url>
 
 </urlset>

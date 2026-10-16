@@ -1,238 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Terms of Use | RealSavings Tracker</title>
+    <title>Terms of Use | RealSavings Tracker</title>
+    <meta name="description" content="Read the Terms of Use for RealSavings Tracker, including app limitations, savings estimates, user responsibilities, and third-party services.">
+    <link rel="canonical" href="https://realsavingstracker.com/terms.html">
 
-        <style>
-            * {
-                box-sizing: border-box;
-            }
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Terms of Use | RealSavings Tracker">
+    <meta property="og:description" content="The terms and limitations that apply when using RealSavings Tracker.">
+    <meta property="og:url" content="https://realsavingstracker.com/terms.html">
 
-            body {
-                margin: 0;
-                padding: 40px 20px;
-                background-color: #f3f6fa;
-                color: #334155;
-                font-family: Arial, sans-serif;
-                line-height: 1.7;
-            }
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link href="./assets/css/components.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-            .termsContainer {
-                width: 100%;
-                max-width: 850px;
-                margin: 0 auto;
-                padding: 40px;
-                background-color: #ffffff;
-                border: 1px solid #e5eaf0;
-                border-radius: 18px;
-                box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
-            }
+    <style>
+        .legalPage, .legalPage * { box-sizing: border-box; }
 
-            .termsHeader {
-                margin-bottom: 35px;
-                padding-bottom: 25px;
-                border-bottom: 1px solid #e5eaf0;
-            }
+        .legalPage {
+            --legal-blue: #2563eb;
+            --legal-blue-light: #eff6ff;
+            --legal-border: #e5eaf2;
+            --legal-text: #202938;
+            --legal-muted: #64748b;
+            color: var(--legal-text);
+            background: #fff;
+            font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+            line-height: 1.8;
+        }
 
-            .termsHeader h1 {
-                margin: 0 0 8px;
-                color: #1e293b;
-                font-size: 32px;
-            }
+        .legalIntro {
+            padding: 115px 20px 42px;
+            background: linear-gradient(180deg, #f3f7ff 0%, #fff 100%);
+        }
 
-            .termsHeader p {
-                margin: 0;
-                color: #64748b;
-                font-size: 14px;
-            }
+        .legalContainer {
+            width: min(100%, 820px);
+            margin: 0 auto;
+        }
 
-            .termsSection {
-                margin-bottom: 30px;
-            }
+        .legalEyebrow {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--legal-blue);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
 
-            .termsSection h2 {
-                margin: 0 0 10px;
-                color: #1e293b;
-                font-size: 20px;
-            }
+        .legalIntro h1 {
+            margin: 0 0 12px;
+            font-size: clamp(32px, 5vw, 44px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
 
-            .termsSection p {
-                margin: 0 0 12px;
-            }
+        .legalIntro p {
+            max-width: 660px;
+            margin: 0;
+            color: var(--legal-muted);
+            font-size: 15px;
+        }
 
-            .termsSection ul {
-                margin-top: 8px;
-                padding-left: 25px;
-            }
+        .legalUpdated {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 6px 11px;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            background: #fff;
+            color: #475569;
+            font-size: 12px;
+        }
 
-            .termsSection li {
-                margin-bottom: 6px;
-            }
+        .legalBody { padding: 38px 20px 76px; }
 
-            .termsContact {
-                padding: 18px 20px;
-                background-color: #eef6fe;
-                border-radius: 12px;
-            }
+        .legalNotice {
+            margin-bottom: 30px;
+            padding: 18px 20px;
+            border: 1px solid #dbeafe;
+            border-radius: 12px;
+            background: var(--legal-blue-light);
+            color: #334155;
+            font-size: 14px;
+        }
 
-            .termsContact a {
-                color: #2563eb;
-                text-decoration: none;
-                font-weight: 600;
-            }
+        .legalSection {
+            padding: 25px 0;
+            border-bottom: 1px solid #edf1f6;
+        }
 
-            .termsContact a:hover {
-                text-decoration: underline;
-            }
+        .legalSection:first-of-type { padding-top: 0; }
+        .legalSection:last-child { border-bottom: 0; }
 
-            .backLink {
-                display: inline-block;
-                margin-bottom: 20px;
-                color: #2563eb;
-                font-size: 14px;
-                font-weight: 600;
-                text-decoration: none;
-            }
+        .legalSection h2 {
+            margin: 0 0 12px;
+            font-size: 21px;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+        }
 
-            .backLink:hover {
-                text-decoration: underline;
-            }
+        .legalSection p {
+            margin: 0 0 12px;
+            color: var(--legal-muted);
+            font-size: 14px;
+        }
 
-            @media (max-width: 600px) {
+        .legalSection p:last-child { margin-bottom: 0; }
 
-                body {
-                    padding: 20px 12px;
-                }
+        .legalSection ul {
+            display: grid;
+            gap: 8px;
+            margin: 10px 0 14px;
+            padding-left: 22px;
+            color: var(--legal-muted);
+            font-size: 14px;
+        }
 
-                .termsContainer {
-                    padding: 25px 20px;
-                    border-radius: 14px;
-                }
+        .legalSection a {
+            color: var(--legal-blue);
+            overflow-wrap: anywhere;
+            text-underline-offset: 3px;
+        }
 
-                .termsHeader h1 {
-                    font-size: 26px;
-                }
+        .legalSection a:hover { color: #1d4ed8; }
 
-                .termsSection h2 {
-                    font-size: 18px;
-                }
+        .legalContact {
+            margin-top: 28px;
+            padding: 22px;
+            border: 1px solid var(--legal-border);
+            border-radius: 14px;
+            background: #f8fafc;
+        }
 
-                .termsSection {
-                    margin-bottom: 25px;
-                }
+        .legalContact h2 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
 
-            }
-        </style>
-    </head>
+        .legalContact p {
+            margin: 0 0 8px;
+            color: var(--legal-muted);
+            font-size: 14px;
+        }
 
-    <body>
-        <main class="termsContainer">
-            <a id="backToRealSavingsTracker">← Back to RealSavings Tracker</a>
+        .legalContact a {
+            color: var(--legal-blue);
+            overflow-wrap: anywhere;
+            font-weight: 600;
+        }
 
-            <header class="termsHeader">
+        .legalPage .legalIntro {
+            position: static;
+            top: auto;
+            z-index: auto;
+        }
+
+        @media (max-width: 600px) {
+            .legalIntro { padding: 42px 18px 32px; }
+            .legalBody { padding: 28px 18px 55px; }
+            .legalSection { padding: 21px 0; }
+            .legalSection h2 { font-size: 19px; }
+            .legalPage { margin-top: 20px; }
+            .legalUpdated { margin-top: 0px; }
+        }
+
+        @media (max-width: 500px) {
+            .legalPage, .legalPage * {  margin-top: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <main class="legalPage">
+        <header class="legalIntro">
+            <div class="legalContainer">
+                <span class="legalEyebrow">Using the website</span>
                 <h1>Terms of Use</h1>
-                <p>Last updated: September 30, 2026</p>
-            </header>
+                <p>
+                    These terms explain the basic conditions and limitations
+                    that apply when you visit RealSavings Tracker or use
+                    its savings-planning tools.
+                </p>
+                <span class="legalUpdated">Last updated: October 16, 2026</span>
+            </div>
+        </header>
 
-            <section class="termsSection">
-                <h2>1. Acceptance of these Terms</h2>
-                <p>By using RealSavings Tracker, you agree to these Terms of Use. If you do not agree with these terms, please do not use the application.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>2. About RealSavings Tracker</h2>
-                <p>RealSavings Tracker is a web application designed to help users organize and track personal savings goals and transactions.</p>
-                <p>RealSavings Tracker is provided as a tracking and organizational tool. It does not provide financial, investment, tax, legal, or other professional advice.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>3. Your Data</h2>
-
-                <p>RealSavings Tracker currently stores application data locally in your web browser.</p>
-                <p>You are responsible for the information you enter into RealSavings Tracker and for maintaining the security of your device, browser, and exported backup files.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>4. Accuracy of Information</h2>
-                <p>RealSavings Tracker provides tools for recording and displaying information that you enter.</p>
-                <p>You are responsible for checking that the amounts, dates, goal information, and other information you enter are accurate.</p>
-
-                <p>RealSavings Tracker should not be relied upon as the sole record of your financial information.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>5. Backups and Data Loss</h2>
-                <p>RealSavings Tracker provides data export and import functionality to help you create backups of your information.</p>
-                <p>You are responsible for maintaining copies of any important backup files.</p>
-
-                <p>Because RealSavings Tracker currently stores data locally in your browser, data may be lost if browser storage is cleared, the device is reset, the browser is changed, or other technical problems occur.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>6. Acceptable Use</h2>
-                <p>You agree to use RealSavings Tracker only for lawful purposes and in a way that does not interfere with the operation of the application or attempt to compromise its security.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>7. Availability</h2>
-                <p>We aim to keep RealSavings Tracker available and functioning properly, but we cannot guarantee that the application will always be available, uninterrupted, or free from errors.</p>
-                <p>Features may be changed, updated, temporarily unavailable, or discontinued.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>8. Third-Party Services and Advertisements</h2>
-                <p>RealSavings Tracker may use third-party services, including advertising services such as Google AdSense.</p>
-                <p>Third-party services are subject to their own terms, conditions, and privacy policies.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>9. Intellectual Property</h2>
-                <p>Unless otherwise stated, the RealSavings Tracker application, including its design, branding, and original content, belongs to RealSavings Tracker or its respective rights holders.</p>
-                <p>You may use RealSavings Tracker for its intended personal purposes, but you may not copy, reproduce, redistribute, or commercially exploit the application or its original content without appropriate permission.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>10. Disclaimer</h2>
-                <p>RealSavings Tracker is provided on an "as is" and "as available" basis.</p>
-                <p>We do not guarantee that RealSavings Tracker will meet every user's requirements or that it will always operate without interruptions or errors.</p>
-                <p>RealSavings Tracker is not responsible for financial decisions made by users based on information recorded or displayed in the application.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>11. Limitation of Liability</h2>
-                <p>To the extent permitted by applicable law, RealSavings Tracker and its creators will not be responsible for losses or damages arising from the use of, or inability to use, the application, including loss of locally stored data.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>12. Changes to these Terms</h2>
-                <p>These Terms of Use may be updated when RealSavings Tracker's features, services, or operation changes.</p>
-                <p>The "Last updated" date at the top of this page will be changed when significant updates are made.</p>
-            </section>
-
-            <section class="termsSection">
-                <h2>13. Contact</h2>
-
-                <div class="termsContact">
-                    <p>If you have questions about these Terms of Use, you can contact us at:</p>
-                    <a href="mailto:hexplorer.meridianapps@gmail.com">hexplorer.meridianapps@gmail.com</a>
+        <div class="legalBody">
+            <div class="legalContainer">
+                <div class="legalNotice">
+                    <strong>Please keep in mind:</strong> RealSavings Tracker
+                    is a planning and record-keeping tool. It does not hold
+                    your money, connect to your bank account, guarantee
+                    savings results, or provide personalized financial advice.
                 </div>
-            </section>
-        </main>
 
-        <script>
-            let backToRealSavingsTracker = document.querySelector("#backToRealSavingsTracker");
-            let params = new URLSearchParams(window.location.search);
-            let from = params.get("from");
+                <section class="legalSection">
+                    <h2>1. About these terms</h2>
+                    <p>
+                        These Terms of Use apply to your access to and use
+                        of the RealSavings Tracker website, savings app,
+                        and related content.
+                    </p>
+                    <p>
+                        By using the website or app, you agree to these
+                        terms. If you do not agree, please stop using
+                        the service.
+                    </p>
+                </section>
 
-            if (from === "app") {
-                backToRealSavingsTracker.href = "./app.html";
-            } else {
-                backToRealSavingsTracker.href = "./index.html";
-            }
-        </script>
+                <section class="legalSection">
+                    <h2>2. What RealSavings Tracker does</h2>
+                    <p>
+                        RealSavings Tracker provides tools to help you
+                        organize savings goals and record your progress.
+                        Available features may include setting target
+                        amounts and dates, recording money added or
+                        removed, viewing progress, calculating estimated
+                        timelines, and importing or exporting data.
+                    </p>
+                    <p>
+                        Features may change over time as the project is
+                        maintained and improved.
+                    </p>
+                </section>
 
-    </body>
+                <section class="legalSection">
+                    <h2>3. Savings calculations are estimates</h2>
+                    <p>
+                        Any savings calculator, projected completion date,
+                        progress percentage, or similar result is an
+                        estimate based on the information you enter and
+                        the assumptions used by the tool.
+                    </p>
+                    <p>
+                        Actual results may differ because your deposits,
+                        expenses, income, target amounts, and circumstances
+                        can change. Calculations may also be affected by
+                        incorrect inputs, rounding, date handling, or
+                        technical limitations.
+                    </p>
+                    <p>
+                        Estimated timelines do not guarantee that you will
+                        reach a goal by a particular date. Check the
+                        assumptions and figures yourself before relying
+                        on a result.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>4. Not financial advice</h2>
+                    <p>
+                        The website and its content are provided for general
+                        informational and organizational purposes only.
+                        They are not financial, investment, tax, legal, or
+                        other professional advice.
+                    </p>
+                    <p>
+                        RealSavings Tracker does not assess your complete
+                        financial situation or tell you what you personally
+                        should do with your money. You are responsible for
+                        your financial decisions. If you need advice for
+                        your circumstances, consider consulting a qualified
+                        professional.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>5. Your information and saved data</h2>
+                    <p>
+                        In the current version, savings goals and
+                        transactions are stored in your browser's local
+                        storage. The app does not require a RealSavings
+                        Tracker account or use a RealSavings Tracker
+                        database to store those records.
+                    </p>
+                    <p>
+                        Your saved data is not automatically synchronized
+                        across devices. You are responsible for keeping
+                        your own backups if you want to preserve your
+                        information.
+                    </p>
+                    <p>
+                        Exported JSON files may contain the information
+                        you entered into the app. Store these files
+                        securely and only share them with people you trust.
+                        Importing a file may change or replace data in
+                        the app, depending on the current implementation.
+                        Review the available controls and any confirmation
+                        messages before importing or deleting information.
+                    </p>
+                    <p>
+                        For more information about browser storage and
+                        third-party services, read our
+                        <a href="./privacy.html">Privacy Policy</a>.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>6. Your responsibilities</h2>
+                    <p>When using RealSavings Tracker, you agree to:</p>
+                    <ul>
+                        <li>Enter information as accurately as reasonably possible.</li>
+                        <li>Review calculations and records instead of assuming they are always correct.</li>
+                        <li>Keep backups of any data you want to preserve.</li>
+                        <li>Use the website lawfully and avoid attempting to disrupt its operation or security.</li>
+                        <li>Avoid submitting sensitive information that the app does not need, such as bank passwords or payment credentials.</li>
+                    </ul>
+                    <p>
+                        You are responsible for access to your device,
+                        browser, and any exported files containing your
+                        saved information.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>7. Availability and technical limitations</h2>
+                    <p>
+                        The website and app are provided on an
+                        as-available basis. We do not guarantee that they
+                        will always be accessible, uninterrupted, error-free,
+                        compatible with every device, or free from data loss.
+                    </p>
+                    <p>
+                        Features may be modified, temporarily unavailable,
+                        or discontinued. Browser updates, storage limits,
+                        device failures, network problems, and other
+                        technical issues may affect how the app works.
+                    </p>
+                    <p>
+                        You should not rely on the app as your only record
+                        of important financial information.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>8. Intellectual property</h2>
+                    <p>
+                        Unless otherwise stated, the website's original
+                        design, branding, text, and other original
+                        materials are owned by or used with permission
+                        by the project operator and are protected by
+                        applicable intellectual property laws.
+                    </p>
+                    <p>
+                        You may use the tool for personal savings planning.
+                        You may not copy, republish, or commercially
+                        redistribute substantial parts of the website's
+                        original content or design without appropriate
+                        permission, except where the law allows it.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>9. Third-party services and advertisements</h2>
+                    <p>
+                        The website may use third-party services, including
+                        advertising providers, externally hosted fonts,
+                        and links to other websites. These services may
+                        have their own terms, privacy policies, and
+                        availability conditions.
+                    </p>
+                    <p>
+                        We do not control all third-party content, services,
+                        advertisements, or external websites and are not
+                        responsible for their independent practices.
+                        The presence of an advertisement or link does not
+                        necessarily mean that we endorse the advertised
+                        product or external website.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>10. Limitation of liability</h2>
+                    <p>
+                        To the extent permitted by applicable law, the
+                        project operator is not responsible for indirect
+                        or consequential loss, lost data, or decisions
+                        made solely on the basis of estimates or general
+                        information provided by the website.
+                    </p>
+                    <p>
+                        Nothing in these terms excludes or limits any
+                        liability or consumer right that cannot legally
+                        be excluded or limited. Nothing here is intended
+                        to remove protections that apply to you under
+                        mandatory law.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>11. Changes to these terms</h2>
+                    <p>
+                        These terms may be updated when the website,
+                        features, or applicable requirements change.
+                        The latest version will be published on this page
+                        with its revision date. Continued use after an
+                        update is subject to applicable law and any
+                        requirements for notifying users or obtaining
+                        their agreement.
+                    </p>
+                </section>
+
+                <section class="legalSection">
+                    <h2>12. Applicable law</h2>
+                    <p>
+                        These terms are subject to applicable law.
+                        Nothing in this section is intended to deprive
+                        consumers of any mandatory legal protections
+                        available in their place of residence.
+                    </p>
+                </section>
+
+                <section class="legalContact">
+                    <h2>Questions about these terms?</h2>
+                    <p>
+                        If you have a question about using RealSavings
+                        Tracker, contact:
+                    </p>
+                    <a href="mailto:hexplorer.meridianapps@gmail.com">
+                        hexplorer.meridianapps@gmail.com
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="./assets/script/components.js"></script>
+</body>
 </html>
