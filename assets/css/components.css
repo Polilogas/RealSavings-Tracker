@@ -239,6 +239,24 @@ footer {
 
 }
 
+@media (max-width: 750px) and (min-width: 421px) {
+    header nav {
+        display: flex;
+        gap: 8px;
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    header nav a:not(.faqNavLink) {
+        display: none;
+    }
+
+    header nav .faqNavLink {
+        white-space: nowrap;
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 600px) {
 
     .footerLinks {
