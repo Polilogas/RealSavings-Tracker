@@ -30,7 +30,7 @@ function deleteAllData() {
 
     saveSmartData = { 
         goals: [], 
-        transactions: [] 
+        transactions: [], 
     };
 
     saveData();

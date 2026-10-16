@@ -348,6 +348,45 @@
                                     </div>
                                 </div>
 
+                                <section class="reportSection savingsCalendarSection" id="savingsCalendarSection">
+                                    <div class="reportSectionHeader">
+                                        <h3>Savings Calendar</h3>
+                                        <p>Explore deposits and withdrawals by date.</p>
+                                    </div>
+
+                                    <div class="savingsCalendarToolbar">
+                                        <div class="calendarViewSwitch" role="group" aria-label="Calendar view">
+                                            <button type="button" class="calendarViewButton active" data-calendar-view="yearly" aria-pressed="true">Yearly</button>
+                                            <button type="button" class="calendarViewButton" data-calendar-view="monthly" aria-pressed="false">Monthly</button>
+                                            <button type="button" class="calendarViewButton" data-calendar-view="week" aria-pressed="false">This week</button>
+                                        </div>
+
+                                        <div class="calendarPeriodControls" id="calendarPeriodControls">
+                                            <button type="button" class="calendarPeriodButton" data-calendar-action="previous" aria-label="Previous period">‹</button>
+                                            <strong id="calendarPeriodTitle"></strong>
+                                            <button type="button" class="calendarPeriodButton" data-calendar-action="next" aria-label="Next period">›</button>
+                                            <input type="month" id="calendarMonthPicker" aria-label="Choose month" class="hidden">
+                                        </div>
+                                    </div>
+
+                                    <div id="calendarHighlights" class="calendarHighlights" aria-live="polite"></div>
+                                    <div class="calendarLegend" aria-label="Calendar legend">
+                                        <span><i class="calendarLegendSwatch deposit"></i>Money added</span>
+                                        <span><i class="calendarLegendSwatch withdrawal"></i>Money withdrawn</span>
+                                    </div>
+
+                                    <div id="savingsCalendar" class="savingsCalendar" aria-live="polite"></div>
+
+                                    <div class="calendarDateDetails" aria-live="polite">
+                                        <div class="calendarDateDetailsHeader">
+                                            <div>
+                                                <h4 id="calendarSelectedDate">Select a date</h4>
+                                                <p id="calendarSelectedDateSummary"></p>
+                                            </div>
+                                        </div>
+                                        <div id="calendarDateTransactions" class="calendarDateTransactions"></div>
+                                    </div>
+                                </section>
                                 <div class="reportSection">
                                     <div class="reportSectionHeader">
                                         <h3>Goal Progress</h3>

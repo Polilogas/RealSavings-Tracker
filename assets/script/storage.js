@@ -27,6 +27,11 @@ function loadData() {
             data.transactions = [];
         }
 
+        if (Object.prototype.hasOwnProperty.call(data, "scheduledContributions")) {
+            delete data.scheduledContributions;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
         return data;
 
     } catch (error) {
@@ -115,11 +120,11 @@ function importData(file) {
             if (!validTransactions) {
                 throw new Error("The backup contains invalid transactions.");
             }
-
             if (typeof importedData.darkMode !== "boolean") {
                 importedData.darkMode = false;
             }
 
+            delete importedData.scheduledContributions;
             saveSmartData = importedData;
             saveData();
 

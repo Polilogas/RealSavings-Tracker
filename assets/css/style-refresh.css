@@ -1051,3 +1051,551 @@ label {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ---------- SAVINGS CALENDAR ---------- */
+
+.reportSummary {
+    margin-bottom: 26px;
+}
+
+.savingsCalendarSection {
+    margin-top: 0;
+}
+
+.savingsCalendarToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.calendarViewSwitch {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    background: var(--ss-background);
+    border: 1px solid var(--ss-border);
+    border-radius: 11px;
+}
+
+.calendarViewButton,
+.calendarPeriodButton {
+    min-height: 36px;
+    padding: 7px 12px;
+    color: var(--ss-text-secondary);
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.calendarViewButton:hover,
+.calendarPeriodButton:hover {
+    color: var(--ss-primary);
+    background: var(--ss-primary-light);
+}
+
+.calendarViewButton.active {
+    color: #ffffff;
+    background: var(--ss-primary);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.18);
+}
+
+.calendarPeriodControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.calendarPeriodControls strong {
+    min-width: 100px;
+    color: var(--ss-text);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.calendarPeriodButton {
+    width: 36px;
+    padding: 0;
+    border: 1px solid var(--ss-border);
+    background: var(--ss-surface);
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.calendarPeriodControls input[type="month"] {
+    min-height: 36px;
+    padding: 6px 9px;
+    color: var(--ss-text);
+    background: var(--ss-surface);
+    border: 1px solid var(--ss-border-strong);
+    border-radius: 8px;
+    font: inherit;
+    font-size: 0.82rem;
+}
+
+.calendarHighlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 14px;
+}
+
+.calendarHighlight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 140px;
+    padding: 10px 13px;
+    background: var(--ss-primary-light);
+    border: 1px solid var(--ss-primary-border);
+    border-radius: 10px;
+}
+
+.calendarHighlight span {
+    color: var(--ss-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.025em;
+}
+
+.calendarHighlight strong {
+    color: var(--ss-text);
+    font-size: 0.88rem;
+}
+
+.calendarLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 0 0 14px;
+    color: var(--ss-text-secondary);
+    font-size: 0.75rem;
+}
+
+.calendarLegend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calendarLegendSwatch {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 4px;
+}
+
+.calendarLegendSwatch.deposit {
+    background: #bbf7d0;
+}
+
+.calendarLegendSwatch.withdrawal {
+    background: #fecaca;
+}
+
+.savingsCalendar {
+    min-width: 0;
+}
+
+.yearlyCalendar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.calendarMonth {
+    min-width: 0;
+    padding: 11px;
+    background: #ffffff;
+    border: 1px solid var(--ss-border);
+    border-radius: 12px;
+}
+
+.calendarMonth.mostSavedMonth {
+    border-color: #86c99e;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.07);
+}
+
+.calendarMonthHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    min-height: 23px;
+}
+
+.calendarMonthJump {
+    padding: 0;
+    color: var(--ss-text);
+    background: transparent;
+    border: 0;
+    font-size: 0.82rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.calendarMonthJump:hover {
+    color: var(--ss-primary);
+}
+
+.calendarBestMonthLabel {
+    padding: 2px 5px;
+    color: #166534;
+    background: #dcfce7;
+    border-radius: 999px;
+    font-size: 0.56rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.calendarMonthNet {
+    min-height: 17px;
+    margin-top: 2px;
+    color: var(--ss-text-muted);
+    font-size: 0.62rem;
+    line-height: 1.2;
+}
+
+.calendarMonthGrid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    align-items: center;
+    text-align: center;
+}
+
+.compactGrid {
+    gap: 2px;
+}
+
+.calendarWeekday {
+    color: var(--ss-text-muted);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.compactGrid .calendarWeekday {
+    padding: 3px 0 4px;
+    font-size: 0.56rem;
+}
+
+.calendarDaySpacer {
+    aspect-ratio: 1;
+}
+
+.calendarDay {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1;
+    padding: 0;
+    color: var(--ss-text);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.calendarDay:hover {
+    border-color: var(--ss-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.calendarDay.selected {
+    border: 2px solid var(--ss-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+    font-weight: 800;
+}
+
+.calendarDay.hasDeposit {
+    color: #166534;
+}
+
+.calendarDay.hasWithdrawal {
+    color: #991b1b;
+}
+
+.calendarDay.compact {
+    font-size: clamp(0.54rem, 0.65vw, 0.69rem);
+}
+
+.singleMonthCalendar {
+    max-width: 720px;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid var(--ss-border);
+    border-radius: 12px;
+}
+
+.fullMonthGrid {
+    gap: 6px;
+}
+
+.fullMonthGrid > .calendarWeekday {
+    padding: 9px 4px;
+    font-size: 0.75rem;
+}
+
+.fullMonthGrid .calendarDay {
+    min-height: 42px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+}
+
+.fullMonthGrid .calendarDaySpacer {
+    aspect-ratio: auto;
+}
+
+.weekCalendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.calendarWeekCard {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 7px;
+    background: #ffffff;
+    border: 1px solid var(--ss-border);
+    border-radius: 11px;
+}
+
+.calendarWeekCard .calendarDay {
+    max-width: 44px;
+    background-color: #f8fafc;
+    font-size: 0.92rem;
+}
+
+.calendarWeekCard > small {
+    color: var(--ss-success);
+    font-size: 0.68rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.calendarWeekCard > small.withdrawalText {
+    color: var(--ss-danger);
+}
+
+.calendarDateDetails {
+    margin-top: 20px;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid var(--ss-border);
+    border-radius: 12px;
+}
+
+.calendarDateDetailsHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.calendarDateDetails h4 {
+    margin: 0;
+    color: var(--ss-text);
+    font-size: 0.95rem;
+}
+
+.calendarDateDetailsHeader p {
+    margin: 4px 0 0;
+    color: var(--ss-text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.calendarDateTransactions {
+    display: grid;
+    gap: 7px;
+}
+
+.calendarTransactionRow {
+    display: grid;
+    grid-template-columns: minmax(75px, 0.55fr) minmax(0, 1.7fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--ss-background);
+    border: 1px solid var(--ss-border);
+    border-left: 3px solid var(--ss-success);
+    border-radius: 8px;
+}
+
+.calendarTransactionRow.withdrawal {
+    border-left-color: var(--ss-danger);
+}
+
+.calendarTransactionType {
+    color: var(--ss-text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.calendarTransactionGoal {
+    min-width: 0;
+    color: var(--ss-text);
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+}
+
+.calendarTransactionRow strong {
+    color: var(--ss-success);
+    font-size: 0.82rem;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.calendarTransactionRow.withdrawal strong {
+    color: var(--ss-danger);
+}
+
+.calendarEmptyState {
+    margin: 0;
+    padding: 12px;
+    color: var(--ss-text-muted);
+    background: var(--ss-background);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@media (max-width: 1050px) {
+    .yearlyCalendar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    }
+
+@media (max-width: 700px) {
+    .yearlyCalendar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .weekCalendar {
+        gap: 5px;
+    }
+
+    .calendarWeekCard {
+        padding: 8px 3px;
+    }
+
+    }
+
+@media (max-width: 520px) {
+    .reportSummary {
+        margin-bottom: 20px;
+    }
+
+    .savingsCalendarToolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendarViewSwitch {
+        width: 100%;
+    }
+
+    .calendarViewButton {
+        flex: 1;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .calendarPeriodControls {
+        align-self: flex-end;
+    }
+
+    .yearlyCalendar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calendarMonth {
+        padding: 12px;
+    }
+
+    .calendarMonthGrid.compactGrid {
+        gap: 4px;
+    }
+
+    .calendarMonthGrid.compactGrid .calendarDay {
+        min-height: 28px;
+        font-size: 0.74rem;
+    }
+
+    .calendarMonthGrid.compactGrid .calendarWeekday {
+        font-size: 0.68rem;
+    }
+
+    .calendarMonthNet {
+        font-size: 0.69rem;
+    }
+
+    .weekCalendar {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .weekCalendar .calendarWeekCard:nth-child(n+5) {
+        grid-column: span 1;
+    }
+
+    .fullMonthGrid {
+        gap: 3px;
+    }
+
+    .fullMonthGrid > .calendarWeekday {
+        padding: 6px 1px;
+        font-size: 0.65rem;
+    }
+
+    .fullMonthGrid .calendarDay {
+        min-height: 38px;
+    }
+
+    .calendarTransactionRow {
+        grid-template-columns: 1fr auto;
+        gap: 4px 8px;
+    }
+
+    .calendarTransactionType {
+        grid-column: 1;
+    }
+
+    .calendarTransactionGoal {
+        grid-column: 1;
+        grid-row: 2;
+        font-size: 0.76rem;
+    }
+
+    .calendarTransactionRow strong {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        font-size: 0.76rem;
+    }
+
+    }
+
+
+@media (max-width: 360px) {
+    .yearlyCalendar {
+        grid-template-columns: 1fr;
+    }
+}

@@ -148,6 +148,7 @@ function updateReports() {
 
     renderReportGoalProgress();
     renderReportMoneyOverTime();
+    renderSavingsCalendar();
 }
 
 
@@ -568,3 +569,399 @@ function renderReportMoneyOverTime() {
 
     container.innerHTML = chartHTML;
 }
+
+// SAVINGS CALENDAR
+let savingsCalendarView = "yearly";
+let savingsCalendarYear = new Date().getFullYear();
+let savingsCalendarMonth = new Date().getMonth();
+let savingsCalendarSelectedDate = calendarDateKey(new Date());
+let savingsCalendarEventsBound = false;
+
+function calendarDateKey(date) {
+    return date.getFullYear() + "-" +
+        String(date.getMonth() + 1).padStart(2, "0") + "-" +
+        String(date.getDate()).padStart(2, "0");
+}
+
+function calendarDateFromKey(dateKey) {
+    let parts = dateKey.split("-").map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function calendarDateForTransaction(transaction) {
+    let date = new Date(transaction.date);
+    return Number.isNaN(date.getTime()) ? "" : calendarDateKey(date);
+}
+
+function calendarMonthKey(year, month) {
+    return year + "-" + String(month + 1).padStart(2, "0");
+}
+
+function calendarFormatDate(dateKey, options = { day: "numeric", month: "long", year: "numeric" }) {
+    return calendarDateFromKey(dateKey).toLocaleDateString(undefined, options);
+}
+
+function calendarStartOfWeek(date) {
+    let start = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    let offset = (start.getDay() + 6) % 7;
+    start.setDate(start.getDate() - offset);
+    return start;
+}
+
+function calendarTransactionsByDate() {
+    let byDate = {};
+
+    (saveSmartData.transactions || []).forEach(function(transaction) {
+        let dateKey = calendarDateForTransaction(transaction);
+        if (!dateKey) return;
+
+        if (!byDate[dateKey]) {
+            byDate[dateKey] = { transactions: [], added: 0, withdrawn: 0 };
+        }
+
+        let amount = Number(transaction.amount);
+        byDate[dateKey].transactions.push(transaction);
+
+        if (amount > 0) {
+            byDate[dateKey].added += amount;
+        } else if (amount < 0) {
+            byDate[dateKey].withdrawn += Math.abs(amount);
+        }
+    });
+
+    return byDate;
+}
+
+function calendarVisibleDateRange() {
+    if (savingsCalendarView === "monthly") {
+        return {
+            start: calendarDateKey(new Date(savingsCalendarYear, savingsCalendarMonth, 1)),
+            end: calendarDateKey(new Date(savingsCalendarYear, savingsCalendarMonth + 1, 0))
+        };
+    }
+
+    if (savingsCalendarView === "week") {
+        let start = calendarStartOfWeek(new Date());
+        let end = new Date(start);
+        end.setDate(end.getDate() + 6);
+        return { start: calendarDateKey(start), end: calendarDateKey(end) };
+    }
+
+    return {
+        start: calendarDateKey(new Date(savingsCalendarYear, 0, 1)),
+        end: calendarDateKey(new Date(savingsCalendarYear, 11, 31))
+    };
+}
+
+function calendarHeatColor(added, withdrawn, maximum) {
+    let intensity = maximum > 0 ? Math.max(0.12, Math.min(1, Math.max(added, withdrawn) / maximum)) : 0;
+    let lightness = Math.round(97 - intensity * 25);
+
+    if (added > 0 && withdrawn > 0) {
+        let depositLightness = Math.round(97 - Math.max(0.12, added / maximum) * 25);
+        let withdrawalLightness = Math.round(97 - Math.max(0.12, withdrawn / maximum) * 25);
+        return "background: linear-gradient(135deg, hsl(138, 48%, " + depositLightness + "%), hsl(0, 76%, " + withdrawalLightness + "%));";
+    }
+
+    if (added > 0) {
+        return "background-color: hsl(138, 48%, " + lightness + "%);";
+    }
+
+    if (withdrawn > 0) {
+        return "background-color: hsl(0, 76%, " + lightness + "%);";
+    }
+
+    return "";
+}
+
+function calendarDayButton(dateKey, totals, maximum, compact) {
+    let dayNumber = calendarDateFromKey(dateKey).getDate();
+    let activity = totals[dateKey] || { added: 0, withdrawn: 0, transactions: [] };
+    let classes = ["calendarDay"];
+
+    if (compact) classes.push("compact");
+    if (activity.added > 0) classes.push("hasDeposit");
+    if (activity.withdrawn > 0) classes.push("hasWithdrawal");
+    if (dateKey === savingsCalendarSelectedDate) classes.push("selected");
+
+    let description = calendarFormatDate(dateKey);
+    if (activity.added) description += ", added " + formatCurrency(activity.added);
+    if (activity.withdrawn) description += ", withdrew " + formatCurrency(activity.withdrawn);
+
+    return '<button type="button" class="' + classes.join(" ") + '" data-calendar-date="' + dateKey +
+        '" aria-label="' + escapeHTML(description) + '" title="' + escapeHTML(description) + '" style="' +
+        calendarHeatColor(activity.added, activity.withdrawn, maximum) + '">' +
+        '<span>' + dayNumber + '</span>' +
+        '</button>';
+}
+function calendarMonthMarkup(year, month, totals, maximum, isBestMonth) {
+    let firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
+    let daysInMonth = new Date(year, month + 1, 0).getDate();
+    let monthKey = calendarMonthKey(year, month);
+    let monthNet = 0;
+
+    Object.keys(totals).forEach(function(dateKey) {
+        if (dateKey.slice(0, 7) === monthKey) {
+            monthNet += totals[dateKey].added - totals[dateKey].withdrawn;
+        }
+    });
+
+    let dayHeadings = ["M", "T", "W", "T", "F", "S", "S"].map(function(day) {
+        return '<span class="calendarWeekday" aria-hidden="true">' + day + '</span>';
+    }).join("");
+
+    let cells = [];
+    for (let blank = 0; blank < firstDay; blank++) {
+        cells.push('<span class="calendarDaySpacer" aria-hidden="true"></span>');
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        let dateKey = calendarDateKey(new Date(year, month, day));
+        cells.push(calendarDayButton(dateKey, totals, maximum, true));
+    }
+
+    let bestLabel = isBestMonth ? '<span class="calendarBestMonthLabel">Most saved</span>' : "";
+    let bestClass = isBestMonth ? " mostSavedMonth" : "";
+
+    return '<article class="calendarMonth' + bestClass + '">' +
+        '<div class="calendarMonthHeader">' +
+            '<button type="button" class="calendarMonthJump" data-calendar-month="' + monthKey + '">' +
+                new Date(year, month, 1).toLocaleDateString(undefined, { month: "long" }) +
+            '</button>' +
+            bestLabel +
+        '</div>' +
+        '<div class="calendarMonthNet">' + formatCurrency(monthNet) + ' net</div>' +
+        '<div class="calendarMonthGrid compactGrid">' + dayHeadings + cells.join("") + '</div>' +
+    '</article>';
+}
+function calendarMonthSummary(year, month, totals) {
+    let added = 0;
+    let withdrawn = 0;
+    let prefix = calendarMonthKey(year, month);
+
+    Object.keys(totals).forEach(function(dateKey) {
+        if (dateKey.slice(0, 7) === prefix) {
+            added += totals[dateKey].added;
+            withdrawn += totals[dateKey].withdrawn;
+        }
+    });
+
+    return { added: added, withdrawn: withdrawn, net: added - withdrawn };
+}
+
+function renderSavingsCalendar() {
+    let section = document.querySelector("#savingsCalendarSection");
+    if (!section) return;
+
+    if (!savingsCalendarEventsBound) {
+        section.addEventListener("click", handleSavingsCalendarClick);
+        document.querySelector("#calendarMonthPicker").addEventListener("change", function(event) {
+            let parts = event.target.value.split("-").map(Number);
+            if (!parts[0] || !parts[1]) return;
+            savingsCalendarYear = parts[0];
+            savingsCalendarMonth = parts[1] - 1;
+            savingsCalendarView = "monthly";
+            renderSavingsCalendar();
+        });
+        savingsCalendarEventsBound = true;
+    }
+
+    let totals = calendarTransactionsByDate();
+    let range = calendarVisibleDateRange();
+    let maximum = 0;
+
+    Object.keys(totals).forEach(function(dateKey) {
+        if (dateKey >= range.start && dateKey <= range.end) {
+            maximum = Math.max(maximum, totals[dateKey].added, totals[dateKey].withdrawn);
+        }
+    });
+
+    let periodTitle = document.querySelector("#calendarPeriodTitle");
+    let previousButton = document.querySelector('[data-calendar-action="previous"]');
+    let nextButton = document.querySelector('[data-calendar-action="next"]');
+    let monthPicker = document.querySelector("#calendarMonthPicker");
+    let yearView = savingsCalendarView === "yearly";
+    let monthView = savingsCalendarView === "monthly";
+    let weekView = savingsCalendarView === "week";
+
+    document.querySelectorAll("[data-calendar-view]").forEach(function(button) {
+        let active = button.dataset.calendarView === savingsCalendarView;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    previousButton.classList.toggle("hidden", weekView);
+    nextButton.classList.toggle("hidden", weekView);
+    monthPicker.classList.toggle("hidden", !monthView);
+    monthPicker.value = calendarMonthKey(savingsCalendarYear, savingsCalendarMonth);
+
+    if (yearView) {
+        periodTitle.textContent = String(savingsCalendarYear);
+        periodTitle.classList.remove("hidden");
+    } else if (monthView) {
+        periodTitle.textContent = new Date(savingsCalendarYear, savingsCalendarMonth, 1).toLocaleDateString(undefined, { month: "long", year: "numeric" });
+        periodTitle.classList.add("hidden");
+    } else {
+        periodTitle.textContent = calendarFormatDate(range.start, { day: "numeric", month: "short" }) + " – " +
+            calendarFormatDate(range.end, { day: "numeric", month: "short", year: "numeric" });
+        periodTitle.classList.remove("hidden");
+    }
+
+    let monthlyNets = [];
+    if (yearView) {
+        for (let month = 0; month < 12; month++) {
+            let summary = calendarMonthSummary(savingsCalendarYear, month, totals);
+            monthlyNets.push({ month: month, net: summary.net });
+        }
+    }
+
+    let mostSaved = monthlyNets.reduce(function(best, item) {
+        return item.net > best.net ? item : best;
+    }, { month: -1, net: 0 });
+
+    let highlights = document.querySelector("#calendarHighlights");
+    if (yearView) {
+        highlights.innerHTML = mostSaved.month >= 0
+            ? '<div class="calendarHighlight"><span>Most saved this year</span><strong>' +
+                new Date(savingsCalendarYear, mostSaved.month, 1).toLocaleDateString(undefined, { month: "long" }) +
+                ' · ' + formatCurrency(mostSaved.net) + '</strong></div>'
+            : '<div class="calendarHighlight"><span>Most saved this year</span><strong>No deposits recorded yet</strong></div>';
+    } else {
+        let summary = monthView
+            ? calendarMonthSummary(savingsCalendarYear, savingsCalendarMonth, totals)
+            : Object.keys(totals).reduce(function(result, dateKey) {
+                if (dateKey >= range.start && dateKey <= range.end) {
+                    result.added += totals[dateKey].added;
+                    result.withdrawn += totals[dateKey].withdrawn;
+                }
+                return result;
+            }, { added: 0, withdrawn: 0 });
+        summary.net = summary.added - summary.withdrawn;
+        highlights.innerHTML = '<div class="calendarHighlight"><span>Added</span><strong>' + formatCurrency(summary.added) +
+            '</strong></div><div class="calendarHighlight"><span>Withdrawn</span><strong>' + formatCurrency(summary.withdrawn) +
+            '</strong></div><div class="calendarHighlight"><span>Net savings</span><strong>' + formatCurrency(summary.net) + '</strong></div>';
+    }
+
+    let calendar = document.querySelector("#savingsCalendar");
+    if (yearView) {
+        calendar.className = "savingsCalendar yearlyCalendar";
+        calendar.innerHTML = Array.from({ length: 12 }, function(_, month) {
+            return calendarMonthMarkup(savingsCalendarYear, month, totals, maximum, mostSaved.month === month && mostSaved.net > 0);
+        }).join("");
+    } else if (monthView) {
+        calendar.className = "savingsCalendar singleMonthCalendar";
+        calendar.innerHTML = '<div class="calendarMonthGrid fullMonthGrid">' +
+            ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(function(day) {
+                return '<span class="calendarWeekday">' + day + '</span>';
+            }).join("") +
+            calendarMonthCells(savingsCalendarYear, savingsCalendarMonth, totals, maximum) +
+            '</div>';
+    } else {
+        calendar.className = "savingsCalendar weekCalendar";
+        let start = calendarDateFromKey(range.start);
+        calendar.innerHTML = Array.from({ length: 7 }, function(_, index) {
+            let date = new Date(start);
+            date.setDate(date.getDate() + index);
+            let dateKey = calendarDateKey(date);
+            let activity = totals[dateKey] || { added: 0, withdrawn: 0, transactions: [] };
+            return '<div class="calendarWeekCard">' +
+                '<span class="calendarWeekday">' + date.toLocaleDateString(undefined, { weekday: "short" }) + '</span>' +
+                calendarDayButton(dateKey, totals, maximum, false) +
+                '<small>' + (activity.added ? '+' + formatCurrency(activity.added) : '—') + '</small>' +
+                (activity.withdrawn ? '<small class="withdrawalText">−' + formatCurrency(activity.withdrawn) + '</small>' : '') +
+            '</div>';
+        }).join("");
+    }
+
+    renderCalendarDateDetails(totals);
+}
+
+function calendarMonthCells(year, month, totals, maximum) {
+    let offset = (new Date(year, month, 1).getDay() + 6) % 7;
+    let days = new Date(year, month + 1, 0).getDate();
+    let html = "";
+
+    for (let blank = 0; blank < offset; blank++) {
+        html += '<span class="calendarDaySpacer" aria-hidden="true"></span>';
+    }
+
+    for (let day = 1; day <= days; day++) {
+        let key = calendarDateKey(new Date(year, month, day));
+        html += calendarDayButton(key, totals, maximum, false);
+    }
+
+    return html;
+}
+
+function renderCalendarDateDetails(totals) {
+    let selectedKey = savingsCalendarSelectedDate;
+    let dateTotals = totals[selectedKey] || { added: 0, withdrawn: 0, transactions: [] };
+
+    document.querySelector("#calendarSelectedDate").textContent =
+        calendarFormatDate(selectedKey, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
+    let summaryParts = [];
+    if (dateTotals.added) summaryParts.push("Added " + formatCurrency(dateTotals.added));
+    if (dateTotals.withdrawn) summaryParts.push("Withdrawn " + formatCurrency(dateTotals.withdrawn));
+    document.querySelector("#calendarSelectedDateSummary").textContent =
+        summaryParts.length ? summaryParts.join(" · ") : "No savings activity on this date.";
+
+    let transactions = dateTotals.transactions.slice().sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    let rows = transactions.map(function(transaction) {
+        let amount = Number(transaction.amount);
+        let goal = saveSmartData.goals.find(function(item) { return item.id === transaction.goalId; });
+        let goalName = goal?.name || transaction.goalName || "Savings goal";
+        let isDeposit = amount >= 0;
+        return '<div class="calendarTransactionRow ' + (isDeposit ? "deposit" : "withdrawal") + '">' +
+            '<span class="calendarTransactionType">' + (isDeposit ? "Added" : "Withdrawn") + '</span>' +
+            '<span class="calendarTransactionGoal">' + escapeHTML(goalName) + '</span>' +
+            '<strong>' + (isDeposit ? "+" : "−") + formatCurrency(Math.abs(amount)) + '</strong>' +
+            '</div>';
+    });
+
+    document.querySelector("#calendarDateTransactions").innerHTML = rows.length
+        ? rows.join("")
+        : '<p class="calendarEmptyState">No transactions on this date.</p>';
+}
+function handleSavingsCalendarClick(event) {
+    let viewButton = event.target.closest("[data-calendar-view]");
+    if (viewButton) {
+        savingsCalendarView = viewButton.dataset.calendarView;
+        renderSavingsCalendar();
+        return;
+    }
+
+    let monthButton = event.target.closest("[data-calendar-month]");
+    if (monthButton) {
+        let parts = monthButton.dataset.calendarMonth.split("-").map(Number);
+        savingsCalendarYear = parts[0];
+        savingsCalendarMonth = parts[1] - 1;
+        savingsCalendarView = "monthly";
+        renderSavingsCalendar();
+        return;
+    }
+
+    let dateButton = event.target.closest("[data-calendar-date]");
+    if (dateButton) {
+        savingsCalendarSelectedDate = dateButton.dataset.calendarDate;
+        renderSavingsCalendar();
+        return;
+    }
+
+    let actionButton = event.target.closest("[data-calendar-action]");
+    if (actionButton) {
+        if (savingsCalendarView === "yearly") {
+            savingsCalendarYear += actionButton.dataset.calendarAction === "next" ? 1 : -1;
+        } else if (savingsCalendarView === "monthly") {
+            let monthDate = new Date(savingsCalendarYear, savingsCalendarMonth +
+                (actionButton.dataset.calendarAction === "next" ? 1 : -1), 1);
+            savingsCalendarYear = monthDate.getFullYear();
+            savingsCalendarMonth = monthDate.getMonth();
+        }
+        renderSavingsCalendar();
+    }
+}
+
