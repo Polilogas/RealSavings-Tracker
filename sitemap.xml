@@ -4,6 +4,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://realsavingstracker.com/</loc>
+        <lastmod>2026-10-16</lastmod>
     </url>
 
     <!-- Main pages -->
@@ -21,6 +22,11 @@
 
     <url>
         <loc>https://realsavingstracker.com/terms.html</loc>
+    </url>
+
+    <url>
+        <loc>https://realsavingstracker.com/faq.html</loc>
+        <lastmod>2026-10-16</lastmod>
     </url>
 
     <!-- Savings guides index -->

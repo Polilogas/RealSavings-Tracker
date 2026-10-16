@@ -34,6 +34,8 @@ function getMonthlySavingsNeeded(goal) {
 
 let selectedGoalSort = "default";
 let goalSortListenerAdded = false;
+let selectedGoalPriority = "all";
+let goalPriorityListenerAdded = false;
 
 // A goal is behind plan when its savings are below the straight-line pace
 // needed to reach its target between the start date and its deadline.
@@ -136,14 +138,11 @@ function renderGoals() {
     let goalsContainer = document.querySelector("#activeGoals");
     let completedGoalsContainer = document.querySelector("#completedGoals");
     let completedGoalsSection = document.querySelector("#completedGoalsSection");
-    let behindGoalsContainer = document.querySelector("#behindGoals");
-    let behindGoalsSection = document.querySelector("#behindGoalsSection");
-    let onTrackGoalsSection = document.querySelector("#onTrackGoalsSection");
     let goalSortSelect = document.querySelector("#goalSortSelect");
+    let goalPrioritySelect = document.querySelector("#goalPrioritySelect");
 
     goalsContainer.innerHTML = "";
     completedGoalsContainer.innerHTML = "";
-    behindGoalsContainer.innerHTML = "";
 
     if (goalSortSelect && !goalSortListenerAdded) {
         goalSortSelect.addEventListener("change", function() {
@@ -153,15 +152,26 @@ function renderGoals() {
         goalSortListenerAdded = true;
     }
 
+    if (goalPrioritySelect && !goalPriorityListenerAdded) {
+        goalPrioritySelect.addEventListener("change", function() {
+            selectedGoalPriority = goalPrioritySelect.value;
+            renderGoals();
+        });
+        goalPriorityListenerAdded = true;
+    }
+
     if (goalSortSelect) {
         goalSortSelect.value = selectedGoalSort;
+    }
+
+    if (goalPrioritySelect) {
+        goalPrioritySelect.value = selectedGoalPriority;
     }
 
     let searchInput = document.querySelector("#goalSearchInput");
     let searchText = searchInput.value.trim().toLowerCase();
 
     let activeGoals = [];
-    let behindGoals = [];
     let completedGoals = [];
     let matchingGoals = [];
 
@@ -176,28 +186,22 @@ function renderGoals() {
 
         if (goal.completedDate) {
             completedGoals.push(goal);
-        } else if (isGoalBehindPlan(goal)) {
-            behindGoals.push(goal);
         } else {
             activeGoals.push(goal);
         }
     }
 
     activeGoals = sortGoals(activeGoals, selectedGoalSort);
-    behindGoals = sortGoals(behindGoals, selectedGoalSort);
     completedGoals = sortGoals(completedGoals, selectedGoalSort);
-    let goalsToRender = behindGoals.concat(activeGoals);
 
-    behindGoalsSection.classList.toggle("hidden", behindGoals.length === 0);
-    onTrackGoalsSection.classList.toggle(
-        "hidden",
-        activeGoals.length === 0 && behindGoals.length > 0
-    );
-    document.querySelector("#behindGoalCount").textContent = behindGoals.length;
-    document.querySelector("#activeGoalCount").textContent = activeGoals.length;
+    if (selectedGoalPriority === "behind-first") {
+        activeGoals.sort(function(firstGoal, secondGoal) {
+            return Number(isGoalBehindPlan(secondGoal)) - Number(isGoalBehindPlan(firstGoal));
+        });
+    }
 
     // ACTIVE GOALS
-    if (goalsToRender.length === 0) {
+    if (activeGoals.length === 0) {
 
         if (saveSmartData.goals.length === 0) {
             goalsContainer.innerHTML = `
@@ -215,9 +219,9 @@ function renderGoals() {
 
     } else {
 
-        for (let i = 0; i < goalsToRender.length; i++) {
+        for (let i = 0; i < activeGoals.length; i++) {
 
-            let goal = goalsToRender[i];
+            let goal = activeGoals[i];
             let isBehindPlan = isGoalBehindPlan(goal);
             let percentage = 0;
 
@@ -311,11 +315,10 @@ function renderGoals() {
                 </div>
             `;
 
-            let destination = isBehindPlan ? behindGoalsContainer : goalsContainer;
-            destination.insertAdjacentHTML("beforeend", newGoal);
+            goalsContainer.insertAdjacentHTML("beforeend", newGoal);
 
             if (isBehindPlan) {
-                let goalCard = destination.lastElementChild;
+                let goalCard = goalsContainer.lastElementChild;
                 let attentionBadge = document.createElement("div");
                 goalCard.classList.add("goalBehindPlan");
                 attentionBadge.className = "goalAttentionBadge";
@@ -325,7 +328,7 @@ function renderGoals() {
         }
     }
 
-    if (goalsToRender.length === 0 && matchingGoals.length > 0) {
+    if (activeGoals.length === 0 && matchingGoals.length > 0) {
         let emptyMessage = goalsContainer.querySelector(".noGoals p");
         if (emptyMessage) {
             emptyMessage.textContent = "No active savings goals. Completed goals are listed below.";

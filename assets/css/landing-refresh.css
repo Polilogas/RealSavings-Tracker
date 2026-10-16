@@ -613,3 +613,487 @@ select:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ---------- EDITORIAL HOMEPAGE SECTIONS ---------- */
+
+.journeySteps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    width: min(100%, 1050px);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.journeyStep {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    align-content: start;
+    gap: 14px;
+    min-width: 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-strong);
+}
+
+.journeyStepNumber {
+    padding-top: 2px;
+    color: var(--brand-primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.journeyStep h3,
+.savingsUseCases h3,
+.trustFacts h3 {
+    margin: 0 0 7px;
+    color: var(--text-primary);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.4;
+}
+
+.journeyStep p,
+.savingsUseCases p,
+.trustFacts p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.sectionAction {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.textActionLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-primary);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+.textActionLink:hover {
+    color: var(--brand-primary-hover);
+    text-decoration: underline;
+}
+
+.calculatorCard {
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.045);
+}
+
+.calculatorResult {
+    margin-top: 0;
+    padding: 18px 8px 18px 22px;
+    background: transparent;
+    border: 0;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    text-align: left;
+}
+
+.calculatorResult > span {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.calculatorResult strong,
+.calculatorResult p {
+    text-align: left;
+}
+
+.calculatorNote {
+    width: min(100%, 920px);
+    margin: 17px auto 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.planLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(44px, 8vw, 110px);
+    width: min(100%, 1050px);
+    margin: 0 auto;
+}
+
+.sectionHeading.editorialHeading {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+}
+
+.editorialHeading h2 {
+    font-size: clamp(28px, 3.3vw, 38px);
+}
+
+.editorialHeading .textActionLink {
+    margin-top: 22px;
+}
+
+.savingsUseCases {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.savingsUseCases li {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: start;
+    gap: 15px;
+    padding: 17px 18px;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.savingsUseCases li:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
+}
+
+.savingsUseCases li > span {
+    padding-top: 3px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+}
+
+.trustSection {
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.trustSectionIntro {
+    width: min(100%, 1050px);
+    margin: 0 auto;
+}
+
+.trustSectionIntro > span,
+.trustFacts article > span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--brand-primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.trustSectionIntro h2 {
+    margin: 0 0 12px;
+    color: var(--text-primary);
+    font-size: clamp(27px, 3.2vw, 36px);
+    letter-spacing: -0.045em;
+    line-height: 1.2;
+}
+
+.trustSectionIntro p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.trustFacts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100%, 1050px);
+    margin: 36px auto 0;
+}
+
+.trustFacts article {
+    min-width: 0;
+    padding: 4px 28px;
+    border-left: 1px solid #cbd8e9;
+}
+
+.trustFacts article:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.trustFacts article:last-child {
+    padding-right: 0;
+}
+
+.trustFacts article > span {
+    margin-bottom: 9px;
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+.trustFacts h3 {
+    font-size: 15px;
+}
+
+.trustFinePrint {
+    width: min(100%, 1050px);
+    margin: 27px auto 0;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.trustFinePrint a {
+    color: var(--brand-primary);
+    font-weight: 650;
+    text-underline-offset: 3px;
+}
+
+.guideSection {
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.guideSectionIntro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    width: min(100%, 1050px);
+    margin: 0 auto 35px;
+}
+
+.guideIndexLink {
+    flex: 0 0 auto;
+    margin-bottom: 5px;
+}
+
+.guideList {
+    width: min(100%, 1050px);
+    margin: 0 auto;
+    padding: 0;
+    border-top: 1px solid var(--border);
+    list-style: none;
+}
+
+.guideList li {
+    border-bottom: 1px solid var(--border);
+}
+
+.guideList li a {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 24px;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.guideNumber {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.guideLinkText strong,
+.guideLinkText small {
+    display: block;
+}
+
+.guideLinkText strong {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.guideLinkText small {
+    margin-top: 3px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.guideArrow {
+    color: var(--brand-primary);
+    font-size: 17px;
+    text-align: right;
+    transition: transform var(--transition-fast);
+}
+
+.guideList li a:hover .guideLinkText strong {
+    color: var(--brand-primary);
+}
+
+.guideList li a:hover .guideArrow {
+    transform: translate(2px, -2px);
+}
+
+.finalCta {
+    padding: clamp(48px, 7vw, 74px) var(--page-gutter);
+}
+
+.finalCtaContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    width: min(100%, 1050px);
+    margin: 0 auto;
+    padding: 0;
+    color: var(--text-primary);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.finalCtaContent > div:first-child {
+    max-width: 660px;
+}
+
+.finalCtaContent > span,
+.finalCtaContent div > span {
+    color: var(--brand-primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.finalCtaContent h2 {
+    margin: 10px 0 12px;
+    color: var(--text-primary);
+    font-size: clamp(27px, 3.5vw, 39px);
+    line-height: 1.2;
+}
+
+.finalCtaContent p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.finalCtaActions {
+    display: flex;
+    min-width: 205px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.finalCtaActions .finalCtaButton {
+    min-width: 195px;
+}
+
+.finalCtaActions > a:last-child {
+    color: var(--brand-primary);
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+    text-underline-offset: 3px;
+}
+
+.finalCtaActions > a:last-child:hover {
+    text-decoration: underline;
+}
+
+.journeySteps,
+.planLayout,
+.trustSection,
+.guideSection,
+.finalCta {
+    scroll-margin-top: 82px;
+}
+
+@media (max-width: 900px) {
+    .planLayout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 34px;
+    }
+
+    .trustFacts article {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .finalCtaContent {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 700px) {
+    .journeySteps {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .journeyStep {
+        grid-template-columns: 32px minmax(0, 1fr);
+    }
+
+    .trustFacts {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        margin-top: 26px;
+    }
+
+    .trustFacts article,
+    .trustFacts article:first-child,
+    .trustFacts article:last-child {
+        padding: 18px 0;
+        border-top: 1px solid #cbd8e9;
+        border-left: 0;
+    }
+
+    .trustFacts article:first-child {
+        border-top: 0;
+    }
+
+    .finalCtaContent {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .guideSectionIntro {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .calculatorCard {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .calculatorResult {
+        padding: 17px 0 0;
+        border-top: 1px solid var(--border);
+        border-left: 0;
+    }
+
+    .guideList li a {
+        grid-template-columns: 28px minmax(0, 1fr) 20px;
+        gap: 10px;
+    }
+
+    .finalCtaActions,
+    .finalCtaActions .finalCtaButton {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .guideArrow {
+        transition: none;
+    }
+}
