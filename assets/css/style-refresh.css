@@ -287,6 +287,119 @@ textarea:focus-visible {
     gap: 20px;
 }
 
+.goalFilters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 0 0 18px;
+    color: var(--ss-text-secondary);
+    font-size: 0.9rem;
+}
+
+.goalFilters label {
+    font-weight: 600;
+}
+
+.goalFilters select {
+    min-width: 220px;
+    padding: 9px 34px 9px 12px;
+    color: var(--ss-text);
+    background: var(--ss-surface);
+    border: 1px solid var(--ss-border-strong);
+    border-radius: var(--ss-radius-sm);
+    cursor: pointer;
+}
+
+.goalFilters select:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 2px;
+    border-color: var(--ss-primary);
+}
+
+.goalGroupHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 14px;
+}
+
+.goalGroupHeading h3 {
+    margin: 0;
+    color: var(--ss-text);
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.goalGroupHeading p {
+    margin: 4px 0 0;
+    color: var(--ss-text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.goalGroupCount {
+    display: inline-flex;
+    min-width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    color: var(--ss-text-secondary);
+    background: #ffffff;
+    border: 1px solid var(--ss-border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.behindGoalsSection {
+    margin: 0 0 26px;
+    padding: 18px;
+    background: #fff8ef;
+    border: 1px solid #f4d3ad;
+    border-radius: var(--ss-radius-lg);
+}
+
+.behindGoalsHeading h3 {
+    color: #9a3412;
+}
+
+.behindGoalsHeading p {
+    color: #9a5b34;
+}
+
+.card.goalBehindPlan {
+    background: #fffaf3;
+    border-color: #eab879;
+}
+
+.card.goalBehindPlan:hover {
+    border-color: #d8893d;
+}
+
+.goalAttentionBadge {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 12px;
+    padding: 5px 9px;
+    color: #8a3410;
+    background: #ffedd5;
+    border: 1px solid #fdba74;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.goalAttentionBadge span {
+    font-size: 0.95rem;
+}
+
 .card {
     color: var(--ss-text);
     background: var(--ss-surface);
@@ -1597,5 +1710,31 @@ label {
 @media (max-width: 360px) {
     .yearlyCalendar {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .goalFilters {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .goalFilters select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .goalGroupHeading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .goalGroupHeading p {
+        font-size: 0.82rem;
+    }
+
+    .behindGoalsSection {
+        padding: 14px;
     }
 }

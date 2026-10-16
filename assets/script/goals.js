@@ -32,20 +32,138 @@ function getMonthlySavingsNeeded(goal) {
     return remainingAmount / monthsRemaining;
 }
 
+let selectedGoalSort = "default";
+let goalSortListenerAdded = false;
+
+// A goal is behind plan when its savings are below the straight-line pace
+// needed to reach its target between the start date and its deadline.
+function isGoalBehindPlan(goal) {
+    let targetAmount = Number(goal.targetAmount);
+    let currentAmount = Number(goal.currentAmount);
+
+    if (
+        goal.completedDate ||
+        !goal.startDate ||
+        !goal.endDate ||
+        !Number.isFinite(targetAmount) ||
+        !Number.isFinite(currentAmount) ||
+        targetAmount <= 0 ||
+        currentAmount >= targetAmount
+    ) {
+        return false;
+    }
+
+    let today = getCurrentDate();
+    if (today < goal.startDate) {
+        return false;
+    }
+
+    let startTime = Date.parse(goal.startDate + "T00:00:00Z");
+    let endTime = Date.parse(goal.endDate + "T00:00:00Z");
+    let todayTime = Date.parse(today + "T00:00:00Z");
+
+    if (
+        !Number.isFinite(startTime) ||
+        !Number.isFinite(endTime) ||
+        !Number.isFinite(todayTime) ||
+        endTime < startTime
+    ) {
+        return false;
+    }
+
+    if (todayTime >= endTime) {
+        return true;
+    }
+
+    let totalDays = (endTime - startTime) / 86400000;
+    let elapsedDays = (todayTime - startTime) / 86400000;
+    if (totalDays <= 0) {
+        return currentAmount < targetAmount;
+    }
+
+    let expectedAmount = targetAmount * (elapsedDays / totalDays);
+    return currentAmount + 0.01 < expectedAmount;
+}
+
+function sortGoals(goals, sortMode) {
+    let sortedGoals = [...goals];
+    let sortSettings = {
+        "start-earliest": { field: "startDate", direction: 1, date: true },
+        "start-latest": { field: "startDate", direction: -1, date: true },
+        "finish-earliest": { field: "endDate", direction: 1, date: true },
+        "finish-latest": { field: "endDate", direction: -1, date: true },
+        "target-highest": { field: "targetAmount", direction: -1 },
+        "target-lowest": { field: "targetAmount", direction: 1 },
+        "savings-highest": { field: "currentAmount", direction: -1 },
+        "savings-lowest": { field: "currentAmount", direction: 1 }
+    };
+    let settings = sortSettings[sortMode];
+
+    if (!settings) {
+        return sortedGoals;
+    }
+
+    return sortedGoals.sort(function(firstGoal, secondGoal) {
+        let firstValue = firstGoal[settings.field];
+        let secondValue = secondGoal[settings.field];
+
+        if (settings.date) {
+            firstValue = firstValue || "";
+            secondValue = secondValue || "";
+            if (!firstValue && secondValue) {
+                return 1;
+            }
+            if (firstValue && !secondValue) {
+                return -1;
+            }
+        } else {
+            firstValue = Number(firstValue) || 0;
+            secondValue = Number(secondValue) || 0;
+        }
+
+        if (firstValue === secondValue) {
+            return 0;
+        }
+
+        return firstValue < secondValue
+            ? -settings.direction
+            : settings.direction;
+    });
+}
+
 // RENDER GOALS
 function renderGoals() {
     let goalsContainer = document.querySelector("#activeGoals");
     let completedGoalsContainer = document.querySelector("#completedGoals");
     let completedGoalsSection = document.querySelector("#completedGoalsSection");
+    let behindGoalsContainer = document.querySelector("#behindGoals");
+    let behindGoalsSection = document.querySelector("#behindGoalsSection");
+    let onTrackGoalsSection = document.querySelector("#onTrackGoalsSection");
+    let goalSortSelect = document.querySelector("#goalSortSelect");
 
     goalsContainer.innerHTML = "";
     completedGoalsContainer.innerHTML = "";
+    behindGoalsContainer.innerHTML = "";
+
+    if (goalSortSelect && !goalSortListenerAdded) {
+        goalSortSelect.addEventListener("change", function() {
+            selectedGoalSort = goalSortSelect.value;
+            renderGoals();
+        });
+        goalSortListenerAdded = true;
+    }
+
+    if (goalSortSelect) {
+        goalSortSelect.value = selectedGoalSort;
+    }
 
     let searchInput = document.querySelector("#goalSearchInput");
     let searchText = searchInput.value.trim().toLowerCase();
 
     let activeGoals = [];
+    let behindGoals = [];
     let completedGoals = [];
+    let matchingGoals = [];
 
     for (let i = 0; i < saveSmartData.goals.length; i++) {
         let goal = saveSmartData.goals[i];
@@ -54,15 +172,32 @@ function renderGoals() {
             continue;
         }
 
+        matchingGoals.push(goal);
+
         if (goal.completedDate) {
             completedGoals.push(goal);
+        } else if (isGoalBehindPlan(goal)) {
+            behindGoals.push(goal);
         } else {
             activeGoals.push(goal);
         }
     }
 
+    activeGoals = sortGoals(activeGoals, selectedGoalSort);
+    behindGoals = sortGoals(behindGoals, selectedGoalSort);
+    completedGoals = sortGoals(completedGoals, selectedGoalSort);
+    let goalsToRender = behindGoals.concat(activeGoals);
+
+    behindGoalsSection.classList.toggle("hidden", behindGoals.length === 0);
+    onTrackGoalsSection.classList.toggle(
+        "hidden",
+        activeGoals.length === 0 && behindGoals.length > 0
+    );
+    document.querySelector("#behindGoalCount").textContent = behindGoals.length;
+    document.querySelector("#activeGoalCount").textContent = activeGoals.length;
+
     // ACTIVE GOALS
-    if (activeGoals.length === 0) {
+    if (goalsToRender.length === 0) {
 
         if (saveSmartData.goals.length === 0) {
             goalsContainer.innerHTML = `
@@ -80,9 +215,10 @@ function renderGoals() {
 
     } else {
 
-        for (let i = 0; i < activeGoals.length; i++) {
+        for (let i = 0; i < goalsToRender.length; i++) {
 
-            let goal = activeGoals[i];
+            let goal = goalsToRender[i];
+            let isBehindPlan = isGoalBehindPlan(goal);
             let percentage = 0;
 
             if (goal.targetAmount > 0) {
@@ -175,7 +311,24 @@ function renderGoals() {
                 </div>
             `;
 
-            goalsContainer.insertAdjacentHTML("beforeend", newGoal);
+            let destination = isBehindPlan ? behindGoalsContainer : goalsContainer;
+            destination.insertAdjacentHTML("beforeend", newGoal);
+
+            if (isBehindPlan) {
+                let goalCard = destination.lastElementChild;
+                let attentionBadge = document.createElement("div");
+                goalCard.classList.add("goalBehindPlan");
+                attentionBadge.className = "goalAttentionBadge";
+                attentionBadge.innerHTML = '<span aria-hidden="true">⚠</span>Behind plan';
+                goalCard.prepend(attentionBadge);
+            }
+        }
+    }
+
+    if (goalsToRender.length === 0 && matchingGoals.length > 0) {
+        let emptyMessage = goalsContainer.querySelector(".noGoals p");
+        if (emptyMessage) {
+            emptyMessage.textContent = "No active savings goals. Completed goals are listed below.";
         }
     }
 
