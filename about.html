@@ -1,21 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>About RealSavings Tracker</title>
-    <meta name="description" content="Learn about RealSavings Tracker, an independent project designed to make setting savings goals and tracking progress simpler.">
+    <title>About RealSavings Tracker | Our Story and Purpose</title>
+    <meta name="description" content="Discover why RealSavings Tracker was created: a free, independent savings tracker to help you organize financial goals, visualize progress, and manage your wishlist.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://realsavingstracker.com/about.html">
 
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="RealSavings Tracker">
     <meta property="og:title" content="About RealSavings Tracker">
-    <meta property="og:description" content="A simple, approachable way to plan your savings and keep track of your goals.">
+    <meta property="og:description" content="The story behind RealSavings Tracker, an independent project designed to make personal savings goals easier to organize and follow.">
     <meta property="og:url" content="https://realsavingstracker.com/about.html">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="About RealSavings Tracker">
-    <meta name="twitter:description" content="Discover the idea behind RealSavings Tracker.">
+    <meta name="twitter:description" content="Learn why RealSavings Tracker was created and how it can help you visualize your savings goals.">
 
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
     <link href="./assets/css/components.css" rel="stylesheet">
@@ -189,6 +192,31 @@
             line-height: 1.75;
         }
 
+        .aboutFeatureList {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .aboutFeature {
+            padding: 21px;
+            border: 1px solid var(--about-border);
+            border-radius: 15px;
+            background: #ffffff;
+        }
+
+        .aboutFeature h3 {
+            margin: 0 0 7px;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .aboutFeature p {
+            margin: 0;
+            font-size: 14px;
+        }
+
         .aboutIndie {
             padding: 26px;
             border: 1px solid var(--about-border);
@@ -201,7 +229,17 @@
         }
 
         .aboutIndie p {
+            margin-bottom: 14px;
+        }
+
+        .aboutIndie p:last-child {
             margin-bottom: 0;
+        }
+
+        .aboutSignoff {
+            margin-top: 22px;
+            color: var(--about-text) !important;
+            font-weight: 600;
         }
 
         .aboutClosing {
@@ -256,6 +294,17 @@
             outline-offset: 3px;
         }
 
+        .aboutTextLink {
+            color: var(--about-blue-dark);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .aboutTextLink:hover {
+            color: var(--about-blue);
+        }
+
         @media (max-width: 700px) {
             .aboutIntro {
                 padding: 56px 0 48px;
@@ -269,7 +318,8 @@
                 padding: 46px 0;
             }
 
-            .aboutSteps {
+            .aboutSteps,
+            .aboutFeatureList {
                 grid-template-columns: 1fr;
             }
 
@@ -283,6 +333,10 @@
 
             .aboutClosingCard {
                 padding: 28px 20px;
+            }
+
+            .aboutIndie {
+                padding: 22px;
             }
         }
 
@@ -304,37 +358,57 @@
     <main class="aboutPage">
         <section class="aboutIntro">
             <div class="aboutContainer">
-                <span class="aboutEyebrow">A LITTLE ABOUT US</span>
-                <h1>Saving money should feel <span>more manageable.</span></h1>
+                <span class="aboutEyebrow">THE STORY BEHIND THE TRACKER</span>
+
+                <h1>Make your savings progress <span>visible.</span></h1>
+
                 <p class="aboutLead">
-                    RealSavings Tracker is an independent project built around
-                    a simple idea: when you have a clear goal and can see your
-                    progress, planning your savings can feel less overwhelming.
+                    RealSavings Tracker is an independent project created to
+                    make saving for personal goals easier to organize and
+                    understand. It started with a simple need: a clear place
+                    to plan goals, track progress, and keep future purchases
+                    in one place.
                 </p>
             </div>
         </section>
 
         <section class="aboutSection">
             <div class="aboutContainer aboutStory">
-                <h2>Why RealSavings Tracker exists</h2>
+                <h2>Why I created RealSavings Tracker</h2>
+
                 <p>
-                    Saving for something important can be difficult when your
-                    plans are scattered across notes, calculations, and
-                    different accounts. It can also be hard to tell how far
-                    you have come or how much you still need.
+                    Like many people, I had things I wanted to save for.
+                    I wanted a straightforward way to organize those goals,
+                    see how much I had saved, and understand how far I still
+                    had to go. I also wanted somewhere to keep the things
+                    I hoped to buy in the future, without having to manage
+                    everything across separate notes and calculations.
                 </p>
+
                 <p>
-                    RealSavings Tracker brings the process into one simple
-                    place. You can give a savings goal a name, set a target,
-                    record the money you add or remove, and follow your
-                    progress over time.
+                    I started building RealSavings Tracker to bring those
+                    ideas together in one place. Rather than making the
+                    process complicated, I wanted to create a tool that
+                    helps people give their goals a name, set a target,
+                    record their progress, and keep their plans organized.
+                </p>
+
+                <p>
+                    Seeing progress can give a goal a clearer purpose.
+                    A large target may feel far away at first, but tracking
+                    each contribution can help you understand the steps
+                    between where you are today and where you want to be.
+                    Everyone's circumstances are different, and the tool
+                    is designed to help you visualize your own journey.
                 </p>
 
                 <div class="aboutCallout">
                     <p>
-                        <strong>The idea is simple:</strong> make your goals
-                        easier to understand, your progress easier to follow,
-                        and your next step easier to plan.
+                        <strong>The idea is simple:</strong> make your
+                        savings goals easier to organize, your progress
+                        easier to see, and your plans easier to review.
+                        You decide what matters to you and how you want
+                        to work toward it.
                     </p>
                 </div>
             </div>
@@ -342,12 +416,80 @@
 
         <section class="aboutSection">
             <div class="aboutContainer">
-                <h2>A straightforward way to plan your savings</h2>
+                <h2>What you can do with the tracker</h2>
+
                 <p>
-                    Whether you are planning a holiday, saving for a new
-                    device, preparing for an expense, or working toward
-                    another personal goal, the process starts with a few
-                    simple steps.
+                    RealSavings Tracker is designed for everyday personal
+                    savings planning. Whether you are preparing for a trip,
+                    a new device, a future purchase, or another personal
+                    goal, these features help you keep the details together.
+                </p>
+
+                <div class="aboutFeatureList">
+                    <article class="aboutFeature">
+                        <h3>Set personal savings goals</h3>
+                        <p>
+                            Create goals with names and target amounts so
+                            you can keep different plans organized and
+                            understand what you are saving toward.
+                        </p>
+                    </article>
+
+                    <article class="aboutFeature">
+                        <h3>Visualize your progress</h3>
+                        <p>
+                            Follow the amount saved and see your progress
+                            in relation to your target, helping you
+                            understand where each goal currently stands.
+                        </p>
+                    </article>
+
+                    <article class="aboutFeature">
+                        <h3>Record transactions</h3>
+                        <p>
+                            Keep a record of money added to or removed from
+                            a goal so your displayed savings amount reflects
+                            the transactions you enter.
+                        </p>
+                    </article>
+
+                    <article class="aboutFeature">
+                        <h3>Plan with dates</h3>
+                        <p>
+                            Use start dates and target dates where available
+                            to give your goals a timeframe and review your
+                            plans as circumstances change.
+                        </p>
+                    </article>
+
+                    <article class="aboutFeature">
+                        <h3>Keep a wishlist</h3>
+                        <p>
+                            Organize things you would like to buy in the
+                            future so you can keep your ideas together
+                            while deciding which goals matter most.
+                        </p>
+                    </article>
+
+                    <article class="aboutFeature">
+                        <h3>Review reports and statistics</h3>
+                        <p>
+                            Use the available reports and summaries to
+                            review the information you have entered and
+                            get a clearer picture of your savings activity.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer">
+                <h2>How it works</h2>
+
+                <p>
+                    You do not need a complicated system to begin organizing
+                    a savings goal. The basic process is straightforward.
                 </p>
 
                 <div class="aboutSteps">
@@ -355,8 +497,8 @@
                         <div class="aboutStepNumber">01</div>
                         <h3>Choose your goal</h3>
                         <p>
-                            Give your goal a name and decide how much you
-                            want to save.
+                            Give your goal a name and enter the amount you
+                            would like to save.
                         </p>
                     </article>
 
@@ -364,17 +506,17 @@
                         <div class="aboutStepNumber">02</div>
                         <h3>Record your progress</h3>
                         <p>
-                            Keep track of money added to or removed from
-                            your savings goal.
+                            Enter the money you add or remove and keep
+                            your savings information up to date.
                         </p>
                     </article>
 
                     <article class="aboutStep">
                         <div class="aboutStepNumber">03</div>
-                        <h3>See where you stand</h3>
+                        <h3>Review your plan</h3>
                         <p>
-                            Review your current amount, target, and progress
-                            as you work toward your goal.
+                            Check your current amount, progress, and other
+                            available information as your goal develops.
                         </p>
                     </article>
                 </div>
@@ -384,14 +526,149 @@
         <section class="aboutSection">
             <div class="aboutContainer">
                 <div class="aboutIndie">
-                    <h2>Built independently, with a practical purpose</h2>
+                    <h2>An independent project with a practical purpose</h2>
+
                     <p>
-                        RealSavings Tracker is developed independently with
-                        an emphasis on clarity and ease of use. The aim is
-                        to make a useful everyday tool, keep the experience
-                        straightforward, and continue improving it over time.
+                        RealSavings Tracker is built and maintained as an
+                        independent project. It is not a financial
+                        institution or a bank. The aim is to make a useful
+                        everyday tool that is clear, approachable, and
+                        practical for people with different savings goals.
+                    </p>
+
+                    <p>
+                        I believe basic tools for organizing personal goals
+                        should be accessible to everyone. That is why my
+                        intention is to keep the tracker's core features
+                        free to use, with advertising potentially helping
+                        support the ongoing work of maintaining and
+                        improving the website.
+                    </p>
+
+                    <p>
+                        The project will continue to develop over time.
+                        Feedback, real-world use, and practical improvements
+                        can help guide which features are worth adding next.
+                    </p>
+
+                    <p class="aboutSignoff">
+                        - Michail, Independent Developer
                     </p>
                 </div>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer aboutStory">
+                <h2>Your information and privacy</h2>
+
+                <p>
+                    RealSavings Tracker is designed to work without
+                    requiring you to create an account or register before
+                    using the tracker.
+                </p>
+
+                <p>
+                    The savings information you enter is stored locally
+                    in your browser on your device. This means the
+                    information is intended to remain in that browser
+                    rather than being saved to a personal RealSavings
+                    Tracker account. Browser storage can be affected by
+                    clearing site data, changing browsers, or using a
+                    different device, so you should not assume your
+                    information will automatically be available
+                    everywhere or recoverable if it is deleted.
+                </p>
+
+                <p>
+                    The website may use third-party services, such as
+                    advertising or analytics tools, if they are enabled.
+                    Those services may process information according to
+                    their own practices and the website's applicable
+                    privacy disclosures.
+                </p>
+
+                <p>
+                    For more information about data handling and website
+                    practices, please read the
+                    <a class="aboutTextLink" href="./privacy.html">
+                        Privacy Policy
+                    </a>.
+                    Please verify that this link matches the actual
+                    filename used on your website.
+                </p>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer aboutStory">
+                <h2>A tool for planning, not financial advice</h2>
+
+                <p>
+                    RealSavings Tracker helps you organize and visualize
+                    information that you enter. It does not connect to
+                    your bank account, make financial decisions for you,
+                    or guarantee that you will reach a savings target.
+                </p>
+
+                <p>
+                    Your results depend on your individual circumstances,
+                    choices, income, expenses, and other factors outside
+                    the website's control. You remain responsible for
+                    your financial decisions and for checking that the
+                    information you enter is accurate.
+                </p>
+
+                <p>
+                    RealSavings Tracker is an organizational tool, not
+                    professional financial, investment, tax, or legal
+                    advice. For further terms and limitations, please
+                    refer to the website's Terms of Use.
+                </p>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer aboutStory">
+                <h2>What may come next</h2>
+
+                <p>
+                    RealSavings Tracker is an ongoing project, and there
+                    are several areas I would like to explore as it grows.
+                    Possible future improvements include more detailed
+                    reports, additional languages, support for more
+                    currencies, a dark theme, and more articles about
+                    organizing savings goals.
+                </p>
+
+                <p>
+                    These are future ideas rather than promises or
+                    confirmed release dates. The priority is to keep
+                    improving the experience in ways that make the
+                    tracker more useful and easier to understand.
+                </p>
+            </div>
+        </section>
+
+        <section class="aboutSection">
+            <div class="aboutContainer aboutStory">
+                <h2>Questions or suggestions?</h2>
+
+                <p>
+                    Feedback can help identify confusing parts of the
+                    website, useful improvements, and features that
+                    could make planning easier. If you have a question
+                    or a suggestion, you are welcome to get in touch
+                    through the website's Contact page.
+                </p>
+
+                <p>
+                    <a class="aboutTextLink" href="./contact.html">
+                        Visit the Contact page
+                    </a>
+                    to find the available contact details. Verify that
+                    this link matches your actual Contact page URL.
+                </p>
             </div>
         </section>
 
@@ -399,10 +676,13 @@
             <div class="aboutContainer">
                 <div class="aboutClosingCard">
                     <h2>Have a goal in mind?</h2>
+
                     <p>
-                        Start by giving it a target. You can build a plan
-                        one step at a time.
+                        Give your goal a name, choose a target, and start
+                        organizing your plans. Every goal begins with
+                        knowing what you are working toward.
                     </p>
+
                     <a class="aboutButton" href="./app.html">
                         Explore the tracker
                     </a>

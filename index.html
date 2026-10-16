@@ -1,64 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#2563EB">
 
-        <title>RealSavings Tracker – Free Savings Goal Tracker</title>
+        <title>Free Savings Goal Tracker | RealSavings Tracker</title>
 
-        <meta name="description" content="Create savings goals, record deposits and withdrawals, monitor your progress, and estimate how long it could take to reach your targets with RealSavings Tracker.">
+        <meta name="description" content="Track your savings goals for free with RealSavings Tracker. Set target amounts, record deposits and withdrawals, monitor progress, and plan for the things that matter to you.">
 
+        <meta name="robots" content="index, follow">
         <link rel="canonical" href="https://realsavingstracker.com/">
 
         <!-- OPEN GRAPH -->
-        <meta property="og:title" content="RealSavings Tracker – Free Savings Goal Tracker">
-        <meta property="og:description" content="Give your savings a purpose. Create goals, track your contributions, monitor progress, and estimate how long your goals could take.">
+        <meta property="og:title" content="RealSavings Tracker | Free Savings Goal Tracker">
+        <meta property="og:description" content="Give your savings a purpose. Create goals, record your progress, and plan for future purchases, holidays, and unexpected expenses with a free savings tracker.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://realsavingstracker.com/">
         <meta property="og:image" content="https://realsavingstracker.com/assets/images/PiggyBank_Icon.svg">
+        <meta property="og:site_name" content="RealSavings Tracker">
 
         <!-- TWITTER / X -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="RealSavings Tracker – Free Savings Goal Tracker">
-        <meta name="twitter:description" content="Create savings goals, track your progress, and plan your next purchase or trip with RealSavings Tracker.">
+        <meta name="twitter:title" content="RealSavings Tracker | Free Savings Goal Tracker">
+        <meta name="twitter:description" content="Create savings goals, record deposits, track progress, and plan your next purchase or trip with RealSavings Tracker.">
         <meta name="twitter:image" content="https://realsavingstracker.com/assets/images/PiggyBank_Icon.svg">
 
         <!-- ADSENSE -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4976959702384134"
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4976959702384134"
             crossorigin="anonymous"></script>
 
+        <!-- FONTS AND STYLES -->
         <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
         <link href="./assets/css/landing.css" rel="stylesheet">
+        <link href="./assets/css/landing-refresh.css" rel="stylesheet">
         <link href="./assets/css/components.css" rel="stylesheet">
+
+        <!-- STRUCTURED DATA -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "RealSavings Tracker",
+            "url": "https://realsavingstracker.com/",
+            "description": "A free savings goal tracker for organising savings targets, recording deposits and withdrawals, monitoring progress, and estimating savings timelines.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Any",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR"
+            }
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is RealSavings Tracker free?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "RealSavings Tracker is free to use for organising savings goals and recording your progress."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What can I use RealSavings Tracker for?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You can use RealSavings Tracker to organise goals for holidays, technology, home purchases, emergency savings, and other things you want to save for."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does the savings tracker work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Create a goal, set a target amount, and record deposits or withdrawals. The tracker helps you follow your recorded balance and compare it with your target."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Where is my savings data stored?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Savings information is stored locally in your browser. It is not automatically synchronised between different browsers or devices."
+                    }
+                }
+            ]
+        }
+        </script>
     </head>
 
     <body>
         <!-- HEADER -->
         <div id="header"></div>
 
-        <!-- MAIN CONTENT -->
         <main>
             <!-- HERO -->
-            <section class="hero">
+            <section class="hero landingSection--tint">
                 <div class="heroContent">
                     <span class="heroLabel">YOUR GOALS, YOUR PLAN</span>
-                    <h1>Give every savings goal a clear plan.</h1>
+
+                    <h1>Save for what matters.</h1>
+
                     <p>
-                        Whether you're saving for a vacation, a new phone, or an
-                        emergency fund, RealSavings Tracker helps you organise
-                        your goals, record your savings, and see how close you
-                        are to reaching each target.
+                        Set savings goals, track your progress, and get closer
+                        to the things you want, all for free.
                     </p>
-                    <a href="./app.html" class="heroButton">Create Your First Goal</a>
+
+                    <a href="./app.html" class="heroButton">Start Saving for Free</a>
                 </div>
+
                 <div class="heroVisual">
                     <div class="heroGoalCard">
                         <div class="heroGoalInfo">
                             <div class="heroGoalPicture">
-                                <img draggable="false"
+                                <img
+                                    draggable="false"
                                     src="./assets/images/travel.jpeg"
                                     alt="Airplane flying over Mount Fuji with the Japanese flag on its tail">
                             </div>
@@ -87,61 +155,76 @@
             </section>
 
             <!-- HOW IT WORKS -->
-            <section class="howItWorks" id="howItWorks">
+            <section class="howItWorks landingSection--white" id="howItWorks">
                 <div class="sectionHeading">
                     <span>HOW IT WORKS</span>
-                    <h2>Turn an idea into a savings plan.</h2>
+
+                    <h2>From savings idea to a plan you can follow.</h2>
+
                     <p>
-                        Start with something you want to save for, decide on
-                        a target, and track the money you put toward it.
-                        You can keep your different savings goals organised
-                        in one place.
+                        You don't need a complicated spreadsheet to organise
+                        your savings. Start with a goal, decide how much you
+                        want to save, and keep track of your progress as you go.
                     </p>
                 </div>
 
                 <div class="steps">
                     <div class="step">
                         <div class="stepNumber">1</div>
-                        <h3>Create a savings goal</h3>
+
+                        <h3>Create your savings goal</h3>
+
                         <p>
-                            Name your goal, choose a target amount, and add
-                            relevant details such as your planned start and
-                            finish dates when needed.
+                            Give your goal a name, choose a target amount, and
+                            add relevant details such as your planned start
+                            and finish dates.
                         </p>
                     </div>
 
                     <div class="step">
                         <div class="stepNumber">2</div>
-                        <h3>Record your money</h3>
+
+                        <h3>Record deposits and withdrawals</h3>
+
                         <p>
-                            Add money when you save and record withdrawals
-                            when you use money from a goal. Keep your
+                            Record money you add to a goal and withdrawals
+                            when you use some of the saved amount. Keep your
                             recorded balance up to date.
                         </p>
                     </div>
 
                     <div class="step">
                         <div class="stepNumber">3</div>
-                        <h3>Follow your progress</h3>
+
+                        <h3>See how far you've come</h3>
+
                         <p>
-                            See how much you have saved toward your target,
-                            how much remains, and how your progress changes
-                            as you record transactions.
+                            Compare your current savings with your target,
+                            check how much remains, and review your progress
+                            whenever you need to.
                         </p>
                     </div>
+                </div>
+
+                <div class="sectionHeading sectionHeading--afterContent">
+                    <a href="./app.html" class="heroButton">
+                        Create a Savings Goal
+                    </a>
                 </div>
             </section>
 
             <!-- SAVINGS CALCULATOR -->
-            <section class="savingsCalculator" id="savingsCalculator">
+            <section class="savingsCalculator landingSection--tint" id="savingsCalculator">
                 <div class="sectionHeading">
-                    <span>SAVINGS CALCULATOR</span>
-                    <h2>Estimate how long your goal could take.</h2>
+                    <span>FREE SAVINGS CALCULATOR</span>
+
+                    <h2>How long could it take to reach your savings goal?</h2>
+
                     <p>
-                        Enter your savings target and the amount you expect
-                        to save each month to estimate how many months you
-                        may need. Use the result as a starting point and
-                        adjust your plan to fit your budget.
+                        Estimate how many months you may need to reach a
+                        savings target based on how much you plan to put
+                        aside each month. Use the estimate to build a plan
+                        that fits your circumstances.
                     </p>
                 </div>
 
@@ -149,9 +232,12 @@
                     <div class="calculatorInputs">
                         <div class="calculatorInput">
                             <label for="calculatorTarget">Savings goal</label>
+
                             <div class="inputWrapper">
                                 <span>€</span>
-                                <input type="number"
+
+                                <input
+                                    type="number"
                                     id="calculatorTarget"
                                     placeholder="2000"
                                     min="0"
@@ -161,9 +247,12 @@
 
                         <div class="calculatorInput">
                             <label for="calculatorMonthly">Monthly savings</label>
+
                             <div class="inputWrapper">
                                 <span>€</span>
-                                <input type="number"
+
+                                <input
+                                    type="number"
                                     id="calculatorMonthly"
                                     placeholder="200"
                                     min="0"
@@ -171,223 +260,450 @@
                             </div>
                         </div>
 
-                        <button type="button" id="calculateSavingsButton">Calculate</button>
+                        <button type="button" id="calculateSavingsButton">
+                            Calculate
+                        </button>
+
                         <p id="calculatorError" aria-live="polite"></p>
                     </div>
 
                     <div class="calculatorResult" aria-live="polite">
                         <span>Estimated time</span>
+
                         <strong id="calculatorResultValue"></strong>
+
                         <p>
-                            Enter your goal and monthly savings to see
+                            Enter your target and monthly savings to see
                             your estimated timeline.
                         </p>
+
                         <p id="calculatorResultDate"></p>
                     </div>
                 </div>
+
+                <div class="sectionHeading sectionHeading--disclaimer">
+                    <p>
+                        This calculator provides an estimate, not a guarantee.
+                        Your timeline may change if your income, expenses,
+                        savings contributions, or target amount changes.
+                    </p>
+                </div>
             </section>
 
-            <!-- SAVINGS GOAL EXAMPLES -->
-            <section class="goalExamples" id="goalExamples">
+            <!-- GOAL EXAMPLES -->
+            <section class="goalExamples landingSection--white" id="goalExamples">
                 <div class="sectionHeading">
                     <span>WHAT ARE YOU SAVING FOR?</span>
-                    <h2>Make room for the things that matter to you.</h2>
+
+                    <h2>One savings tracker, different goals.</h2>
+
                     <p>
-                        A savings goal can help you prepare for a planned
-                        purchase, a future experience, or an unexpected
-                        expense. Choose a purpose that makes sense for you.
+                        Everyone has different priorities. Use a savings goal
+                        to organise a future purchase, plan an experience, or
+                        prepare for an expense you expect to face.
                     </p>
                 </div>
 
                 <div class="exampleGoals">
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img draggable="false"
+                            <img
+                                draggable="false"
                                 src="./assets/images/travelExample.jpg"
-                                alt="Suitcase and passport beside a tropical beach.">
+                                alt="Suitcase and passport beside a tropical beach">
                         </div>
 
                         <div class="exampleGoalInfo">
-                            <h3>Travel</h3>
-                            <p>Plan ahead for flights, accommodation, and activities.</p>
+                            <h3>Travel and holidays</h3>
+
+                            <p>
+                                Set a target for flights, accommodation,
+                                activities, and other trip expenses.
+                            </p>
                         </div>
                     </div>
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img draggable="false"
+                            <img
+                                draggable="false"
                                 src="./assets/images/technologyExample.jpg"
-                                alt="Smartphone and headphones on a table.">
+                                alt="Smartphone and headphones on a table">
                         </div>
 
                         <div class="exampleGoalInfo">
-                            <h3>Technology</h3>
-                            <p>Set a target for a phone, computer, or another device.</p>
+                            <h3>Technology and gadgets</h3>
+
+                            <p>
+                                Plan for a new phone, computer, gaming device,
+                                or another purchase.
+                            </p>
                         </div>
                     </div>
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img draggable="false"
+                            <img
+                                draggable="false"
                                 src="./assets/images/homeExample.jpg"
-                                alt="Bright living room with a sofa and coffee table.">
+                                alt="Bright living room with a sofa and coffee table">
                         </div>
 
                         <div class="exampleGoalInfo">
-                            <h3>Home</h3>
-                            <p>Prepare for furniture, household items, or improvements.</p>
+                            <h3>Home and everyday life</h3>
+
+                            <p>
+                                Save towards furniture, household items,
+                                clothing, or home improvements.
+                            </p>
                         </div>
                     </div>
 
                     <div class="exampleGoal">
                         <div class="exampleGoalImage">
-                            <img draggable="false"
+                            <img
+                                draggable="false"
                                 src="./assets/images/EmergencyFundExample.jpg"
-                                alt="Savings jar filled with coins and cash.">
+                                alt="Savings jar filled with coins and cash">
                         </div>
 
                         <div class="exampleGoalInfo">
-                            <h3>Emergency Fund</h3>
-                            <p>Build savings for unexpected expenses and essential needs.</p>
+                            <h3>Emergency savings</h3>
+
+                            <p>
+                                Work towards a financial buffer for
+                                unexpected expenses and essential needs.
+                            </p>
                         </div>
                     </div>
                 </div>
+
+                <div class="sectionHeading sectionHeading--afterContent">
+                    <p>
+                        You can start with one goal and add others as your
+                        priorities change. Give each goal its own target
+                        instead of treating every planned expense as one big total.
+                    </p>
+                </div>
             </section>
 
-            <!-- WHY USE A SAVINGS TRACKER -->
-            <section class="howItWorks">
+            <!-- FEATURES -->
+            <section class="howItWorks landingSection--tint" id="features">
                 <div class="sectionHeading">
-                    <span>WHY USE REALSAVINGS TRACKER?</span>
-                    <h2>Know where each goal stands.</h2>
+                    <span>WHY REALSAVINGS TRACKER?</span>
+
+                    <h2>A straightforward way to organise your savings.</h2>
+
                     <p>
-                        When you save for several things at once, it can be
-                        difficult to remember how much belongs to each goal.
-                        A tracker gives you a clearer overview of your recorded
-                        savings and helps you review your plans.
+                        RealSavings Tracker focuses on the essentials:
+                        keeping your goals organised, recording changes
+                        to your savings, and helping you understand your
+                        progress without making the process unnecessarily
+                        complicated.
                     </p>
                 </div>
 
                 <div class="steps">
                     <div class="step">
                         <div class="stepNumber">✓</div>
-                        <h3>Keep goals organised</h3>
+
+                        <h3>Free to use</h3>
+
                         <p>
-                            Give each savings goal its own purpose and target
-                            instead of keeping every plan in your head.
+                            Start organising your savings goals without
+                            paying for a subscription to use the tracker.
                         </p>
                     </div>
 
                     <div class="step">
                         <div class="stepNumber">✓</div>
-                        <h3>See your progress</h3>
+
+                        <h3>Manage multiple goals</h3>
+
                         <p>
-                            Follow your recorded savings and compare your
-                            current amount with your target.
+                            Keep different plans organised, whether you're
+                            saving for a holiday, a purchase, or future expenses.
                         </p>
                     </div>
 
                     <div class="step">
                         <div class="stepNumber">✓</div>
-                        <h3>Adjust when life changes</h3>
+
+                        <h3>Track your own progress</h3>
+
                         <p>
-                            Review your goals when your priorities, budget,
-                            or plans change. Your original target does not
-                            have to stay the same forever.
+                            Record deposits and withdrawals so you can compare
+                            your current balance with each goal's target.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- GUIDES -->
-            <section class="goalExamples" id="savingsGuides">
+            <!-- LOCAL DATA AND PRIVACY -->
+            <section class="howItWorks landingSection--white" id="privacy">
+                <div class="sectionHeading">
+                    <span>YOUR SAVINGS, YOUR DEVICE</span>
+
+                    <h2>A savings tracker designed around simplicity.</h2>
+
+                    <p>
+                        You can use RealSavings Tracker to organise your
+                        savings without connecting a bank account. Your
+                        recorded savings are entered by you, giving you
+                        control over the information you choose to track.
+                    </p>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="stepNumber">1</div>
+
+                        <h3>Enter your own figures</h3>
+
+                        <p>
+                            Record the amounts you want to track. The tracker
+                            is intended for organising savings goals, not
+                            automatically importing bank transactions.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="stepNumber">2</div>
+
+                        <h3>Keep data stored locally</h3>
+
+                        <p>
+                            Your savings information is stored in your
+                            browser on your device rather than automatically
+                            synchronised to an online account.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="stepNumber">3</div>
+
+                        <h3>Understand the trade-off</h3>
+
+                        <p>
+                            Local storage means your information may not
+                            appear on another device or browser. Clearing
+                            browser data can also remove locally stored
+                            information, so take care when managing it.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAVINGS GUIDES -->
+            <section class="goalExamples landingSection--tint" id="savingsGuides">
                 <div class="sectionHeading">
                     <span>LEARN AS YOU SAVE</span>
-                    <h2>Build a savings plan that works for you.</h2>
+
+                    <h2>Practical guides for your savings journey.</h2>
+
                     <p>
-                        Explore practical guides to help you set realistic goals,
-                        understand your spending, plan for future expenses, and
-                        prepare for unexpected costs.
+                        A savings goal is easier to plan when you understand
+                        the amount you need, what you can realistically put
+                        aside, and how to adapt when your circumstances change.
+                        Explore our guides for practical starting points.
                     </p>
                 </div>
 
                 <div class="steps">
-                    <!-- GUIDE 1 -->
                     <div class="step">
                         <h3>How to Set a Savings Goal</h3>
+
                         <p>
-                            Learn how to choose a target amount, calculate
-                            a monthly contribution, and adjust your plan.
+                            Choose a target amount, work out a possible
+                            contribution, and create a plan you can review.
                         </p>
 
-                        <p><a href="./guides/how-to-set-a-savings-goal.html">Read the guide →</a></p>
+                        <p>
+                            <a href="./guides/how-to-set-a-savings-goal.html">
+                                Read the guide →
+                            </a>
+                        </p>
                     </div>
 
-                    <!-- GUIDE 2 -->
                     <div class="step">
                         <h3>How to Save for a Vacation</h3>
+
                         <p>
-                            Plan a travel budget and estimate how much
-                            you may need to save each month.
+                            Estimate travel costs, plan a budget, and
+                            work out how much you might need to save.
                         </p>
 
-                        <p><a href="./guides/how-to-save-for-a-vacation.html">Read the guide →</a></p>
+                        <p>
+                            <a href="./guides/how-to-save-for-a-vacation.html">
+                                Read the guide →
+                            </a>
+                        </p>
                     </div>
 
-                    <!-- GUIDE 3 -->
                     <div class="step">
                         <h3>How to Build an Emergency Fund</h3>
+
                         <p>
-                            Learn how to set a starting target and build
-                            a financial buffer over time.
+                            Learn how to choose a starting target and
+                            gradually prepare for unexpected expenses.
                         </p>
 
-                        <p><a href="./guides/how-to-build-an-emergency-fund.html">Read the guide →</a></p>
+                        <p>
+                            <a href="./guides/how-to-build-an-emergency-fund.html">
+                                Read the guide →
+                            </a>
+                        </p>
                     </div>
 
-                    <!-- GUIDE 4 -->
                     <div class="step">
                         <h3>How to Save Money on a Low Income</h3>
+
                         <p>
-                            Review your spending, identify purchases you could
-                            reduce, and find a realistic way to start saving.
+                            Explore realistic ways to review spending and
+                            make room for savings when money is limited.
                         </p>
 
-                        <p><a href="./guides/how-to-save-money-on-a-low-income.html">Read the guide →</a></p>
+                        <p>
+                            <a href="./guides/how-to-save-money-on-a-low-income.html">
+                                Read the guide →
+                            </a>
+                        </p>
                     </div>
 
-                    <!-- GUIDE 5 -->
                     <div class="step">
                         <h3>What Are Sinking Funds?</h3>
 
                         <p>
-                            Learn how separate savings pots can help you
-                            prepare for planned purchases, annual bills,
-                            repairs, and other predictable expenses.
+                            Understand how separate savings pots can help
+                            you prepare for planned purchases, annual bills,
+                            and predictable expenses.
                         </p>
 
-                        <p><a href="./guides/what-are-sinking-funds.html">Read the guide →</a></p>
+                        <p>
+                            <a href="./guides/what-are-sinking-funds.html">
+                                Read the guide →
+                            </a>
+                        </p>
                     </div>
                 </div>
 
-                <div class="sectionHeading" style="margin-top: 35px; margin-bottom: 0;">
+                <div class="sectionHeading sectionHeading--afterContent">
                     <p>
-                        Want to explore all our articles?
-                        <a href="./guides/">Browse all savings guides →</a>
+                        Looking for more practical advice?
+                        <a href="./guides/">Explore all savings guides →</a>
                     </p>
                 </div>
             </section>
 
-            <!-- FINAL CTA -->
-            <section class="finalCta">
-                <div class="finalCtaContent">
-                    <span>START WITH ONE GOAL</span>
-                    <h2>Give your next goal a plan.</h2>
+            <!-- FAQ -->
+            <section class="howItWorks landingSection--white" id="faq">
+                <div class="sectionHeading">
+                    <span>FREQUENTLY ASKED QUESTIONS</span>
+
+                    <h2>About RealSavings Tracker.</h2>
+
                     <p>
-                        Choose something you want to save for, set your target,
-                        and start recording your progress with RealSavings Tracker.
-                        You can begin with one goal and build from there.
+                        Here are answers to common questions about using
+                        a free savings goal tracker and organising your plans.
                     </p>
-                    <a href="./app.html" class="finalCtaButton">Open RealSavings Tracker</a>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <h3>Is RealSavings Tracker free?</h3>
+
+                        <p>
+                            Yes. RealSavings Tracker is free to use for
+                            organising your savings goals and recording
+                            your progress.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>What can I track with the app?</h3>
+
+                        <p>
+                            You can create goals for holidays, technology,
+                            home purchases, emergency savings, and other
+                            things you want to save for. You decide which
+                            goals to create and what amounts to record.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>Can I track more than one savings goal?</h3>
+
+                        <p>
+                            Yes. You can organise separate goals for
+                            different priorities, making it easier to
+                            review each target individually.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>Does the tracker connect to my bank?</h3>
+
+                        <p>
+                            The tracker is designed for manually recording
+                            your savings. You enter deposits and withdrawals
+                            yourself rather than relying on automatic bank
+                            transaction imports.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>Where is my savings information stored?</h3>
+
+                        <p>
+                            Your savings information is stored locally in
+                            your browser. It is not automatically synced
+                            between devices. Clearing your browser's stored
+                            data may remove your records, so be careful
+                            when clearing site data or changing devices.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>Will the tracker guarantee that I reach my goal?</h3>
+
+                        <p>
+                            No. The tracker helps you organise your plan
+                            and follow the amounts you record, but your
+                            progress depends on your circumstances and
+                            the money you are able to save.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <h3>How do I get started?</h3>
+
+                        <p>
+                            Open the tracker, create a goal, enter your
+                            target amount, and start recording your savings.
+                            You can begin with one goal and add more when
+                            you're ready.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FINAL CTA -->
+            <section class="finalCta landingSection--tint">
+                <div class="finalCtaContent">
+                    <span>YOUR NEXT GOAL STARTS HERE</span>
+
+                    <h2>Give your savings a purpose.</h2>
+
+                    <p>
+                        Whether you're planning a trip, preparing for a
+                        purchase, or building a financial buffer, start
+                        with a target you can work towards. Use RealSavings
+                        Tracker to organise your goals and follow your progress.
+                    </p>
+
+                    <a href="./app.html" class="finalCtaButton">
+                        Open RealSavings Tracker — Free
+                    </a>
                 </div>
             </section>
         </main>
@@ -395,8 +711,8 @@
         <!-- FOOTER -->
         <div id="footer"></div>
 
+        <!-- SHARED COMPONENTS AND LANDING PAGE FUNCTIONALITY -->
         <script src="./assets/script/components.js"></script>
         <script src="./assets/script/landing.js"></script>
-
     </body>
 </html>

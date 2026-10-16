@@ -7,7 +7,7 @@
 }
 
 html {
-    font-size: 8pt;
+    font-size: 100%;
     background-color: #f6f8fb;
 }
 
@@ -32,8 +32,8 @@ input {
 /* LEFT SIDEBAR */
 
 .leftSidebar {
-    width: 250px;
-    min-width: 250px;
+    width: 280px;
+    min-width: 280px;
     height: 100vh;
     padding: 30px 22px 25px;
     display: flex;

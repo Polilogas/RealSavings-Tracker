@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,35 +6,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>How to Set a Savings Goal: A Practical Step-by-Step Guide | RealSavings Tracker</title>
+    <title>How to Set a Savings Goal: A Practical Guide | RealSavings Tracker</title>
 
-    <meta name="description" content="Learn how to set a realistic savings goal, calculate your monthly target, choose a deadline, and adjust your plan when life changes.">
+    <meta name="description" content="Learn how to set realistic savings goals, calculate your monthly savings target, plan for big purchases, track progress, and adapt when priorities change.">
+
+    <meta name="keywords" content="how to set a savings goal, savings goal calculator, realistic savings goals, monthly savings target, savings tracker, financial goals, saving money">
 
     <link rel="canonical" href="https://realsavingstracker.com/guides/how-to-set-a-savings-goal.html">
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="How to Set a Savings Goal: A Practical Step-by-Step Guide">
-    <meta property="og:description" content="Turn something you want to save for into a realistic plan with a target amount, monthly contribution, and flexible deadline.">
+    <meta property="og:title" content="How to Set a Savings Goal: A Practical Guide">
+    <meta property="og:description" content="Turn your savings goals into a realistic plan with a clear target, a manageable monthly contribution, and a flexible timeline.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://realsavingstracker.com/guides/how-to-set-a-savings-goal.html">
     <meta property="og:image" content="https://realsavingstracker.com/assets/images/savings-guide.jpg">
 
-    <!-- TWITTER / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Set a Savings Goal: A Practical Step-by-Step Guide">
-    <meta name="twitter:description" content="Learn how to choose a savings target, calculate a monthly amount, and build a plan you can realistically follow.">
+    <meta name="twitter:title" content="How to Set a Savings Goal: A Practical Guide">
+    <meta name="twitter:description" content="Learn how to calculate a savings target, plan your contributions, and adapt your goals as life changes.">
     <meta name="twitter:image" content="https://realsavingstracker.com/assets/images/savings-guide.jpg">
 
-    <!-- ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4976959702384134"
         crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-
     <link href="../assets/css/components.css" rel="stylesheet">
     <link href="../assets/css/guides.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Savings goal calculator */
+        .goalCalculator {
+            margin: 32px 0;
+            padding: 28px;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            background: #ffffff;
+            color: #1f2937;
+        }
+
+        .goalCalculator * {
+            box-sizing: border-box;
+        }
+
+        .goalCalculatorHeader {
+            margin-bottom: 24px;
+        }
+
+        .goalCalculatorHeader > span {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: #2563eb;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .goalCalculatorHeader h3 {
+            margin: 0 0 10px;
+            font-size: 1.45rem;
+            line-height: 1.35;
+        }
+
+        .goalCalculatorHeader p {
+            margin: 0;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .goalCalculatorFields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .goalCalculatorField {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .goalCalculatorField label {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .goalCalculatorField input,
+        .goalCalculatorField select {
+            width: 100%;
+            min-height: 46px;
+            padding: 11px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #1f2937;
+            font: inherit;
+        }
+
+        .goalCalculatorField input:focus,
+        .goalCalculatorField select:focus {
+            outline: 3px solid rgba(37, 99, 235, 0.18);
+            border-color: #2563eb;
+        }
+
+        .goalCalculatorField small {
+            color: #64748b;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .goalCalculatorButton {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px 18px;
+            border: 0;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #ffffff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .goalCalculatorButton:hover {
+            background: #1d4ed8;
+        }
+
+        .goalCalculatorButton:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .goalCalculatorError {
+            margin-top: 16px;
+            color: #b91c1c;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .goalCalculatorResults {
+            margin-top: 24px;
+            padding: 22px;
+            border-radius: 14px;
+            background: #f8fafc;
+        }
+
+        .goalCalculatorResults[hidden],
+        .goalCalculatorError[hidden] {
+            display: none;
+        }
+
+        .goalCalculatorResults h4 {
+            margin: 0 0 16px;
+            font-size: 1.1rem;
+        }
+
+        .goalCalculatorMainResult {
+            margin-bottom: 18px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #eff6ff;
+        }
+
+        .goalCalculatorMainResult span {
+            display: block;
+            margin-bottom: 6px;
+            color: #1d4ed8;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .goalCalculatorMainResult strong {
+            display: block;
+            color: #1e40af;
+            font-size: clamp(1.7rem, 5vw, 2.25rem);
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .goalCalculatorResultGrid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .goalCalculatorResultItem {
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+
+        .goalCalculatorResultItem span {
+            display: block;
+            margin-bottom: 6px;
+            color: #64748b;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .goalCalculatorResultItem strong {
+            font-size: 1.1rem;
+            overflow-wrap: anywhere;
+        }
+
+        .goalCalculatorProgress {
+            height: 10px;
+            margin: 18px 0 8px;
+            overflow: hidden;
+            border-radius: 99px;
+            background: #e2e8f0;
+        }
+
+        .goalCalculatorProgressFill {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: #2563eb;
+            transition: width 0.25s ease;
+        }
+
+        .goalCalculatorProgressLabel {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .goalCalculatorAdvice {
+            margin: 18px 0 0;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .goalCalculatorNote {
+            margin-top: 14px;
+            color: #64748b;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .goalCalculator {
+                padding: 19px;
+            }
+
+            .goalCalculatorFields,
+            .goalCalculatorResultGrid {
+                grid-template-columns: 1fr;
+            }
+
+            .goalCalculatorResults {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -41,24 +274,21 @@
     <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- ARTICLE -->
     <main>
         <article class="guideArticle">
 
-            <!-- ARTICLE HERO -->
+            <!-- HERO -->
             <div class="articleHero">
                 <div class="articleHeader">
-
                     <span class="sectionLabel">SAVINGS GOALS</span>
 
                     <h1>How to Set a Savings Goal You Can Actually Reach</h1>
 
                     <p>
-                        Saving money is easier when you know what you are working toward.
-                        Whether you want a new phone, a vacation, or money for unexpected
-                        expenses, a clear target can turn a vague intention into a practical plan.
+                        Learn how to set realistic savings goals, choose meaningful targets,
+                        calculate your monthly contribution, and track your progress without
+                        feeling tied to a plan that no longer fits your life.
                     </p>
-
                 </div>
 
                 <div class="articleHeroImage">
@@ -71,25 +301,32 @@
             <section class="articleSection">
 
                 <p>
-                    Saying "I should save more money" is a good starting point, but it
-                    does not tell you how much you need, how long it might take, or what
-                    you should do each month.
+                    If you already save money, you probably know that putting some aside
+                    is only part of the process. The more useful question is whether your
+                    savings are helping you achieve the things that matter to you.
                 </p>
 
                 <p>
-                    A useful savings goal answers three questions: what are you saving
-                    for, how much money do you need, and when would you like to have it?
-                    You can then work backward to find a monthly amount that fits your budget.
+                    You might have money set aside for a holiday, a new computer, an
+                    emergency fund, or a larger purchase such as a car. You might also
+                    have several smaller goals competing for the same monthly budget.
+                    Without a clear plan, it can be difficult to decide which goal deserves
+                    your attention or how much progress you are making.
                 </p>
 
                 <p>
-                    Your first plan does not have to be perfect. Prices change, unexpected
-                    expenses happen, and your priorities may be different a few months from
-                    now. The purpose of a savings goal is to give you a starting point that
-                    you can adjust as needed.
+                    A well-defined savings goal gives your money a purpose. It connects
+                    something you want or need with a target amount, a realistic timeline,
+                    and a contribution you can afford. It also gives you something useful
+                    to review when prices, income, or personal priorities change.
                 </p>
 
-                <!-- IN-ARTICLE AD -->
+                <p>
+                    This guide explains how to create a savings plan that works in real
+                    life. You can also use the calculator below to estimate how much you
+                    need to save each month.
+                </p>
+
                 <ins class="adsbygoogle"
                     style="display:block; text-align:center;"
                     data-ad-layout="in-article"
@@ -102,16 +339,13 @@
                 </script>
 
                 <div class="rememberBox">
-                    <img src="../assets/images/lightbulb-article.svg"
-                        alt=""
-                        draggable="false">
-
+                    <img src="../assets/images/lightbulb-article.svg" alt="" draggable="false">
                     <div>
-                        <strong>Start with a plan you can maintain</strong>
+                        <strong>A goal is a guide, not a guarantee</strong>
                         <p>
-                            A smaller contribution you can make consistently is often
-                            more practical than a large monthly target that leaves you
-                            short of money for essential expenses.
+                            Your original plan helps you decide what to do next. It does
+                            not have to remain unchanged if your circumstances or priorities
+                            develop differently.
                         </p>
                     </div>
                 </div>
@@ -123,11 +357,8 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/target-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/target-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 1</span>
                         <h2>Give your savings a specific purpose</h2>
@@ -135,33 +366,51 @@
                 </div>
 
                 <p>
-                    Begin by deciding what you want your savings to help you achieve.
-                    A specific goal gives you a clearer target than simply trying to
-                    save whatever money happens to be left over.
+                    Start by identifying what the money is for. "Save more money" is
+                    a useful intention, but it does not give you a clear way to measure
+                    progress or make decisions. A named goal does.
                 </p>
 
-                <p>For example, you could save for:</p>
+                <p>For example, you could create goals for:</p>
 
                 <div class="goalExamples">
-                    <div class="goalExample"><span>New phone</span></div>
-                    <div class="goalExample"><span>Vacation</span></div>
-                    <div class="goalExample"><span>Emergency fund</span></div>
-                    <div class="goalExample"><span>New computer</span></div>
-                    <div class="goalExample"><span>Dental treatment</span></div>
-                    <div class="goalExample"><span>Home furniture</span></div>
+                    <div class="goalExample"><span>A vacation</span></div>
+                    <div class="goalExample"><span>A new phone or computer</span></div>
+                    <div class="goalExample"><span>Emergency savings</span></div>
+                    <div class="goalExample"><span>A car</span></div>
+                    <div class="goalExample"><span>Home improvements</span></div>
+                    <div class="goalExample"><span>Everyday personal goals</span></div>
                 </div>
 
                 <p>
-                    Naming the goal also helps you distinguish between different
-                    priorities. Money set aside for an upcoming dental appointment,
-                    for example, has a different purpose from money you are saving
-                    for a holiday.
+                    A specific purpose is particularly useful when you have several goals
+                    at once. Money reserved for an upcoming trip is not automatically
+                    available for a new device, even if both purchases sound appealing.
+                    Giving each goal its own name makes those decisions easier to see.
                 </p>
 
                 <p>
-                    If you have several goals, you do not have to work toward all of
-                    them at the same time. Start with the most important one or divide
-                    your available savings between goals according to your priorities.
+                    You can also make a goal more meaningful by explaining why it matters.
+                    Instead of simply naming a goal "New laptop", you might call it
+                    "Laptop for learning and personal projects". Instead of "Holiday",
+                    you might choose "A week away next summer".
+                </p>
+
+                <p>
+                    This extra detail does not change the maths, but it helps you remember
+                    why you chose the goal in the first place. If you later need to
+                    prioritise, you have a clearer reason to compare one goal with another.
+                </p>
+
+                <p>
+                    If you have many ideas, start by separating needs, important future
+                    expenses, and optional purchases. You do not need to fund every goal
+                    equally or make progress on all of them at the same time.
+                </p>
+
+                <p>
+                    <a href="../app.html">Create a savings goal in RealSavings Tracker</a>
+                    to give your next savings target a clear purpose.
                 </p>
 
             </section>
@@ -171,11 +420,8 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/money-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/money-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 2</span>
                         <h2>Choose a realistic target amount</h2>
@@ -184,27 +430,39 @@
 
                 <p>
                     Once you know what you are saving for, estimate the total amount
-                    you will need. For a purchase, check its current price. For a
-                    vacation, include transport, accommodation, food, activities,
-                    and a reasonable allowance for unexpected costs.
+                    required. A target should be grounded in the likely cost rather than
+                    being an arbitrary round number that looks good on a progress bar.
                 </p>
 
                 <p>
-                    If the final price is uncertain, use your best estimate and review
-                    it later. You can change the target if you find a better price or
-                    discover that you need to budget for something you initially missed.
+                    For a phone or computer, check the price of the model you actually
+                    want. For a car, consider more than the advertised purchase price:
+                    depending on your circumstances, you may also need to allow for
+                    registration, insurance, maintenance, and other ownership costs.
+                </p>
+
+                <p>
+                    For a holiday, estimate transport, accommodation, meals, activities,
+                    and a reasonable allowance for unexpected expenses. For emergency
+                    savings, decide which types of unexpected costs you want the fund
+                    to help cover and set a target that makes sense for your situation.
+                </p>
+
+                <p>
+                    You do not have to know the final amount perfectly. Use the best
+                    information available, then review the estimate when you learn more.
+                    A target is useful precisely because you can update it as your plans
+                    become clearer.
                 </p>
 
                 <div class="realLifeExample">
-
                     <span>WORKED EXAMPLE</span>
-
-                    <h3>Maria wants a new phone</h3>
+                    <h3>Maria is saving for a new phone</h3>
 
                     <p>
-                        Maria finds a phone that costs €900. She already has €200 saved
-                        specifically for it, so she does not need to save another €900.
-                        She needs to cover the difference.
+                        Maria finds a phone priced at €900 and already has €200 assigned
+                        to that goal. Her remaining target is €700, not €900, provided
+                        the €200 is still available for the phone.
                     </p>
 
                     <div class="exampleNumbers">
@@ -212,34 +470,27 @@
                             <span>Target price</span>
                             <strong>€900</strong>
                         </div>
-
                         <div>
                             <span>Already saved</span>
                             <strong>€200</strong>
                         </div>
-
                         <div>
                             <span>Still needed</span>
                             <strong>€700</strong>
                         </div>
                     </div>
-
                 </div>
-
-                <p>
-                    The basic calculation is:
-                </p>
 
                 <div class="formulaCard">
                     <span>AMOUNT STILL NEEDED</span>
-                    <strong>Target amount − Amount saved</strong>
+                    <strong>Target amount − Amount already saved</strong>
                 </div>
 
                 <p>
-                    In Maria's case, that is €900 − €200 = €700. Remember to count
-                    only money that is genuinely available for this goal. If some of
-                    her savings are needed for rent, bills, or another upcoming expense,
-                    she should not treat that money as available for the phone.
+                    Be careful not to count the same money toward multiple goals.
+                    If Maria's €200 is also needed for an upcoming bill, it should not
+                    be treated as available for her phone. Your goal records should
+                    reflect how much money is genuinely allocated to each purpose.
                 </p>
 
             </section>
@@ -249,65 +500,177 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/calendar-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/calendar-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 3</span>
-                        <h2>Choose a deadline and calculate your monthly target</h2>
+                        <h2>Set a deadline that fits your circumstances</h2>
                     </div>
                 </div>
 
                 <p>
-                    A target amount tells you how much you need, but a deadline helps
-                    you decide how quickly you want to get there. Choose a date that
-                    makes sense for the purchase and your circumstances.
+                    A target amount tells you how much you need. A deadline helps you
+                    decide how quickly you want to get there. Some goals have a natural
+                    date, such as a planned trip or an upcoming course. Others, especially
+                    long-term or optional goals, can be more flexible.
                 </p>
 
                 <p>
-                    Maria needs another €700 for her phone and would like to buy it
-                    in seven months. To work out the amount she would need to save
-                    each month, she divides the remaining amount by the number of
-                    months available.
+                    Choose a date based on the purpose of the goal and your budget.
+                    A deadline that requires you to save more than you can comfortably
+                    afford is not necessarily a good deadline. You can instead extend
+                    the timeline, lower the cost, or adjust the target.
+                </p>
+
+                <p>
+                    The simplest monthly savings calculation is to subtract what you
+                    have already saved from the target, then divide the remainder by
+                    the number of months you have available.
                 </p>
 
                 <div class="formulaCard">
-                    <span>MONTHLY SAVINGS CALCULATION</span>
-                    <strong>€700 ÷ 7 months = €100 per month</strong>
+                    <span>MONTHLY SAVINGS TARGET</span>
+                    <strong>(Target − Already saved) ÷ Months remaining</strong>
                 </div>
 
                 <p>
-                    Maria now has a clear plan: save approximately €100 each month
-                    for seven months. This assumes that she does not withdraw money
-                    from the goal and that the phone still costs €900 when she buys it.
+                    For example, if you need another €700 and have seven months, you
+                    would need to save €100 per month. If you have ten months instead,
+                    the required contribution falls to €70 per month. Neither timeline
+                    is automatically better; the right choice depends on what works
+                    for your situation.
                 </p>
+
+                <h3>Calculate your own savings plan</h3>
 
                 <p>
-                    If you have already started saving, use the amount still needed,
-                    not the original target. If your deadline is flexible, compare
-                    a few timelines to see which monthly amount feels manageable.
+                    Use this savings goal calculator to compare a target amount, your
+                    current savings, and a timeline. You can also enter the amount you
+                    expect to save each month to see how long the goal may take.
                 </p>
 
-                <div class="rememberBox">
-                    <img src="../assets/images/lightbulb-article.svg"
-                        alt=""
-                        draggable="false">
+                <!-- INTERACTIVE SAVINGS CALCULATOR -->
+                <div class="goalCalculator" id="goalCalculator">
 
-                    <div>
-                        <strong>Use this simple formula</strong>
+                    <div class="goalCalculatorHeader">
+                        <span>SAVINGS GOAL CALCULATOR</span>
+                        <h3>Build a plan that works for you</h3>
                         <p>
-                            Monthly target = (Target amount − Amount already saved)
-                            ÷ Number of months remaining.
+                            Enter your figures to estimate your remaining target,
+                            monthly contribution, or timeline. Results are estimates
+                            and do not include interest or investment returns.
                         </p>
                     </div>
+
+                    <div class="goalCalculatorFields">
+
+                        <div class="goalCalculatorField">
+                            <label for="goalCurrency">Currency</label>
+                            <select id="goalCurrency">
+                                <option value="EUR">Euro (€)</option>
+                                <option value="USD">US dollar ($)</option>
+                                <option value="GBP">British pound (£)</option>
+                                <option value="PHP">Philippine peso (₱)</option>
+                            </select>
+                        </div>
+
+                        <div class="goalCalculatorField">
+                            <label for="goalTarget">Total target amount</label>
+                            <input id="goalTarget" type="number" min="0.01" max="1000000000000" step="0.01" value="2000" inputmode="decimal">
+                            <small>The total amount you want to have for this goal.</small>
+                        </div>
+
+                        <div class="goalCalculatorField">
+                            <label for="goalSaved">Already saved for this goal</label>
+                            <input id="goalSaved" type="number" min="0" max="1000000000000" step="0.01" value="500" inputmode="decimal">
+                            <small>Only include money currently assigned to this goal.</small>
+                        </div>
+
+                        <div class="goalCalculatorField">
+                            <label for="goalMode">What would you like to calculate?</label>
+                            <select id="goalMode">
+                                <option value="monthly">Monthly contribution needed</option>
+                                <option value="timeline">Time needed at my monthly contribution</option>
+                            </select>
+                        </div>
+
+                        <div class="goalCalculatorField" id="goalMonthsField">
+                            <label for="goalMonths">Months available</label>
+                            <input id="goalMonths" type="number" min="1" max="12000" step="1" value="10" inputmode="numeric">
+                            <small>How many months you have before your planned deadline.</small>
+                        </div>
+
+                        <div class="goalCalculatorField" id="goalContributionField" hidden>
+                            <label for="goalContribution">Amount you can save each month</label>
+                            <input id="goalContribution" type="number" min="0" max="1000000000000" step="0.01" value="150" inputmode="decimal">
+                            <small>Use an amount that fits your budget after essential expenses.</small>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="goalCalculatorButton" id="calculateGoal">
+                        Calculate my savings plan
+                    </button>
+
+                    <p class="goalCalculatorError" id="goalCalculatorError" role="alert" hidden></p>
+
+                    <div class="goalCalculatorResults" id="goalCalculatorResults" aria-live="polite" hidden>
+                        <h4>Your estimated savings plan</h4>
+
+                        <div class="goalCalculatorMainResult">
+                            <span id="goalMainLabel">Monthly contribution needed</span>
+                            <strong id="goalMainValue">€150.00</strong>
+                        </div>
+
+                        <div class="goalCalculatorResultGrid">
+                            <div class="goalCalculatorResultItem">
+                                <span>Total target</span>
+                                <strong id="goalResultTarget">€2,000.00</strong>
+                            </div>
+                            <div class="goalCalculatorResultItem">
+                                <span>Already saved</span>
+                                <strong id="goalResultSaved">€500.00</strong>
+                            </div>
+                            <div class="goalCalculatorResultItem">
+                                <span>Still needed</span>
+                                <strong id="goalResultRemaining">€1,500.00</strong>
+                            </div>
+                            <div class="goalCalculatorResultItem">
+                                <span id="goalSecondaryLabel">Estimated timeline</span>
+                                <strong id="goalSecondaryValue">10 months</strong>
+                            </div>
+                        </div>
+
+                        <div class="goalCalculatorProgress" role="progressbar"
+                            aria-label="Current savings progress"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="25"
+                            id="goalProgress">
+                            <div class="goalCalculatorProgressFill" id="goalProgressFill"></div>
+                        </div>
+
+                        <div class="goalCalculatorProgressLabel">
+                            <span id="goalProgressText">25% saved</span>
+                            <span id="goalPercentRemaining">75% remaining</span>
+                        </div>
+
+                        <p class="goalCalculatorAdvice" id="goalCalculatorAdvice"></p>
+                    </div>
+
+                    <p class="goalCalculatorNote">
+                        This calculator uses simple arithmetic. It assumes you do not
+                        withdraw money from the goal and does not account for interest,
+                        fees, changing prices, or irregular contributions. If your
+                        circumstances change, review your plan.
+                    </p>
+
                 </div>
 
                 <p>
-                    This calculation assumes that you are adding money regularly and
-                    does not include interest or investment returns. For a simple
-                    savings goal, it is a useful starting estimate.
+                    <a href="../app.html">Track your savings goals with RealSavings Tracker</a>
+                    if you want to keep your target, recorded savings, and progress
+                    organised in one place.
                 </p>
 
             </section>
@@ -317,65 +680,53 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/settings-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/settings-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 4</span>
-                        <h2>Make sure the plan fits your budget</h2>
+                        <h2>Choose a contribution you can maintain</h2>
                     </div>
                 </div>
 
                 <p>
                     Before committing to a monthly target, look at your actual income
-                    and expenses. Account for essentials such as housing, food,
-                    utilities, transportation, debt payments, and other obligations.
-                    It is important not to plan to save money that you will need
-                    to cover those costs.
+                    and expenses. Consider housing, food, utilities, transport, debt
+                    payments, and other obligations. A savings plan should not depend
+                    on money you need for essentials.
                 </p>
 
                 <p>
-                    Suppose Maria realizes that saving €100 every month is too
-                    difficult. She could save €70 per month instead. Because she
-                    still needs €700, it would take ten full monthly contributions
-                    of €70 to reach the remaining amount.
-                </p>
-
-                <div class="formulaCard">
-                    <span>A MORE FLEXIBLE PLAN</span>
-                    <strong>€700 ÷ €70 per month = 10 months</strong>
-                </div>
-
-                <p>
-                    Compared with her original seven-month plan, Maria would need
-                    about three additional months. That may be a reasonable trade-off
-                    if it allows her to cover her essentials and avoid putting
-                    unnecessary pressure on her budget.
+                    Imagine that your calculator suggests saving €150 per month for
+                    a vacation, but that amount leaves very little room in your budget.
+                    You could reduce the contribution to €100 and extend the timeline,
+                    or review whether the trip can be made less expensive.
                 </p>
 
                 <p>
-                    You can also lower the target by choosing a less expensive option,
-                    or postpone the deadline until you have more room in your budget.
-                    The best plan is not necessarily the fastest one; it is one that
-                    makes progress without creating new financial problems.
+                    Consistency can help, but your contributions do not have to be
+                    identical every month. If your income varies, you might choose a
+                    modest baseline amount and contribute extra in months when you
+                    have more available. Just remember that extra contributions should
+                    be based on money you actually have, not money you expect to receive.
                 </p>
 
                 <div class="rememberBox">
-                    <img src="../assets/images/lightbulb-article.svg"
-                        alt=""
-                        draggable="false">
-
+                    <img src="../assets/images/lightbulb-article.svg" alt="" draggable="false">
                     <div>
-                        <strong>Taking longer is not a failure</strong>
+                        <strong>A slower plan can be a better plan</strong>
                         <p>
-                            Adjust your target or deadline if your original plan
-                            is too difficult to maintain. Your essential expenses
-                            should come first.
+                            Extending a deadline is a reasonable choice when it helps
+                            you meet your obligations and keep your savings habit going.
                         </p>
                     </div>
                 </div>
+
+                <p>
+                    Review the amount whenever your budget changes significantly.
+                    A pay increase may make it possible to contribute more. A new bill
+                    or a change in income may mean you need to contribute less for a while.
+                    Both are reasons to update the plan, not to ignore your actual finances.
+                </p>
 
             </section>
 
@@ -384,11 +735,8 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/progress-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/progress-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 5</span>
                         <h2>Understand that progress still counts</h2>
@@ -396,28 +744,18 @@
                 </div>
 
                 <p>
-                    Reaching 100% of your target is useful, but falling short does
-                    not automatically mean your effort was wasted. Your circumstances
-                    might change, the price might change, or you might decide that
-                    another option is better.
+                    A savings goal can be useful even when you do not reach 100% of
+                    your original target. Your circumstances might change, an expense
+                    might become more important, or the purchase itself might no longer
+                    be the right choice.
                 </p>
 
                 <p>
-                    Imagine Maria has the original €200 and has saved another €700
-                    toward her €900 phone. She now has €900 in total, assuming the
-                    original €200 remains available for the same goal. She has reached
-                    the target and can consider the purchase.
+                    Suppose you want to save €900 for a phone and have already set aside
+                    €200. After several months, you have contributed another €500.
+                    You now have €700 assigned to the goal, which is approximately 78%
+                    of the target.
                 </p>
-
-                <p>
-                    Now imagine she has saved only €500 more. Her total is €700,
-                    which is still meaningful progress toward the phone.
-                </p>
-
-                <div class="questionBox">
-                    <strong>Has Maria wasted her effort?</strong>
-                    <span>No. She has €700 available toward her €900 target.</span>
-                </div>
 
                 <div class="progressExample">
                     <div class="progressExampleHeader">
@@ -427,22 +765,34 @@
                         </div>
                         <span>78%</span>
                     </div>
-
                     <div class="progressExampleBar">
-                        <div></div>
+                        <div style="width: 77.78%;"></div>
                     </div>
-
                     <p>
-                        Maria has saved approximately 78% of her target and has
-                        €200 left to save.
+                        You have €700 toward your target, with €200 still needed.
+                        The money saved is still available for its intended purpose.
                     </p>
                 </div>
 
                 <p>
-                    She could continue saving, look for a lower price, or consider
-                    a less expensive phone. The right choice depends on what she
-                    needs and can afford. She should avoid taking on costly debt
-                    just to reach a savings goal sooner.
+                    If you eventually decide not to buy that phone, your effort was
+                    not automatically wasted. You can review the goal and decide what
+                    to do with the money. Perhaps a less expensive model meets your
+                    needs, or another priority has become more important.
+                </p>
+
+                <p>
+                    This does not mean every goal should be abandoned whenever it becomes
+                    inconvenient. It means you should evaluate the goal using your
+                    current needs and information, rather than treating an old target
+                    as an obligation regardless of circumstances.
+                </p>
+
+                <p>
+                    Reaching 100% is a useful milestone. It is not the only measure
+                    of whether your savings plan helped you. Building a reserve, preparing
+                    for an expense, or discovering that you can save a manageable amount
+                    each month can all be meaningful progress.
                 </p>
 
             </section>
@@ -452,11 +802,8 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/transfer-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/transfer-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 6</span>
                         <h2>Review your goals when your priorities change</h2>
@@ -464,59 +811,68 @@
                 </div>
 
                 <p>
-                    Sometimes a different expense becomes more important than the
-                    thing you originally planned to buy. For example, you might be
-                    saving for something fun when you discover that you need to
-                    pay for necessary dental treatment.
+                    A savings plan reflects what matters to you when you create it.
+                    That can change. A planned purchase might become less important,
+                    a necessary expense might appear, or a new opportunity might be
+                    worth considering.
                 </p>
 
                 <p>
-                    In that situation, it can make sense to change your priorities.
-                    A savings plan should reflect your current needs, not force you
-                    to follow an old decision that no longer makes sense.
+                    For example, imagine you have been saving for a new computer,
+                    but you now need to cover an important expense. You might decide
+                    to pause the computer goal and direct some available money toward
+                    the more urgent need.
+                </p>
+
+                <p>
+                    Before making a change, consider the urgency of each goal, the
+                    consequences of delaying it, and whether the money is already
+                    committed to a particular expense. You do not have to make every
+                    decision immediately. Sometimes the best next step is to update
+                    your estimates and compare the options.
                 </p>
 
                 <div class="realLifeExample">
-
                     <span>WORKED EXAMPLE</span>
-
-                    <h3>Alex has two savings goals</h3>
+                    <h3>One savings pot, two different priorities</h3>
 
                     <div class="goalComparison">
-
                         <div class="goalComparisonCard">
-                            <span>NEW HARRY POTTER WAND</span>
+                            <span>COLLECTIBLE</span>
                             <strong>€50</strong>
-                            <small>saved</small>
+                            <small>currently assigned</small>
                         </div>
-
                         <div class="goalComparisonCard">
-                            <span>DENTAL TREATMENT</span>
+                            <span>NECESSARY EXPENSE</span>
                             <strong>€0</strong>
-                            <small>saved</small>
+                            <small>currently assigned</small>
                         </div>
-
                     </div>
 
                     <p>
-                        Alex has €50 saved for a collectible wand, but a necessary
-                        dental expense has become more urgent. He decides to use
-                        that €50 toward the dental cost instead.
+                        If an urgent expense becomes the priority, the €50 may be
+                        reassigned if it is genuinely available. The collectible goal
+                        can be resumed later, when circumstances allow.
                     </p>
-
                 </div>
 
                 <p>
-                    The wand goal now has no money assigned to it, but Alex has not
-                    lost the €50. He has chosen a different purpose for it. He can
-                    begin saving for the wand again later, when the more urgent
-                    expense has been addressed.
+                    When you reassign money, update both goals. Otherwise, your records
+                    might show the same €50 as available for two different purposes.
+                    Moving money between goals changes its assignment; it does not
+                    increase the total amount you own.
                 </p>
 
                 <p>
-                    If you change a goal, update your records so that they reflect
-                    where your money is actually assigned. That makes it easier
-                    to avoid counting the same money toward two different goals.
+                    A useful habit is to review your goals periodically and whenever
+                    something important changes. Check whether the target still makes
+                    sense, whether the deadline is realistic, and whether the goal
+                    still deserves the same priority.
+                </p>
+
+                <p>
+                    <a href="../app.html">Keep your goals organised with RealSavings Tracker</a>
+                    so you can update targets and follow your progress as your plans evolve.
                 </p>
 
             </section>
@@ -526,102 +882,32 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/warning-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/chart-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>STEP 7</span>
-                        <h2>Be careful when moving money between goals</h2>
+                        <h2>Track actual contributions, not just intentions</h2>
                     </div>
                 </div>
 
                 <p>
-                    If you track several savings goals, remember that moving money
-                    from one goal to another does not increase your total savings.
-                    It only changes which purpose that money is assigned to.
+                    A monthly target is a plan for what you hope to save. Your recorded
+                    contributions show what you have actually put aside. Keeping those
+                    two things separate gives you a more accurate picture of your finances.
                 </p>
 
                 <p>
-                    Imagine that you have €400 assigned to a new phone and €50
-                    assigned to a dental visit.
-                </p>
-
-                <div class="goalTransferExample">
-
-                    <div class="transferGoal">
-                        <span>NEW PHONE</span>
-                        <strong>€400</strong>
-                        <small>before</small>
-                    </div>
-
-                    <div class="transferArrow">→</div>
-
-                    <div class="transferGoal">
-                        <span>DENTAL VISIT</span>
-                        <strong>€50</strong>
-                        <small>before</small>
-                    </div>
-
-                </div>
-
-                <p>
-                    If you reassign the €50 from the dental goal to the phone goal,
-                    the phone goal will have €450 assigned to it and the dental
-                    goal will have €0. Your total savings remain €450.
-                </p>
-
-                <div class="rememberBox warning">
-                    <img src="../assets/images/lightbulb-article.svg"
-                        alt=""
-                        draggable="false">
-
-                    <div>
-                        <strong>Do not count the same money twice</strong>
-                        <p>
-                            When you move money between goals, update both goals
-                            so your records match the actual amount you have saved.
-                        </p>
-                    </div>
-                </div>
-
-                <p>
-                    Reassigning money can be sensible when your needs change.
-                    The important thing is to make the decision deliberately
-                    and understand what it means for the goal you are moving
-                    money away from.
-                </p>
-
-            </section>
-
-            <!-- STEP 8 -->
-            <section class="articleSection">
-
-                <div class="articleSectionHeading">
-                    <div class="articleIcon">
-                        <img src="../assets/images/chart-article.svg"
-                            alt=""
-                            draggable="false">
-                    </div>
-
-                    <div>
-                        <span>STEP 8</span>
-                        <h2>Track what you actually save</h2>
-                    </div>
-                </div>
-
-                <p>
-                    Once you have a plan, record the money you actually put aside.
-                    A monthly target is a guide, not proof that the money has
-                    already been saved.
+                    Suppose you planned to contribute €150 this month but saved €100.
+                    Record the €100 you actually saved. If you contribute €180 next month,
+                    record that amount too. You do not need to pretend that every month
+                    went exactly as planned.
                 </p>
 
                 <p>
-                    For example, you might plan to save €100 this month but manage
-                    to save only €70. Record €70. If you save €150 next month,
-                    record that amount too. Your contributions do not have to
-                    be identical every month.
+                    Tracking helps you understand how your habits are working over time.
+                    You may discover that a smaller monthly contribution is more realistic,
+                    that a goal needs a longer timeline, or that you can make additional
+                    contributions in certain months.
                 </p>
 
                 <div class="progressExample">
@@ -632,115 +918,94 @@
                         </div>
                         <span>25%</span>
                     </div>
-
                     <div class="progressExampleBar">
-                        <div class="quarter"></div>
+                        <div class="quarter" style="width: 25%;"></div>
                     </div>
-
                     <p>
-                        You have saved €500 toward a €2,000 target. You have
-                        €1,500 remaining, or 75% of the target.
+                        €500 is currently assigned to a €2,000 target. The remaining
+                        amount is €1,500, or 75% of the target.
                     </p>
                 </div>
 
                 <p>
-                    Tracking gives you a more accurate picture of your progress.
-                    It helps you see how much remains, whether your deadline is
-                    still realistic, and whether you need to adjust your monthly
-                    contribution.
+                    You can use a spreadsheet, a notebook, or a savings tracker.
+                    What matters most is that the record is easy to update and reflects
+                    the money you actually have assigned to each goal.
                 </p>
 
                 <p>
-                    A savings tracker can make this easier by keeping each goal,
-                    its target amount, and its recorded contributions together.
-                    RealSavings Tracker can help you organise your goals and
-                    follow their progress in one place.
+                    RealSavings Tracker lets you organise savings goals, set target
+                    amounts, record money added or removed, and follow your progress.
+                    <a href="../app.html">Open the tracker</a> when you are ready to
+                    put your own plan into practice.
                 </p>
 
             </section>
 
-            <!-- FINAL WORKED EXAMPLE -->
+            <!-- STEP 8 -->
             <section class="articleSection">
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/travel-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/travel-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
-                        <span>PUTTING IT TOGETHER</span>
-                        <h2>Example: planning a vacation</h2>
+                        <span>STEP 8</span>
+                        <h2>Apply the same method to different types of goals</h2>
                     </div>
                 </div>
 
                 <p>
-                    Alex wants to go on vacation and estimates that the trip will
-                    cost €2,000. He already has €500 saved and would like to travel
-                    in ten months.
+                    The same basic method works for both everyday purchases and larger
+                    plans, but the details may differ depending on the goal.
                 </p>
 
-                <div class="exampleNumbers vacationExample">
-
-                    <div>
-                        <span>Target amount</span>
-                        <strong>€2,000</strong>
-                    </div>
-
-                    <div>
-                        <span>Already saved</span>
-                        <strong>€500</strong>
-                    </div>
-
-                    <div>
-                        <span>Still needed</span>
-                        <strong>€1,500</strong>
-                    </div>
-
-                    <div>
-                        <span>Time available</span>
-                        <strong>10 months</strong>
-                    </div>
-
-                    <div>
-                        <span>Monthly target</span>
-                        <strong>€150</strong>
-                    </div>
-
-                </div>
-
+                <h3>Travel and holidays</h3>
                 <p>
-                    Alex needs another €1,500. Dividing €1,500 by ten months gives
-                    a monthly target of €150. If he makes ten monthly contributions
-                    of €150 and does not withdraw any of the money, he will have
-                    €2,000 in total.
+                    Estimate the complete trip cost rather than saving only for the
+                    flight or hotel. Include the expenses you expect to pay during
+                    the trip. If prices are uncertain, review the target as you get
+                    closer to booking.
                 </p>
 
-                <div class="formulaCard">
-                    <span>ALEX'S MONTHLY PLAN</span>
-                    <strong>€1,500 ÷ 10 months = €150 per month</strong>
-                </div>
-
+                <h3>Electronics and personal purchases</h3>
                 <p>
-                    The plan can change if circumstances change. If Alex can only
-                    save €100 per month, he would add €1,000 over ten months and
-                    have €1,500 in total, assuming the original €500 remains saved.
-                    He could then postpone the trip, reduce its cost, or choose
-                    another option.
+                    Compare the price of the item you want with suitable alternatives.
+                    If a less expensive option meets your needs, you may be able to
+                    reach the goal sooner or keep more money available for other priorities.
+                    Avoid increasing your target simply because a more expensive option
+                    exists.
+                </p>
+
+                <h3>Emergency savings</h3>
+                <p>
+                    An emergency fund is different from saving for a planned purchase.
+                    Its purpose is to help with unexpected costs, so your target may
+                    depend on your regular expenses, income stability, and personal
+                    circumstances. You can start with a manageable amount and increase
+                    it as your situation allows.
+                </p>
+
+                <h3>A car or another major purchase</h3>
+                <p>
+                    Consider the costs beyond the initial purchase. For a car, that
+                    could include insurance, maintenance, registration, and fuel or
+                    charging costs. For another large purchase, check whether there
+                    are setup, delivery, or ongoing expenses to include.
+                </p>
+
+                <h3>Everyday personal goals</h3>
+                <p>
+                    Smaller goals are worth tracking too. You might save for a gift,
+                    a hobby, home supplies, or an upcoming event. These goals can be
+                    useful practice for choosing a target, making regular contributions,
+                    and deciding which expenses matter most to you.
                 </p>
 
                 <p>
-                    If the trip ends up costing less than expected, he may reach
-                    his goal sooner or have money left over. If it costs more,
-                    he can revise the target and decide whether the additional
-                    expense is worth it.
-                </p>
-
-                <p>
-                    The point is not to predict every detail perfectly. It is
-                    to make a plan based on what you know today and update it
-                    when you have better information.
+                    Whatever the goal, keep the plan simple enough to maintain. A useful
+                    savings system should help you make decisions, not create unnecessary
+                    work or pressure.
                 </p>
 
             </section>
@@ -750,49 +1015,40 @@
 
                 <div class="articleSectionHeading">
                     <div class="articleIcon">
-                        <img src="../assets/images/target-article.svg"
-                            alt=""
-                            draggable="false">
+                        <img src="../assets/images/target-article.svg" alt="" draggable="false">
                     </div>
-
                     <div>
                         <span>YOUR ACTION PLAN</span>
-                        <h2>Create your first savings goal</h2>
+                        <h2>Set up your next savings goal</h2>
                     </div>
                 </div>
 
                 <p>
-                    You can use these five steps to turn your own idea into
-                    a savings plan:
+                    If you want to put this guide into practice, start with these
+                    five steps:
                 </p>
 
                 <div class="takeawaysList">
-
                     <div>
                         <span>01</span>
-                        <p>Choose one thing you want or need to save for.</p>
+                        <p>Give the goal a specific purpose and name.</p>
                     </div>
-
                     <div>
                         <span>02</span>
-                        <p>Estimate its total cost and subtract the amount already saved.</p>
+                        <p>Estimate the total cost and subtract money already assigned to it.</p>
                     </div>
-
                     <div>
                         <span>03</span>
-                        <p>Choose a deadline and calculate the monthly amount required.</p>
+                        <p>Choose a realistic deadline and calculate the contribution required.</p>
                     </div>
-
                     <div>
                         <span>04</span>
-                        <p>Check that the plan fits your budget and essential expenses.</p>
+                        <p>Check that your plan fits your budget and essential expenses.</p>
                     </div>
-
                     <div>
                         <span>05</span>
-                        <p>Record your contributions and review the plan regularly.</p>
+                        <p>Track actual contributions and review the goal when circumstances change.</p>
                     </div>
-
                 </div>
 
             </section>
@@ -802,41 +1058,34 @@
 
                 <div class="takeawaysHeader">
                     <span>THE MAIN POINTS</span>
-                    <h2>A savings goal should work for your life.</h2>
+                    <h2>Your savings goals should work for your life.</h2>
                 </div>
 
                 <div class="takeawaysList">
-
                     <div>
                         <span>01</span>
-                        <p>Give your savings a clear and specific purpose.</p>
+                        <p>Give your savings a specific purpose instead of choosing an arbitrary target.</p>
                     </div>
-
                     <div>
                         <span>02</span>
-                        <p>Calculate what remains after accounting for money already saved.</p>
+                        <p>Choose a realistic target based on the likely cost of the goal.</p>
                     </div>
-
                     <div>
                         <span>03</span>
-                        <p>Choose a monthly amount that does not compromise essential expenses.</p>
+                        <p>Calculate the monthly amount using what you still need to save.</p>
                     </div>
-
                     <div>
                         <span>04</span>
-                        <p>Allow more time if your original deadline is unrealistic.</p>
+                        <p>Make sure your contribution fits your budget and essential expenses.</p>
                     </div>
-
                     <div>
                         <span>05</span>
-                        <p>Update your goals when your priorities or circumstances change.</p>
+                        <p>Remember that progress still counts even if you fall short of 100%.</p>
                     </div>
-
                     <div>
                         <span>06</span>
-                        <p>Track actual contributions rather than relying on your original plan.</p>
+                        <p>Review your goals when your priorities or circumstances change.</p>
                     </div>
-
                 </div>
 
             </section>
@@ -844,33 +1093,33 @@
             <!-- CONCLUSION -->
             <section class="articleSection">
 
-                <h2>Your savings plan can change with you</h2>
+                <h2>A good savings plan can change with you</h2>
 
                 <p>
-                    Setting a savings goal does not mean that you have to follow
-                    the same plan forever. It means you have a clearer idea of
-                    what you want to achieve, what it might cost, and how you
-                    could work toward it.
+                    Setting a savings goal is about more than choosing a number and
+                    watching a progress bar fill up. It is a way to connect your money
+                    with something you want or need, understand what it will take to
+                    get there, and make more informed choices along the way.
                 </p>
 
                 <p>
-                    Start with one goal, calculate the amount you still need,
-                    and choose a monthly contribution that fits your situation.
-                    If the plan becomes difficult, review the target or deadline
-                    instead of ignoring your essential expenses.
+                    Start with a clear purpose, choose a target based on realistic costs,
+                    and calculate a contribution that fits your situation. Record what
+                    you actually save and revisit the plan when you learn something new
+                    or your priorities change.
                 </p>
 
                 <p>
-                    Even if you save less than planned in a particular month,
-                    recording that progress gives you a more accurate picture
-                    of where you stand. You can then make your next decision
-                    based on the money you actually have.
+                    Reaching your original target can be satisfying, but it is not the
+                    only useful outcome. If you have made progress, prepared for an
+                    expense, or discovered that your original plan needs to change,
+                    that information can still help you make better decisions.
                 </p>
 
                 <p>
-                    A realistic savings goal is not a promise that everything
-                    will go according to plan. It is a useful way to give your
-                    money a purpose and make more informed decisions along the way.
+                    Your savings plan should serve your life, not the other way around.
+                    Give your money a purpose, keep your records accurate, and allow
+                    yourself to adjust the plan when necessary.
                 </p>
 
             </section>
@@ -883,9 +1132,9 @@
                 <h2>Ready to give your savings a purpose?</h2>
 
                 <p>
-                    Create a goal, set a target amount, and track your progress
-                    with RealSavings Tracker. Start with one goal and adjust
-                    your plan as you go.
+                    Create a savings goal, set a target amount, record your contributions,
+                    and follow your progress with RealSavings Tracker. Start with one
+                    goal and adjust your plan as life changes.
                 </p>
 
                 <a href="../app.html">Start Saving</a>
@@ -899,6 +1148,217 @@
     <div id="footer"></div>
 
     <script src="../assets/script/components.js"></script>
+
+    <!-- SAVINGS CALCULATOR LOGIC -->
+    <script>
+        (() => {
+            const targetInput = document.getElementById("goalTarget");
+            const savedInput = document.getElementById("goalSaved");
+            const currencyInput = document.getElementById("goalCurrency");
+            const modeInput = document.getElementById("goalMode");
+            const monthsInput = document.getElementById("goalMonths");
+            const contributionInput = document.getElementById("goalContribution");
+
+            const monthsField = document.getElementById("goalMonthsField");
+            const contributionField = document.getElementById("goalContributionField");
+            const calculateButton = document.getElementById("calculateGoal");
+            const errorElement = document.getElementById("goalCalculatorError");
+            const resultsElement = document.getElementById("goalCalculatorResults");
+
+            const mainLabel = document.getElementById("goalMainLabel");
+            const mainValue = document.getElementById("goalMainValue");
+            const resultTarget = document.getElementById("goalResultTarget");
+            const resultSaved = document.getElementById("goalResultSaved");
+            const resultRemaining = document.getElementById("goalResultRemaining");
+            const secondaryLabel = document.getElementById("goalSecondaryLabel");
+            const secondaryValue = document.getElementById("goalSecondaryValue");
+            const progress = document.getElementById("goalProgress");
+            const progressFill = document.getElementById("goalProgressFill");
+            const progressText = document.getElementById("goalProgressText");
+            const percentRemaining = document.getElementById("goalPercentRemaining");
+            const advice = document.getElementById("goalCalculatorAdvice");
+
+            const MAX_AMOUNT = 1_000_000_000_000;
+            const MAX_MONTHS = 12000;
+
+            const formatMoney = (amount) => {
+                const currency = currencyInput.value;
+
+                try {
+                    return new Intl.NumberFormat(undefined, {
+                        style: "currency",
+                        currency,
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }).format(amount);
+                } catch {
+                    return currency + " " + amount.toFixed(2);
+                }
+            };
+
+            const readNumber = (input) => {
+                if (input.value.trim() === "") return NaN;
+                return Number(input.value);
+            };
+
+            const showError = (message) => {
+                errorElement.textContent = message;
+                errorElement.hidden = false;
+                resultsElement.hidden = true;
+            };
+
+            const clearError = () => {
+                errorElement.textContent = "";
+                errorElement.hidden = true;
+            };
+
+            const updateMode = () => {
+                const isMonthlyMode = modeInput.value === "monthly";
+
+                monthsField.hidden = !isMonthlyMode;
+                contributionField.hidden = isMonthlyMode;
+
+                monthsInput.required = isMonthlyMode;
+                contributionInput.required = !isMonthlyMode;
+            };
+
+            const calculate = () => {
+                clearError();
+
+                const target = readNumber(targetInput);
+                const saved = readNumber(savedInput);
+                const mode = modeInput.value;
+
+                if (!Number.isFinite(target) || target <= 0 || target > MAX_AMOUNT) {
+                    showError("Enter a target greater than zero and within the calculator's supported range.");
+                    targetInput.focus();
+                    return;
+                }
+
+                if (!Number.isFinite(saved) || saved < 0 || saved > MAX_AMOUNT) {
+                    showError("Enter an amount already saved that is zero or greater.");
+                    savedInput.focus();
+                    return;
+                }
+
+                const remaining = Math.max(0, target - saved);
+                const rawProgress = (saved / target) * 100;
+                const progressPercent = Math.min(100, rawProgress);
+                const displayedProgress = Math.round(progressPercent);
+                const currency = currencyInput.value;
+
+                let mainResult;
+                let secondResult;
+                let secondLabel;
+                let message;
+
+                if (remaining === 0) {
+                    mainLabel.textContent = "Target already reached";
+                    mainResult = formatMoney(target);
+                    secondLabel = "Additional amount needed";
+                    secondResult = formatMoney(0);
+                    message = "Your recorded savings meet or exceed this target. If the money is still available for this purpose, you can mark the goal as reached or review whether the target still reflects your plans.";
+                } else if (mode === "monthly") {
+                    const months = readNumber(monthsInput);
+
+                    if (!Number.isInteger(months) || months < 1 || months > MAX_MONTHS) {
+                        showError("Enter a whole number of months between 1 and 12,000.");
+                        monthsInput.focus();
+                        return;
+                    }
+
+                    const monthly = remaining / months;
+
+                    mainLabel.textContent = "Monthly contribution needed";
+                    mainResult = formatMoney(monthly);
+                    secondLabel = "Planned timeline";
+                    secondResult = months + (months === 1 ? " month" : " months");
+
+                    message = "To cover the remaining " + formatMoney(remaining) +
+                        " in " + months + (months === 1 ? " month, " : " months, ") +
+                        "you would need to save approximately " + formatMoney(monthly) +
+                        " each month. Check that this amount fits your budget. If it does not, try a longer timeline or a lower target.";
+                } else {
+                    const contribution = readNumber(contributionInput);
+
+                    if (!Number.isFinite(contribution) || contribution < 0 || contribution > MAX_AMOUNT) {
+                        showError("Enter a monthly contribution that is zero or greater and within the supported range.");
+                        contributionInput.focus();
+                        return;
+                    }
+
+                    if (contribution === 0) {
+                        showError("Enter a monthly contribution greater than zero to estimate the timeline.");
+                        contributionInput.focus();
+                        return;
+                    }
+
+                    const months = Math.ceil(remaining / contribution);
+
+                    if (!Number.isSafeInteger(months) || months > MAX_MONTHS) {
+                        showError("At this contribution, the estimated timeline is longer than the calculator supports. Try a larger monthly contribution.");
+                        contributionInput.focus();
+                        return;
+                    }
+
+                    mainLabel.textContent = "Estimated time to reach your target";
+                    mainResult = months + (months === 1 ? " month" : " months");
+                    secondLabel = "Monthly contribution";
+                    secondResult = formatMoney(contribution);
+
+                    const finalContribution = remaining - (contribution * (months - 1));
+
+                    message = "At " + formatMoney(contribution) +
+                        " per month, you would need " + months +
+                        (months === 1 ? " monthly contribution." : " monthly contributions.") +
+                        " The final contribution may be smaller than the usual monthly amount (" +
+                        formatMoney(Math.max(0, finalContribution)) +
+                        "), depending on how you schedule your deposits. This estimate assumes your contributions arrive as planned.";
+                }
+
+                if (currency !== "EUR") {
+                    message += " The currency is for display only; the calculator does not convert between currencies.";
+                }
+
+                resultTarget.textContent = formatMoney(target);
+                resultSaved.textContent = formatMoney(saved);
+                resultRemaining.textContent = formatMoney(remaining);
+                mainValue.textContent = mainResult;
+                secondaryLabel.textContent = secondLabel;
+                secondaryValue.textContent = secondResult;
+
+                progressFill.style.width = progressPercent + "%";
+                progress.setAttribute("aria-valuenow", String(displayedProgress));
+                progressText.textContent = displayedProgress + "% of target saved";
+                percentRemaining.textContent = rawProgress >= 100
+                    ? "Target reached"
+                    : Math.round(100 - progressPercent) + "% remaining";
+
+                advice.textContent = message;
+                resultsElement.hidden = false;
+            };
+
+            modeInput.addEventListener("change", () => {
+                updateMode();
+                clearError();
+            });
+
+            calculateButton.addEventListener("click", calculate);
+
+            [
+                targetInput,
+                savedInput,
+                currencyInput,
+                monthsInput,
+                contributionInput
+            ].forEach((input) => {
+                input.addEventListener("input", clearError);
+            });
+
+            updateMode();
+            calculate();
+        })();
+    </script>
 
 </body>
 </html>

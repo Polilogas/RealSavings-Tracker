@@ -1,0 +1,615 @@
+
+/* =========================================================
+   SAVESMART — LANDING PAGE VISUAL LAYER
+   Loaded after landing.css to keep layout and visual styling separate.
+   ========================================================= */
+
+/* ---------- GLOBAL LANDING PAGE POLISH ---------- */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    color: var(--text-primary);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+a {
+    transition:
+        color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+button {
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.28);
+    outline-offset: 3px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.heroLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-primary);
+    background: var(--brand-soft);
+    border: 1px solid #dbeafe;
+    border-radius: 999px;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+.hero h1,
+.hero h2 {
+    color: var(--text-primary);
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+}
+
+.hero p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    text-wrap: pretty;
+}
+
+.heroButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: var(--brand-primary);
+    color: #ffffff;
+    border: 1px solid var(--brand-primary);
+    border-radius: 12px;
+    font-weight: 650;
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+.heroButton:hover {
+    color: #ffffff;
+    background: var(--brand-primary-hover);
+    border-color: var(--brand-primary-hover);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.23);
+    transform: translateY(-2px);
+}
+
+/* ---------- HERO PREVIEW CARD ---------- */
+
+.heroVisual {
+    position: relative;
+    flex: 0 1 360px;
+    width: 100%;
+    max-width: 360px;
+    min-width: 0;
+}
+
+.heroGoalCard {
+    padding: 19px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.heroGoalCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.12);
+}
+
+.heroGoalInfo {
+    min-width: 0;
+    gap: 12px;
+}
+
+.heroGoalPicture {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--surface-subtle);
+}
+
+.heroGoalPicture img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heroGoalDetails {
+    min-width: 0;
+}
+
+.heroGoalTitle {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+
+.heroGoalSubtitle {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.heroGoalDates {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.heroGoalProgressInfo {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.heroGoalProgressBar {
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e9eef5;
+}
+
+.heroGoalProgressBar > * {
+    border-radius: inherit;
+}
+
+/* ---------- HOW IT WORKS ---------- */
+
+.sectionHeading {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.sectionHeading h2,
+.sectionHeading h3 {
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.sectionHeading p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+}
+
+.steps {
+    align-items: stretch;
+}
+
+.step {
+    min-width: 0;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.step:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.stepNumber {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-primary);
+    background: var(--brand-soft);
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    font-weight: 750;
+}
+
+.step h3,
+.step h4 {
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.step p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+}
+
+/* ---------- SAVINGS CALCULATOR ---------- */
+
+.calculatorCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.calculatorInputs {
+    align-items: start;
+}
+
+.calculatorInput {
+    min-width: 0;
+}
+
+.calculatorInput label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.inputWrapper:focus-within {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.inputWrapper input {
+    width: 100%;
+    min-width: 0;
+    color: var(--text-primary);
+    background: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+.inputWrapper input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.inputWrapper input::placeholder {
+    color: var(--text-muted);
+}
+
+#calculateSavingsButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 12px 20px;
+    color: #ffffff;
+    background: var(--brand-primary);
+    border: 1px solid var(--brand-primary);
+    border-radius: var(--radius-md);
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.16);
+}
+
+#calculateSavingsButton:hover {
+    background: var(--brand-primary-hover);
+    border-color: var(--brand-primary-hover);
+    box-shadow: 0 7px 16px rgba(37, 99, 235, 0.22);
+    transform: translateY(-1px);
+}
+
+#calculateSavingsButton:active {
+    transform: translateY(0);
+}
+
+#calculatorError {
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+
+.calculatorResult {
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--brand-soft);
+    border: 1px solid #dbeafe;
+    border-radius: var(--radius-lg);
+}
+
+.calculatorResult h3 {
+    color: var(--text-primary);
+}
+
+#calculatorResultDate {
+    color: var(--brand-primary);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+}
+
+/* ---------- EXAMPLE GOALS ---------- */
+
+.exampleGoals {
+    align-items: stretch;
+}
+
+.exampleGoal {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.exampleGoal:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.exampleGoalImage {
+    overflow: hidden;
+    background: var(--surface-subtle);
+}
+
+.exampleGoalImage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 350ms ease;
+}
+
+.exampleGoal:hover .exampleGoalImage img {
+    transform: scale(1.035);
+}
+
+.exampleGoalInfo {
+    min-width: 0;
+    padding: 18px;
+}
+
+.exampleGoalInfo h3,
+.exampleGoalInfo h4 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.exampleGoalInfo p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ---------- FINAL CALL TO ACTION ---------- */
+
+.landingSection--tint {
+    background-color: var(--surface-blue);
+    background-image: none;
+}
+
+.landingSection--white {
+    background-color: var(--surface);
+    background-image: none;
+}
+
+.finalCta {
+    overflow: hidden;
+}
+
+.finalCtaContent {
+    position: relative;
+    padding: clamp(28px, 5vw, 48px);
+    background: var(--brand-primary);
+    border-radius: var(--radius-xl);
+    color: #ffffff;
+    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.18);
+}
+
+.finalCtaContent h2,
+.finalCtaContent h3 {
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.finalCtaContent > span {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.finalCtaContent p {
+    color: rgba(255, 255, 255, 0.86);
+    line-height: 1.75;
+}
+
+.finalCtaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--brand-primary);
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+.finalCtaButton:hover {
+    color: var(--brand-primary-hover);
+    background: #eff6ff;
+    border-color: #eff6ff;
+    transform: translateY(-2px);
+}
+
+/* ---------- GENERAL CONTENT POLISH ---------- */
+
+.hero,
+.howItWorks,
+.savingsCalculator,
+.goalExamples,
+.finalCta {
+    scroll-margin-top: 80px;
+}
+
+.hero h1,
+.sectionHeading h2,
+.finalCtaContent h2 {
+    text-wrap: balance;
+}
+
+.hero p,
+.sectionHeading p,
+.step p,
+.finalCtaContent p {
+    text-wrap: pretty;
+}
+
+::selection {
+    color: #1e3a8a;
+    background: #dbeafe;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1000px) {
+    .step {
+        padding: 24px;
+    }
+
+    .calculatorCard {
+        border-radius: var(--radius-lg);
+    }
+}
+
+@media (max-width: 900px) {
+    .heroVisual {
+        flex-basis: 340px;
+        max-width: 340px;
+    }
+}
+
+@media (max-width: 750px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    .hero {
+        overflow: hidden;
+    }
+
+    .heroGoalCard {
+        border-radius: var(--radius-lg);
+    }
+
+    .step {
+        padding: 22px;
+    }
+
+    .calculatorResult {
+        padding: 20px;
+    }
+
+    .finalCtaContent {
+        border-radius: var(--radius-lg);
+    }
+}
+
+@media (max-width: 500px) {
+    .heroButton,
+    .finalCtaButton,
+    #calculateSavingsButton {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    .step {
+        padding: 18px;
+    }
+
+    .calculatorCard {
+        padding: 18px;
+    }
+
+    .calculatorResult {
+        padding: 16px;
+    }
+
+    .exampleGoalInfo {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .heroGoalCard,
+    .calculatorCard,
+    .finalCtaContent {
+        border-radius: 12px;
+    }
+
+    .step {
+        padding: 15px;
+    }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
