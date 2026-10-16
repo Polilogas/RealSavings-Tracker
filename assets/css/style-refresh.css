@@ -575,6 +575,122 @@ label {
     letter-spacing: -0.03em;
 }
 
+.reportSummary {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.reportGroup {
+    gap: 14px;
+    padding: 20px;
+    background: var(--ss-surface);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-lg);
+    box-shadow: var(--ss-shadow-sm);
+}
+
+.reportGroupHeader h3 {
+    color: var(--ss-text);
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+}
+
+.reportGroupCards {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: 12px;
+}
+
+.reportCard {
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+    padding: 16px;
+    background: var(--ss-background);
+    border-color: var(--ss-border);
+    box-shadow: none;
+}
+
+.reportCardHighlight {
+    background: var(--ss-primary-light);
+    border-color: var(--ss-primary-border);
+}
+
+.reportCardInfo {
+    width: 100%;
+    gap: 8px;
+}
+
+.reportCardInfo span {
+    color: var(--ss-text-secondary);
+    font-size: 0.68rem;
+    line-height: 1.35;
+    letter-spacing: 0.045em;
+}
+
+.reportCardInfo strong {
+    overflow: visible;
+    color: var(--ss-text);
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
+}
+
+.reportCardInfo small {
+    margin: 0;
+    color: var(--ss-text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.reportSection {
+    margin-bottom: 18px;
+    padding: 22px;
+    background: var(--ss-surface);
+    border-color: var(--ss-border);
+    box-shadow: var(--ss-shadow-sm);
+}
+
+.reportSectionHeader {
+    margin-bottom: 18px;
+}
+
+.reportSectionHeader h3 {
+    color: var(--ss-text);
+}
+
+.reportSectionHeader p {
+    color: var(--ss-text-secondary);
+}
+
+.reportGoal {
+    padding: 14px 16px;
+    background: var(--ss-background);
+    border-color: var(--ss-border);
+    box-shadow: none;
+}
+
+.reportMoneyOverTime {
+    min-height: 0;
+    background: var(--ss-surface);
+    border-color: var(--ss-border);
+    box-shadow: none;
+}
+
+.goalsFooterAction {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.goalsFooterAction .addNewGoal {
+    width: auto;
+    min-width: 200px;
+}
+
 .chartContainer svg text {
     fill: var(--ss-text-secondary);
 }
@@ -607,6 +723,41 @@ label {
 
 .settingsSection + .settingsSection {
     margin-top: 20px;
+}
+
+.currencyField {
+    display: grid;
+    gap: 8px;
+    width: min(100%, 420px);
+}
+
+.currencyField label {
+    color: var(--ss-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.currencyField select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    color: var(--ss-text);
+    background: var(--ss-surface);
+    border: 1px solid var(--ss-border-strong);
+    border-radius: var(--ss-radius-md);
+    font: inherit;
+}
+
+.currencyField select:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 2px;
+}
+
+.currencyHelp {
+    margin: 0;
+    color: var(--ss-text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.55;
 }
 
 /* ---------- POPUPS AND OVERLAYS ---------- */
@@ -732,8 +883,35 @@ label {
 /* ---------- MONTHLY SAVINGS ---------- */
 
 .monthlySavingsNeeded {
+    display: block;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 8px 10px;
+    border: 1px solid var(--ss-primary-border);
+    border-radius: var(--ss-radius-sm);
+    background: var(--ss-primary-light);
     color: var(--ss-primary);
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.monthlySavingsNeeded > span {
+    color: var(--ss-text-secondary);
+    margin-left: 0.3em;
+}
+
+.monthlySavingsNeeded > strong {
+    color: var(--ss-primary);
+    font-size: 0.84rem;
     font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.monthlySavingsNeeded.overdue > span,
+.monthlySavingsNeeded.overdue > strong {
+    color: inherit;
 }
 
 /* ---------- SCROLLBARS ---------- */
@@ -776,6 +954,33 @@ label {
     .settingsSection,
     .settingsCard {
         border-radius: var(--ss-radius-md);
+    }
+}
+
+@media (max-width: 560px) {
+    .currencyField {
+        width: 100%;
+    }
+
+    .settingsSection {
+        padding: 18px;
+    }
+
+    .reportGroup {
+        padding: 16px;
+    }
+
+    .reportCard {
+        min-height: 92px;
+        padding: 13px;
+    }
+
+    .reportSection {
+        padding: 16px;
+    }
+
+    .goalsFooterAction .addNewGoal {
+        width: 100%;
     }
 }
 

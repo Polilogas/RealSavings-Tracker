@@ -141,7 +141,8 @@ function renderGoals() {
 
                                     return `
                                         <p class="monthlySavingsNeeded">
-                                            Save €${converNumberToCurrency(monthlySavings)} / month
+                                            <strong>${formatCurrency(monthlySavings)} / month</strong>
+                                            <span>to reach target</span>
                                         </p>
                                     `;
                                 })()}
@@ -159,7 +160,7 @@ function renderGoals() {
                     
 
                     <div class="progressInfo">
-                        <p><span class="currentSavings">€${converNumberToCurrency(goal.currentAmount)}</span> / €${converNumberToCurrency(goal.targetAmount)}</p>
+                        <p><span class="currentSavings">${formatCurrency(goal.currentAmount)}</span> / ${formatCurrency(goal.targetAmount)}</p>
                         <p><span class="percentage">${percentage.toFixed(2)}%</span></p>
                     </div>
 
@@ -218,7 +219,7 @@ function renderGoals() {
                             </p>
 
                             <p class="completedGoalTarget">
-                                Target: €${converNumberToCurrency(goal.targetAmount)}
+                                Target: ${formatCurrency(goal.targetAmount)}
                             </p>
 
                             <div class="completedGoalDates">
@@ -313,7 +314,7 @@ function updateTotalSavings() {
     }
 
     let totalSavingsElement = document.querySelector(".rightSidebar .totalSavingsContainer .currentSavings");
-    totalSavingsElement.textContent = "€" + converNumberToCurrency(totalAmount);
+    totalSavingsElement.textContent = formatCurrency(totalAmount);
 }
 
 // TOTAL TARGET SAVINGS
@@ -340,21 +341,11 @@ function updateTotalTargetSavings() {
     percentage = Math.min(percentage, 100);
     let totalSavingsElement = document.querySelector(".rightSidebar .totalSavingsContainer .totalGoalSavings");
     totalSavingsElement.innerHTML = `
-        of €${converNumberToCurrency(totalAmount)}
+        of ${formatCurrency(totalAmount)}
         (<span class="percentage">${percentage.toFixed(0)}%</span>)
     `;
 
     updatePercentageBars();
-}
-
-// CURRENCY
-function converNumberToCurrency(money) {
-
-    return Number(money).toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-
 }
 
 // NEW GOAL WINDOW
@@ -684,7 +675,7 @@ function addMoney(cardId) {
     document.querySelector("#darkOverlay").classList.add("darkOverlay");
     document.querySelector("#addMoneyWindow").classList.remove("hidden");
     document.querySelector("#addMoneyWindow .goalTitle").textContent = goal.name;
-    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(goal.currentAmount);
+    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = formatCurrency(goal.currentAmount);
     document.querySelector("#addMoney").value = "";
     document.querySelector("#addTotalMoney").value = "";
     document.querySelector("#addMoney").focus();
@@ -702,7 +693,7 @@ function updateAddMoneyPreview() {
     let amount = getMoneyInputValue(document.querySelector("#addMoney"));
     document.querySelector("#addTotalMoney").value = "";
     let newAmount = goal.currentAmount + amount;
-    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(
+    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = formatCurrency(
         roundMoney(newAmount)
     );
 
@@ -713,7 +704,7 @@ function updateAddTotalMoneyPreview() {
 
     let amount = getMoneyInputValue(document.querySelector("#addTotalMoney"));
     document.querySelector("#addMoney").value = "";
-    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(
+    document.querySelector("#addMoneyWindow .displayTotalMoney").textContent = formatCurrency(
         roundMoney(amount)
     );
 
@@ -733,7 +724,7 @@ function removeMoney(cardId) {
     document.querySelector("#darkOverlay").classList.add("darkOverlay");
     document.querySelector("#removeMoneyWindow").classList.remove("hidden");
     document.querySelector("#removeMoneyWindow .goalTitle").textContent = goal.name;
-    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(goal.currentAmount);
+    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = formatCurrency(goal.currentAmount);
     document.querySelector("#removeMoney").value = "";
     document.querySelector("#updateTotalMoney").value = "";
     document.querySelector("#removeMoneyWindow input[type='button']").disabled = false;
@@ -753,7 +744,7 @@ function updateRemoveMoneyPreview() {
     document.querySelector("#updateTotalMoney").value = "";
     let newAmount = goal.currentAmount - amount;
     let submitButton = document.querySelector("#removeMoneyWindow input[type='button']");
-    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(
+    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = formatCurrency(
         roundMoney(newAmount)
     );
     submitButton.disabled = newAmount < 0;
@@ -766,7 +757,7 @@ function updateRemoveTotalMoneyPreview() {
     let amount = getMoneyInputValue(document.querySelector("#updateTotalMoney"));
     document.querySelector("#removeMoney").value = "";
     let submitButton = document.querySelector("#removeMoneyWindow input[type='button']");
-    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = converNumberToCurrency(
+    document.querySelector("#removeMoneyWindow .displayTotalMoney").textContent = formatCurrency(
         roundMoney(amount)
     );
     submitButton.disabled = amount < 0;

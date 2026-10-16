@@ -570,7 +570,13 @@
                                 <option value="EUR">Euro (€)</option>
                                 <option value="USD">US dollar ($)</option>
                                 <option value="GBP">British pound (£)</option>
+                                <option value="JPY">Japanese yen (¥)</option>
                                 <option value="PHP">Philippine peso (₱)</option>
+                                <option value="CAD">Canadian dollar (CA$)</option>
+                                <option value="AUD">Australian dollar (A$)</option>
+                                <option value="INR">Indian rupee (₹)</option>
+                                <option value="CNY">Chinese yuan (CN¥)</option>
+                                <option value="CHF">Swiss franc (CHF)</option>
                             </select>
                         </div>
 
@@ -1148,6 +1154,7 @@
     <div id="footer"></div>
 
     <script src="../assets/script/components.js"></script>
+    <script src="../assets/script/currency.js"></script>
 
     <!-- SAVINGS CALCULATOR LOGIC -->
     <script>
@@ -1178,23 +1185,12 @@
             const percentRemaining = document.getElementById("goalPercentRemaining");
             const advice = document.getElementById("goalCalculatorAdvice");
 
+            currencyInput.value = getSelectedCurrencyCode();
+
             const MAX_AMOUNT = 1_000_000_000_000;
             const MAX_MONTHS = 12000;
 
-            const formatMoney = (amount) => {
-                const currency = currencyInput.value;
-
-                try {
-                    return new Intl.NumberFormat(undefined, {
-                        style: "currency",
-                        currency,
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    }).format(amount);
-                } catch {
-                    return currency + " " + amount.toFixed(2);
-                }
-            };
+            const formatMoney = (amount) => formatCurrency(amount, currencyInput.value);
 
             const readNumber = (input) => {
                 if (input.value.trim() === "") return NaN;
@@ -1316,9 +1312,7 @@
                         "), depending on how you schedule your deposits. This estimate assumes your contributions arrive as planned.";
                 }
 
-                if (currency !== "EUR") {
-                    message += " The currency is for display only; the calculator does not convert between currencies.";
-                }
+                message += " Currency is for display only; the calculator does not convert between currencies.";
 
                 resultTarget.textContent = formatMoney(target);
                 resultSaved.textContent = formatMoney(saved);

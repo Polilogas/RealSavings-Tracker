@@ -166,6 +166,12 @@
                                     <!-- COMPLETED GOALS WILL BE RENDERED HERE -->
                                 </div>
                             </div>
+
+                            <div class="goalsFooterAction">
+                                <button class="addNewGoal" type="button" onclick="showAddNewGoalWindow();">
+                                    <span>+</span>Add New Goal
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -184,17 +190,17 @@
                                 <div class="transactionSummary">
                                     <div class="transactionSummaryCard">
                                         <span>Total Added</span>
-                                        <strong id="transactionTotalAdded">€0.00</strong>
+                                        <strong id="transactionTotalAdded" data-currency-value="0">€0.00</strong>
                                     </div>
 
                                     <div class="transactionSummaryCard">
                                         <span>Total Removed</span>
-                                        <strong id="transactionTotalRemoved">€0.00</strong>
+                                        <strong id="transactionTotalRemoved" data-currency-value="0">€0.00</strong>
                                     </div>
 
                                     <div class="transactionSummaryCard">
                                         <span>Net Change</span>
-                                        <strong id="transactionNetChange">€0.00</strong>
+                                        <strong id="transactionNetChange" data-currency-value="0">€0.00</strong>
                                     </div>
                                 </div>
 
@@ -252,21 +258,29 @@
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Total Saved</span>
-                                                    <strong id="reportTotalSaved">€0.00</strong>
+                                                    <strong id="reportTotalSaved" data-currency-value="0">€0.00</strong>
                                                 </div>
                                             </div>
 
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Total Added</span>
-                                                    <strong id="reportTotalAdded">€0.00</strong>
+                                                    <strong id="reportTotalAdded" data-currency-value="0">€0.00</strong>
                                                 </div>
                                             </div>
 
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Total Removed</span>
-                                                    <strong id="reportTotalRemoved">€0.00</strong>
+                                                    <strong id="reportTotalRemoved" data-currency-value="0">€0.00</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="reportCard reportCardHighlight">
+                                                <div class="reportCardInfo">
+                                                    <span>Highest Amount Added</span>
+                                                    <strong id="reportHighestAmountAdded" data-currency-value="0">€0.00</strong>
+                                                    <small id="reportHighestAmountGoal">No contributions yet</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,7 +310,7 @@
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Average Amount Added</span>
-                                                    <strong id="reportAverageAdded">€0.00</strong>
+                                                    <strong id="reportAverageAdded" data-currency-value="0">€0.00</strong>
                                                 </div>
                                             </div>
                                         </div>
@@ -312,14 +326,14 @@
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Current Month Savings</span>
-                                                    <strong id="reportMonthlySavings">€0.00</strong>
+                                                    <strong id="reportMonthlySavings" data-currency-value="0">€0.00</strong>
                                                 </div>
                                             </div>
 
                                             <div class="reportCard">
                                                 <div class="reportCardInfo">
                                                     <span>Average Monthly Savings</span>
-                                                    <strong id="reportAverageMonthlySavings">€0.00</strong>
+                                                    <strong id="reportAverageMonthlySavings" data-currency-value="0">€0.00</strong>
                                                 </div>
                                             </div>
 
@@ -327,7 +341,7 @@
                                                 <div class="reportCardInfo">
                                                     <span>Best Saving Month</span>
                                                     <strong id="reportBestSavingMonth">—</strong>
-                                                    <small id="reportBestSavingAmount">€0.00</small>
+                                                    <small id="reportBestSavingAmount" data-currency-value="0">€0.00</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -379,6 +393,22 @@
                         </div>
 
                         <div class="settingsContent">
+                            <!-- CURRENCY -->
+                            <div class="settingsSection">
+                                <div class="settingsSectionHeader">
+                                    <h2>Currency</h2>
+                                    <p>Choose how amounts are shown throughout the app.</p>
+                                </div>
+
+                                <div class="currencyField">
+                                    <label for="currencySelect">Display currency</label>
+                                    <select id="currencySelect" aria-describedby="currencyHelp"></select>
+                                    <p id="currencyHelp" class="currencyHelp">
+                                        This changes the currency symbol and formatting only. It does not convert your saved amounts.
+                                    </p>
+                                </div>
+                            </div>
+
                             <!-- DATA -->
                             <div class="settingsSection">
                                 <div class="settingsSectionHeader">
@@ -434,8 +464,8 @@
 
                             <div class="mainSide">
                                 <p class="title">Total Savings</p>
-                                <p class="currentSavings">€0</p>
-                                <p class="totalGoalSavings">of € 0(<span class="percentage">0%</span>)</p>
+                                <p class="currentSavings" data-currency-value="0">€0.00</p>
+                                <p class="totalGoalSavings">of <span data-currency-value="0">€0.00</span> (<span class="percentage">0%</span>)</p>
                             </div>
                         </div>
 
@@ -559,7 +589,7 @@
                 </div>
 
                 <p id="newGoalAmountError" class="formError hidden">Current amount cannot be greater than the target amount.</p>
-                <p id="newGoalTargetError" class="formError hidden">Target amount must be greater than €0.</p>
+                <p id="newGoalTargetError" class="formError hidden">Target amount must be greater than zero.</p>
                 <p id="newGoalAmountNegativeError" class="formError hidden">Current amount cannot be negative.</p>
 
                 <input type="button" value="Create Goal" class="focusable" onclick="addANewGoal();">
@@ -596,7 +626,7 @@
                 <label for="editTargetAmount">Target Amount:</label>
                 <input type="number" id="editTargetAmount" class="focusable" step="0.01" min="0" required>
 
-                <p id="editGoalTargetError" class="formError hidden">Target amount must be greater than €0.</p>
+                <p id="editGoalTargetError" class="formError hidden">Target amount must be greater than zero.</p>
                 <p id="editGoalAmountError" class="formError hidden">Current amount cannot be greater than the target amount.</p>
 
                 <label for="editGoalImage">Change Image:</label>
@@ -654,6 +684,7 @@
             </form>
         </div>
 
+        <script src="./assets/script/currency.js"></script>
         <script src="./assets/script/storage.js"></script>
         <script src="./assets/script/goals.js"></script>
         <script src="./assets/script/transactions.js"></script>

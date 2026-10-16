@@ -2432,18 +2432,15 @@ input[type="button"]:disabled {
     font-size: 12px;
 }
 
-/* MONTHLY SAVINGS NEEDED */
-
-.monthlySavingsNeeded {/* min-height: 44px; */margin: 12px 0 0;padding: 9px 12px;border: 1px solid #dceaff;border-radius: 8px;background-color: #f6faff;color: #4b82e8;font-size: 1rem;font-weight: 600;line-height: 1.5;/* width: 100%; *//* min-height: 44px; *//* flex-shrink: 0; */}
-
+/* MONTHLY SAVINGS NEEDED STATES */
 .monthlySavingsNeeded.overdue {
-border-color: #f5d6d8;
-background-color: #fff5f5;
-color: #b4232f;
+    border-color: #f5d6d8;
+    background-color: #fff5f5;
+    color: #b4232f;
 }
 
 .monthlySavingsNeeded.placeholder {
-visibility: hidden;
+    visibility: hidden;
 }
 
 

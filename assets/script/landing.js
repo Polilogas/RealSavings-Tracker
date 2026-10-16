@@ -7,6 +7,14 @@ let calculatorResultValue = document.querySelector("#calculatorResultValue");
 let calculatorResultText = document.querySelector(".calculatorResult p");
 let calculatorResultDate = document.querySelector("#calculatorResultDate");
 
+updateCurrencyPresentation();
+
+window.addEventListener("storage", function(event) {
+    if (event.key === CURRENCY_STORAGE_KEY) {
+        updateCurrencyPresentation();
+    }
+});
+
 // CALCULATE SAVINGS BUTTON
 calculateSavingsButton.addEventListener("click", function() {
     calculateSavings();

@@ -17,9 +17,9 @@ function updateTransactionSummary() {
 
     let netChange = totalAdded - totalRemoved;
 
-    document.querySelector("#transactionTotalAdded").textContent = `€${converNumberToCurrency(totalAdded)}`;
-    document.querySelector("#transactionTotalRemoved").textContent = `€${converNumberToCurrency(totalRemoved)}`;
-    document.querySelector("#transactionNetChange").textContent = `€${converNumberToCurrency(netChange)}`;
+    document.querySelector("#transactionTotalAdded").textContent = formatCurrency(totalAdded);
+    document.querySelector("#transactionTotalRemoved").textContent = formatCurrency(totalRemoved);
+    document.querySelector("#transactionNetChange").textContent = formatCurrency(netChange);
 }
 
 // TRANSACTION GOAL FILTER
@@ -106,7 +106,7 @@ function renderTransactions() {
                 </div>
 
                 <span class="transactionAmount ${amountClass}">
-                    ${sign}${converNumberToCurrency(transaction.amount)} €
+                    ${sign}${formatCurrency(transaction.amount)}
                 </span>
             </div>
         `;

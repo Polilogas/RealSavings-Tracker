@@ -8,6 +8,7 @@ let activeTransactionGoal = "all";
 let saveSmartData = loadData();
 
 // START APP
+setupCurrencySettings();
 setCurrentDateDefaults();
 setupUIEvents();
 setupMoneyInputs();

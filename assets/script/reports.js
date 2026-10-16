@@ -9,6 +9,8 @@ function updateReports() {
     let mostActiveGoalTransactions = 0;
     let totalAddedTransactions = 0;
     let addedTransactionCount = 0;
+    let highestAmountAdded = 0;
+    let highestAmountAddedTransaction = null;
     let monthlyAdded = 0;
     let monthlyRemoved = 0;
     let currentMonth = new Date().getMonth();
@@ -56,9 +58,15 @@ function updateReports() {
         }
 
         if (transaction.amount >= 0) {
-            totalAdded += Number(transaction.amount);
-            totalAddedTransactions += Number(transaction.amount);
+            let amountAdded = Number(transaction.amount);
+            totalAdded += amountAdded;
+            totalAddedTransactions += amountAdded;
             addedTransactionCount++;
+
+            if (amountAdded > highestAmountAdded) {
+                highestAmountAdded = amountAdded;
+                highestAmountAddedTransaction = transaction;
+            }
         } else {
             totalRemoved += Math.abs(Number(transaction.amount));
         }
@@ -104,25 +112,39 @@ function updateReports() {
         }
     }
 
-    document.querySelector("#reportTotalSaved").textContent = converNumberToCurrency(totalSaved) + " €";
+    document.querySelector("#reportTotalSaved").textContent = formatCurrency(totalSaved);
 
-    document.querySelector("#reportTotalAdded").textContent = converNumberToCurrency(totalAdded) + " €";
+    document.querySelector("#reportTotalAdded").textContent = formatCurrency(totalAdded);
 
-    document.querySelector("#reportTotalRemoved").textContent = converNumberToCurrency(totalRemoved) + " €";
+    document.querySelector("#reportTotalRemoved").textContent = formatCurrency(totalRemoved);
+
+    document.querySelector("#reportHighestAmountAdded").textContent = formatCurrency(highestAmountAdded);
+
+    let highestAmountGoal = "No contributions yet";
+
+    if (highestAmountAddedTransaction) {
+        let goal = saveSmartData.goals.find(function(item) {
+            return item.id === highestAmountAddedTransaction.goalId;
+        });
+
+        highestAmountGoal = `Added to ${goal?.name || highestAmountAddedTransaction.goalName || "Unknown goal"}`;
+    }
+
+    document.querySelector("#reportHighestAmountGoal").textContent = highestAmountGoal;
 
     document.querySelector("#reportCompletedGoals").textContent = completedGoals;
 
     document.querySelector("#reportMostActiveGoal").textContent = mostActiveGoal;
 
-    document.querySelector("#reportAverageAdded").textContent = converNumberToCurrency(averageAdded) + " €";
+    document.querySelector("#reportAverageAdded").textContent = formatCurrency(averageAdded);
 
-    document.querySelector("#reportMonthlySavings").textContent = converNumberToCurrency(monthlySavings) + " €";
+    document.querySelector("#reportMonthlySavings").textContent = formatCurrency(monthlySavings);
 
-    document.querySelector("#reportAverageMonthlySavings").textContent = converNumberToCurrency(averageMonthlySavings) + " €";
+    document.querySelector("#reportAverageMonthlySavings").textContent = formatCurrency(averageMonthlySavings);
 
     document.querySelector("#reportBestSavingMonth").textContent = bestSavingMonth;
 
-    document.querySelector("#reportBestSavingAmount").textContent = converNumberToCurrency(bestSavingAmount) + " €";
+    document.querySelector("#reportBestSavingAmount").textContent = formatCurrency(bestSavingAmount);
 
     renderReportGoalProgress();
     renderReportMoneyOverTime();
@@ -206,7 +228,7 @@ function renderReportGoalProgress() {
                 </div>
 
                 <div class="reportGoalAmounts">
-                    <span>€${converNumberToCurrency(currentAmount)} saved of €${converNumberToCurrency(targetAmount)}</span>
+                    <span>${formatCurrency(currentAmount)} saved of ${formatCurrency(targetAmount)}</span>
                 </div>
 
 
@@ -216,7 +238,7 @@ function renderReportGoalProgress() {
 
 
                 <div class="reportGoalFooter">
-                    <span>${isCompleted ? "Goal reached" : `€${converNumberToCurrency(remainingAmount)} remaining`}</span>
+                    <span>${isCompleted ? "Goal reached" : `${formatCurrency(remainingAmount)} remaining`}</span>
                     <span>${statusText}</span>
                 </div>
             </div>
@@ -390,21 +412,21 @@ function renderReportMoneyOverTime() {
             x="0"
             y="${chartHeight - chartPadding + 5}"
             class="reportChartLabel">
-            €0
+            ${formatCurrency(0)}
         </text>
 
         <text
             x="0"
             y="${chartHeight / 2 + 5}"
             class="reportChartLabel">
-            ${converNumberToCurrency(maxAmount / 2)} €
+            ${formatCurrency(maxAmount / 2)}
         </text>
 
         <text
             x="0"
             y="${chartPadding + 5}"
             class="reportChartLabel">
-            ${converNumberToCurrency(maxAmount)} €
+            ${formatCurrency(maxAmount)}
         </text>
 
         <line
@@ -488,7 +510,7 @@ function renderReportMoneyOverTime() {
                                 month: "short",
                                 year: "numeric"
                             }
-                        )} — ${converNumberToCurrency(item.amount)} €
+                        )} — ${formatCurrency(item.amount)}
                     </title>
 
                 </circle>
